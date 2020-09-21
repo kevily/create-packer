@@ -1,0 +1,92 @@
+{
+    "name": "electron-template",
+    "version": "1.0.0",
+    "main": "main.js",
+    "author": "1k",
+    "license": "MIT",
+    "private": false,
+    "repository": "https://github.com/electron/electron-quick-start",
+    "keywords": [
+        "Electron",
+        "typescript",
+        "quick",
+        "start",
+        "tutorial",
+        "demo"
+    ],
+    "scripts": {
+        "webpack:dev": "webpack --mode=development",
+        "webpack:prod": "webpack --mode=production",
+        "start": "yarn webpack:dev && cross-env ELECTRON_ENV=dev electron ./",
+        "start:prod": "yarn webpack:dev && cross-env ELECTRON_ENV=test electron ./",
+        "build:win": "yarn webpack:prod && rimraf ./dist && electron-builder --win --x64 --ia32",
+        "build:win32": "yarn webpack:prod && rimraf ./dist && electron-builder --win --ia32",
+        "build:win64": "yarn webpack:prod && rimraf ./dist && electron-builder --win --x64",
+        "build:linux": "yarn webpack:prod && rimraf ./dist && electron-builder --linux",
+        "build:mac": "yarn webpack:prod && rimraf ./dist && electron-builder --mac",
+        "build:all": "yarn webpack:prod && rimraf ./dist && electron-builder --win --ia32 --x64 --mac"
+    },
+    "build": {
+        "appId": "com.electron.app",
+        "productName": "electron-template",
+        "artifactName": "${productName}-beta-${version}.${ext}",
+        "publish": [
+            {
+                "provider": "generic",
+                "url": ""
+            }
+        ],
+        "files": [
+            "main.js",
+            "view/",
+            "package.json"
+        ],
+        "mac": {
+            "target": [
+                "dmg"
+            ]
+        },
+        "win": {
+            "target": [
+                "nsis"
+            ]
+        },
+        "linux": {
+            "target": [
+                "AppImage"
+            ],
+            "category": "Development"
+        }
+    },
+    "devDependencies": {
+        "@babel/cli": "^7.5.5",
+        "@babel/core": "^7.5.5",
+        "@babel/plugin-proposal-class-properties": "^7.8.3",
+        "@babel/plugin-proposal-object-rest-spread": "^7.9.6",
+        "@babel/preset-env": "^7.9.5",
+        "@babel/preset-typescript": "^7.3.3",
+        "@types/electron": "^1.6.10",
+        "@types/electron-builder": "^2.8.0",
+        "@types/lodash": "^4.14.150",
+        "@types/node": "12",
+        "@typescript-eslint/eslint-plugin": "^2.31.0",
+        "@typescript-eslint/parser": "^2.31.0",
+        "babel-loader": "^8.0.6",
+        "babel-plugin-lodash": "^3.3.4",
+        "cross-env": "^7.0.2",
+        "electron": "8.2.5",
+        "electron-builder": "22.4.1",
+        "electron-log": "4.1.1",
+        "electron-updater": "4.3.1",
+        "eslint": "^7.0.0",
+        "prettier": "^2.0.4",
+        "ts-loader": "^7.0.1",
+        "typescript": "^3.5.3",
+        "webpack": "^4.39.2",
+        "webpack-cli": "^3.3.7",
+        "webpackbar": "^4.0.0"
+    },
+    "dependencies": {
+        "lodash": "^4.17.15"
+    }
+}
