@@ -1,0 +1,18 @@
+{
+    "name": "create-packer",
+    "version": "1.0.0",
+    "main": "index.js",
+    "repository": "https://github.com/kevily/create-packer",
+    "author": "1k <bug_zero@163.com>",
+    "license": "MIT",
+    "private": false,
+    "bin": "./bin/index.js",
+    "files": [
+        "lib",
+        "tempalte"
+    ],
+    "dependencies": {
+        "fs-extra": "^9.0.1",
+        "inquirer": "^7.3.3"
+    }
+}
