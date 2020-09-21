@@ -11,6 +11,9 @@ const choices = fs.readdirSync(templateSrc)
 const entry = new Map()
 
 choices.forEach((dirname) => {
+    if (dirname.startsWith('.')) {
+        return false
+    }
     entry.set(dirname, path.join(templateSrc, dirname))
 })
 
