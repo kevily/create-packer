@@ -7,6 +7,10 @@
     "license": "MIT",
     "private": false,
     "bin": "./bin/index.js",
+    "scripts": {
+        "login": "npm login --registry http://registry.npmjs.org",
+        "pub": "npm publish --registry http://registry.npmjs.org"
+    },
     "files": [
         "lib",
         "tempalte"
