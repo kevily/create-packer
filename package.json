@@ -9,13 +9,14 @@
     "bin": "./bin/index.js",
     "scripts": {
         "login": "npm login --registry http://registry.npmjs.org",
-        "pub": "npm publish --registry http://registry.npmjs.org"
+        "pub": "node ./utils/pub.js"
     },
     "files": [
         "lib",
         "template"
     ],
     "dependencies": {
+        "chalk": "^4.1.0",
         "fs-extra": "^9.0.1",
         "inquirer": "^7.3.3"
     }
