@@ -35,7 +35,7 @@ inquirer
         }
     ])
     .then(({ template, mkdir, dirname }) => {
-        if (mkdir) {
+        if (mkdir.toLowerCase() === 'y') {
             output = path.join(output, dirname || 'template')
             fsExtra.mkdirSync(output)
         }
