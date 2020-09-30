@@ -5,8 +5,7 @@ import { BrowserRouter } from 'react-router-dom'
 import { renderRoutes } from 'react-router-config'
 import { Provider } from 'react-redux'
 import store from '@/store'
-
-import './global.scss'
+import './global.css'
 
 function App() {
     return (

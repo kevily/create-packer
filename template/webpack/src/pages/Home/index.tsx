@@ -1,7 +1,7 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { HomePropsType } from './typings'
-import { homeSliceActions } from './redux'
+import { homeSliceActions } from './Home.store'
 import styles from './Home.module.css'
 
 const App: React.FC<HomePropsType> = (props) => {

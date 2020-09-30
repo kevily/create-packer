@@ -1,8 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit'
 
-export default configureStore({
-    reducer: {
-        app: require('./App.redux').default,
-        home: require('../pages/Home/redux').default,
-    },
+// @ts-ignore
+const ctx = require.context('../', true, /\.store\.(js|ts)$/)
+const reducer: any = {}
+ctx.keys().forEach((path: string) => {
+    const store: any = ctx(path)
+    reducer[store.name] = store.default
 })
+
+export default configureStore({ reducer })

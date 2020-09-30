@@ -1,11 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit'
 
+export const name = 'app'
 export const appSlice = createSlice({
-    name: 'app',
+    name,
     initialState: {
-        APP_NAME: 'project_management',
+        APP_NAME: 'project_management'
     },
-    reducers: {},
+    reducers: {}
 })
 
 export const appSliceActions = appSlice.actions
