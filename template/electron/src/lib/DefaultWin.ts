@@ -15,11 +15,11 @@ class DefaultWin {
             hasShadow: true,
             transparent: true,
             webPreferences: {
-                devTools: appConfig.isDev || appConfig.isTest,
+                devTools: process.env.NODE_ENV === 'development',
                 // devTools: true,
                 webviewTag: true,
-                nodeIntegration: true,
-            },
+                nodeIntegration: true
+            }
         }
     }
     create(config: Electron.BrowserWindowConstructorOptions) {
@@ -27,11 +27,11 @@ class DefaultWin {
         this.root = new BrowserWindow(this.config)
     }
     async loadPage(route: string = '') {
-        if (appConfig.isDev) {
+        if (process.env.NODE_ENV === 'development') {
             await this.root.loadURL(appConfig.baseHost + `#${route}`)
         } else {
             await this.root.loadFile(appConfig.baseHost, {
-                hash: route,
+                hash: route
             })
         }
     }

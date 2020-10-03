@@ -1,7 +1,6 @@
 import { app, ipcMain, session } from 'electron'
 import log from 'electron-log'
 import AppWin from './lib/AppWin'
-import appConfig from './configs/appConfig'
 
 const appWin: AppWin = new AppWin()
 
@@ -19,10 +18,10 @@ app.on('window-all-closed', async () => {
     app.exit()
 })
 
-if (appConfig.isDev || appConfig.isTest) {
+if (process.env.NODE_ENV === 'development') {
     app.on('web-contents-created', function (e, webContents) {
         webContents.openDevTools({
-            mode: 'detach',
+            mode: 'detach'
         })
     })
 }

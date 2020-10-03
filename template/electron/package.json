@@ -15,16 +15,16 @@
         "demo"
     ],
     "scripts": {
-        "webpack:dev": "webpack --mode=development",
-        "webpack:prod": "webpack --mode=production",
-        "start": "yarn webpack:dev && cross-env ELECTRON_ENV=dev electron ./",
-        "start:prod": "yarn webpack:dev && cross-env ELECTRON_ENV=test electron ./",
-        "build:win": "yarn webpack:prod && rimraf ./dist && electron-builder --win --x64 --ia32",
-        "build:win32": "yarn webpack:prod && rimraf ./dist && electron-builder --win --ia32",
-        "build:win64": "yarn webpack:prod && rimraf ./dist && electron-builder --win --x64",
-        "build:linux": "yarn webpack:prod && rimraf ./dist && electron-builder --linux",
-        "build:mac": "yarn webpack:prod && rimraf ./dist && electron-builder --mac",
-        "build:all": "yarn webpack:prod && rimraf ./dist && electron-builder --win --ia32 --x64 --mac"
+        "build:dev": "rimraf ./main.js && webpack --env dev",
+        "build": "rimraf ./main.js && webpack --env prod",
+        "start": "yarn build:dev && electron ./",
+        "pre-package": "yarn build && rimraf ./dist",
+        "package-win": "yarn pre-package && electron-builder --win --x64 --ia32",
+        "package-win32": "yarn pre-package && electron-builder --win --ia32",
+        "package-win64": "yarn pre-package && electron-builder --win --x64",
+        "package-linux": "yarn pre-package && electron-builder --linux",
+        "package-mac": "yarn pre-package && electron-builder --mac",
+        "package": "yarn pre-package && electron-builder --win --ia32 --x64 --mac"
     },
     "build": {
         "appId": "com.electron.app",
@@ -39,7 +39,8 @@
         "files": [
             "main.js",
             "view/",
-            "package.json"
+            "package.json",
+            "node_modules/"
         ],
         "mac": {
             "target": [
@@ -80,11 +81,12 @@
         "electron-updater": "4.3.1",
         "eslint": "^7.0.0",
         "prettier": "^2.0.4",
+        "rollup": "^2.28.2",
         "ts-loader": "^7.0.1",
-        "typescript": "^3.5.3",
-        "webpack": "^4.39.2",
-        "webpack-cli": "^3.3.7",
-        "webpackbar": "^4.0.0"
+        "typescript": "3.5.3",
+        "webpack": "4.39.2",
+        "webpack-cli": "3.3.7",
+        "webpackbar": "4.0.0"
     },
     "dependencies": {
         "lodash": "^4.17.15"
