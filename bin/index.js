@@ -40,7 +40,7 @@ inquirer
             fsExtra.mkdirSync(output)
         }
         fsExtra.copySync(entry.get(template), output)
-        fsExtra.copySync(path.join(__dirname, '../gitignore'), output)
+        fs.renameSync(path.join(output, '.npmignore'), path.join(output, '.gitignore'))
         console.log(chalk.yellow('created（*＾3＾）'))
     })
     .catch(error => {

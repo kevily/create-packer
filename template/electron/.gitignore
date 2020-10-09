@@ -15,9 +15,3 @@ build/
 .idea/
 .history/
 coverage/
-
-# umi
-.umi/
-.umi-production/
-.umi-test/
-.env.local/
