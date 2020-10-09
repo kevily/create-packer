@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import Home from './index'
 import { Provider } from 'react-redux'
-import store, { name } from './Home.store'
+import store, { name } from './home.store'
 import { configureStore } from '@reduxjs/toolkit'
 
 it('renders without crashing', () => {

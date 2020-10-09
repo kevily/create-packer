@@ -15,10 +15,12 @@
         "demo"
     ],
     "scripts": {
-        "build:dev": "rimraf ./main.js && webpack --env dev",
         "build": "rimraf ./main.js && webpack --env prod",
+        "build-dev": "rimraf ./main.js && webpack --env dev",
+        "build-view": "cd ./view && yarn build",
         "start": "yarn build:dev && electron ./",
-        "pre-package": "yarn build && rimraf ./dist",
+        "start-view": "cd ./view && yarn start",
+        "pre-package": "rimraf ./dist && yarn build && yarn build-view",
         "package-win": "yarn pre-package && electron-builder --win --x64 --ia32",
         "package-win32": "yarn pre-package && electron-builder --win --ia32",
         "package-win64": "yarn pre-package && electron-builder --win --x64",
