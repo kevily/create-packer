@@ -30,8 +30,11 @@ function genCammand() {
 inquirer
     .prompt([{ type: 'list', name: 'template', choices }])
     .then(({ template }) => {
+        const npmignore = path.join(output, '.npmignore')
         fsExtra.copySync(entry.get(template), output)
-        fs.renameSync(path.join(output, '.npmignore'), path.join(output, '.gitignore'))
+        if (fs.existsSync(npmignore)) {
+            fs.renameSync(npmignore, path.join(output, '.gitignore'))
+        }
         cp.spawn(genCammand(), ['install'], { stdio: 'inherit' })
         console.log(chalk.yellow('created（*＾3＾）'))
     })
