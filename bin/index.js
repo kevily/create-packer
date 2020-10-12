@@ -6,8 +6,9 @@ const fs = require('fs')
 const inquirer = require('inquirer')
 const chalk = require('chalk')
 
+const [dirname = ''] = process.argv.slice(2)
 const templateSrc = path.join(__dirname, '../template')
-let output = process.cwd()
+let output = path.join(process.cwd(), dirname)
 const entry = new Map()
 const choices = fs.readdirSync(templateSrc).filter(dirname => {
     if (dirname.startsWith('.')) {
@@ -18,27 +19,8 @@ const choices = fs.readdirSync(templateSrc).filter(dirname => {
 })
 
 inquirer
-    .prompt([
-        { type: 'list', name: 'template', choices },
-        {
-            type: 'input',
-            name: 'mkdir',
-            message: 'mkdir(y/n):'
-        },
-        {
-            type: 'input',
-            name: 'dirname',
-            message: 'input dirname(template):',
-            when({ mkdir }) {
-                return mkdir.toLowerCase() === 'y'
-            }
-        }
-    ])
+    .prompt([{ type: 'list', name: 'template', choices }])
     .then(({ template, mkdir, dirname }) => {
-        if (mkdir.toLowerCase() === 'y') {
-            output = path.join(output, dirname || 'template')
-            fsExtra.mkdirSync(output)
-        }
         fsExtra.copySync(entry.get(template), output)
         fs.renameSync(path.join(output, '.npmignore'), path.join(output, '.gitignore'))
         console.log(chalk.yellow('created（*＾3＾）'))

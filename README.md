@@ -5,7 +5,8 @@
 ## 使用
 
 ```shell
-npx create-packer
+npx create-packer <dirname>
+yarn create packer <dirname>
 ```
 
 ## 选项介绍
