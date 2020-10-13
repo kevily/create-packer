@@ -28,9 +28,22 @@ function genCammand() {
 }
 
 inquirer
-    .prompt([{ type: 'list', name: 'template', choices }])
-    .then(({ template }) => {
+    .prompt([
+        { type: 'list', name: 'template', choices },
+        {
+            type: 'confirm',
+            name: 'overwrite',
+            message: `The ${dirname} folder already exists, overwrite?`,
+            when() {
+                return fs.existsSync(output)
+            }
+        }
+    ])
+    .then(({ template, overwrite = false }) => {
         const npmignore = path.join(output, '.npmignore')
+        if (overwrite) {
+            fsExtra.removeSync(output)
+        }
         fsExtra.copySync(entry.get(template), output)
         if (fs.existsSync(npmignore)) {
             fs.renameSync(npmignore, path.join(output, '.gitignore'))
