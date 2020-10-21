@@ -1,0 +1,20 @@
+{
+    "defaultSeverity": "error",
+    "jsRules": true,
+    "rules": {
+        "eofline": true,
+        "no-eval": true,
+        "no-console": {
+            "severity": "warning",
+            "options": ["debug", "info", "log", "time", "timeEnd", "trace"]
+        },
+        "no-construct": true,
+        "no-debugger": true,
+        "no-arg": true,
+        "no-reference": true,
+        "jsx-alignment": false,
+        "jsx-no-multiline-js": false,
+        "jsx-no-lambda": false,
+        "new-parens": true
+    }
+}
