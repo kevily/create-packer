@@ -35,7 +35,7 @@ inquirer
             name: 'overwrite',
             message: `The ${dirname} folder already exists, overwrite?`,
             when() {
-                return fs.existsSync(output)
+                return dirname ? fs.existsSync(output) : false
             }
         }
     ])
