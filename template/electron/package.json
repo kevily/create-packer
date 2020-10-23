@@ -28,6 +28,22 @@
         "package-mac": "yarn pre-package && electron-builder --mac",
         "package": "yarn pre-package && electron-builder --win --ia32 --x64 --mac"
     },
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged && git add ."
+        }
+    },
+    "lint-staged": {
+        "./src/**/*.{ts,tsx,js,jsx}": [
+            "prettier --write",
+            "eslint"
+        ],
+        "./test/**/*.{ts,tsx,js,jsx}": [
+            "prettier --write",
+            "eslint",
+            "npm run test"
+        ]
+    },
     "build": {
         "appId": "com.electron.app",
         "productName": "electron-template",
@@ -72,6 +88,8 @@
         "@types/electron-builder": "^2.8.0",
         "@types/lodash": "^4.14.150",
         "@types/node": "12",
+        "@typescript-eslint/eslint-plugin": "4.5.0",
+        "@typescript-eslint/parser": "4.5.0",
         "babel-loader": "^8.0.6",
         "babel-plugin-lodash": "^3.3.4",
         "cross-env": "^7.0.2",
@@ -79,10 +97,12 @@
         "electron-builder": "22.4.1",
         "electron-log": "4.1.1",
         "electron-updater": "4.3.1",
+        "eslint": "6.6.0",
+        "husky": "4.3.0",
+        "lint-staged": "10.4.2",
         "prettier": "^2.0.4",
         "rollup": "^2.28.2",
         "ts-loader": "^7.0.1",
-        "tslint": "^6.1.3",
         "typescript": "3.5.3",
         "webpack": "4.42.0",
         "webpack-cli": "3.3.7",

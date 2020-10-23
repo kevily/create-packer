@@ -3,7 +3,6 @@ import log from 'electron-log'
 import AppWin from './lib/AppWin'
 
 const appWin: AppWin = new AppWin()
-
 //  ipcMain
 // ------------------yarn start------------------------------------------------------
 ipcMain.on('quit-app', function () {
