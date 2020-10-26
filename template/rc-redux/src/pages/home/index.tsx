@@ -1,12 +1,11 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 import { HomePropsType } from './typings'
-import homeStore from './home.store'
-import { useRecoilValue } from 'recoil'
 import './Home.css'
 
 const App: React.FC<HomePropsType> = () => {
-    const store = useRecoilValue(homeStore)
-    console.log('home:store', store)
+    const homeStore = useSelector((store: any) => store.home)
+    console.log('homeStore', homeStore)
     return <div className="home">home</div>
 }
 

@@ -1,12 +1,6 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { atom } from 'recoil'
 
-export const name = 'home'
-export const appSlice = createSlice({
-    name,
-    initialState: {},
-    reducers: {}
+export default atom({
+    key: 'home',
+    default: {}
 })
-
-export const homeSliceActions = appSlice.actions
-
-export default appSlice.reducer
