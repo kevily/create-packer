@@ -48,7 +48,7 @@ inquirer
         if (fs.existsSync(npmignore)) {
             fs.renameSync(npmignore, path.join(output, '.gitignore'))
         }
-        cp.spawn(genCammand(), ['install'], { stdio: 'inherit', cwd: output })
+        cp.spawn(genCammand(), ['install'], { stdio: 'inherit', cwd: output, shell: true })
         console.log(chalk.yellow('created（*＾3＾）'))
     })
     .catch(error => {
