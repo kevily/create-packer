@@ -1,0 +1,8 @@
+node_modules
+build
+.docusaurus
+**/*.svg
+**/*.ejs
+package.json
+.umi
+.umi-production
