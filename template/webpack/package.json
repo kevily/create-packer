@@ -18,6 +18,10 @@
         "./src/**/*.{ts,tsx,js,jsx}": [
             "prettier --write",
             "tslint"
+        ],
+        "./src/**/*.{css,scss,less}": [
+            "prettier --write",
+            "stylelint"
         ]
     },
     "dependencies": {
@@ -71,6 +75,8 @@
         "react-test-renderer": "^16.13.1",
         "rimraf": "3.0.2",
         "style-loader": "^1.1.4",
+        "stylelint": "13.7.2",
+        "stylelint-config-standard": "20.0.0",
         "ts-jest": "^26.4.0",
         "tslint": "6.1.3",
         "tslint-react": "5.0.0",
