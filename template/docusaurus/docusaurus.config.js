@@ -7,6 +7,9 @@
  * @format
  */
 
+const fs = require('fs')
+const { docCatalog } = require('./configs')
+
 module.exports = {
     title: 'My Site',
     tagline: 'The tagline of my site',
@@ -23,14 +26,14 @@ module.exports = {
                 alt: 'My Facebook Project Logo',
                 src: 'img/logo.svg'
             },
-            items: [
-                {
-                    to: 'docs/',
-                    activeBasePath: 'docs',
-                    label: 'docs',
+            items: docCatalog.map(dirname => {
+                return {
+                    type: 'doc',
+                    docId: `${dirname}/doc1`,
+                    label: dirname,
                     position: 'left'
                 }
-            ]
+            })
         },
         footer: {
             style: 'dark',
