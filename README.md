@@ -11,6 +11,7 @@ yarn create packer <dirname>
 
 ## 选项介绍
 
+-   docusaurus: [Docusaurus 2](https://v2.docusaurus.io/) 模版
 -   electron: 自建 electron 模版
 -   rc: 基于 create-react-app 搭建的模版, 状态管理使用 recoil
 -   rc-redux: 基于 create-react-app 搭建的模版, 状态管理使用 redux
