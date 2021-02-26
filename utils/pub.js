@@ -36,8 +36,6 @@ inquirer
         }
     ])
     .then(({ version }) => {
-        execSync(
-            `npm version ${versions[version]} && npm publish --registry http://registry.npmjs.org && git push`
-        )
+        execSync(`npm version ${versions[version]} && npm publish && git push`)
         console.log(chalk.blue('Published（*＾3＾）'))
     })
