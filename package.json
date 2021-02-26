@@ -8,7 +8,6 @@
     "private": false,
     "bin": "./bin/index.js",
     "scripts": {
-        "login": "npm login --registry http://registry.npmjs.org",
         "pub": "node ./utils/pub.js"
     },
     "files": [
