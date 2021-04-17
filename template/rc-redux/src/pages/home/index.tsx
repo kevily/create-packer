@@ -1,7 +1,8 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import { HomePropsType } from './typings'
 import './Home.css'
+
+export interface HomePropsType {}
 
 const App: React.FC<HomePropsType> = () => {
     const homeStore = useSelector((store: any) => store.home)
