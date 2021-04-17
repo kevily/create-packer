@@ -8,4 +8,3 @@
 -   react-redux
 -   react-router
 -   react-router-config
--   customize-cra -> 扩展 create-react-app 的 webpack 配置
