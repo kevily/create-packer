@@ -8,14 +8,14 @@ import { renderRoutes } from 'react-router-config'
 import Layout from './Layout'
 import routes from './routes'
 import reportWebVitals from './reportWebVitals'
-import './index.css'
+import './index.scss'
 
 ReactDOM.render(
     <React.StrictMode>
         <Provider store={store}>
-            <Layout>
-                <BrowserRouter>{renderRoutes(routes)}</BrowserRouter>
-            </Layout>
+            <BrowserRouter>
+                <Layout>{renderRoutes(routes)}</Layout>
+            </BrowserRouter>
         </Provider>
     </React.StrictMode>,
     document.getElementById('root')

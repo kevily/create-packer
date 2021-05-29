@@ -1,7 +1,7 @@
 import React from 'react'
 import homeStore from './home.store'
 import { useRecoilValue } from 'recoil'
-import './Home.css'
+import './Home.scss'
 
 export interface HomePropsType {}
 

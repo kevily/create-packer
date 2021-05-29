@@ -6,15 +6,15 @@ import { renderRoutes } from 'react-router-config'
 import Layout from './Layout'
 import routes from './routes'
 import { RecoilRoot } from 'recoil'
-import './index.css'
+import './index.scss'
 import reportWebVitals from './reportWebVitals'
 
 ReactDOM.render(
     <React.StrictMode>
         <RecoilRoot>
-            <Layout>
-                <BrowserRouter>{renderRoutes(routes)}</BrowserRouter>
-            </Layout>
+            <BrowserRouter>
+                <Layout>{renderRoutes(routes)} </Layout>
+            </BrowserRouter>
         </RecoilRoot>
     </React.StrictMode>,
     document.getElementById('root')
