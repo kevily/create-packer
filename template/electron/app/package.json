@@ -35,11 +35,6 @@
         "./src/**/*.{ts,tsx,js,jsx}": [
             "prettier --write",
             "eslint"
-        ],
-        "./test/**/*.{ts,tsx,js,jsx}": [
-            "prettier --write",
-            "eslint",
-            "npm run test"
         ]
     },
     "build": {
