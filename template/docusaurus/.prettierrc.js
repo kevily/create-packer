@@ -1,4 +1,4 @@
-// config: https://prettier.io/docs/en/options.html
+// 配置文档: https://prettier.io/docs/en/options.html
 // ----------------------------------------------------------------------
 module.exports = {
     overrides: [
