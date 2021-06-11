@@ -1,14 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-export const name = 'app'
-export const appSlice = createSlice({
-    name,
+export default createSlice({
+    name: 'app',
     initialState: {
         APP_NAME: 'project_management'
     },
     reducers: {}
 })
-
-export const appSliceActions = appSlice.actions
-
-export default appSlice.reducer

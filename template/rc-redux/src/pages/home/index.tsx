@@ -6,7 +6,6 @@ export interface HomePropsType {}
 
 const App: React.FC<HomePropsType> = () => {
     const homeStore = useSelector((store: any) => store.home)
-    console.log('homeStore', homeStore)
     return <div className="home">home</div>
 }
 

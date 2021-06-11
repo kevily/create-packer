@@ -4,8 +4,8 @@ import { configureStore } from '@reduxjs/toolkit'
 const ctx = require.context('../', true, /\.store\.(js|ts)$/)
 const reducer: any = {}
 ctx.keys().forEach((path: string) => {
-    const store: any = ctx(path)
-    reducer[store.name] = store.default
+    const store: any = ctx(path).default
+    reducer[store.name] = store.reducer
 })
 
 export default configureStore({ reducer })
