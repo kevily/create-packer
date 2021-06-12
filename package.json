@@ -12,7 +12,7 @@
         "pub": "node ./utils/pub.js"
     },
     "files": [
-        "lib",
+        "bin",
         "template"
     ],
     "dependencies": {
