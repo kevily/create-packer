@@ -4,6 +4,6 @@ const CopyTemp = require('./extends/CopyTemp')
 
 const cli = new Cli()
 
-cli.onRegister([CopyTemp])
+cli.onRegister('copy', new CopyTemp())
 
-cli.onStart()
+cli.onStart(['copy'])

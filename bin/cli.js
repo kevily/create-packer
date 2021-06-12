@@ -6,23 +6,16 @@ const configs = require('./configs')
 
 class Cli {
     constructor() {
-        this.extends = []
+        this.extends = {}
     }
-    onRegister(arr) {
-        _.forEach(arr, Extend => {
-            this.extends.push(new Extend())
-        })
+    onRegister(name, extend) {
+        this.extends[name] = extend
     }
-    async onStart() {
-        for (let i = 0; i < this.extends.length; i++) {
-            let extend = this.extends[i]
-            await extend.onStart()
+    async onStart(names) {
+        for (let i = 0; i < names.length; i++) {
+            let name = names[i]
+            await this.extends[name]?.onStart()
         }
-        const npmignore = path.join(configs.OUTPUT, '.npmignore')
-        if (fs.existsSync(npmignore)) {
-            fs.renameSync(npmignore, path.join(configs.OUTPUT, '.gitignore'))
-        }
-        cp.spawn(configs.COMMAND, ['install'], configs.SPAWN_OPS)
     }
 }
 
