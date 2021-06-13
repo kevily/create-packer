@@ -4,7 +4,8 @@
         "watch-ts": "rimraf ./server-prod && tsc -w",
         "build": "rimraf ./server-prod && tsc",
         "serve": "node ./server-prod/servrer.js",
-        "test": "jest --forceExit --coverage --verbose"
+        "test": "jest --forceExit --coverage --verbose",
+        "prepare": "husky install"
     },
     "lint-staged": {
         "./{test,src}/**/*.{ts,tsx,js,jsx}": [

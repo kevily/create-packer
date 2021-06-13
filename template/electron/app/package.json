@@ -24,7 +24,8 @@
         "package-win64": "yarn pre-package && electron-builder --win --x64",
         "package-linux": "yarn pre-package && electron-builder --linux",
         "package-mac": "yarn pre-package && electron-builder --mac",
-        "package": "yarn pre-package && electron-builder --win --ia32 --x64 --mac"
+        "package": "yarn pre-package && electron-builder --win --ia32 --x64 --mac",
+        "prepare": "husky install"
     },
     "lint-staged": {
         "./src/**/*.{ts,tsx,js,jsx}": [
