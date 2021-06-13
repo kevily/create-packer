@@ -9,7 +9,7 @@ const chalk = require('chalk')
 const onRemove = require('../utils/onRemove')
 
 module.exports = class {
-    tempSrc = ''
+    root = ''
     onClear() {
         console.log(chalk.yellow('clearing...'))
         onRemove(configs.EXCLUDES)
@@ -24,28 +24,26 @@ module.exports = class {
             cp.spawn(configs.COMMAND, ['format'], configs.SPAWN_OPS)
         })
     }
-    onCopy({ excludes, includes }) {
-        fs.readdirSync(this.tempSrc).forEach(dirname => {
-            let isCopy = false
-            if (_.size(includes) > 0) {
-                isCopy = _.includes(includes, dirname)
-            } else {
-                isCopy = !_.includes(_.concat(configs.EXCLUDES, excludes), dirname)
-            }
+    onCopy({ files, excludes }) {
+        const _files = _.isArray(files) ? files : fs.readdirSync(this.root)
+        _.forEach(_files, file => {
+            let isCopy = !_.includes(_.concat(configs.EXCLUDES, excludes), file)
             if (isCopy) {
-                const target = path.join(this.tempSrc, dirname)
-                const dest = path.join(configs.OUTPUT, dirname)
-                // remove old files
+                const target = path.join(this.root, file)
+                const dest = path.join(configs.OUTPUT, file)
+                // 删除旧文件
                 // ------------------------------------------------------------------------
-                onRemove([dirname])
-                fsExtra.copySync(target, dest)
+                onRemove([file])
+                if (fs.existsSync(target)) {
+                    fsExtra.copySync(target, dest)
+                }
             }
         })
     }
     onUpdatePackageJson() {
         const packageFileName = 'package.json'
         const outputPackage = path.join(configs.OUTPUT, packageFileName)
-        const newPackage = require(path.join(this.tempSrc, packageFileName))
+        const newPackage = require(path.join(this.root, packageFileName))
         const { dependencies } = require(outputPackage)
         newPackage.dependencies = _.assign(dependencies, newPackage.dependencies)
         fsExtra.removeSync(outputPackage)
@@ -69,7 +67,7 @@ module.exports = class {
             },
             { type: 'list', name: 'template', choices: [...configs.TEMPLATES.keys()] }
         ])
-        this.tempSrc = configs.TEMPLATES.get(template)
+        this.root = configs.TEMPLATES.get(template)
         this.onClear()
         if (isUpdate) {
             this.onUpdate()
