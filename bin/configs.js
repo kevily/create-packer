@@ -28,11 +28,12 @@ function genCommand() {
 module.exports = {
     OUTPUT,
     COMMAND: genCommand(),
-    EXCLUDES: ['node_modules', 'yarn.lock'],
+    EXCLUDES: ['node_modules'],
     SPAWN_OPS: {
         stdio: 'inherit',
         cwd: OUTPUT,
         shell: true
     },
-    TEMPLATES: onGenTemplates()
+    TEMPLATES: onGenTemplates(),
+    STARTS: ['copy']
 }

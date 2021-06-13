@@ -1,9 +1,3 @@
-const path = require('path')
-const fs = require('fs')
-const cp = require('child_process')
-const _ = require('lodash')
-const configs = require('./configs')
-
 class Cli {
     constructor() {
         this.extends = {}

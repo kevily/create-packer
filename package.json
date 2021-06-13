@@ -9,7 +9,8 @@
     "bin": "./bin/index.js",
     "scripts": {
         "login": "npm login --registry http://registry.npmjs.org",
-        "pub": "node ./utils/pub.js"
+        "pub": "node ./utils/pub.js",
+        "prepare": "husky install"
     },
     "files": [
         "bin",
@@ -20,5 +21,7 @@
         "fs-extra": "^9.0.1",
         "inquirer": "^7.3.3"
     },
-    "devDependencies": {}
+    "devDependencies": {
+        "husky": "^6.0.0"
+    }
 }
