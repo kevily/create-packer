@@ -26,16 +26,16 @@
         "start": "react-scripts start",
         "build": "react-scripts build",
         "test": "react-scripts test",
-        "eject": "react-scripts eject"
+        "eject": "react-scripts eject",
+        "format": "prettier --write \"src/**/*.{ts,js,tsx,jsx,css,scss,less}\" \"./package.json\""
     },
     "husky": {
         "hooks": {
-            "pre-commit": "lint-staged && git add ."
+            "pre-commit": "npm run format && lint-staged && git add ."
         }
     },
     "lint-staged": {
         "./src/**/*.{css,scss,less}": [
-            "prettier --write",
             "stylelint"
         ]
     },

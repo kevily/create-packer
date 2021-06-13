@@ -24,16 +24,16 @@
         "package-win64": "yarn pre-package && electron-builder --win --x64",
         "package-linux": "yarn pre-package && electron-builder --linux",
         "package-mac": "yarn pre-package && electron-builder --mac",
-        "package": "yarn pre-package && electron-builder --win --ia32 --x64 --mac"
+        "package": "yarn pre-package && electron-builder --win --ia32 --x64 --mac",
+        "format": "prettier --write \"src/**/*.{ts,js}\" \"./package.json\""
     },
     "husky": {
         "hooks": {
-            "pre-commit": "lint-staged && git add ."
+            "pre-commit": "npm run format && lint-staged && git add ."
         }
     },
     "lint-staged": {
-        "./src/**/*.{ts,tsx,js,jsx}": [
-            "prettier --write",
+        "./src/**/*.{ts,js}": [
             "eslint"
         ]
     },

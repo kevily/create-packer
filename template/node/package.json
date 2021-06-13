@@ -4,16 +4,16 @@
         "watch-ts": "rimraf ./server-prod && tsc -w",
         "build": "rimraf ./server-prod && tsc",
         "serve": "node ./server-prod/servrer.js",
-        "test": "jest --forceExit --coverage --verbose"
+        "test": "jest --forceExit --coverage --verbose",
+        "format": "prettier --write \"src/**/*.{ts,js}\" \"./package.json\""
     },
     "husky": {
         "hooks": {
-            "pre-commit": "lint-staged && npm run test && git add ."
+            "pre-commit": "npm run format && lint-staged && npm run test && git add ."
         }
     },
     "lint-staged": {
-        "./{test,src}/**/*.{ts,tsx,js,jsx}": [
-            "prettier --write",
+        "./{test,src}/**/*.{ts,js}": [
             "eslint"
         ]
     },
