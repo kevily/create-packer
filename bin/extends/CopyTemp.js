@@ -31,7 +31,7 @@ module.exports = class {
             if (isCopy) {
                 const target = path.join(this.root, file)
                 const dest = path.join(configs.OUTPUT, file)
-                // 删除旧文件
+                // remove old files
                 // ------------------------------------------------------------------------
                 onRemove([file])
                 if (fs.existsSync(target)) {
