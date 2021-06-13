@@ -28,7 +28,7 @@ function genCommand() {
 module.exports = {
     OUTPUT,
     COMMAND: genCommand(),
-    EXCLUDES: ['node_modules'],
+    EXCLUDES: ['node_modules', 'yarn.lock'],
     SPAWN_OPS: {
         stdio: 'inherit',
         cwd: OUTPUT,
