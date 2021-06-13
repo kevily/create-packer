@@ -24,8 +24,12 @@
         "package-win64": "yarn pre-package && electron-builder --win --x64",
         "package-linux": "yarn pre-package && electron-builder --linux",
         "package-mac": "yarn pre-package && electron-builder --mac",
-        "package": "yarn pre-package && electron-builder --win --ia32 --x64 --mac",
-        "prepare": "husky install"
+        "package": "yarn pre-package && electron-builder --win --ia32 --x64 --mac"
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged && git add ."
+        }
     },
     "lint-staged": {
         "./src/**/*.{ts,tsx,js,jsx}": [
@@ -86,7 +90,7 @@
         "electron-log": "^4.3.5",
         "electron-updater": "^4.3.9",
         "eslint": "^7.28.0",
-        "husky": "^6.0.0",
+        "husky": "^4.3.8",
         "lint-staged": "^11.0.0",
         "prettier": "^2.3.1",
         "rollup": "^2.51.2",

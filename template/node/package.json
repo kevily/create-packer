@@ -4,8 +4,12 @@
         "watch-ts": "rimraf ./server-prod && tsc -w",
         "build": "rimraf ./server-prod && tsc",
         "serve": "node ./server-prod/servrer.js",
-        "test": "jest --forceExit --coverage --verbose",
-        "prepare": "husky install"
+        "test": "jest --forceExit --coverage --verbose"
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged && npm run test && git add ."
+        }
     },
     "lint-staged": {
         "./{test,src}/**/*.{ts,tsx,js,jsx}": [
@@ -19,7 +23,7 @@
         "@typescript-eslint/eslint-plugin": "^4.26.1",
         "@typescript-eslint/parser": "^4.26.1",
         "eslint": "^7.28.0",
-        "husky": "^6.0.0",
+        "husky": "^4.3.8",
         "jest": "^27.0.4",
         "lint-staged": "^11.0.0",
         "nodemon": "^2.0.7",
