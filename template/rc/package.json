@@ -3,6 +3,7 @@
     "version": "0.1.0",
     "private": true,
     "dependencies": {
+        "@craco/craco": "^6.1.2",
         "@testing-library/jest-dom": "^5.14.1",
         "@testing-library/react": "^11.2.7",
         "@testing-library/user-event": "^13.1.9",
@@ -23,9 +24,9 @@
         "web-vitals": "^2.0.1"
     },
     "scripts": {
-        "start": "react-scripts start",
-        "build": "react-scripts build",
-        "test": "react-scripts test",
+        "start": "craco start",
+        "build": "craco build",
+        "test": "craco test",
         "eject": "react-scripts eject",
         "format": "prettier --write \"src/**/*.{ts,js,tsx,jsx,css,scss,less}\" \"./package.json\""
     },
@@ -63,6 +64,7 @@
         "lint-staged": "^11.0.0",
         "prettier": "^2.3.1",
         "stylelint": "^13.13.1",
-        "stylelint-config-standard": "^22.0.0"
+        "stylelint-config-standard": "^22.0.0",
+        "webpack-bundle-analyzer": "^4.4.2"
     }
 }
