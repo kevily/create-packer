@@ -1,10 +1,7 @@
 #!/usr/bin/env node
-const Cli = require('./cli')
-const CopyTemp = require('./extends/CopyTemp')
+const clis = require('./clis')
 const configs = require('./configs')
 
-const cli = new Cli()
-
-cli.onRegister('copy', new CopyTemp())
-
-cli.onStart(configs.STARTS)
+configs.CLIS.map(async cli => {
+    await clis[cli].onStart()
+})
