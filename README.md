@@ -18,4 +18,5 @@ yarn create packer <dirname>
 -   vue: Based on vue-cli(vue2.x).
 -   node: Based on node.
 -   node-nest: Based on [nestjs](https://docs.nestjs.com/).
--   webpack: Based on [webpack(4.x)](https://webpack.js.org/) .
+-   webpack: Based on [webpack(4.x)](https://webpack.js.org/).
+-   utils: Quick create utils template.
