@@ -1,0 +1,63 @@
+{
+    "name": "1k-utils",
+    "version": "1.3.2",
+    "main": "./lib/index.js",
+    "module": "./es/index.js",
+    "types": "./lib/index.d.ts",
+    "repository": "https://github.com/kevily/1k-utils",
+    "author": "1k <bug_zero@163.com>",
+    "license": "MIT",
+    "scripts": {
+        "build": "rimraf ./lib ./es && npm run test && gulp",
+        "test": "jest --forceExit --coverage --verbose",
+        "login": "npm login --registry http://registry.npmjs.org",
+        "pub": "npm run build && npm publish --registry http://registry.npmjs.org"
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "npm run test && lint-staged && git add ."
+        }
+    },
+    "lint-staged": {
+        "./src/**/*.{ts,tsx,js,jsx}": [
+            "prettier --write",
+            "eslint"
+        ]
+    },
+    "files": [
+        "es",
+        "lib",
+        "types",
+        "package.json"
+    ],
+    "dependencies": {
+        "exif-js": "2.3.0",
+        "js-base64": "2.5.0",
+        "js-md5": "0.7.3",
+        "lodash": "4.17.20",
+        "rimraf": "3.0.2"
+    },
+    "devDependencies": {
+        "@babel/preset-env": "^7.11.5",
+        "@types/jest": "26.0.4",
+        "@types/js-base64": "2.3.1",
+        "@types/js-md5": "0.4.2",
+        "@types/lodash": "4.14.123",
+        "@typescript-eslint/eslint-plugin": "4.5.0",
+        "@typescript-eslint/parser": "4.5.0",
+        "babel-plugin-lodash": "^3.3.4",
+        "browserify": "^16.5.2",
+        "dayjs": "^1.8.30",
+        "eslint": "6.6.0",
+        "gulp": "^4.0.2",
+        "gulp-babel": "^8.0.0",
+        "gulp-typescript": "^6.0.0-alpha.1",
+        "husky": "4.3.0",
+        "jest": "25.3.0",
+        "lint-staged": "^10.4.0",
+        "moment": "^2.27.0",
+        "prettier": "2.0.4",
+        "ts-jest": "26.1.3",
+        "typescript": "3.9.7"
+    }
+}

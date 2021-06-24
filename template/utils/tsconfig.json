@@ -1,0 +1,19 @@
+{
+    "compilerOptions": {
+        "module": "ES2015",
+        "esModuleInterop": true,
+        "allowSyntheticDefaultImports": true,
+        "target": "es6",
+        "noImplicitAny": true,
+        "moduleResolution": "Node",
+        "sourceMap": false,
+        "outDir": "lib",
+        "baseUrl": ".",
+        "paths": {
+            "*": ["node_modules/*"]
+        },
+        "declaration": true,
+        "declarationDir": "lib"
+    },
+    "include": ["src/**/*"]
+}
