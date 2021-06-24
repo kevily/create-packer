@@ -24,12 +24,6 @@
             "eslint"
         ]
     },
-    "files": [
-        "es",
-        "lib",
-        "types",
-        "package.json"
-    ],
     "dependencies": {
         "exif-js": "2.3.0",
         "js-base64": "2.5.0",

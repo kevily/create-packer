@@ -6,7 +6,9 @@
     "author": "1k <bug_zero@163.com>",
     "license": "MIT",
     "private": false,
-    "bin": "./bin/index.js",
+    "bin": {
+        "cp": "./bin/index.js"
+    },
     "scripts": {
         "login": "npm login --registry http://registry.npmjs.org",
         "pub": "node ./utils/pub.js"
