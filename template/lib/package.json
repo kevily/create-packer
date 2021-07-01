@@ -3,7 +3,7 @@
     "version": "1.3.2",
     "main": "./dist/index.cjs.js",
     "module": "./dist/index.esm.js",
-    "types": "./types/index.d.ts",
+    "types": "./dist/types/index.d.ts",
     "author": "1k <bug_zero@163.com>",
     "license": "MIT",
     "scripts": {
