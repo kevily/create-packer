@@ -19,4 +19,4 @@ yarn create packer <dirname>
 -   node: Based on node.
 -   node-nest: Based on [nestjs](https://docs.nestjs.com/).
 -   webpack: Based on [webpack(4.x)](https://webpack.js.org/).
--   lib: Quick create lib template.
+-   lib: Quick create lib template. Based on [Rollup](https://github.com/rollup/rollup)
