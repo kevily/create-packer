@@ -3,17 +3,17 @@
         "module": "ES2015",
         "esModuleInterop": true,
         "allowSyntheticDefaultImports": true,
-        "target": "es6",
+        "target": "ES5",
         "noImplicitAny": true,
         "moduleResolution": "Node",
         "sourceMap": false,
-        "outDir": "lib",
+        "outDir": "dist",
         "baseUrl": ".",
         "paths": {
             "*": ["node_modules/*"]
         },
         "declaration": true,
-        "declarationDir": "lib"
+        "declarationDir": "dist/types"
     },
     "include": ["src/**/*"]
 }

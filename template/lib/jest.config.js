@@ -4,5 +4,5 @@ module.exports = {
     transform: {
         '^.+\\.tsx?$': 'ts-jest'
     },
-    moduleFileExtensions: ['ts', 'js', 'json', 'node']
+    moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node']
 }

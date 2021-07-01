@@ -1,14 +1,6 @@
 {
     "parser": "@typescript-eslint/parser",
     "extends": ["plugin:@typescript-eslint/recommended"],
-    "parserOptions": {
-        "ecmaVersion": 2018,
-        "sourceType": "module",
-        "ecmaFeatures": {
-            "jsx": true
-        },
-        "useJSXTextNode": true
-    },
     "rules": {
         "@typescript-eslint/no-var-requires": 0,
         "@typescript-eslint/explicit-function-return-type": "off",
