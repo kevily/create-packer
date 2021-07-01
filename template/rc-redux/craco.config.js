@@ -2,7 +2,7 @@ const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
 
 const webpackPlugins = []
 
-if (process.env.ANALYZE === '1') {
+if (process.argv[2] === '--analyze') {
     webpackPlugins.push(new BundleAnalyzerPlugin())
 }
 

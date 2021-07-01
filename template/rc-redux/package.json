@@ -28,7 +28,7 @@
     "scripts": {
         "start": "craco start",
         "build": "craco build",
-        "analyze": "cross-env ANALYZE=1 && craco build",
+        "analyze": "craco build --analyze",
         "test": "craco test",
         "eject": "react-scripts eject",
         "format": "prettier --write \"src/**/*.{ts,js,tsx,jsx,css,scss,less}\" \"./package.json\""
@@ -62,7 +62,6 @@
         ]
     },
     "devDependencies": {
-        "cross-env": "^7.0.3",
         "husky": "^4.3.8",
         "lint-staged": "^11.0.0",
         "prettier": "^2.3.1",
