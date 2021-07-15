@@ -17,7 +17,6 @@ const baseConfig = {
     ],
     plugins: [
         'transform-react-remove-prop-types',
-        '@babel/plugin-syntax-dynamic-import',
         [
             'import',
             {
@@ -25,26 +24,11 @@ const baseConfig = {
                 libraryDirectory: 'lib',
                 style: true
             }
-        ],
-        [
-            'react-css-modules',
-            {
-                filetypes: {
-                    '.module.less': {
-                        syntax: 'postcss-less'
-                    },
-                    '.module.scss': {
-                        syntax: 'postcss-scss'
-                    }
-                },
-                generateScopedName: config.scopeClassName
-            }
         ]
     ]
 }
 if (process.env.NODE_ENV === 'production') {
     baseConfig.plugins.push(
-        'lodash',
         [
             '@babel/plugin-transform-runtime',
             {

@@ -1,15 +1,13 @@
 const path = require('path')
 
-const FOLDER = path.resolve(__dirname, '../')
-const ENTRY = path.resolve(FOLDER, 'src')
-const BUILD = path.resolve(FOLDER, 'dist')
+const ROOT = process.cwd()
+const SRC = path.join(ROOT, 'src')
+const OUTPUT = path.join(ROOT, 'dist')
 
 module.exports = {
-    PATH: {
-        FOLDER,
-        ENTRY,
-        BUILD
-    },
+    ROOT,
+    SRC,
+    OUTPUT,
     STATIC_DIR: 'static',
     gzip: false,
     devServer: {
