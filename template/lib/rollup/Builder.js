@@ -5,6 +5,7 @@ const postcss = require('rollup-plugin-postcss')
 const path = require('path')
 const { getBabelOutputPlugin } = require('@rollup/plugin-babel')
 const fsExtra = require('fs-extra')
+const chalk = require('chalk')
 
 class Builder {
     constructor({ root = process.cwd(), main = 'index.ts', outputDir = 'lib' }) {
@@ -85,10 +86,12 @@ class Builder {
             })
         }
     }
-    async onBuild() {
+    async onBuild(tip = 'Building...') {
+        const building = ora(chalk.yellow(tip)).start()
         await this.onCreateRollupBuild()
         await this.onWrite()
         await bundle.close()
+        building.succeed()
     }
 }
 
