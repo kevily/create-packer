@@ -21,28 +21,7 @@
   resolved "https://registry.nlark.com/@babel/compat-data/download/@babel/compat-data-7.14.7.tgz#7b047d7a3a89a67d2258dc61f604f098f1bc7e08"
   integrity sha1-ewR9ejqJpn0iWNxh9gTwmPG8fgg=
 
-"@babel/core@^7.1.0", "@babel/core@^7.7.5":
-  version "7.14.6"
-  resolved "https://registry.nlark.com/@babel/core/download/@babel/core-7.14.6.tgz?cache=0&sync_timestamp=1623707878699&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40babel%2Fcore%2Fdownload%2F%40babel%2Fcore-7.14.6.tgz#e0814ec1a950032ff16c13a2721de39a8416fcab"
-  integrity sha1-4IFOwalQAy/xbBOich3jmoQW/Ks=
-  dependencies:
-    "@babel/code-frame" "^7.14.5"
-    "@babel/generator" "^7.14.5"
-    "@babel/helper-compilation-targets" "^7.14.5"
-    "@babel/helper-module-transforms" "^7.14.5"
-    "@babel/helpers" "^7.14.6"
-    "@babel/parser" "^7.14.6"
-    "@babel/template" "^7.14.5"
-    "@babel/traverse" "^7.14.5"
-    "@babel/types" "^7.14.5"
-    convert-source-map "^1.7.0"
-    debug "^4.1.0"
-    gensync "^1.0.0-beta.2"
-    json5 "^2.1.2"
-    semver "^6.3.0"
-    source-map "^0.5.0"
-
-"@babel/core@^7.14.6":
+"@babel/core@^7.1.0", "@babel/core@^7.14.6", "@babel/core@^7.7.5":
   version "7.14.6"
   resolved "https://registry.nlark.com/@babel/core/download/@babel/core-7.14.6.tgz?cache=0&sync_timestamp=1623708306477&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40babel%2Fcore%2Fdownload%2F%40babel%2Fcore-7.14.6.tgz#e0814ec1a950032ff16c13a2721de39a8416fcab"
   integrity sha1-4IFOwalQAy/xbBOich3jmoQW/Ks=
@@ -2920,6 +2899,15 @@ fs-extra@8.1.0:
     jsonfile "^4.0.0"
     universalify "^0.1.0"
 
+fs-extra@^10.0.0:
+  version "10.0.0"
+  resolved "https://registry.nlark.com/fs-extra/download/fs-extra-10.0.0.tgz#9ff61b655dde53fb34a82df84bb214ce802e17c1"
+  integrity sha1-n/YbZV3eU/s0qC34S7IUzoAuF8E=
+  dependencies:
+    graceful-fs "^4.2.0"
+    jsonfile "^6.0.1"
+    universalify "^2.0.0"
+
 fs.realpath@^1.0.0:
   version "1.0.0"
   resolved "https://registry.nlark.com/fs.realpath/download/fs.realpath-1.0.0.tgz#1504ad2523158caa40db4a2787cb01411994ea4f"
@@ -4100,6 +4088,15 @@ jsonfile@^4.0.0:
   version "4.0.0"
   resolved "https://registry.npm.taobao.org/jsonfile/download/jsonfile-4.0.0.tgz?cache=0&sync_timestamp=1604161876665&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fjsonfile%2Fdownload%2Fjsonfile-4.0.0.tgz#8771aae0799b64076b76640fca058f9c10e33ecb"
   integrity sha1-h3Gq4HmbZAdrdmQPygWPnBDjPss=
+  optionalDependencies:
+    graceful-fs "^4.1.6"
+
+jsonfile@^6.0.1:
+  version "6.1.0"
+  resolved "https://registry.npm.taobao.org/jsonfile/download/jsonfile-6.1.0.tgz?cache=0&sync_timestamp=1604161844511&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fjsonfile%2Fdownload%2Fjsonfile-6.1.0.tgz#bc55b2634793c679ec6403094eb13698a6ec0aae"
+  integrity sha1-vFWyY0eTxnnsZAMJTrE2mKbsCq4=
+  dependencies:
+    universalify "^2.0.0"
   optionalDependencies:
     graceful-fs "^4.1.6"
 
@@ -6222,6 +6219,11 @@ universalify@^0.1.0, universalify@^0.1.2:
   version "0.1.2"
   resolved "https://registry.npm.taobao.org/universalify/download/universalify-0.1.2.tgz?cache=0&sync_timestamp=1603180004159&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Funiversalify%2Fdownload%2Funiversalify-0.1.2.tgz#b646f69be3942dabcecc9d6639c80dc105efaa66"
   integrity sha1-tkb2m+OULavOzJ1mOcgNwQXvqmY=
+
+universalify@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.nlark.com/universalify/download/universalify-2.0.0.tgz#75a4984efedc4b08975c5aeb73f530d02df25717"
+  integrity sha1-daSYTv7cSwiXXFrrc/Uw0C3yVxc=
 
 unquote@~1.1.1:
   version "1.1.1"
