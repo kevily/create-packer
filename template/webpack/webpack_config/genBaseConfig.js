@@ -1,5 +1,7 @@
 const config = require('./config')
 const path = require('path')
+const WebpackBar = require('webpackbar')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = function genBaseConfig(env) {
     return {
@@ -7,12 +9,37 @@ module.exports = function genBaseConfig(env) {
             index: [path.join(config.SRC, 'index.tsx')]
         },
         output: {
-            filename: config.STATIC_DIR + (env === 'dev' ? '/[name].js' : '/[name].[chunkhash].js'),
+            filename: config.STATIC_DIR + (env.prod ? '/[name].[chunkhash].js' : '/[name].js'),
             path: config.OUTPUT,
-            publicPath: '/'
+            publicPath: '/',
+            clean: true
         },
         bail: true,
-        mode: env === 'dev' ? 'development' : 'production',
+        mode: env.prod ? 'production' : 'development',
+        module: {
+            rules: [
+                {
+                    test: /\.(js|jsx|ts|tsx)$/,
+                    exclude: /(node_modules|bower_components)/,
+                    loader: 'babel-loader'
+                },
+                {
+                    test: /\.(png|svg|jpg|jpeg|gif)$/i,
+                    type: 'asset/resource'
+                },
+                {
+                    test: /\.(woff|woff2|eot|ttf|otf)$/i,
+                    type: 'asset/resource'
+                }
+            ]
+        },
+        plugins: [
+            new WebpackBar(),
+            new HtmlWebpackPlugin({
+                filename: 'index.html',
+                template: path.resolve(config.SRC, 'index.html')
+            })
+        ],
         optimization: {
             minimize: true
         },
