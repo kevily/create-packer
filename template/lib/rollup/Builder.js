@@ -1,7 +1,7 @@
 const rollup = require('rollup')
 const typescript = require('rollup-plugin-typescript2')
 const { nodeResolve } = require('@rollup/plugin-node-resolve')
-const postcss = require('rollup-plugin-postcss')
+const styles = require('rollup-plugin-styles')
 const path = require('path')
 const { babel } = require('@rollup/plugin-babel')
 const commonjs = require('@rollup/plugin-commonjs')
@@ -12,12 +12,17 @@ const { DEFAULT_EXTENSIONS } = require('@babel/core')
 const fsExtra = require('fs-extra')
 const ora = require('ora')
 const chalk = require('chalk')
-
+const _ = require('lodash')
 class Builder {
     constructor({ root = process.cwd(), main = 'index.ts', outputDir = 'lib' }) {
         this.root = root
         this.bundle = null
-        this.external = [/node_modules/]
+        this.external = id => {
+            if (_.includes(id, 'inject-css.js')) {
+                return false
+            }
+            return _.some(['node_modules'], k => _.includes(id, k))
+        }
         this.entry = path.join(this.root, main)
         // output
         // ----------------------------------------------------------------------
@@ -44,9 +49,7 @@ class Builder {
             external: this.external,
             input: this.entry,
             plugins: [
-                postcss({
-                    plugins: [require('postcss-assets')()]
-                }),
+                styles(),
                 typescript({
                     tsconfig: path.join(this.root, 'tsconfig.json'),
                     useTsconfigDeclarationDir: true
