@@ -11,7 +11,9 @@
     },
     "scripts": {
         "login": "npm login --registry http://registry.npmjs.org",
-        "pub": "node ./utils/pub.js"
+        "pub": "yarn push && node ./utils/pub.js",
+        "commit": "git add . && cz",
+        "push": "yarn commit && git push"
     },
     "files": [
         "bin",
@@ -25,6 +27,8 @@
     "devDependencies": {
         "@rollup/plugin-commonjs": "^19.0.1",
         "@rollup/plugin-url": "^6.0.0",
+        "commitizen": "^4.2.4",
+        "cz-adapter-eslint": "^0.3.0",
         "ora": "^5.4.1",
         "rollup-plugin-filesize": "^9.1.1",
         "rollup-plugin-terser": "^7.0.2"
