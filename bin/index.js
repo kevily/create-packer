@@ -1,7 +1,18 @@
 #!/usr/bin/env node
-const clis = require('./clis')
-const configs = require('./configs')
-
-configs.CLIS.map(async cli => {
-    await clis[cli].onStart()
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const Create_1 = require("./clis/Create");
+const commander_1 = require("commander");
+const create = new Create_1.Create();
+let dirname = '.';
+commander_1.program
+    .argument('[dirname]')
+    .action(name => {
+    dirname = name;
 })
+    .option('-c', 'Create project.')
+    .parse(process.argv);
+const options = commander_1.program.opts();
+if (options.c) {
+    create.onCreate(dirname);
+}

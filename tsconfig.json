@@ -1,0 +1,22 @@
+{
+    "compilerOptions": {
+        "module": "CommonJS",
+        "esModuleInterop": true,
+        "allowSyntheticDefaultImports": true,
+        "resolveJsonModule": true,
+        "allowJs": true,
+        "target": "ESNext",
+        "noImplicitAny": false,
+        "moduleResolution": "node",
+        "sourceMap": false,
+        "declaration": true,
+        "outDir": "bin",
+        "baseUrl": "."
+    },
+    "include": [
+        "src/**/*"
+    ],
+    "exclude": [
+        "node_modules/**"
+    ]
+}

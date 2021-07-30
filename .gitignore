@@ -1,15 +1,17 @@
-# dependencies
-node_modules/
+# Dependencies
+/node_modules
 npm-debug.log*
 yarn-error.log*
 
-# production
-dist/
-build/
+# Production
+/bin
 
-# miscs
+# Misc
 .DS_Store
 .vscode/
 .idea/
 .history/
 coverage/
+
+# ESLint
+.eslintcache
