@@ -1,11 +1,11 @@
-import path from 'path'
-import fs from 'fs'
-import fsExtra from 'fs-extra'
-import cp, { SpawnOptions } from 'child_process'
+import path = require('path')
+import fs = require('fs')
+import fsExtra = require('fs-extra')
+import { spawnSync, SpawnOptions } from 'child_process'
 import _ from 'lodash'
-import chalk from 'chalk'
+import chalk = require('chalk')
 import { onGenCommand, onGetDir } from '../utils'
-import ora from 'ora'
+import ora = require('ora')
 
 export interface projectInfoType {
     name: string
@@ -44,7 +44,7 @@ export class Project {
         })
     }
     spawnSync(command: string, args?: ReadonlyArray<string>, options?: SpawnOptions) {
-        const { error } = cp.spawnSync(command, args, {
+        const { error } = spawnSync(command, args, {
             stdio: 'inherit',
             cwd: this.cwd,
             shell: true,
@@ -72,7 +72,7 @@ export class Project {
         if (fs.existsSync(npmignore)) {
             fs.renameSync(npmignore, path.join(output, '.gitignore'))
         }
-        cp.spawnSync(this.command, ['install'], {
+        spawnSync(this.command, ['install'], {
             cwd: output
         })
         ora(chalk.blue('Completed(´ε｀ )\n')).succeed()
