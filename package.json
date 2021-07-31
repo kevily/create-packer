@@ -11,7 +11,7 @@
     },
     "scripts": {
         "login": "npm login --registry http://registry.npmjs.org",
-        "pub": "yarn push && node ./utils/pub.js",
+        "pub": "yarn build && yarn push && node ./utils/pub.js",
         "test": "yarn build && rimraf ./__test__ && cd ./__test__ && node ../bin -c",
         "build": "rimraf ./bin && tsc",
         "commit": "git add . && cz",

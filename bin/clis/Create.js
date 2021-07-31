@@ -9,6 +9,8 @@ const lodash_1 = __importDefault(require("lodash"));
 const Project_1 = require("./Project");
 const fsExtra = require("fs-extra");
 const path = require("path");
+const fs = require("fs");
+const chalk = require("chalk");
 class Create extends Project_1.Project {
     async onCreate(dirname) {
         const { tempType } = await inquirer.prompt([
@@ -27,8 +29,14 @@ class Create extends Project_1.Project {
                 choices: lodash_1.default.map(lodash_1.default.find(this.tempInfo, { name: tempType }).temp, t => t.name)
             }
         ]);
-        fsExtra.mkdirSync(path.join(this.cwd, dirname));
-        fsExtra.copySync(path.join(this.tempRoot, dirname, tempType, temp), this.cwd);
+        const output = path.join(this.cwd, dirname);
+        if (dirname && fs.existsSync(output)) {
+            return console.log(chalk.red(`${dirname} already exists!`));
+        }
+        fsExtra.mkdirSync(output);
+        const tempPath = path.join(this.tempRoot, tempType, temp);
+        this.onCopy(tempPath, output);
+        this.onEnd(output);
     }
 }
 exports.Create = Create;
