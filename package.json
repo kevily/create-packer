@@ -6,9 +6,7 @@
     "author": "1k <bug_zero@163.com>",
     "license": "MIT",
     "private": false,
-    "bin": {
-        "cp": "./bin/index.js"
-    },
+    "bin": "./bin/index.js",
     "scripts": {
         "login": "npm login --registry http://registry.npmjs.org",
         "pub": "yarn build && yarn push && node ./utils/pub.js",
