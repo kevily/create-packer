@@ -3,9 +3,7 @@ import fs = require('fs')
 import fsExtra = require('fs-extra')
 import { spawnSync, SpawnOptions } from 'child_process'
 import _ from 'lodash'
-import chalk = require('chalk')
 import { onGenCommand, onGetDir } from '../utils'
-import ora = require('ora')
 
 export interface projectInfoType {
     name: string
@@ -73,8 +71,8 @@ export class Project {
             fs.renameSync(npmignore, path.join(output, '.gitignore'))
         }
         spawnSync(this.command, ['install'], {
-            cwd: output
+            cwd: output,
+            stdio: 'inherit'
         })
-        ora(chalk.blue('Completed(´ε｀ )\n')).succeed()
     }
 }

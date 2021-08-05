@@ -3,11 +3,11 @@ import { Create } from './clis/Create'
 import { program } from 'commander'
 
 const create = new Create()
-let dirname = '.'
+let dirname = ''
 program
     .argument('[dirname]')
     .action(name => {
-        dirname = name
+        dirname = name || ''
     })
     .option('-c', 'Create project.')
     .parse(process.argv)
