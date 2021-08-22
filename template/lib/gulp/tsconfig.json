@@ -1,6 +1,6 @@
 {
     "compilerOptions": {
-        "module": "ESNext",
+       "module": "ESNext",
         "esModuleInterop": true,
         "allowSyntheticDefaultImports": true,
         "allowJs": true,
@@ -12,9 +12,7 @@
         "outDir": "lib",
         "baseUrl": "."
     },
-    "include": [
-        "src/**/*"
-    ],
+    "include": ["src/**/*"],
     "exclude": [
         "node_modules/**/*"
     ]

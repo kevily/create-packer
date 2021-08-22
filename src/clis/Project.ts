@@ -66,10 +66,6 @@ export class Project {
         })
     }
     public onEnd(output: string) {
-        const npmignore = path.join(output, '.npmignore')
-        if (fs.existsSync(npmignore)) {
-            fs.renameSync(npmignore, path.join(output, '.gitignore'))
-        }
         spawnSync(this.command, ['install'], {
             cwd: output,
             stdio: 'inherit'

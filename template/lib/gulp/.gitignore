@@ -16,6 +16,7 @@ dist/
 .history
 lib/
 es/
+cjs/
 types/
 
 # misc

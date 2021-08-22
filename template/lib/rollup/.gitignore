@@ -1,22 +1,19 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
-/node_modules
+node_modules/
 /.pnp
 .pnp.js
 
 # testing
-/coverage
+coverage/
 
 # production
-/build
-/dist
+build/
+dist/
 .vscode
 .idea
 .history
-/lib
-/es
-/types
 
 # misc
 .DS_Store
