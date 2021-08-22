@@ -11,12 +11,12 @@
         "format": "prettier --write \"src/**/*.{ts,js,tsx,jsx,css,scss,less}\" \"./package.json\"",
         "lint": "eslint \"src/**/*.{ts,js,tsx,jsx}\"",
         "test": "jest --forceExit --coverage --verbose",
-        "commit" : "git add . && task --cz",
+        "commit": "git add . && task --cz",
         "push": "yarn build && yarn commit && git push"
     },
     "dependencies": {},
     "devDependencies": {
-        "1k-tasks": "^1.0.7",
+        "1k-tasks": "^1.0.8",
         "@babel/core": "^7.14.6",
         "@babel/preset-env": "^7.14.7",
         "@types/jest": "^26.0.23",

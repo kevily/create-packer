@@ -12,7 +12,7 @@
         "pub": "yarn build && yarn push && node ./utils/pub.js",
         "test": "yarn build && rimraf ./__test__ && cd ./__test__ && node ../bin -c",
         "build": "rimraf ./bin && tsc",
-        "commit": "git add . && cz",
+        "commit": "git add . && task --cz",
         "push": "yarn commit && git push"
     },
     "files": [
@@ -29,6 +29,7 @@
         "ora": "^5.4.1"
     },
     "devDependencies": {
+        "1k-tasks": "^1.0.8",
         "@rollup/plugin-commonjs": "^20.0.0",
         "@rollup/plugin-url": "^6.1.0",
         "@types/fs-extra": "^9.0.12",
@@ -36,8 +37,6 @@
         "@types/node": "^16.4.7",
         "@typescript-eslint/eslint-plugin": "^4.29.2",
         "@typescript-eslint/parser": "^4.29.2",
-        "commitizen": "^4.2.4",
-        "cz-adapter-eslint": "^0.3.0",
         "eslint": "^7.32.0",
         "rimraf": "^3.0.2",
         "rollup-plugin-filesize": "^9.1.1",
