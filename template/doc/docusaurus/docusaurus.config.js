@@ -7,9 +7,6 @@
  * @format
  */
 
-const fs = require('fs')
-const { docCatalog } = require('./configs')
-
 module.exports = {
     title: 'My Site',
     tagline: 'The tagline of my site',
@@ -21,19 +18,25 @@ module.exports = {
     projectName: 'docusaurus', // Usually your repo name.
     themeConfig: {
         navbar: {
-            title: 'My Facebook Project',
+            title: 'My Project',
             logo: {
-                alt: 'My Facebook Project Logo',
+                alt: 'My Project Logo',
                 src: 'img/logo.svg'
             },
-            items: docCatalog.map(dirname => {
-                return {
+            items: [
+                {
                     type: 'doc',
-                    docId: `${dirname}/doc1`,
-                    label: dirname,
+                    docId: 'doc1/doc1',
+                    label: 'doc1',
+                    position: 'left'
+                },
+                {
+                    type: 'doc',
+                    docId: 'doc2/doc1',
+                    label: 'doc2',
                     position: 'left'
                 }
-            })
+            ]
         },
         footer: {
             style: 'dark',
@@ -85,7 +88,7 @@ module.exports = {
             ],
             logo: {
                 alt: 'Facebook Open Source Logo',
-                src: 'img/oss_logo.png',
+                src: 'img/logo.svg',
                 href: 'https://opensource.facebook.com'
             },
             // Please do not remove the credits, help to publicize Docusaurus :)
@@ -101,6 +104,9 @@ module.exports = {
                 },
                 theme: {
                     customCss: require.resolve('./src/css/custom.css')
+                },
+                sidebarItemsGenerator: async function ({ defaultSidebarItemsGenerator, ...args }) {
+                    return await defaultSidebarItemsGenerator(args)
                 }
             }
         ]
