@@ -7,6 +7,8 @@
  * @format
  */
 
+const path = require('path')
+
 module.exports = {
     title: 'My Site',
     tagline: 'The tagline of my site',
@@ -115,13 +117,16 @@ module.exports = {
             '@docusaurus/preset-classic',
             {
                 docs: {
-                    sidebarPath: require.resolve('./sidebars.js')
+                    sidebarPath: path.join(__dirname, './sidebars.js'),
+                    sidebarItemsGenerator: async function ({
+                        defaultSidebarItemsGenerator,
+                        ...args
+                    }) {
+                        return await defaultSidebarItemsGenerator(args)
+                    }
                 },
                 theme: {
                     customCss: require.resolve('./src/css/custom.css')
-                },
-                sidebarItemsGenerator: async function ({ defaultSidebarItemsGenerator, ...args }) {
-                    return await defaultSidebarItemsGenerator(args)
                 }
             }
         ]
