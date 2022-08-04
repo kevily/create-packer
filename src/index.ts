@@ -3,7 +3,7 @@ import { createTemp } from './clis/createTemp'
 import { program } from 'commander'
 
 program
-    .option('-c, --create <dirname>', 'Create project.', (dirname = '') => {
+    .option('-c, --create [dirname]', 'Create project.', (dirname = '') => {
         return createTemp(dirname)
     })
     .parse(process.argv)
