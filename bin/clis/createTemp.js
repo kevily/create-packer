@@ -33,6 +33,7 @@ function createTempEnd(output) {
     });
 }
 async function createTemp(dirname) {
+    const isCurrent = dirname === '.';
     const { temp } = await inquirer.prompt([
         {
             type: 'list',
@@ -42,11 +43,11 @@ async function createTemp(dirname) {
         }
     ]);
     const creating = ora(chalk.yellow('Creating...\n')).start();
-    const output = path.join(cwd, dirname);
-    if (dirname && fs.existsSync(output)) {
+    const output = path.join(cwd, isCurrent ? '' : dirname);
+    if (!isCurrent && fs.existsSync(output)) {
         return console.log(chalk.red(`${dirname} already exists!`));
     }
-    if (dirname) {
+    if (!isCurrent) {
         fsExtra.mkdirSync(output);
     }
     const tempPath = path.join(tempRoot, temp);
