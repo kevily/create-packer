@@ -28,8 +28,8 @@
         "test": "craco test",
         "eject": "react-scripts eject",
         "format": "prettier --write \"src/**/*.{ts,js,tsx,jsx,css,scss,less}\" \"./package.json\"",
-        "lint": "eslint ./src/**/*.{tsx,ts,js,jsx,vue} && stylelint ./src/**/*.{css,scss,less}",
-        "lint:fix": "eslint ./src/**/*.{tsx,ts,js,jsx,vue} --fix && stylelint ./src/**/*.{css,scss,less} --fix"
+        "lint": "eslint ./src/**/*.{tsx,ts} && stylelint ./src/**/*.{css,scss,less}",
+        "lint:fix": "eslint ./src/**/*.{tsx,ts} --fix && stylelint ./src/**/*.{css,scss,less} --fix"
     },
     "eslintConfig": {
         "extends": [
