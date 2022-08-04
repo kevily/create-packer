@@ -21,22 +21,15 @@
         "web-vitals": "2.1.4"
     },
     "scripts": {
+        "prepare": "husky install",
         "start": "craco start",
         "build": "craco build",
         "analyze": "craco build --analyze",
         "test": "craco test",
         "eject": "react-scripts eject",
-        "format": "prettier --write \"src/**/*.{ts,js,tsx,jsx,css,scss,less}\" \"./package.json\""
-    },
-    "husky": {
-        "hooks": {
-            "pre-commit": "npm run format && lint-staged && git add ."
-        }
-    },
-    "lint-staged": {
-        "./src/**/*.{css,scss,less}": [
-            "stylelint"
-        ]
+        "format": "prettier --write \"src/**/*.{ts,js,tsx,jsx,css,scss,less}\" \"./package.json\"",
+        "lint": "eslint ./src/**/*.{tsx,ts,js,jsx,vue} && stylelint ./src/**/*.{css,scss,less}",
+        "lint:fix": "eslint ./src/**/*.{tsx,ts,js,jsx,vue} --fix && stylelint ./src/**/*.{css,scss,less} --fix"
     },
     "eslintConfig": {
         "extends": [
@@ -60,7 +53,6 @@
         "@testing-library/dom": "8.14.0",
         "@types/recoil": "0.0.9",
         "husky": "8.0.1",
-        "lint-staged": "13.0.3",
         "prettier": "2.7.1",
         "stylelint": "14.9.1",
         "stylelint-config-standard": "26.0.0",
