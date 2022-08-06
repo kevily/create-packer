@@ -1,0 +1,48 @@
+{
+    "root": true,
+    "parser": "@typescript-eslint/parser",
+    "plugins": ["@typescript-eslint"],
+    "extends": ["eslint:recommended", "plugin:react/recommended", "plugin:react-hooks/recommended"],
+    "settings": {
+        "react": {
+            "version": "18"
+        }
+    },
+    "env": {
+        "browser": true,
+        "node": true,
+        "es6": true,
+        "jest": true
+    },
+    "parserOptions": {
+        "ecmaVersion": 2018,
+        "sourceType": "module",
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "useJSXTextNode": true
+    },
+    "rules": {
+        "@typescript-eslint/no-var-requires": 0,
+        "@typescript-eslint/explicit-function-return-type": "off",
+        "@typescript-eslint/no-explicit-any": 0,
+        "@typescript-eslint/no-inferrable-types": [
+            "warn",
+            {
+                "ignoreParameters": true
+            }
+        ],
+        "@typescript-eslint/no-unused-vars": "warn",
+        "@typescript-eslint/member-delimiter-style": 0,
+        "@typescript-eslint/class-name-casing": 0,
+        "@typescript-eslint/explicit-module-boundary-types": "off",
+        "@typescript-eslint/ban-ts-comment": "off",
+        "react/prop-types": "off",
+        "react/no-find-dom-node": "off",
+        "react-hooks/exhaustive-deps": "warn",
+        "react/display-name": "off",
+        "react/react-in-jsx-scope": "off",
+        "semi": ["error", "never"],
+        "quotes": "off"
+    }
+}
