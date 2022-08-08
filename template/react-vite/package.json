@@ -14,7 +14,10 @@
         "lint:fix": "eslint ./src/**/*.{tsx,ts} --fix && stylelint ./src/**/*.{css,scss,less} --fix",
         "test:watchs": "jest --watch",
         "test": "jest",
-        "test:coverage": "jest --silent --watchAll=false --coverage"
+        "test:coverage": "jest --silent --watchAll=false --coverage",
+        "cz": "cz",
+        "push": "npm run commit && git push",
+        "commit": "git add . && npm run cz"
     },
     "dependencies": {
         "react": "18.2.0",
@@ -33,7 +36,9 @@
         "@typescript-eslint/parser": "5.32.0",
         "@vitejs/plugin-react": "2.0.0",
         "autoprefixer": "10.4.8",
+        "commitizen": "4.2.5",
         "cssnano": "5.1.12",
+        "cz-adapter-eslint": "0.3.0",
         "eslint": "8.21.0",
         "eslint-plugin-react": "7.30.1",
         "eslint-plugin-react-hooks": "4.6.0",
@@ -49,5 +54,10 @@
         "tailwindcss": "3.1.8",
         "typescript": "4.7.4",
         "vite": "3.0.4"
+    },
+    "config": {
+        "commitizen": {
+            "path": "./node_modules/cz-adapter-eslint"
+        }
     }
 }
