@@ -11,7 +11,7 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
             <Layout>
                 <Routes>
                     {routes.map(({ path, Component }) => {
-                        return <Route path={path} element={<Component />} />
+                        return <Route key={path} path={path} element={<Component />} />
                     })}
                 </Routes>
             </Layout>
