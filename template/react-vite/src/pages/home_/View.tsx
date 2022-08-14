@@ -1,7 +1,7 @@
 import './home.css'
 
-function App() {
+function Home() {
     return <div className={'flex justify-center items-center'}>sdfs</div>
 }
 
-export default App
+export default Home
