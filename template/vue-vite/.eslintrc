@@ -1,26 +1,27 @@
 {
     "root": true,
-    "parser": "@typescript-eslint/parser",
-    "plugins": ["@typescript-eslint", "prettier"],
-    "extends": ["eslint:recommended", "plugin:react/recommended", "plugin:react-hooks/recommended"],
-    "settings": {
-        "react": {
-            "version": "18"
-        }
-    },
     "env": {
         "browser": true,
         "node": true,
         "es6": true,
         "jest": true
     },
+    "globals": {
+        "defineProps": "readonly",
+        "defineEmits": "readonly",
+        "defineExpose": "readonly",
+        "withDefaults": "readonly"
+    },
+    "plugins": ["prettier"],
+    "extends": [
+        "plugin:vue/vue3-recommended",
+        "eslint:recommended",
+        "plugin:@typescript-eslint/recommended"
+    ],
+    "parser": "vue-eslint-parser",
     "parserOptions": {
-        "ecmaVersion": 2018,
-        "sourceType": "module",
-        "ecmaFeatures": {
-            "jsx": true
-        },
-        "useJSXTextNode": true
+        "parser": "@typescript-eslint/parser",
+        "ecmaVersion": 2021
     },
     "rules": {
         "@typescript-eslint/no-var-requires": 0,
@@ -37,11 +38,8 @@
         "@typescript-eslint/class-name-casing": 0,
         "@typescript-eslint/explicit-module-boundary-types": "off",
         "@typescript-eslint/ban-ts-comment": "off",
-        "react/prop-types": "off",
-        "react/no-find-dom-node": "off",
-        "react-hooks/exhaustive-deps": "warn",
-        "react/display-name": "off",
-        "react/react-in-jsx-scope": "off",
-        "prettier/prettier": "error"
+        "prettier/prettier": "error",
+        "vue/multi-word-component-names": 0,
+        "vue/html-indent": ["error", 4]
     }
 }
