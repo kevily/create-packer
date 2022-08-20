@@ -11,12 +11,7 @@ yarn create packer <dirname> -c
 
 ## TempInfo
 
--   doc-docusaurus: Based on [Docusaurus 2](https://v2.docusaurus.io/).
--   electron: Based on [electron](https://electronjs.org).
--   rc-recoil: Based on [create-react-app(4.x)](https://create-react-app.dev/). Use [recoil](https://recoiljs.org/) as state container.
--   rc-redux: Based on [create-react-app(4.x)](https://create-react-app.dev/). Use [redux-toolkit](https://redux-toolkit.js.org/) as state container.
--   vue-2.x: Based on vue-cli(vue2.x).
--   node-base: Based on node.
--   node-nest: Based on [nestjs](https://docs.nestjs.com/).
--   webpack: Based on [webpack(5.x)](https://webpack.js.org/).
--   lib-rollup: Quick create lib template. Based on [Rollup](https://github.com/rollup/rollup)
+-   docusaurus: Based on [Docusaurus 2](https://v2.docusaurus.io/).
+-   nest: Based on [nestjs](https://docs.nestjs.com/).
+-   vue: Based on [vite(3.x)](https://cn.vitejs.dev/), [vue3](https://vuejs.org/).
+-   react: Based on [vite(3.x)](https://cn.vitejs.dev/), [react18](https://reactjs.org/).

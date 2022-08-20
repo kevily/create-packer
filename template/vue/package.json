@@ -1,0 +1,52 @@
+{
+    "name": "vue-vite",
+    "private": true,
+    "version": "0.0.0",
+    "type": "module",
+    "scripts": {
+        "prepare": "husky install",
+        "dev": "vite",
+        "build": "vue-tsc --noEmit && vite build",
+        "preview": "vite preview",
+        "format": "prettier --write \"src/**/*.{ts,js,tsx,jsx,vue,css,scss,less}\" \"./package.json\"",
+        "lint": "eslint ./src/**/*.{ts,vue} && stylelint ./src/**/*.{css,scss,less}",
+        "lint:fix": "eslint ./src/**/*.{ts,vue} --fix && stylelint ./src/**/*.{css,scss,less} --fix",
+        "cz": "cz",
+        "push": "npm run commit && git push",
+        "commit": "git add . && npm run cz"
+    },
+    "dependencies": {
+        "pinia": "2.0.18",
+        "vite-plugin-eslint": "1.8.1",
+        "vue": "3.2.37",
+        "vue-router": "4.1.3"
+    },
+    "devDependencies": {
+        "@typescript-eslint/eslint-plugin": "5.33.0",
+        "@typescript-eslint/parser": "5.33.0",
+        "@vitejs/plugin-vue": "3.0.3",
+        "autoprefixer": "10.4.8",
+        "commitizen": "4.2.5",
+        "cssnano": "5.1.12",
+        "cz-adapter-eslint": "0.3.0",
+        "eslint": "8.22.0",
+        "eslint-plugin-prettier": "4.0.0",
+        "eslint-plugin-vue": "9.3.0",
+        "husky": "8.0.1",
+        "postcss": "8.4.14",
+        "postcss-import": "14.1.0",
+        "postcss-nesting": "10.1.10",
+        "prettier": "2.7.1",
+        "stylelint": "14.9.1",
+        "stylelint-config-standard": "26.0.0",
+        "tailwindcss": "3.1.8",
+        "typescript": "4.6.4",
+        "vite": "3.0.9",
+        "vue-tsc": "0.39.5"
+    },
+    "config": {
+        "commitizen": {
+            "path": "./node_modules/cz-adapter-eslint"
+        }
+    }
+}
