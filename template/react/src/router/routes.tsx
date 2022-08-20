@@ -4,7 +4,7 @@ import paths from './paths'
 import Layout from '@/layout'
 import Home from '@/pages/home'
 
-const CannotAccess = lazy(() => import('@/pages/cannotAccess'))
+const NotFound = lazy(() => import('@/pages/notFound'))
 
 const routes: RouteObject[] = [
     {
@@ -19,7 +19,7 @@ const routes: RouteObject[] = [
     },
     {
         path: '*',
-        element: <CannotAccess />
+        element: <NotFound />
     }
 ]
 

@@ -4,7 +4,7 @@ import Home from '@/pages/Home'
 
 const routes: (RouteRecordRaw & { name: string })[] = [
     { path: '/', name: names.home, component: Home },
-    { path: '/404', name: names.cannotAccess, component: () => import('@/pages/cannotAccess') }
+    { path: '/404', name: names.notFound, component: () => import('@/pages/notFound') }
 ]
 const router = createRouter({
     history: createWebHashHistory(),
@@ -14,7 +14,7 @@ router.beforeEach(async to => {
     if (!Object.values(names).includes(to.name! as string)) {
         return {
             replace: true,
-            name: names.cannotAccess
+            name: names.notFound
         }
     }
 })

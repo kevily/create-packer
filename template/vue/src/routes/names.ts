@@ -1,4 +1,4 @@
 export default {
     home: 'home',
-    cannotAccess: '404'
+    notFound: '404'
 }
