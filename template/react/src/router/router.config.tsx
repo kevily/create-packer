@@ -1,12 +1,12 @@
 import { lazy } from 'react'
 import { RouteObject } from 'react-router-dom'
-import paths from './paths'
+import paths from './router.paths'
 import Layout from '@/layout'
 import Home from '@/pages/home'
 
 const NotFound = lazy(() => import('@/pages/notFound'))
 
-const routes: RouteObject[] = [
+const routerConfig: RouteObject[] = [
     {
         path: paths.root,
         element: <Layout />,
@@ -23,4 +23,4 @@ const routes: RouteObject[] = [
     }
 ]
 
-export default routes
+export default routerConfig

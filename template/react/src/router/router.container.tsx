@@ -1,6 +1,6 @@
 import { useRoutes } from 'react-router-dom'
-import routes from './routes'
+import routerConfig from './router.config'
 
 export default function Route() {
-    return useRoutes(routes)
+    return useRoutes(routerConfig)
 }

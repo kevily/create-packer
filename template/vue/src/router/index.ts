@@ -1,9 +1,8 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
-import names from './names'
-import Home from '@/pages/Home'
+import names from './router.names'
 
 const routes: (RouteRecordRaw & { name: string })[] = [
-    { path: '/', name: names.home, component: Home },
+    { path: '/', name: names.home, component: () => import('@/pages/home') },
     { path: '/404', name: names.notFound, component: () => import('@/pages/notFound') }
 ]
 const router = createRouter({
