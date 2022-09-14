@@ -1,8 +1,8 @@
-import create from 'zustand'
-import { combine } from 'zustand/middleware'
+import { defineStore } from '@/providers'
 
-export const useApp = create(
-    combine({}, setState => {
+export const useApp = defineStore({
+    state: () => ({}),
+    actions: () => {
         return {}
-    })
-)
+    }
+})
