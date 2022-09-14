@@ -13,7 +13,10 @@ export function defineStore<S extends object, U extends object>(
         combine({ state: options.state() }, (setState, getState, store, $$storeMutations) => {
             return {
                 reset() {
-                    setState(() => options.state(), true)
+                    setState(state => {
+                        state.state = options.state()
+                        return state
+                    }, true)
                 },
                 ...(options.actions?.(setState, getState, store, $$storeMutations) || {})
             }
