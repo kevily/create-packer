@@ -5,7 +5,11 @@ import produce from 'immer'
 type setStateType<S> = (updater: (state: S) => void) => void
 export interface defineStoreOptionsType<S extends object, A extends object> {
     state: () => S
-    actions: (setState: setStateType<S>, getState: () => S) => A
+    actions: (
+        setState: setStateType<S>,
+        getState: () => S,
+        getActions: () => Record<string, any>
+    ) => A
 }
 
 export function defineStore<S extends object, A extends object>(
@@ -21,14 +25,14 @@ export function defineStore<S extends object, A extends object>(
                 )
             }
             const _getState = () => getState().state
-
+            const _getActions = () => (getState() as any).actions
             return {
                 actions: {
                     reset: () => {
                         setState({ state: options.state() })
                     },
                     setState: _setState,
-                    ...options.actions(_setState, _getState)
+                    ...options.actions(_setState, _getState, _getActions)
                 }
             }
         })
