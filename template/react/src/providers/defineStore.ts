@@ -16,7 +16,7 @@ export function defineStore<S extends object, A extends object>(
     options: defineStoreOptionsType<S, A>
 ) {
     return create(
-        combine({ state: options.state() }, (setState, getState) => {
+        combine({ state: options.state() }, (setState, getState, store) => {
             const _setState: setStateType<S> = updater => {
                 setState(
                     produce((store: { state: S }) => {
@@ -32,6 +32,8 @@ export function defineStore<S extends object, A extends object>(
                         setState({ state: options.state() })
                     },
                     setState: _setState,
+                    destroy: store.destroy,
+                    subscribe: store.subscribe,
                     ...options.actions(_setState, _getState, _getActions)
                 }
             }
