@@ -2,9 +2,6 @@
     <router-view />
 </template>
 
-<script setup lang="ts">
-import { useInit } from './app.controller'
-useInit()
-</script>
+<script setup lang="ts"></script>
 
 <style scoped></style>
