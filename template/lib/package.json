@@ -1,0 +1,30 @@
+{
+    "name": "task-flow",
+    "version": "1.0.0",
+    "description": "",
+    "private": true,
+    "main": "index.js",
+    "scripts": {
+        "build": "pnpm -r run build",
+        "changeVersion": "pnpm changeset && pnpm changeset version && pnpm run clear:changelog",
+        "clear:changelog": "pnpm -r exec rimraf CHANGELOG.md",
+        "commit": "git add . && cz",
+        "push": "pnpm run commit && git push",
+        "login": "npm login --registry http://registry.npmjs.org",
+        "pub": "pnpm run changeVersion && pnpm run build && pnpm run push && pnpm -r publish --registry https://registry.npmjs.org"
+    },
+    "keywords": [],
+    "author": "kevily",
+    "license": "ISC",
+    "config": {
+        "commitizen": {
+            "path": "./node_modules/cz-adapter-eslint"
+        }
+    },
+    "dependencies": {
+        "@changesets/cli": "^2.25.2",
+        "commitizen": "4.2.4",
+        "cz-adapter-eslint": "0.3.0",
+        "rimraf": "3.0.2"
+    }
+}
