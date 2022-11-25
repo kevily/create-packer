@@ -1,26 +1,19 @@
 import { lazy } from 'react'
-import { RouteObject } from 'react-router-dom'
+import { createBrowserRouter } from 'react-router-dom'
+import * as home from './home'
 import paths from './router.paths'
-import Layout from '@/layout'
-import Home from '@/pages/home'
 
-const NotFound = lazy(() => import('@/pages/notFound'))
+const Layout = lazy(() => import('@/layout/layout.container'))
+const NotFound = lazy(() => import('@/pages/notFound/notFound.container'))
 
-const routerConfig: RouteObject[] = [
+export default createBrowserRouter([
     {
         path: paths.root,
         element: <Layout />,
-        children: [
-            {
-                index: true,
-                element: <Home />
-            }
-        ]
+        children: [...home.routes]
     },
     {
         path: '*',
         element: <NotFound />
     }
-]
-
-export default routerConfig
+])

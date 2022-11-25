@@ -1,10 +1,11 @@
-import React from 'react'
+import { Suspense } from 'react'
 import { Outlet } from 'react-router-dom'
+import { Loading } from './components'
 
 export default function Layout() {
     return (
-        <div>
+        <Suspense fallback={<Loading />}>
             <Outlet />
-        </div>
+        </Suspense>
     )
 }

@@ -5,6 +5,7 @@
         "comment-empty-line-before": "never",
         "no-empty-source": null,
         "no-descending-specificity": null,
+        "string-quotes": "single",
         "at-rule-no-unknown": [
             true,
             {
