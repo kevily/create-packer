@@ -42,6 +42,11 @@
         "react-hooks/exhaustive-deps": "warn",
         "react/display-name": "off",
         "react/react-in-jsx-scope": "off",
-        "prettier/prettier": "error"
+        "prettier/prettier": [
+            "error",
+            {
+                "endOfLine": "off"
+            }
+        ]
     }
 }

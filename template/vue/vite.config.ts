@@ -4,11 +4,16 @@ import eslint from 'vite-plugin-eslint'
 import path from 'path'
 
 // https://vitejs.dev/config/
-export default defineConfig({
-    plugins: [eslint(), vue()],
-    resolve: {
-        alias: {
-            '@': path.join(__dirname, 'src')
+export default defineConfig(({ command }) => {
+    return {
+        plugins: [eslint(), vue()],
+        resolve: {
+            alias: {
+                '@': path.join(__dirname, 'src')
+            }
+        },
+        esbuild: {
+            drop: command === 'build' ? ['console', 'debugger'] : []
         }
     }
 })

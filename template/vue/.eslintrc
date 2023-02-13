@@ -38,7 +38,12 @@
         "@typescript-eslint/class-name-casing": 0,
         "@typescript-eslint/explicit-module-boundary-types": "off",
         "@typescript-eslint/ban-ts-comment": "off",
-        "prettier/prettier": "error",
+        "prettier/prettier": [
+            "error",
+            {
+                "endOfLine": "off"
+            }
+        ],
         "vue/multi-word-component-names": 0,
         "vue/html-indent": ["error", 4]
     }
