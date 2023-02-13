@@ -11,8 +11,8 @@ coverage/
 # production
 build/
 dist/
-.vscpde/*
-!.vsvode/extensions.json
+.vscode/*
+!.vscode/extensions.json
 .idea
 .history
 
