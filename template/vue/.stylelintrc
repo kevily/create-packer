@@ -9,7 +9,7 @@
         "at-rule-no-unknown": [
             true,
             {
-                "ignoreAtRules": ["tailwind", "apply"]
+                "ignoreAtRules": ["tailwind", "apply", "use"]
             }
         ],
         "selector-pseudo-class-no-unknown": [
@@ -17,6 +17,7 @@
             {
                 "ignorePseudoClasses": ["global"]
             }
-        ]
+        ],
+        "selector-class-pattern": null
     }
 }

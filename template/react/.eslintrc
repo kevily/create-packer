@@ -26,6 +26,7 @@
         "@typescript-eslint/no-var-requires": 0,
         "@typescript-eslint/explicit-function-return-type": "off",
         "@typescript-eslint/no-explicit-any": 0,
+        "@typescript-eslint/no-non-null-assertion": "off",
         "@typescript-eslint/no-inferrable-types": [
             "warn",
             {
@@ -37,6 +38,7 @@
         "@typescript-eslint/class-name-casing": 0,
         "@typescript-eslint/explicit-module-boundary-types": "off",
         "@typescript-eslint/ban-ts-comment": "off",
+        "@typescript-eslint/no-empty-interface": "off",
         "react/prop-types": "off",
         "react/no-find-dom-node": "off",
         "react-hooks/exhaustive-deps": "warn",
@@ -47,6 +49,7 @@
             {
                 "endOfLine": "auto"
             }
-        ]
+        ],
+        "no-constant-condition": "off"
     }
 }

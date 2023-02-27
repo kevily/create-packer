@@ -2,11 +2,12 @@ import { ref } from 'vue'
 import { isFunction } from 'lodash-es'
 
 export interface useVisibleConfigType {
+    defaultVisible?: boolean
     onBeforeShow?: () => Promise<boolean | void>
     onBeforeHide?: () => Promise<boolean | void>
 }
 export default function useVisible(config?: useVisibleConfigType) {
-    const visible = ref(false)
+    const visible = ref(config?.defaultVisible ?? false)
     const onShow = async () => {
         let isShow: boolean | void = true
         if (isFunction(config?.onBeforeShow)) {

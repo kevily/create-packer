@@ -9,4 +9,5 @@
 - Tailwindcss 3.x
 - Eslint
 - Prettier
+- axios 1.x
 - Alias @ to <project_root>/src

@@ -1,16 +1,23 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
-import names from './router.names'
+import names from './names'
+import * as homeRouter from './home'
+import Layout from '@/layout'
 
-const routes: (RouteRecordRaw & { name: string })[] = [
-    { path: '/', name: names.home, component: () => import('@/pages/home') },
-    { path: '/404', name: names.notFound, component: () => import('@/pages/notFound') }
+const routes: RouteRecordRaw[] = [
+    {
+        path: '/',
+        component: Layout,
+        redirect: { name: names.home },
+        children: [...homeRouter.routes]
+    },
+    { path: '/404', name: names.notFound, component: () => import('@/pages/not-found') }
 ]
 const router = createRouter({
     history: createWebHashHistory(),
     routes
 })
 router.beforeEach(async to => {
-    if (!Object.values(names).includes(to.name! as string)) {
+    if (!Object.values(names).includes(to.name as string)) {
         return {
             replace: true,
             name: names.notFound
