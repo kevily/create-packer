@@ -1,5 +1,5 @@
 import { ref, reactive, computed, unref } from 'vue'
-import { cloneDeep, concat, assign, pick, isNil, size, map } from 'lodash-es'
+import { cloneDeep, concat, assign, pick, isNil, size, map, max } from 'lodash-es'
 
 export interface stateType<ListItem, P> {
     loading: boolean
@@ -7,7 +7,8 @@ export interface stateType<ListItem, P> {
     params: P
     list: ListItem[]
     sum: Record<string, any>
-    selected: any[]
+    selected: ListItem[]
+    selectedKeys: (string | number)[]
     pagination: {
         current: number
         pageSize: number
@@ -47,12 +48,15 @@ export default function createListStore<
     const list = ref<stateType<ListItem, P>['list']>([])
     const sum = reactive<stateType<ListItem, P>['sum']>({})
     const selected = ref<stateType<ListItem, P>['selected']>([])
+    const selectedKeys = ref<stateType<ListItem, P>['selectedKeys']>([])
     const pagination = computed<stateType<ListItem, P>['pagination']>(() => ({
         current: params.page || 0,
         pageSize: params.pageSize || 0,
         total: total.value
     }))
-    const selectedLen = computed<stateType<ListItem, P>['selectedLen']>(() => size(selected.value))
+    const selectedLen = computed<stateType<ListItem, P>['selectedLen']>(() => {
+        return max([size(selected.value), size(selectedKeys.value)]) || 0
+    })
     function resetParams() {
         assign(params, cloneDeep(config.defaultParams))
     }
@@ -99,6 +103,7 @@ export default function createListStore<
         list,
         sum,
         selected,
+        selectedKeys,
         pagination,
         selectedLen,
         resetParams,
