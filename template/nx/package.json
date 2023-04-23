@@ -1,0 +1,52 @@
+{
+    "name": "nx",
+    "version": "0.0.0",
+    "license": "MIT",
+    "scripts": {
+        "build": "nx build",
+        "build:all": "nx run-many -t build",
+        "lint": "nx run-many -t lint && nx-stylelint:lint",
+        "lint:fix": "nx run-many -t lint --fix && nx-stylelint:lint --fix",
+        "format": "nx format:write",
+        "format:all": "nx format:write --libs-and-apps",
+        "add:react-lib": "nx g @nrwl/react:lib",
+        "add:react-app": "nx g @nrwl/react:app",
+        "add:vue-lib": "nx g @nx-plus/vue:lib",
+        "add:vue-app": "nx g @nx-plus/vue:app",
+        "add:ng-lib": "nx g @nrwl/angular:lib",
+        "add:ng-app": "nx g @nrwl/angular:app",
+        "add:ts-lib": "nx g @nrwl/js:lib",
+        "add:ts-app": "nx g @nrwl/js:app",
+        "add:eslint": "nx g @nrwl/linter:workspace-rule",
+        "add:storybook": "nx g @nrwl/storybook:configuration",
+        "add:stylelint": "nx g nx-stylelint:configuration --project",
+        "log": "nx view-logs",
+        "cz": "cz",
+        "push": "npm run commit && git push",
+        "commit": "git add . && npm run cz"
+    },
+    "private": true,
+    "devDependencies": {
+        "@commitlint/cli": "17.6.1",
+        "@commitlint/config-conventional": "17.6.1",
+        "@commitlint/cz-commitlint": "17.5.0",
+        "@nrwl/angular": "15.9.2",
+        "@nrwl/js": "15.9.2",
+        "@nrwl/linter": "15.9.2",
+        "@nrwl/react": "15.9.2",
+        "@nrwl/storybook": "15.9.2",
+        "@nrwl/workspace": "15.9.2",
+        "@nx-plus/vue": "15.0.0-rc.0",
+        "commitizen": "4.3.0",
+        "eslint": "8.39.0",
+        "nx": "15.9.2",
+        "nx-stylelint": "15.0.0",
+        "prettier": "2.6.2",
+        "typescript": "4"
+    },
+    "config": {
+        "commitizen": {
+            "path": "@commitlint/cz-commitlint"
+        }
+    }
+}
