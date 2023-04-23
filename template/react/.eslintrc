@@ -33,6 +33,8 @@
         "useJSXTextNode": true
     },
     "rules": {
+        "import/export": "off",
+        "import/namespace": "off",
         "import/order": [
             "error",
             {
@@ -58,7 +60,7 @@
                 "ignoreParameters": true
             }
         ],
-        "@typescript-eslint/no-unused-vars": "warn",
+        "@typescript-eslint/no-unused-vars": ["warn", { "argsIgnorePattern": "^_" }],
         "@typescript-eslint/member-delimiter-style": 0,
         "@typescript-eslint/class-name-casing": 0,
         "@typescript-eslint/explicit-module-boundary-types": "off",

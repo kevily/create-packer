@@ -1,6 +1,6 @@
 import { create } from 'zustand'
 import { combine } from 'zustand/middleware'
-import produce from 'immer'
+import { produce } from 'immer'
 
 type setStateType<S> = (updater: (state: S) => void) => void
 export interface defineStoreOptionsType<S extends object, A extends object> {

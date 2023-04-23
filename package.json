@@ -9,11 +9,11 @@
     "bin": "./bin/index.js",
     "scripts": {
         "login": "npm login --registry http://registry.npmjs.org",
-        "pub": "yarn build && yarn push && node ./utils/pub.js",
-        "test": "yarn build && rimraf ./__test__ && cd ./__test__ && node ../bin -c",
+        "pub": "pnpm run build && pnpm run push && node ./utils/pub.js",
+        "test": "pnpm run build && rimraf ./__test__ && cd ./__test__ && node ../bin -c",
         "build": "rimraf ./bin && tsc",
-        "commit": "git add . && task --cz",
-        "push": "yarn commit && git push"
+        "commit": "git add . && cz",
+        "push": "pnpm run commit && git push"
     },
     "files": [
         "bin",
@@ -31,13 +31,21 @@
     },
     "devDependencies": {
         "1k-tasks": "1.0.8",
+        "@commitlint/config-conventional": "^17.6.1",
+        "@commitlint/cz-commitlint": "17.4.2",
         "@types/fs-extra": "9.0.12",
         "@types/inquirer": "7.3.3",
         "@types/node": "16.4.7",
         "@typescript-eslint/eslint-plugin": "4.29.2",
         "@typescript-eslint/parser": "4.29.2",
+        "commitizen": "4.3.0",
         "eslint": "7.32.0",
         "rimraf": "3.0.2",
         "typescript": "4.3.5"
+    },
+    "config": {
+        "commitizen": {
+            "path": "@commitlint/cz-commitlint"
+        }
     }
 }
