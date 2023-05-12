@@ -12,7 +12,7 @@
     "singleQuote": true,
     "trailingComma": "none",
     "bracketSpacing": true,
-    "jsxBracketSameLine": true,
+    "bracketSameLine": true,
     "arrowParens": "avoid",
     "rangeStart": 0
 }
