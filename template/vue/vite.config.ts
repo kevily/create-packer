@@ -6,7 +6,14 @@ import path from 'path'
 // https://vitejs.dev/config/
 export default defineConfig(({ command }) => {
     return {
-        plugins: [eslint(), vue()],
+        plugins: [
+            eslint(),
+            vue({
+                script: {
+                    defineModel: true
+                }
+            })
+        ],
         resolve: {
             alias: {
                 '@': path.join(__dirname, 'src')
@@ -14,6 +21,7 @@ export default defineConfig(({ command }) => {
         },
         esbuild: {
             drop: command === 'build' ? ['console', 'debugger'] : []
-        }
+        },
+        build: {}
     }
 })
