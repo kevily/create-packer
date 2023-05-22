@@ -77,16 +77,8 @@ export default function createListStore<
                 total: unref(total),
                 params
             })
-            const newData = map(result.list, (item: any) => ({
-                ...item,
-                __active__: {
-                    campaign: false,
-                    adGroup: false,
-                    target: false,
-                    searchTerm: false
-                }
-            }))
-            list.value = !isNil(result.page) && arg?.isConcat ? concat(list, newData) : newData
+            list.value =
+                !isNil(result.page) && arg?.isConcat ? concat(list, result.list) : result.list
             sum.value = result.sum || {}
             total.value = result.total || total.value
             params.page = result.page || params.page
