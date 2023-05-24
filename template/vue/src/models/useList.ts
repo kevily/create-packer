@@ -78,7 +78,7 @@ export default function createListStore<
                 params
             })
             list.value =
-                !isNil(result.page) && arg?.isConcat ? concat(list, result.list) : result.list
+                !isNil(result.page) && arg?.isConcat ? concat(list.value, result.list) : result.list
             sum.value = result.sum || {}
             total.value = result.total || total.value
             params.page = result.page || params.page
