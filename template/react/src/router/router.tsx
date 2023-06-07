@@ -3,17 +3,14 @@ import { createBrowserRouter } from 'react-router-dom'
 import * as home from './home'
 import paths from './paths'
 
-const Layout = lazy(() => import('@/layout'))
-const NotFound = lazy(() => import('@/pages/notFound'))
-
 export default createBrowserRouter([
     {
         path: paths.root,
-        element: <Layout />,
+        Component: lazy(() => import('@/layout')),
         children: [...home.routes]
     },
     {
         path: '*',
-        element: <NotFound />
+        Component: lazy(() => import('@/pages/notFound'))
     }
 ])

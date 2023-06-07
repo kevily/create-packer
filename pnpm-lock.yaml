@@ -83,7 +83,7 @@ importers:
       prettier: '2'
       react: 18.2.0
       react-dom: 18.2.0
-      stylelint: 15.6.0
+      stylelint: 15.7.0
       stylelint-config-standard: 33.0.0
       tailwindcss: 3.3.1
       typescript: 5.0.4
@@ -132,8 +132,8 @@ importers:
       postcss-import: 15.1.0_postcss@8.4.23
       postcss-nesting: 11.2.2_postcss@8.4.23
       prettier: 2.8.8
-      stylelint: 15.6.0
-      stylelint-config-standard: 33.0.0_stylelint@15.6.0
+      stylelint: 15.7.0
+      stylelint-config-standard: 33.0.0_stylelint@15.7.0
       tailwindcss: 3.3.1_postcss@8.4.23
       typescript: 5.0.4
       vite: 4.3.1_@types+node@18.16.0
@@ -327,7 +327,7 @@ importers:
       react: 18.2.0
       react-dom: 18.2.0
       react-router-dom: 6.10.0
-      stylelint: 15.6.0
+      stylelint: 15.7.0
       stylelint-config-standard: 33.0.0
       tailwindcss: 3.3.1
       typescript: 5.0.4
@@ -376,8 +376,8 @@ importers:
       postcss-import: 15.1.0_postcss@8.4.23
       postcss-nesting: 11.2.2_postcss@8.4.23
       prettier: 2.8.7
-      stylelint: 15.6.0
-      stylelint-config-standard: 33.0.0_stylelint@15.6.0
+      stylelint: 15.7.0
+      stylelint-config-standard: 33.0.0_stylelint@15.7.0
       tailwindcss: 3.3.1_postcss@8.4.23
       typescript: 5.0.4
       vite: 4.3.1_@types+node@18.16.0
@@ -398,7 +398,7 @@ importers:
       postcss-nesting: 11.2.2
       prettier: 2.8.8
       solid-js: 1.7.5
-      stylelint: 15.6.1
+      stylelint: 15.7.0
       stylelint-config-standard: 33.0.0
       tailwindcss: 3.3.2
       typescript: 5.0.4
@@ -419,8 +419,8 @@ importers:
       postcss-import: 15.1.0_postcss@8.4.23
       postcss-nesting: 11.2.2_postcss@8.4.23
       prettier: 2.8.8
-      stylelint: 15.6.1
-      stylelint-config-standard: 33.0.0_stylelint@15.6.1
+      stylelint: 15.7.0
+      stylelint-config-standard: 33.0.0_stylelint@15.7.0
       tailwindcss: 3.3.2
       typescript: 5.0.4
       vite: 4.3.5
@@ -484,7 +484,7 @@ importers:
       postcss-import: 15.1.0
       postcss-nesting: 11.2.2
       prettier: '2'
-      stylelint: 15.6.0
+      stylelint: 15.7.0
       stylelint-config-standard: 33.0.0
       tailwindcss: 3.3.1
       typescript: 5.0.4
@@ -521,8 +521,8 @@ importers:
       postcss-import: 15.1.0_postcss@8.4.23
       postcss-nesting: 11.2.2_postcss@8.4.23
       prettier: 2.8.7
-      stylelint: 15.6.0
-      stylelint-config-standard: 33.0.0_stylelint@15.6.0
+      stylelint: 15.7.0
+      stylelint-config-standard: 33.0.0_stylelint@15.7.0
       tailwindcss: 3.3.1_postcss@8.4.23
       typescript: 5.0.4
       vite: 4.3.8
@@ -4830,8 +4830,8 @@ packages:
       '@jridgewell/trace-mapping': 0.3.9
     dev: true
 
-  /@csstools/css-parser-algorithms/2.1.1_gdfqdfecdiaxr4x3xd7wxrvuhq:
-    resolution: {integrity: sha512-viRnRh02AgO4mwIQb2xQNJju0i+Fh9roNgmbR5xEuG7J3TGgxjnE95HnBLgsFJOJOksvcfxOUCgODcft6Y07cA==}
+  /@csstools/css-parser-algorithms/2.2.0_gdfqdfecdiaxr4x3xd7wxrvuhq:
+    resolution: {integrity: sha512-9BoQ/jSrPq4vv3b9jjLW+PNNv56KlDH5JMx5yASSNrCtvq70FCNZUjXRvbCeR9hYj9ZyhURtqpU/RFIgg6kiOw==}
     engines: {node: ^14 || ^16 || >=18}
     peerDependencies:
       '@csstools/css-tokenizer': ^2.1.1
@@ -4844,14 +4844,14 @@ packages:
     engines: {node: ^14 || ^16 || >=18}
     dev: true
 
-  /@csstools/media-query-list-parser/2.0.4_rffw2jz5u7v47thsjhdr4x67vi:
-    resolution: {integrity: sha512-GyYot6jHgcSDZZ+tLSnrzkR7aJhF2ZW6d+CXH66mjy5WpAQhZD4HDke2OQ36SivGRWlZJpAz7TzbW6OKlEpxAA==}
+  /@csstools/media-query-list-parser/2.1.0_g5wmdbqtzzaodrrmvxcit5gfji:
+    resolution: {integrity: sha512-MXkR+TeaS2q9IkpyO6jVCdtA/bfpABJxIrfkLswThFN8EZZgI2RfAHhm6sDNDuYV25d5+b8Lj1fpTccIcSLPsQ==}
     engines: {node: ^14 || ^16 || >=18}
     peerDependencies:
       '@csstools/css-parser-algorithms': ^2.1.1
       '@csstools/css-tokenizer': ^2.1.1
     dependencies:
-      '@csstools/css-parser-algorithms': 2.1.1_gdfqdfecdiaxr4x3xd7wxrvuhq
+      '@csstools/css-parser-algorithms': 2.2.0_gdfqdfecdiaxr4x3xd7wxrvuhq
       '@csstools/css-tokenizer': 2.1.1
     dev: true
 
@@ -4862,15 +4862,6 @@ packages:
       postcss-selector-parser: ^6.0.10
     dependencies:
       postcss-selector-parser: 6.0.13
-    dev: true
-
-  /@csstools/selector-specificity/2.2.0_i42hiwwcp5l3eeahmzszdaagtq:
-    resolution: {integrity: sha512-+OJ9konv95ClSTOJCmMZqpd5+YGsB2S+x6w3E1oaM8UuR5j8nTNHYSz8c9BEPGDOCMQYIEEGlVPj/VY64iTbGw==}
-    engines: {node: ^14 || ^16 || >=18}
-    peerDependencies:
-      postcss-selector-parser: ^6.0.10
-    dependencies:
-      postcss-selector-parser: 6.0.12
     dev: true
 
   /@docsearch/css/3.2.0:
@@ -11432,6 +11423,16 @@ packages:
 
   /cosmiconfig/8.1.3:
     resolution: {integrity: sha512-/UkO2JKI18b5jVMJUp0lvKFMpa/Gye+ZgZjKD+DGEN9y7NRcf/nK1A0sp67ONmKtnDCNMS44E6jrk0Yc3bDuUw==}
+    engines: {node: '>=14'}
+    dependencies:
+      import-fresh: 3.3.0
+      js-yaml: 4.1.0
+      parse-json: 5.2.0
+      path-type: 4.0.0
+    dev: true
+
+  /cosmiconfig/8.2.0:
+    resolution: {integrity: sha512-3rTMnFJA1tCOPwRxtgF4wd7Ab2qvDbL8jX+3smjIbS4HlZBagTlpERbdN7iAbWlrfxE3M8c27kTwTawQ7st+OQ==}
     engines: {node: '>=14'}
     dependencies:
       import-fresh: 3.3.0
@@ -21101,6 +21102,15 @@ packages:
       postcss: 8.4.23
     dev: true
 
+  /postcss-safe-parser/6.0.0_postcss@8.4.24:
+    resolution: {integrity: sha512-FARHN8pwH+WiS2OPCxJI8FuRJpTVnn6ZNFiqAM2aeW2LwTHWWmWgIyKC6cUo0L8aeKiF/14MNvnpls6R2PBeMQ==}
+    engines: {node: '>=12.0'}
+    peerDependencies:
+      postcss: ^8.3.3
+    dependencies:
+      postcss: 8.4.24
+    dev: true
+
   /postcss-scss/4.0.6_postcss@8.4.23:
     resolution: {integrity: sha512-rLDPhJY4z/i4nVFZ27j9GqLxj1pwxE80eAzUNRMXtcpipFYIeowerzBgG3yJhMtObGEXidtIgbUpQ3eLDsf5OQ==}
     engines: {node: '>=12.0'}
@@ -21270,6 +21280,15 @@ packages:
       nanoid: 3.3.6
       picocolors: 1.0.0
       source-map-js: 1.0.2
+
+  /postcss/8.4.24:
+    resolution: {integrity: sha512-M0RzbcI0sO/XJNucsGjvWU9ERWxb/ytp1w6dKtxTKgixdtQDq4rmx/g8W1hnaheq9jgwL/oyEdH5Bc4WwJKMqg==}
+    engines: {node: ^10 || ^12 || >=14}
+    dependencies:
+      nanoid: 3.3.6
+      picocolors: 1.0.0
+      source-map-js: 1.0.2
+    dev: true
 
   /prelude-ls/1.1.2:
     resolution: {integrity: sha512-ESF23V4SKG6lVSGZgYNpbsiaAkdab6ZgOxe52p7+Kid3W3u3bxR4Vfd/o21dmN7jSt0IwgZ4v5MUd26FEtXE9w==}
@@ -23679,52 +23698,35 @@ packages:
       postcss-selector-parser: 6.0.13
     dev: true
 
-  /stylelint-config-recommended/12.0.0_stylelint@15.6.0:
+  /stylelint-config-recommended/12.0.0_stylelint@15.7.0:
     resolution: {integrity: sha512-x6x8QNARrGO2sG6iURkzqL+Dp+4bJorPMMRNPScdvaUK8PsynriOcMW7AFDKqkWAS5wbue/u8fUT/4ynzcmqdQ==}
     peerDependencies:
       stylelint: ^15.5.0
     dependencies:
-      stylelint: 15.6.0
+      stylelint: 15.7.0
     dev: true
 
-  /stylelint-config-recommended/12.0.0_stylelint@15.6.1:
-    resolution: {integrity: sha512-x6x8QNARrGO2sG6iURkzqL+Dp+4bJorPMMRNPScdvaUK8PsynriOcMW7AFDKqkWAS5wbue/u8fUT/4ynzcmqdQ==}
-    peerDependencies:
-      stylelint: ^15.5.0
-    dependencies:
-      stylelint: 15.6.1
-    dev: true
-
-  /stylelint-config-standard/33.0.0_stylelint@15.6.0:
+  /stylelint-config-standard/33.0.0_stylelint@15.7.0:
     resolution: {integrity: sha512-eyxnLWoXImUn77+ODIuW9qXBDNM+ALN68L3wT1lN2oNspZ7D9NVGlNHb2QCUn4xDug6VZLsh0tF8NyoYzkgTzg==}
     peerDependencies:
       stylelint: ^15.5.0
     dependencies:
-      stylelint: 15.6.0
-      stylelint-config-recommended: 12.0.0_stylelint@15.6.0
+      stylelint: 15.7.0
+      stylelint-config-recommended: 12.0.0_stylelint@15.7.0
     dev: true
 
-  /stylelint-config-standard/33.0.0_stylelint@15.6.1:
-    resolution: {integrity: sha512-eyxnLWoXImUn77+ODIuW9qXBDNM+ALN68L3wT1lN2oNspZ7D9NVGlNHb2QCUn4xDug6VZLsh0tF8NyoYzkgTzg==}
-    peerDependencies:
-      stylelint: ^15.5.0
-    dependencies:
-      stylelint: 15.6.1
-      stylelint-config-recommended: 12.0.0_stylelint@15.6.1
-    dev: true
-
-  /stylelint/15.6.0:
-    resolution: {integrity: sha512-Cqzpc8tvJm77KaM8qUbhpJ/UYK55Ia0whQXj4b9IId9dlPICO7J8Lyo15SZWiHxKjlvy3p5FQor/3n6i8ignXg==}
+  /stylelint/15.7.0:
+    resolution: {integrity: sha512-fQRwHwWuZsDn4ENyE9AsKkOkV9WlD2CmYiVDbdZPdS3iZh0ceypOn1EuwTNuZ8xTrHF+jVeIEzLtFFSlD/nJHg==}
     engines: {node: ^14.13.1 || >=16.0.0}
     hasBin: true
     dependencies:
-      '@csstools/css-parser-algorithms': 2.1.1_gdfqdfecdiaxr4x3xd7wxrvuhq
+      '@csstools/css-parser-algorithms': 2.2.0_gdfqdfecdiaxr4x3xd7wxrvuhq
       '@csstools/css-tokenizer': 2.1.1
-      '@csstools/media-query-list-parser': 2.0.4_rffw2jz5u7v47thsjhdr4x67vi
+      '@csstools/media-query-list-parser': 2.1.0_g5wmdbqtzzaodrrmvxcit5gfji
       '@csstools/selector-specificity': 2.2.0_c3vcbepomgmxc74cgtawpgpkyi
       balanced-match: 2.0.0
       colord: 2.9.3
-      cosmiconfig: 8.1.3
+      cosmiconfig: 8.2.0
       css-functions-list: 3.1.0
       css-tree: 2.3.1
       debug: 4.3.4
@@ -23745,62 +23747,11 @@ packages:
       micromatch: 4.0.5
       normalize-path: 3.0.0
       picocolors: 1.0.0
-      postcss: 8.4.23
+      postcss: 8.4.24
       postcss-media-query-parser: 0.2.3
       postcss-resolve-nested-selector: 0.1.1
-      postcss-safe-parser: 6.0.0_postcss@8.4.23
+      postcss-safe-parser: 6.0.0_postcss@8.4.24
       postcss-selector-parser: 6.0.13
-      postcss-value-parser: 4.2.0
-      resolve-from: 5.0.0
-      string-width: 4.2.3
-      strip-ansi: 6.0.1
-      style-search: 0.1.0
-      supports-hyperlinks: 3.0.0
-      svg-tags: 1.0.0
-      table: 6.8.1
-      v8-compile-cache: 2.3.0
-      write-file-atomic: 5.0.1
-    transitivePeerDependencies:
-      - supports-color
-    dev: true
-
-  /stylelint/15.6.1:
-    resolution: {integrity: sha512-d8icFBlVl93Elf3Z5ABQNOCe4nx69is3D/NZhDLAie1eyYnpxfeKe7pCfqzT5W4F8vxHCLSDfV8nKNJzogvV2Q==}
-    engines: {node: ^14.13.1 || >=16.0.0}
-    hasBin: true
-    dependencies:
-      '@csstools/css-parser-algorithms': 2.1.1_gdfqdfecdiaxr4x3xd7wxrvuhq
-      '@csstools/css-tokenizer': 2.1.1
-      '@csstools/media-query-list-parser': 2.0.4_rffw2jz5u7v47thsjhdr4x67vi
-      '@csstools/selector-specificity': 2.2.0_i42hiwwcp5l3eeahmzszdaagtq
-      balanced-match: 2.0.0
-      colord: 2.9.3
-      cosmiconfig: 8.1.3
-      css-functions-list: 3.1.0
-      css-tree: 2.3.1
-      debug: 4.3.4
-      fast-glob: 3.2.12
-      fastest-levenshtein: 1.0.16
-      file-entry-cache: 6.0.1
-      global-modules: 2.0.0
-      globby: 11.1.0
-      globjoin: 0.1.4
-      html-tags: 3.3.1
-      ignore: 5.2.4
-      import-lazy: 4.0.0
-      imurmurhash: 0.1.4
-      is-plain-object: 5.0.0
-      known-css-properties: 0.27.0
-      mathml-tag-names: 2.1.3
-      meow: 9.0.0
-      micromatch: 4.0.5
-      normalize-path: 3.0.0
-      picocolors: 1.0.0
-      postcss: 8.4.23
-      postcss-media-query-parser: 0.2.3
-      postcss-resolve-nested-selector: 0.1.1
-      postcss-safe-parser: 6.0.0_postcss@8.4.23
-      postcss-selector-parser: 6.0.12
       postcss-value-parser: 4.2.0
       resolve-from: 5.0.0
       string-width: 4.2.3
@@ -25636,7 +25587,7 @@ packages:
         optional: true
     dependencies:
       esbuild: 0.14.54
-      postcss: 8.4.23
+      postcss: 8.4.24
       resolve: 1.22.2
       rollup: 2.77.3
     optionalDependencies:
