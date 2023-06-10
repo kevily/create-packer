@@ -37,7 +37,7 @@ export async function create<P extends Record<string, any>, Refs extends Record<
                     },
                     $updateProps: newProps => {
                         if (newProps) {
-                            setState(state => ({ ...state, ...props }))
+                            setState(state => ({ ...state, ...newProps }))
                         }
                     },
                     ...ref.current
