@@ -1,20 +1,30 @@
 import { createVNode, render, VNodeChild } from 'vue'
-import { assign } from 'lodash-es'
-import app from '@/providers/app'
+import { assign, keys } from 'lodash-es'
+import app from './app'
 
 const store = new Map()
-export default function createModal<
+
+function reset(oldObj: Record<string, any>, newObj: Record<string, any>) {
+    keys(oldObj).forEach(k => {
+        oldObj[k] = void 0
+    })
+    assign(oldObj, newObj)
+}
+
+export default function createComponentInstance<
     P extends Record<string, any>,
     E extends Record<string, any>,
     Slots extends Record<string, () => VNodeChild> = Record<string, () => VNodeChild>
 >(name: string, component: any, props?: P, slots?: Slots) {
     let vNode = store.get(name)
     function updateProps(props: Partial<P>) {
-        assign(vNode.component.props, props)
+        reset(vNode.component.props, props)
     }
-    function updateSlots(slots?: Partial<Record<string, () => VNodeChild>>) {
-        assign(vNode.component.slots, slots)
+
+    function updateSlots(slots: Partial<Record<string, () => VNodeChild>>) {
+        reset(vNode.component.slots, slots)
     }
+
     if (!vNode) {
         const container = document.createElement('div')
         vNode = createVNode(component, props, slots)
@@ -23,7 +33,7 @@ export default function createModal<
         render(vNode, container)
     } else {
         updateProps(props || {})
-        updateSlots(slots)
+        updateSlots(slots || {})
     }
     return {
         instance: vNode,
