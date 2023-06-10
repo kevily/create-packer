@@ -1,2 +1,2 @@
-export * from './defineStore'
+export * from './defineModel'
 export { default as request } from './request'
