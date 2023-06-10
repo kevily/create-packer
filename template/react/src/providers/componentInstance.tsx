@@ -13,8 +13,8 @@ import { createRoot } from 'react-dom/client'
 const instanceMap: Record<string, any> = {}
 
 interface refsType<P> {
-    setProps: (newProps?: P) => void
-    updateProps: (newProps?: Partial<P>) => void
+    $setProps: (newProps?: P) => void
+    $updateProps: (newProps?: Partial<P>) => void
 }
 
 export async function create<P extends Record<string, any>, Refs extends Record<string, any>>(
@@ -33,10 +33,10 @@ export async function create<P extends Record<string, any>, Refs extends Record<
 
             useImperativeHandle(refs, () => {
                 return {
-                    setProps: newProps => {
+                    $setProps: newProps => {
                         setState(() => newProps)
                     },
-                    updateProps: newProps => {
+                    $updateProps: newProps => {
                         if (newProps) {
                             setState(state => ({ ...state, ...props }))
                         }
@@ -57,7 +57,7 @@ export async function create<P extends Record<string, any>, Refs extends Record<
             )
         })
     }
-    $instance.setProps(props)
+    $instance.$setProps(props)
     return $instance
 }
 
