@@ -3,7 +3,6 @@ import {
     ForwardRefExoticComponent,
     PropsWithoutRef,
     RefAttributes,
-    useEffect,
     useImperativeHandle,
     useRef,
     useState
@@ -12,7 +11,7 @@ import { createRoot } from 'react-dom/client'
 
 const instanceMap: Record<string, any> = {}
 
-interface refsType<P> {
+export interface refsType<P> {
     $setProps: (newProps?: P) => void
     $updateProps: (newProps?: Partial<P>) => void
 }
@@ -58,21 +57,5 @@ export async function create<P extends Record<string, any>, Refs extends Record<
         })
     }
     $instance.$setProps(props)
-    return $instance
-}
-
-export function useHooks<P extends Record<string, any>, Refs extends Record<string, any>>(
-    key: string,
-    Component: ForwardRefExoticComponent<PropsWithoutRef<any> & RefAttributes<Refs>>,
-    props?: P
-) {
-    const $instance = useRef<Refs & refsType<P>>(instanceMap[key])
-
-    useEffect(() => {
-        create(key, Component, props).then(instance => {
-            $instance.current = instance
-        })
-    }, [])
-
     return $instance
 }
