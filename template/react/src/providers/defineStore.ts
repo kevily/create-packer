@@ -1,42 +1,39 @@
 import { create } from 'zustand'
-import { combine } from 'zustand/middleware'
 import { produce } from 'immer'
 
-type setStateType<S> = (updater: (state: S) => void) => void
-export interface defineStoreOptionsType<S extends object, A extends object> {
+export type setStateType<S> = (updater: (state: S) => void) => void
+export interface modelActionsType {
+    reset: () => void
+}
+export interface modelOptionsType<S extends Record<string, any>, A extends Record<string, any>> {
     state: () => S
-    actions: (
-        setState: setStateType<S>,
-        getState: () => S,
-        getActions: () => Record<string, any>
-    ) => A
+    actions: (setState: setStateType<S>, getState: () => S, actions: modelActionsType) => A
 }
 
-export function defineStore<S extends object, A extends object>(
-    options: defineStoreOptionsType<S, A>
-) {
-    return create(
-        combine({ state: options.state() }, (setState, getState, store) => {
-            const _setState: setStateType<S> = updater => {
-                setState(
-                    produce((store: { state: S }) => {
-                        updater(store.state)
-                    }) as any
-                )
+export function defineModel<
+    S extends Record<string, any>,
+    A extends Record<string, any> = Record<string, any>
+>(options: modelOptionsType<S, A>) {
+    return create<{ state: S; actions: A }>()((setState, getState, store) => {
+        const _setState: setStateType<S> = updater => {
+            setState(
+                produce((store: { state: S }) => {
+                    updater(store.state)
+                }) as any
+            )
+        }
+        const _getState = () => getState().state
+        const reset: modelActionsType['reset'] = () => {
+            setState({ state: options.state() })
+        }
+        return {
+            state: options.state(),
+            actions: {
+                reset,
+                setState: _setState,
+                subscribe: store.subscribe,
+                ...options.actions(_setState, _getState, { reset })
             }
-            const _getState = () => getState().state
-            const _getActions = () => (getState() as any).actions
-            return {
-                actions: {
-                    reset: () => {
-                        setState({ state: options.state() })
-                    },
-                    setState: _setState,
-                    destroy: store.destroy,
-                    subscribe: store.subscribe,
-                    ...options.actions(_setState, _getState, _getActions)
-                }
-            }
-        })
-    )
+        }
+    })
 }
