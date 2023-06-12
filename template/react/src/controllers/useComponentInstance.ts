@@ -13,13 +13,15 @@ export default function useComponentInstance<
     const pending = useRef(false)
 
     useEffect(() => {
-        if ($instance.current === null && pending.current === false) {
-            pending.current = true
-            componentInstance.create(key, Component, props).then(instance => {
-                $instance.current = instance
-                $instance.current.$updateProps(props)
-                pending.current = false
-            })
+        if ($instance.current === null) {
+            if (pending.current === false) {
+                pending.current = true
+                componentInstance.create(key, Component, props).then(instance => {
+                    $instance.current = instance
+                    $instance.current.$updateProps(props)
+                    pending.current = false
+                })
+            }
         } else {
             $instance.current?.$updateProps(props)
         }
