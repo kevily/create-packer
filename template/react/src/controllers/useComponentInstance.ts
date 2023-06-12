@@ -10,12 +10,18 @@ export default function useComponentInstance<
     props?: P
 ) {
     const $instance = useRef<(Refs & componentInstance.refsType<P>) | null>(null)
+    const pending = useRef(false)
 
     useEffect(() => {
-        componentInstance.create(key, Component, props).then(instance => {
-            $instance.current = instance
-        })
-    }, [])
+        if (pending.current === false) {
+            pending.current = true
+            componentInstance.create(key, Component, props).then(instance => {
+                $instance.current = instance
+            })
+        } else {
+            $instance.current?.$updateProps(props)
+        }
+    }, [props])
 
     return $instance
 }
