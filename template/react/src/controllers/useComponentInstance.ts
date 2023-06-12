@@ -6,7 +6,7 @@ export default function useComponentInstance<
     Refs extends Record<string, any>
 >(
     key: string,
-    Component: ForwardRefExoticComponent<PropsWithoutRef<any> & RefAttributes<Refs>>,
+    Component: ForwardRefExoticComponent<PropsWithoutRef<P> & RefAttributes<Refs>>,
     props?: P
 ) {
     const $instance = useRef<(Refs & componentInstance.refsType<P>) | null>(null)
@@ -18,12 +18,12 @@ export default function useComponentInstance<
                 pending.current = true
                 componentInstance.create(key, Component, props).then(instance => {
                     $instance.current = instance
-                    $instance.current.$updateProps(props)
+                    props && $instance.current.$updateProps(props)
                     pending.current = false
                 })
             }
         } else {
-            $instance.current?.$updateProps(props)
+            props && $instance.current?.$updateProps(props)
         }
     }, [props])
 
