@@ -1,6 +1,6 @@
-import { defineStore } from '@/providers'
+import { defineModel } from '@/providers'
 
-export const useApp = defineStore({
+export const useApp = defineModel({
     state: () => ({}),
     actions: () => ({})
 })
