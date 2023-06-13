@@ -1,42 +1,49 @@
-import { create } from 'zustand'
+import { create, StoreApi, UseBoundStore } from 'zustand'
 import { produce } from 'immer'
+import { ExtractModelType } from '@/types'
 
-export type setStateType<S> = (updater: (state: S) => void) => void
-export interface modelActionsType<S extends Record<string, any>> {
+export interface modelActionsType<S> {
     reset: () => void
-    setState: setStateType<S>
+    setState: (updater: (state: S) => void) => void
 }
-export interface modelOptionsType<S extends Record<string, any>, A extends Record<string, any>> {
+export type genModelActionsType<S, A> = (
+    set: modelActionsType<S>['setState'],
+    get: () => S & modelActionsType<S>,
+    store: StoreApi<S>
+) => A
+export interface modelOptionsType<S, A> {
     state: () => S
-    actions: (getState: () => S, actions: modelActionsType<S>) => A
+    actions: genModelActionsType<S, A>
 }
 
 export function defineModel<S extends Record<string, any>, A extends Record<string, any>>(
     options: modelOptionsType<S, A>
 ) {
-    return create<{ state: S; actions: modelActionsType<S> & A }>()((setState, getState, store) => {
-        const _setState: modelActionsType<S>['setState'] = updater => {
-            setState(
-                produce((store: { state: S }) => {
-                    updater(store.state)
+    return create<S & modelActionsType<S> & A>()((set, get, store) => {
+        const setState: modelActionsType<S>['setState'] = updater => {
+            set(
+                produce((store: S) => {
+                    updater(store)
                 }) as any
             )
         }
-        const _getState = () => getState().state
         const reset: modelActionsType<S>['reset'] = () => {
-            setState({ state: options.state() })
+            set(() => options.state() as never)
         }
         return {
-            state: options.state(),
-            actions: {
-                reset,
-                setState: _setState,
-                subscribe: store.subscribe,
-                ...options.actions(_getState, {
-                    reset,
-                    setState: _setState
-                })
-            }
+            ...options.state(),
+            reset,
+            setState,
+            subscribe: store.subscribe,
+            ...options.actions(setState, get, store)
         }
     })
+}
+
+export function defineModelComputed<
+    Model extends UseBoundStore<StoreApi<any>>,
+    K extends string,
+    R = any
+>(useStore: Model, computed: Record<K, (state: ExtractModelType<Model>) => R>) {
+    return (field: K) => useStore(computed[field])
 }

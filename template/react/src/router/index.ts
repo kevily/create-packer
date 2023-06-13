@@ -1,2 +1,3 @@
-export { default as routePaths } from './paths'
-export { default as router } from './router'
+export { default as routeNames } from './names'
+export * from './router'
+export * from './router.provider'

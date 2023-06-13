@@ -1,9 +1,11 @@
 import { lazy } from 'react'
-import type { RouteObject } from 'react-router-dom'
+import names from './names'
+import type { routeType } from '../router.types'
 
-const routes: RouteObject[] = [
+const routes: routeType[] = [
     {
         index: true,
+        name: names.home,
         Component: lazy(() => import('@/pages/home'))
     }
 ]
