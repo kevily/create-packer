@@ -1,6 +1,6 @@
-import { defineModel } from '@/providers'
+import { modelUtils } from '@/providers'
 
-export const useApp = defineModel({
+export const useApp = modelUtils.define({
     state: () => ({}),
     actions: () => ({})
 })
