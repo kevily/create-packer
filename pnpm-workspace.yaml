@@ -1,3 +1,4 @@
 packages:
     - 'template/*'
     - '!template/lib'
+    - '!template/nx'
