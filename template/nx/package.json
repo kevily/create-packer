@@ -17,8 +17,8 @@
     "scripts": {
         "build": "nx build",
         "build:all": "nx run-many -t build",
-        "lint": "nx run-many -t lint && nx-stylelint:lint",
-        "lint:fix": "nx run-many -t lint --fix && nx-stylelint:lint --fix",
+        "lint": "nx run-many -t lint && nx run-many -t stylelint",
+        "lint:fix": "nx run-many -t lint --fix && nx run-many -t stylelint --fix",
         "format": "nx format:write",
         "format:all": "nx format:write --libs-and-apps",
         "add:react-lib": "nx g @nrwl/react:lib",
