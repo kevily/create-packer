@@ -38,7 +38,7 @@
         "log": "nx view-logs",
         "changeVersion": "lerna version --no-private",
         "pub": "pnpm run build:all && lerna publish --no-private",
-        "login": "npm login --registry http://registry.npmjs.org",
+        "login": "npm login --registry https://registry.npmjs.org",
         "cz": "cz",
         "push": "npm run commit && git push",
         "commit": "git add . && npm run cz"
