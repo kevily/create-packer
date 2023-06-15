@@ -1,2 +1,2 @@
 export { default as routes } from './routes'
-export { default as names } from './names'
+export { default as ids } from './ids'

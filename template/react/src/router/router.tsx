@@ -1,30 +1,30 @@
 import { lazy } from 'react'
-import { concat, isArray, reduce } from 'lodash-es'
 import { createBrowserRouter } from 'react-router-dom'
-import * as home from './home'
-import names from './names'
+import { concat, isArray, reduce } from 'lodash-es'
+import ids from './ids'
 import type { routeType } from './router.types'
 
 const routes: routeType[] = [
     {
         path: '/',
-        name: names.root,
+        id: ids.root,
         Component: lazy(() => import('@/layout')),
-        children: [...home.routes]
+        children: []
     },
     {
         path: '*',
-        name: '404',
+        id: '404',
         Component: lazy(() => import('@/pages/notFound'))
     }
 ]
+
 export const routesList = (function flat(routes: routeType[], parentRoute?: routeType) {
     return reduce(
         routes,
         (result, route) => {
-            route.path = parentRoute
-                ? `${parentRoute.path === '/' ? '' : parentRoute.path}/${route.path}`
-                : route.path
+            if (parentRoute) {
+                route.path = `${parentRoute.path === '/' ? '' : parentRoute.path}/${route.path}`
+            }
             result.push(route)
             if (isArray(route.children)) {
                 result = concat(result, flat(route.children, route))
@@ -34,4 +34,6 @@ export const routesList = (function flat(routes: routeType[], parentRoute?: rout
         [] as routeType[]
     )
 })(routes)
-export const router = createBrowserRouter(routes as never)
+export const router = createBrowserRouter(routes as never, {
+    basename: import.meta.env.VITE_BASE_URL
+})
