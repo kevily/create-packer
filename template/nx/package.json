@@ -17,7 +17,7 @@
     "scripts": {
         "prepare": "husky install",
         "build": "nx build",
-        "build:all": "rm:dist && run-many -t build",
+        "build:all": "pnpm run rm:dist && nx run-many -t build",
         "rm:dist": "rimraf ./dist",
         "lint": "nx run-many -t lint && nx run-many -t stylelint",
         "lint:fix": "nx run-many -t lint --fix && nx run-many -t stylelint --fix",
