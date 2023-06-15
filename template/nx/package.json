@@ -15,6 +15,7 @@
         }
     },
     "scripts": {
+        "prepare": "husky install",
         "build": "nx build",
         "build:all": "nx run-many -t build",
         "lint": "nx run-many -t lint && nx run-many -t stylelint",
@@ -57,6 +58,7 @@
         "@types/node": "20.3.1",
         "commitizen": "4.3.0",
         "eslint": "8.42.0",
+        "husky": "8.0.3",
         "lerna": "7.0.1",
         "nx": "16.3.2",
         "nx-stylelint": "15.0.0",
