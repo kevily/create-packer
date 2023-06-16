@@ -1,7 +1,33 @@
 {
-    "$schema": "./node_modules/nx/schemas/nx-schema.json",
-    "affected": {
-        "defaultBase": "master"
+    "namedInputs": {
+        "default": ["{projectRoot}/**/*", "sharedGlobals"],
+        "production": [
+            "default",
+            "!{projectRoot}/.eslintrc.json",
+            "!{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)",
+            "!{projectRoot}/tsconfig.spec.json",
+            "!{projectRoot}/jest.config.[jt]s"
+        ],
+        "sharedGlobals": []
+    },
+    "targetDefaults": {
+        "build": {
+            "dependsOn": ["^build"],
+            "inputs": ["production", "^production"]
+        },
+        "stylelint": {
+            "inputs": ["default", "{workspaceRoot}/.stylelintrc(.(json|yml|yaml|js))?"]
+        },
+        "lint": {
+            "inputs": ["default", "{workspaceRoot}/.eslintrc.json", "{workspaceRoot}/.eslintignore"]
+        },
+        "test": {
+            "inputs": ["default", "^production", "{workspaceRoot}/jest.preset.js"]
+        }
+    },
+    "workspaceLayout": {
+        "appsDir": "packages",
+        "libsDir": "packages"
     },
     "tasksRunnerOptions": {
         "default": {
@@ -11,22 +37,17 @@
             }
         }
     },
-    "targetDefaults": {
-        "build": {
-            "dependsOn": ["^build"],
-            "inputs": ["production", "^production"]
-        },
-        "stylelint": {
-            "inputs": ["default", "{workspaceRoot}/.stylelintrc(.(json|yml|yaml|js))?"]
+    "affected": {
+        "defaultBase": "master"
+    },
+    "generators": {
+        "@nx/react": {
+            "application": {
+                "babel": true
+            },
+            "library": {
+                "unitTestRunner": "none"
+            }
         }
-    },
-    "namedInputs": {
-        "default": ["{projectRoot}/**/*", "sharedGlobals"],
-        "production": ["default"],
-        "sharedGlobals": []
-    },
-    "workspaceLayout": {
-        "appsDir": "packages",
-        "libsDir": "packages"
     }
 }
