@@ -16,6 +16,9 @@
     },
     "scripts": {
         "prepare": "husky install",
+        "storybook:dev": "nx storybook",
+        "storybook:build": "nx build-storybook",
+        "storybook:build-all": "nx run-many -t build-storybook",
         "build": "nx build",
         "build:all": "pnpm run rm:dist && nx run-many -t build",
         "rm:dist": "rimraf ./dist",
