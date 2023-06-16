@@ -15,6 +15,7 @@
         }
     },
     "scripts": {
+        "postinstall": "node ./scripts/patch-nx-dep-graph.js",
         "prepare": "husky install",
         "storybook:dev": "nx storybook",
         "storybook:build": "nx build-storybook",
@@ -58,7 +59,7 @@
         "@nrwl/react": "16.3.2",
         "@nrwl/storybook": "16.3.2",
         "@nrwl/workspace": "16.3.2",
-        "@nx-plus/vue": "14.1.0",
+        "@nx-plus/vue": "15.0.0-rc.0",
         "@types/node": "20.3.1",
         "commitizen": "4.3.0",
         "eslint": "8.42.0",
