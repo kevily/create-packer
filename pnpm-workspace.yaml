@@ -2,3 +2,4 @@ packages:
     - 'template/*'
     - '!template/lib'
     - '!template/nx'
+    - '!template/cli'
