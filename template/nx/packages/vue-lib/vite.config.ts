@@ -6,7 +6,7 @@ import dts from 'vite-plugin-dts'
 import { joinPathFragments } from '@nx/devkit'
 
 export default defineConfig({
-    cacheDir: '../../node_modules/.vite/base-react-components',
+    cacheDir: '../../node_modules/.vite/vue-lib',
 
     plugins: [
         dts({
@@ -35,7 +35,7 @@ export default defineConfig({
         lib: {
             // Could also be a dictionary or array of multiple entry points.
             entry: 'src/index.ts',
-            name: 'base-vue-components',
+            name: 'vue-lib',
             fileName: 'index',
             // Change this to the formats you want to support.
             // Don't forgot to update your package.json as well.
