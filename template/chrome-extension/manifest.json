@@ -4,12 +4,12 @@
     "description": "Base Level Extension",
     "version": "1.0",
     "action": {
-        "default_popup": "popup/popup.html",
-        "default_icon": "assets/vite.svg"
+        "default_popup": "src/popup/popup.html",
+        "default_icon": "vite.svg"
     },
     "content_scripts": [
         {
-            "js": ["content_script/index.tsx"],
+            "js": ["src/content_script/index.tsx"],
             "matches": [
                 "https://developer.chrome.com/docs/extensions/*",
                 "https://developer.chrome.com/docs/webstore/*"
