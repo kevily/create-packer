@@ -4,7 +4,7 @@ import type { routeType } from '../router.types'
 
 const routes: routeType[] = [
     {
-        index: true,
+        path: '/home',
         id: ids.home,
         Component: lazy(() => import('@/pages/home'))
     }

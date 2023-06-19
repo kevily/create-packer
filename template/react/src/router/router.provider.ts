@@ -1,11 +1,11 @@
-import { find, get } from 'lodash-es'
+import { get } from 'lodash-es'
 import { stringify } from 'qs'
 import { NavigateOptions } from 'react-router-dom'
 import { routeType } from '@/router/router.types'
-import { router, routesList } from './router'
+import { router, routesById } from './router'
 
 export function getRoute(id: routeType['id'], path?: string | string[]) {
-    const route = find(routesList, o => o.id === id)
+    const route = routesById[id]
     if (path) {
         return get(route, path)
     }

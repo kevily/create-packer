@@ -1,7 +1,9 @@
 import { lazy } from 'react'
 import { createBrowserRouter } from 'react-router-dom'
-import { concat, isArray, reduce } from 'lodash-es'
+import { assign, isArray, reduce } from 'lodash-es'
+import { ValueType } from '@/types'
 import ids from './ids'
+import * as home from './home'
 import type { routeType } from './router.types'
 
 const routes: routeType[] = [
@@ -9,7 +11,7 @@ const routes: routeType[] = [
         path: '/',
         id: ids.root,
         Component: lazy(() => import('@/layout')),
-        children: []
+        children: [...home.routes]
     },
     {
         path: '*',
@@ -18,22 +20,23 @@ const routes: routeType[] = [
     }
 ]
 
-export const routesList = (function flat(routes: routeType[], parentRoute?: routeType) {
+export const routesById = (function flat(routes: routeType[], parentRoute?: routeType) {
     return reduce(
         routes,
         (result, route) => {
             if (parentRoute) {
                 route.path = `${parentRoute.path === '/' ? '' : parentRoute.path}/${route.path}`
             }
-            result.push(route)
+            result[route.id] = route
             if (isArray(route.children)) {
-                result = concat(result, flat(route.children, route))
+                assign(result, flat(route.children, route))
             }
             return result
         },
-        [] as routeType[]
+        {} as Record<ValueType<typeof ids>, routeType>
     )
 })(routes)
+
 export const router = createBrowserRouter(routes as never, {
     basename: import.meta.env.VITE_BASE_URL
 })
