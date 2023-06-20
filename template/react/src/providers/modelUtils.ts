@@ -1,7 +1,7 @@
-import { create, StoreApi, UseBoundStore } from 'zustand'
+import { create, StoreApi } from 'zustand'
 import { combine } from 'zustand/middleware'
 import { produce } from 'immer'
-import { ExtractModelType } from '@/types'
+import { forEach, size } from 'lodash-es'
 
 export interface insideActionsType<S> {
     reset: () => void
@@ -12,16 +12,52 @@ export type actionsType<S, OptionAction, InsideActions = unknown> = (
     actions: insideActionsType<S> & InsideActions,
     store: StoreApi<S>
 ) => OptionAction
-export interface optionsType<S, OptionAction> {
+export interface optionsType<S, G, OptionAction> {
     state: () => S
+    getter: () => G
     actions: actionsType<S, OptionAction>
 }
 
-export function define<S extends Record<string, any>, OptionActions extends Record<string, any>>(
-    options: optionsType<S, OptionActions>
-) {
+type GenGetterStateType<S, G extends Record<string, (state: S) => any>> = G extends Record<
+    infer K,
+    (state: S) => infer V
+>
+    ? Record<K, V>
+    : unknown
+export function define<
+    S extends Record<string, any>,
+    G extends Record<string, (state: S) => any>,
+    OptionActions extends Record<string, any>
+>(options: optionsType<S, G, OptionActions>) {
+    function createDefState() {
+        const state: any = options.state()
+        forEach(options.getter(), (getter, k) => {
+            state[k] = getter(state)
+        })
+        return state as S & GenGetterStateType<S, G>
+    }
     return create(
-        combine(options.state(), (set, get, store) => {
+        combine(createDefState(), (set, get, store) => {
+            // getterListener
+            // ----------------------------------------------------------------------
+            store.subscribe(state => {
+                const oldGetterState: any = get()
+                let equalledLen = 0
+                const newGetterState: any = {}
+                forEach(options.getter(), (getter, k) => {
+                    const value = getter(state)
+                    if (value === oldGetterState[k]) {
+                        equalledLen += 1
+                    } else {
+                        newGetterState[k] = getter(state)
+                    }
+                })
+                if (size(options.getter()) > equalledLen) {
+                    set(newGetterState)
+                }
+            })
+            // actions
+            // ----------------------------------------------------------------------
             const setState: insideActionsType<S>['setState'] = updater => {
                 set(
                     produce((store: S) => {
@@ -33,7 +69,6 @@ export function define<S extends Record<string, any>, OptionActions extends Reco
                 set(() => options.state() as never)
             }
             return {
-                ...options.state(),
                 reset,
                 setState,
                 subscribe: store.subscribe,
@@ -41,12 +76,4 @@ export function define<S extends Record<string, any>, OptionActions extends Reco
             }
         })
     )
-}
-
-export function defineComputed<
-    Model extends UseBoundStore<StoreApi<any>>,
-    K extends string,
-    R = any
->(useStore: Model, computed: Record<K, (state: ExtractModelType<Model>) => R>) {
-    return (field: K) => useStore(computed[field])
 }
