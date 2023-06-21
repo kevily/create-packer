@@ -12,13 +12,15 @@ export type actionsType<S, OptionAction, InsideActions = unknown> = (
     actions: insideActionsType<S> & InsideActions,
     store: StoreApi<S>
 ) => OptionAction
+
+export type defGetterStateType<S> = Record<string, (state: S) => any>
 export interface optionsType<S, G, OptionAction> {
     state: () => S
     getter: () => G
     actions: actionsType<S, OptionAction>
 }
 
-type GenGetterStateType<S, G extends Record<string, (state: S) => any>> = G extends Record<
+type GenGetterStateType<S, G extends defGetterStateType<S>> = G extends Record<
     infer K,
     (state: S) => infer V
 >
@@ -26,7 +28,7 @@ type GenGetterStateType<S, G extends Record<string, (state: S) => any>> = G exte
     : unknown
 export function define<
     S extends Record<string, any>,
-    G extends Record<string, (state: S) => any>,
+    G extends defGetterStateType<S>,
     OptionActions extends Record<string, any>
 >(options: optionsType<S, G, OptionActions>) {
     function createDefState() {
