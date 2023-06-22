@@ -1,11 +1,14 @@
-import { create, StoreApi } from 'zustand'
+import { create, StoreApi as ZStoreApi } from 'zustand'
 import { combine } from 'zustand/middleware'
 import { produce } from 'immer'
 import { forEach, size } from 'lodash-es'
 
+export type StoreApi<S> = Omit<ZStoreApi<S>, 'setState'> & {
+    setState: (updater: ((state: S) => void) | Partial<S>, replace?: boolean) => void
+}
 export interface insideActionsType<S> {
     reset: () => void
-    setState: (updater: (state: S) => void) => void
+    setState: StoreApi<S>['setState']
 }
 export type actionsType<S, OptionAction, InsideActions = unknown> = (
     getState: () => S,
@@ -26,6 +29,7 @@ type GenGetterStateType<S, G extends defGetterStateType<S>> = G extends Record<
 >
     ? Record<K, V>
     : unknown
+
 export function define<
     S extends Record<string, any>,
     G extends defGetterStateType<S>,
@@ -60,21 +64,23 @@ export function define<
             })
             // actions
             // ----------------------------------------------------------------------
-            const setState: insideActionsType<S>['setState'] = updater => {
-                set(
-                    produce((store: S) => {
-                        updater(store)
-                    }) as any
-                )
+            store.setState = (updater, replace) => {
+                const nextState = typeof updater === 'function' ? produce(updater as any) : updater
+
+                return set(nextState as any, replace)
             }
             const reset: insideActionsType<S>['reset'] = () => {
                 set(() => options.state() as never)
             }
             return {
                 reset,
-                setState,
+                setState: store.setState as StoreApi<S>['setState'],
                 subscribe: store.subscribe,
-                ...options.actions(get, { reset, setState }, store)
+                ...options.actions(
+                    get,
+                    { reset, setState: store.setState as StoreApi<S>['setState'] },
+                    store as StoreApi<S>
+                )
             }
         })
     )
