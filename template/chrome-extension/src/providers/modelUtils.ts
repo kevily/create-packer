@@ -1,7 +1,7 @@
 import { create, StoreApi as ZStoreApi } from 'zustand'
 import { combine } from 'zustand/middleware'
 import { produce } from 'immer'
-import { forEach, size } from 'lodash-es'
+import { forEach, isEqual, size } from 'lodash-es'
 
 export type StoreApi<S> = Omit<ZStoreApi<S>, 'setState'> & {
     setState: (updater: ((state: S) => void) | Partial<S>, replace?: boolean) => void
@@ -46,13 +46,12 @@ export function define<
         combine(createDefState(), (set, get, store) => {
             // getterListener
             // ----------------------------------------------------------------------
-            store.subscribe(state => {
-                const oldGetterState: any = get()
+            store.subscribe((state, prevState) => {
                 let equalledLen = 0
                 const newGetterState: any = {}
                 forEach(options.getter(), (getter, k) => {
                     const value = getter(state)
-                    if (value === oldGetterState[k]) {
+                    if (isEqual(value, prevState[k])) {
                         equalledLen += 1
                     } else {
                         newGetterState[k] = getter(state)
