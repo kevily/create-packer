@@ -1,5 +1,6 @@
+import * as path from 'path'
 import { execSync } from 'child_process'
-import { readdirSync } from 'fs'
+import { readdirSync, existsSync } from 'fs'
 
 export function hasPnpm() {
     try {
@@ -27,12 +28,22 @@ export function onGenCommand() {
     return 'npm'
 }
 
-export function onGetDir(root: string) {
-    const dirs: string[] = []
+interface tempInfoType {
+    name: string
+    src: string
+    children?: tempInfoType[]
+}
+export function genTemplateInfoList(root: string) {
+    const temps: tempInfoType[] = []
     readdirSync(root, { withFileTypes: true }).forEach(o => {
+        const src = path.join(root, o.name)
         if (o.isDirectory()) {
-            dirs.push(o.name)
+            temps.push({
+                name: o.name,
+                src,
+                children: existsSync(path.join(src, 'package.json')) ? [] : genTemplateInfoList(src)
+            })
         }
     })
-    return dirs
+    return temps
 }

@@ -10,7 +10,7 @@
     "scripts": {
         "login": "npm login --registry https://registry.npmjs.org",
         "pub": "pnpm run build && pnpm run push && node ./utils/pub.js",
-        "test": "pnpm run build && rimraf ./__test__ && cd ./__test__ && node ../bin -c",
+        "test": "pnpm run build && rimraf ./__test__ && node ./bin __test__",
         "build": "rimraf ./bin && tsc",
         "commit": "git add . && cz",
         "push": "pnpm run commit && git push"
