@@ -10,7 +10,7 @@ import { existsSync } from 'fs'
 const cwd = process.cwd()
 const command = onGenCommand()
 const excludes = ['node_modules', 'yarn-error.log', 'dist']
-const tempRoot = path.join(__dirname, '../../template')
+const tempRoot = path.join(__dirname, '../template')
 const tempInfoList = genTemplateInfoList(tempRoot)
 
 function copyTempFile(tempPath, output) {

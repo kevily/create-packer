@@ -12,7 +12,7 @@ const fs_1 = require("fs");
 const cwd = process.cwd();
 const command = utils_1.onGenCommand();
 const excludes = ['node_modules', 'yarn-error.log', 'dist'];
-const tempRoot = path.join(__dirname, '../../template');
+const tempRoot = path.join(__dirname, '../template');
 const tempInfoList = utils_1.genTemplateInfoList(tempRoot);
 function copyTempFile(tempPath, output) {
     fsExtra.readdirSync(tempPath).map(name => {
