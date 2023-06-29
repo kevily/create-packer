@@ -4,8 +4,11 @@ exports.createTemp = void 0;
 const inquirer = require("inquirer");
 const fsExtra = require("fs-extra");
 const path = require("path");
+const chalk = require("chalk");
+const ora = require("ora");
 const child_process_1 = require("child_process");
-const utils_1 = require("../utils");
+const utils_1 = require("./utils");
+const fs_1 = require("fs");
 const cwd = process.cwd();
 const command = utils_1.onGenCommand();
 const excludes = ['node_modules', 'yarn-error.log', 'dist'];
@@ -40,23 +43,22 @@ async function createTemp(dirname) {
             {
                 type: 'list',
                 name: 'temp',
-                message: 'Select temp.',
+                message: 'Select temp type.',
                 choices: tempInfo.children.map(o => o.name)
             }
         ]);
     }
-    console.log('answer.temp', answer.temp);
-    // const creating = ora(chalk.yellow('Creating...\n')).start()
-    // const output = path.join(cwd, isCurrent ? '' : dirname)
-    // if (!isCurrent && existsSync(output)) {
-    //     return console.log(chalk.red(`${dirname} already exists!`))
-    // }
-    // if (!isCurrent) {
-    //     fsExtra.mkdirSync(output)
-    // }
-    // const tempPath = path.join(tempRoot, temp)
-    // copyTempFile(tempPath, output)
-    // createTempEnd(output)
-    // creating.succeed()
+    const creating = ora(chalk.yellow('Creating...\n')).start();
+    const output = path.join(cwd, isCurrent ? '' : dirname);
+    if (!isCurrent && fs_1.existsSync(output)) {
+        return console.log(chalk.red(`${dirname} already exists!`));
+    }
+    if (!isCurrent) {
+        fsExtra.mkdirSync(output);
+    }
+    const tempPath = path.join(tempRoot, answer.temp);
+    copyTempFile(tempPath, output);
+    createTempEnd(output);
+    creating.succeed();
 }
 exports.createTemp = createTemp;
