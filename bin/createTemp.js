@@ -37,7 +37,7 @@ async function createTemp(dirname) {
             choices: tempInfoList.map(o => o.name)
         }
     ]);
-    const tempInfo = tempInfoList.find(o => o.name === answer.temp);
+    let tempInfo = tempInfoList.find(o => o.name === answer.temp);
     if (tempInfo.children) {
         answer = await inquirer.prompt([
             {
@@ -47,6 +47,7 @@ async function createTemp(dirname) {
                 choices: tempInfo.children.map(o => o.name)
             }
         ]);
+        tempInfo = tempInfo.children.find(o => o.name === answer.temp);
     }
     const creating = ora(chalk.yellow('Creating...\n')).start();
     const output = path.join(cwd, isCurrent ? '' : dirname);
@@ -56,8 +57,7 @@ async function createTemp(dirname) {
     if (!isCurrent) {
         fsExtra.mkdirSync(output);
     }
-    const tempPath = path.join(tempRoot, answer.temp);
-    copyTempFile(tempPath, output);
+    copyTempFile(tempInfo.src, output);
     createTempEnd(output);
     creating.succeed();
 }
