@@ -10,8 +10,9 @@
         "sourceMap": false,
         "declaration": true,
         "outDir": "dist",
-        "baseUrl": "."
+        "baseUrl": ".",
+        "emitDeclarationOnly": true
     },
-    "include": ["src/**/*"],
+    "include": ["src"],
     "exclude": ["node_modules/**/*"]
 }

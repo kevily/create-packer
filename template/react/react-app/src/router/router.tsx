@@ -15,7 +15,7 @@ const routes: routeType[] = [
     },
     {
         path: '*',
-        id: '404',
+        id: ids.notFound,
         Component: lazy(() => import('@/pages/notFound'))
     }
 ]

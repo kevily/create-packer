@@ -1,5 +1,5 @@
 packages:
-    - 'template/*'
+    - 'template/**/*'
     - '!template/lib'
     - '!template/nx'
     - '!template/cli'
