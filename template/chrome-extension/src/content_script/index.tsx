@@ -1,6 +1,6 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import Content from './content.container'
+import Content from './content'
 
 const app = document.createElement('div')
 createRoot(app).render(

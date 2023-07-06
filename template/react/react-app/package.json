@@ -6,11 +6,11 @@
     "scripts": {
         "prepare": "husky install",
         "dev": "vite",
-        "build": "tsc && vite build",
+        "build": "tsc --noEmit && vite build",
         "preview": "vite preview",
         "up:vite": "pnpm up vite @vitejs/* -L",
         "format": "prettier --write \"src/**/*.{ts,js,tsx,jsx,css,scss,less}\" \"./package.json\"",
-        "lint": "eslint ./src/**/*.{tsx,ts} && stylelint ./src/**/*.{css,scss,less}",
+        "lint": "tsc --noEmit && eslint ./src/**/*.{tsx,ts} && stylelint ./src/**/*.{css,scss,less}",
         "lint:fix": "eslint ./src/**/*.{tsx,ts} --fix && stylelint ./src/**/*.{css,scss,less} --fix",
         "test:watchs": "jest --watch",
         "test": "jest",

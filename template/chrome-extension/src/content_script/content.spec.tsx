@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react'
-import Content from './content.container'
+import Content from './content'
 
 describe('HelloWorld', () => {
     it('should renders a msg', () => {
