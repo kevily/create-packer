@@ -9,7 +9,7 @@ import {
 } from 'react'
 import { createRoot } from 'react-dom/client'
 
-const instanceMap: Record<string, any> = {}
+const instanceMap: Record<string, { pending: Promise<any>; instance: any }> = {}
 
 export interface refsType<P> {
     $setProps: (newProps: P) => void
@@ -21,41 +21,47 @@ export async function create<P extends Record<string, any>, Refs extends Record<
     Component: ForwardRefExoticComponent<PropsWithoutRef<P> & RefAttributes<Refs>>,
     props?: P
 ) {
-    let $instance: Refs & refsType<P> = instanceMap[key]
+    let current = instanceMap[key]
+    if (current) {
+        await current.pending
+        return current.instance
+    }
+    const div = document.createElement('div')
+    document.body.appendChild(div)
+    const ApiComponent = forwardRef<Refs & refsType<P>>((__, refs) => {
+        const ref = useRef<Refs>(null)
+        const [state, setState] = useState<Partial<P>>(props || {})
 
-    if (!$instance) {
-        const div = document.createElement('div')
-        document.body.appendChild(div)
-        const ApiComponent = forwardRef<Refs & refsType<P>>((__, refs) => {
-            const ref = useRef<Refs>(null)
-            const [state, setState] = useState<Partial<P>>(props || {})
-
-            useImperativeHandle(refs, () => {
-                return {
-                    $setProps: newProps => {
-                        setState(() => newProps)
-                    },
-                    $updateProps: newProps => {
-                        if (newProps) {
-                            setState(state => ({ ...state, ...newProps }))
-                        }
-                    },
-                    ...ref.current
-                } as Refs & refsType<P>
-            })
-            return <Component ref={ref} {...(state as any)} />
+        useImperativeHandle(refs, () => {
+            return {
+                $setProps: newProps => {
+                    setState(() => newProps)
+                },
+                $updateProps: newProps => {
+                    if (newProps) {
+                        setState(state => ({ ...state, ...newProps }))
+                    }
+                },
+                ...ref.current
+            } as Refs & refsType<P>
         })
-        await new Promise<void>(resolve => {
+        return <Component ref={ref} {...(state as any)} />
+    })
+    current = instanceMap[key] = {
+        instance: void 0,
+        pending: new Promise<void>(resolve => {
             createRoot(div).render(
                 <ApiComponent
                     ref={instance => {
-                        $instance = instance!
+                        current.instance = instance!
+                        instanceMap[key].instance = instance
                         resolve()
                     }}
                 />
             )
         })
     }
-    props && $instance.$setProps(props)
-    return $instance
+    await instanceMap[key].pending
+    props && current.instance.$setProps(props)
+    return current.instance
 }

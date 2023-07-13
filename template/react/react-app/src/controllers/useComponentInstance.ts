@@ -18,7 +18,7 @@ export default function useComponentInstance<
                 pending.current = true
                 componentInstance.create(key, Component, props).then(instance => {
                     $instance.current = instance
-                    props && $instance.current.$updateProps(props)
+                    props && $instance.current?.$updateProps(props)
                     pending.current = false
                 })
             }
