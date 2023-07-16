@@ -37,6 +37,7 @@
     "rules": {
         "import/export": "off",
         "import/namespace": "off",
+        "import/default": "off",
         "import/order": [
             "error",
             {

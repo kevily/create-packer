@@ -261,6 +261,7 @@ importers:
       '@testing-library/user-event': 14.4.3
       '@types/jest': 29.5.1
       '@types/lodash-es': 4.17.7
+      '@types/mockjs': 1.0.7
       '@types/node': 18.16.0
       '@types/qs': 6.9.7
       '@types/react': 18.0.38
@@ -285,6 +286,7 @@ importers:
       jest: 29.5.0
       jest-environment-jsdom: 29.5.0
       lodash-es: 4.17.21
+      mockjs: 1.1.0
       postcss: 8.4.23
       postcss-import: 15.1.0
       postcss-nesting: 11.2.2
@@ -300,6 +302,7 @@ importers:
       typescript: 5.0.4
       vite: 4.3.1
       vite-plugin-eslint: 1.8.1
+      vite-plugin-mock-dev-server: 1.2.1
       vite-plugin-svgr: 3.2.0
       zustand: 4.3.7
     dependencies:
@@ -322,6 +325,7 @@ importers:
       '@testing-library/user-event': 14.4.3_@testing-library+dom@9.2.0
       '@types/jest': 29.5.1
       '@types/lodash-es': 4.17.7
+      '@types/mockjs': 1.0.7
       '@types/node': 18.16.0
       '@types/qs': 6.9.7
       '@types/react': 18.0.38
@@ -343,6 +347,7 @@ importers:
       inquirer: 8.2.5
       jest: 29.5.0_@types+node@18.16.0
       jest-environment-jsdom: 29.5.0
+      mockjs: 1.1.0
       postcss: 8.4.23
       postcss-import: 15.1.0_postcss@8.4.23
       postcss-nesting: 11.2.2_postcss@8.4.23
@@ -353,6 +358,7 @@ importers:
       typescript: 5.0.4
       vite: 4.3.1_@types+node@18.16.0
       vite-plugin-eslint: 1.8.1_eslint@8.39.0+vite@4.3.1
+      vite-plugin-mock-dev-server: 1.2.1_vite@4.3.1
       vite-plugin-svgr: 3.2.0_vite@4.3.1
 
   template/react/react-lib:
@@ -524,6 +530,7 @@ importers:
       '@commitlint/config-conventional': 17.6.1
       '@commitlint/cz-commitlint': 17.5.0
       '@types/lodash-es': 4.17.7
+      '@types/mockjs': 1.0.7
       '@typescript-eslint/eslint-plugin': 5.59.0
       '@typescript-eslint/parser': 5.59.0
       '@vitejs/plugin-vue': 4.2.3
@@ -540,6 +547,7 @@ importers:
       husky: 8.0.3
       inquirer: '8'
       lodash-es: 4.17.21
+      mockjs: 1.1.0
       pinia: 2.0.35
       postcss: 8.4.23
       postcss-import: 15.1.0
@@ -551,6 +559,7 @@ importers:
       typescript: 5.0.4
       vite: 4.3.8
       vite-plugin-eslint: 1.8.1
+      vite-plugin-mock-dev-server: 1.2.1
       vite-svg-loader: 4.0.0
       vue: 3.3.4
       vue-router: 4.2.1
@@ -566,6 +575,7 @@ importers:
       '@commitlint/config-conventional': 17.6.1
       '@commitlint/cz-commitlint': 17.5.0_i4x6owxztfhigiiqlxwntt4k24
       '@types/lodash-es': 4.17.7
+      '@types/mockjs': 1.0.7
       '@typescript-eslint/eslint-plugin': 5.59.0_chh3ljgpke5ydgcjpmkmu4hz5q
       '@typescript-eslint/parser': 5.59.0_iacogk7kkaymxepzhgcbytyi7q
       '@vitejs/plugin-vue': 4.2.3_vite@4.3.8+vue@3.3.4
@@ -580,6 +590,7 @@ importers:
       eslint-plugin-vue: 9.13.0_eslint@8.39.0
       husky: 8.0.3
       inquirer: 8.2.5
+      mockjs: 1.1.0
       postcss: 8.4.23
       postcss-import: 15.1.0_postcss@8.4.23
       postcss-nesting: 11.2.2_postcss@8.4.23
@@ -590,6 +601,7 @@ importers:
       typescript: 5.0.4
       vite: 4.3.8
       vite-plugin-eslint: 1.8.1_eslint@8.39.0+vite@4.3.8
+      vite-plugin-mock-dev-server: 1.2.1_vite@4.3.8
       vite-svg-loader: 4.0.0
       vue-tsc: 1.6.5_typescript@5.0.4
 
@@ -15594,6 +15606,10 @@ packages:
     resolution: {integrity: sha512-jhuKLIRrhvCPLqwPcx6INqmKeiA5EWrsCOPhrlFSrbrmU4ZMPjj5Ul/oLCMDO98XRUIwVm78xICz4EPCektzeQ==}
     dev: true
 
+  /@types/mockjs/1.0.7:
+    resolution: {integrity: sha512-OCxXz6hEaJOVpRwuJMiVY5a6LtJcih+br9gwB/Q8ooOBikvk5FpBQ31OlNimXo3EqKha1Z7PFBni+q9m+8NCWg==}
+    dev: true
+
   /@types/node-fetch/2.6.4:
     resolution: {integrity: sha512-1ZX9fcN4Rvkvgv4E6PAY5WXUFWFcRWxZa3EW83UjycOB9ljJCedb2CupIP4RZMEwF/M3eTcCihbBRgwtGbg5Rg==}
     dependencies:
@@ -19951,6 +19967,15 @@ packages:
     engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0}
     dev: true
 
+  /co-body/6.1.0:
+    resolution: {integrity: sha512-m7pOT6CdLN7FuXUcpuz/8lfQ/L77x8SchHCF4G0RBTJO20Wzmhn5Sp4/5WsKy8OSpifBSUrmg83qEqaDHdyFuQ==}
+    dependencies:
+      inflation: 2.0.0
+      qs: 6.11.2
+      raw-body: 2.5.1
+      type-is: 1.6.18
+    dev: true
+
   /co/4.6.0:
     resolution: {integrity: sha512-QVb0dM5HvG+uaxitm8wONl7jltx8dqhfU33DcqtOZcLSVIKSDDLDi7+0LbAKiyI8hD9u42m2YxXSkMGWThaecQ==}
     engines: {iojs: '>= 1.0.0', node: '>= 0.12.0'}
@@ -20094,7 +20119,6 @@ packages:
     engines: {node: ^12.20.0 || >=14}
     requiresBuild: true
     dev: true
-    optional: true
 
   /commitizen/4.2.4:
     resolution: {integrity: sha512-LlZChbDzg3Ir3O2S7jSo/cgWp5/QwylQVr59K4xayVq8S4/RdKzSyJkghAiZZHfhh5t4pxunUoyeg0ml1q/7aw==}
@@ -20770,6 +20794,14 @@ packages:
 
   /cookiejar/2.1.4:
     resolution: {integrity: sha512-LDx6oHrK+PhzLKJU9j5S7/Y3jM/mUHvD/DeI1WQmJn652iPC5Y4TBzC9l+5OMOXlyTTA+SmVUPm0HQUwpD5Jqw==}
+    dev: true
+
+  /cookies/0.8.0:
+    resolution: {integrity: sha512-8aPsApQfebXnuI+537McwYsDtjVxGm8gTIzQI3FDW6t5t/DAhERxtnbEPN/8RX+uZthoz4eCOgloXaE5cYyNow==}
+    engines: {node: '>= 0.8'}
+    dependencies:
+      depd: 2.0.0
+      keygrip: 1.1.0
     dev: true
 
   /copy-anything/2.0.6:
@@ -24714,7 +24746,7 @@ packages:
       dezalgo: 1.0.4
       hexoid: 1.0.0
       once: 1.4.0
-      qs: 6.11.0
+      qs: 6.11.2
     dev: true
 
   /forwarded/0.2.0:
@@ -25323,7 +25355,7 @@ packages:
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
     dependencies:
       dir-glob: 3.0.1
-      fast-glob: 3.2.12
+      fast-glob: 3.3.0
       ignore: 5.2.4
       merge2: 1.4.1
       slash: 4.0.0
@@ -26113,6 +26145,11 @@ packages:
       sshpk: 1.17.0
     dev: false
 
+  /http-status/1.6.2:
+    resolution: {integrity: sha512-oUExvfNckrpTpDazph7kNG8sQi5au3BeTo0idaZFXEhTaJKu7GNJCLHI0rYY2wljm548MSTM+Ljj/c6anqu2zQ==}
+    engines: {node: '>= 0.4.0'}
+    dev: true
+
   /https-proxy-agent/4.0.0:
     resolution: {integrity: sha512-zoDhWrkR3of1l9QAL8/scJZyLu8j/gBkcwcaQOZh7Gyh/+uJQzGVETdgT30akuwkpL8HTRfssqI3BZuV18teDg==}
     engines: {node: '>= 6.0.0'}
@@ -26329,6 +26366,11 @@ packages:
     resolution: {integrity: sha512-Na6A2Tl56i1p9dzu7VOAT1Kmu3f5buz63Wvd+D9ZZWL6siQ47L7wkEZUICVKFgc5gERFZVZ/PoPB57Kl++h37Q==}
     engines: {node: '>=12'}
     dev: false
+
+  /inflation/2.0.0:
+    resolution: {integrity: sha512-m3xv4hJYR2oXw4o4Y5l6P5P16WYmazYof+el6Al3f+YlggGj6qT9kImBAnzDelRALnP5d3h4jGBPKzYCizjZZw==}
+    engines: {node: '>= 0.8.0'}
+    dev: true
 
   /inflight/1.0.6:
     resolution: {integrity: sha512-k92I/b08q4wvFscXCLvqfsHCrjrF7yiXsQuIVvVE7N82W3+aqpzuUdBbfhWcy/FZR3/4IgflMgKLOsvPDrGCJA==}
@@ -29071,12 +29113,6 @@ packages:
       minimist: 1.2.8
     dev: true
 
-  /json5/2.2.1:
-    resolution: {integrity: sha512-1hqLFMSrGHRHxav9q9gNjJ5EXznIxGVO09xQRrwplcS8qs28pZ8s8hupZAmqDwZUmVZ2Qb2jnyPOWcDH8m8dlA==}
-    engines: {node: '>=6'}
-    hasBin: true
-    dev: false
-
   /json5/2.2.3:
     resolution: {integrity: sha512-XmOWe7eyHYH14cLdVPoyg+GOH3rYX++KpzrylJwSW98t3Nk+U8XOl8FWKOgwtzdb8lXGf6zYwDUzeHMWfxasyg==}
     engines: {node: '>=6'}
@@ -29134,6 +29170,13 @@ packages:
     resolution: {integrity: sha512-RsBECncGO17KAoJCYXjv+ckIz+Ii9NCi+9enk+rq6XC81ezYkb4/RHE6CTXdA7IOJqoF3wcaLfVG0CPmE5ca6A==}
     dependencies:
       source-map-support: 0.5.21
+    dev: true
+
+  /keygrip/1.1.0:
+    resolution: {integrity: sha512-iYSchDJ+liQ8iwbSI2QqsQOvqv58eJCEanyJPJi+Khyu8smkcKSFUCbPwzFcL7YVtZ6eONjqRX/38caJ7QjRAQ==}
+    engines: {node: '>= 0.6'}
+    dependencies:
+      tsscmp: 1.0.6
     dev: true
 
   /keyv/3.1.0:
@@ -29595,7 +29638,7 @@ packages:
     dependencies:
       big.js: 5.2.2
       emojis-list: 3.0.0
-      json5: 2.2.1
+      json5: 2.2.3
     dev: false
 
   /loader-utils/2.0.4:
@@ -29705,6 +29748,10 @@ packages:
 
   /lodash.snakecase/4.1.1:
     resolution: {integrity: sha512-QZ1d4xoBHYUeuouhEq3lk3Uq7ldgyFXGBhg04+oRLnIz8o9T65Eh+8YdroUwn846zchkA9yDsDl5CVVaV2nqYw==}
+
+  /lodash.sortby/4.7.0:
+    resolution: {integrity: sha512-HDWXG8isMntAyRF5vZ7xKuEvOhT4AhlRt/3czTSjvGUxjYCBVRQY48ViDHyfYz9VIoBkW4TMGQNapx+l3RUwdA==}
+    dev: true
 
   /lodash.startcase/4.4.0:
     resolution: {integrity: sha512-+WKqsK294HMSc2jEbNgpHpd0JfIBhp7rEV4aqXWqFr6AlXov+SlcgB1Fv01y2kGe3Gc8nMW7VA0SrGuSkRfIEg==}
@@ -30430,6 +30477,13 @@ packages:
       pathe: 1.1.1
       pkg-types: 1.0.3
       ufo: 1.1.2
+    dev: true
+
+  /mockjs/1.1.0:
+    resolution: {integrity: sha512-eQsKcWzIaZzEZ07NuEyO4Nw65g0hdWAyurVol1IPl1gahRwY+svqzfgfey8U8dahLwG44d6/RwEzuK52rSa/JQ==}
+    hasBin: true
+    dependencies:
+      commander: 9.5.0
     dev: true
 
   /modify-values/1.0.1:
@@ -31812,6 +31866,10 @@ packages:
 
   /path-to-regexp/3.2.0:
     resolution: {integrity: sha512-jczvQbCUS7XmS7o+y1aEO9OBVFeZBQ1MDSEqmO7xSoPgOPoowY/SxLpZ6Vh97/8qHZOteiCKb7gkG9gA2ZUxJA==}
+
+  /path-to-regexp/6.2.1:
+    resolution: {integrity: sha512-JLyh7xT1kizaEvcaXOQwOc2/Yhw6KZOvPf1S8401UyLk86CU79LN3vl7ztXGm/pZ+YjoyAJ4rxmHwbkBXJX+yw==}
+    dev: true
 
   /path-type/1.1.0:
     resolution: {integrity: sha512-S4eENJz1pkiQn9Znv33Q+deTOKmbl+jj1Fl+qiP/vYezj+S8x+J3Uo0ISrx/QoEvIlOaDWJhPaRd1flJ9HXZqg==}
@@ -36808,7 +36866,7 @@ packages:
       formidable: 2.1.2
       methods: 1.1.2
       mime: 2.6.0
-      qs: 6.11.0
+      qs: 6.11.2
       semver: 7.5.3
     transitivePeerDependencies:
       - supports-color
@@ -38020,6 +38078,11 @@ packages:
   /tslib/2.6.0:
     resolution: {integrity: sha512-7At1WUettjcSRHXCyYtTselblcHl9PJFFVKiCAy/bY97+BPZXSQ2wbq0P9s8tK2G7dFQfNnlJnPAiArVBVBsfA==}
 
+  /tsscmp/1.0.6:
+    resolution: {integrity: sha512-LxhtAkPDTkVCMQjt2h6eBVY28KCjikZqZfMcC15YBeNjkgUpdCfBu5HoiOTDu86v6smE8yOjyEktJ8hlbANHQA==}
+    engines: {node: '>=0.6.x'}
+    dev: true
+
   /tsutils/3.21.0_typescript@4.3.5:
     resolution: {integrity: sha512-mHKK3iUXL+3UF6xL5k0PEhKRUBKPBCv/+RkEOpjRWxxx27KKRBmmA60A9pgOUvMi8GKhRMPEmjBRPzs2W7O1OA==}
     engines: {node: '>= 6'}
@@ -39022,6 +39085,64 @@ packages:
       eslint: 8.42.0
       rollup: 2.79.1
       vite: 4.3.4_ztjhvu5fbmrjarsbdld5ymwa34
+    dev: true
+
+  /vite-plugin-mock-dev-server/1.2.1_vite@4.3.1:
+    resolution: {integrity: sha512-RyfU7IxYF4vTvCyDiE0FT02DgrMxqHDCFqccZd602HaJAKL41sa56O/3LwbZqhNFZlAycpwz7BjmR4eWXDI8Jg==}
+    engines: {node: ^14.18.0 || >=16}
+    peerDependencies:
+      vite: '>=3.0.0'
+    dependencies:
+      chokidar: 3.5.3
+      co-body: 6.1.0
+      cookies: 0.8.0
+      cors: 2.8.5
+      debug: 4.3.4
+      esbuild: 0.18.11
+      fast-glob: 3.3.0
+      formidable: 2.1.2
+      http-status: 1.6.2
+      is-core-module: 2.12.1
+      json5: 2.2.3
+      lodash.sortby: 4.7.0
+      mime-types: 2.1.35
+      path-to-regexp: 6.2.1
+      picocolors: 1.0.0
+      vite: 4.3.1_@types+node@18.16.0
+      ws: 8.13.0
+    transitivePeerDependencies:
+      - bufferutil
+      - supports-color
+      - utf-8-validate
+    dev: true
+
+  /vite-plugin-mock-dev-server/1.2.1_vite@4.3.8:
+    resolution: {integrity: sha512-RyfU7IxYF4vTvCyDiE0FT02DgrMxqHDCFqccZd602HaJAKL41sa56O/3LwbZqhNFZlAycpwz7BjmR4eWXDI8Jg==}
+    engines: {node: ^14.18.0 || >=16}
+    peerDependencies:
+      vite: '>=3.0.0'
+    dependencies:
+      chokidar: 3.5.3
+      co-body: 6.1.0
+      cookies: 0.8.0
+      cors: 2.8.5
+      debug: 4.3.4
+      esbuild: 0.18.11
+      fast-glob: 3.3.0
+      formidable: 2.1.2
+      http-status: 1.6.2
+      is-core-module: 2.12.1
+      json5: 2.2.3
+      lodash.sortby: 4.7.0
+      mime-types: 2.1.35
+      path-to-regexp: 6.2.1
+      picocolors: 1.0.0
+      vite: 4.3.8
+      ws: 8.13.0
+    transitivePeerDependencies:
+      - bufferutil
+      - supports-color
+      - utf-8-validate
     dev: true
 
   /vite-plugin-solid/2.7.0_solid-js@1.7.5+vite@4.3.5:

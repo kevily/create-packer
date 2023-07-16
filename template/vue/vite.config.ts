@@ -4,6 +4,7 @@ import vue from '@vitejs/plugin-vue'
 import eslint from 'vite-plugin-eslint'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import svgLoader from 'vite-svg-loader'
+import mockDevServer from 'vite-plugin-mock-dev-server'
 
 // https://vitejs.dev/config/
 export default defineConfig(({ command, mode }) => {
@@ -18,7 +19,10 @@ export default defineConfig(({ command, mode }) => {
                 defineModel: true
             }
         }),
-        svgLoader()
+        svgLoader(),
+        mockDevServer({
+            include: ['src/**/*.mock.{ts,js}']
+        })
     ]
     return {
         base: env.VITE_BASE_URL,
