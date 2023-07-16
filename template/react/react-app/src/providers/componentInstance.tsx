@@ -60,5 +60,5 @@ export async function create<P extends Record<string, any>, Refs extends Record<
     }
     await current.pending
     props && current.instance.$setProps(props)
-    return current.instance
+    return current.instance as Refs & refsType<P>
 }
