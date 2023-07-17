@@ -1,5 +1,4 @@
 packages:
     - 'template/**/*'
-    - '!template/lib'
-    - '!template/nx'
+    - '!template/workspace/**'
     - '!template/cli'

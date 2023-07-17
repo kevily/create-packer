@@ -30,7 +30,7 @@
         "rimraf": "5.0.1"
     },
     "devDependencies": {
-        "@changesets/cli": "^2.26.2",
+        "@changesets/cli": "2.26.2",
         "@types/node": "20.3.2",
         "inquirer": "8",
         "ts-node": "10.9.1",
