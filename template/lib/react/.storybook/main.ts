@@ -1,3 +1,4 @@
+import svgr from 'vite-plugin-svgr'
 import type { StorybookConfig } from '@storybook/react-vite'
 const config: StorybookConfig = {
     stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
@@ -9,6 +10,11 @@ const config: StorybookConfig = {
     framework: {
         name: '@storybook/react-vite',
         options: {}
+    },
+    async viteFinal(config) {
+        config.plugins.unshift(svgr())
+
+        return config
     },
     docs: {
         autodocs: 'tag'
