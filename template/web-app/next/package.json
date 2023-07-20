@@ -1,0 +1,45 @@
+{
+    "name": "next",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "prepare": "husky install",
+        "dev": "next dev",
+        "build": "next build",
+        "start": "next start",
+        "lint": "next lint",
+        "format": "prettier --write \"{app,components,pages,domain,providers}/**/*.{ts,js,tsx,jsx,css,scss,less}\" \"./package.json\"",
+        "cz": "cz",
+        "push": "npm run commit && git push",
+        "commit": "git add . && npm run cz"
+    },
+    "dependencies": {
+        "@types/node": "20.4.2",
+        "@types/react": "18.2.15",
+        "@types/react-dom": "18.2.7",
+        "autoprefixer": "10.4.14",
+        "eslint": "8.45.0",
+        "eslint-config-next": "13.4.10",
+        "next": "13.4.10",
+        "postcss": "8.4.26",
+        "react": "18.2.0",
+        "react-dom": "18.2.0",
+        "tailwindcss": "3.3.3",
+        "typescript": "5.1.6"
+    },
+    "devDependencies": {
+        "@commitlint/cli": "17.6.7",
+        "@commitlint/config-conventional": "17.6.7",
+        "@commitlint/cz-commitlint": "17.6.7",
+        "eslint-plugin-import": "2.27.5",
+        "eslint-plugin-prettier": "5.0.0",
+        "husky": "8.0.3",
+        "prettier": "3.0.0",
+        "stylelint": "15.10.2"
+    },
+    "config": {
+        "commitizen": {
+            "path": "@commitlint/cz-commitlint"
+        }
+    }
+}

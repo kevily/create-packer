@@ -1,0 +1,23 @@
+{
+    "extends": "stylelint-config-standard",
+    "rules": {
+        "comment-empty-line-before": "never",
+        "no-empty-source": null,
+        "alpha-value-notation": null,
+        "color-function-notation": null,
+        "no-descending-specificity": null,
+        "at-rule-no-unknown": [
+            true,
+            {
+                "ignoreAtRules": ["tailwind", "apply", "use"]
+            }
+        ],
+        "selector-pseudo-class-no-unknown": [
+            true,
+            {
+                "ignorePseudoClasses": ["global"]
+            }
+        ],
+        "selector-class-pattern": null
+    }
+}

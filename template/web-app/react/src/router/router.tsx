@@ -10,7 +10,7 @@ const routes: routeType[] = [
     {
         path: '/',
         id: ids.root,
-        Component: lazy(() => import('@/layout')),
+        Component: lazy(() => import('@/pages/layout')),
         children: [...home.routes]
     },
     {
