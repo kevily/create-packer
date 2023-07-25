@@ -25,7 +25,6 @@ export default defineConfig(({ mode }) => {
                     }
                 }
             }),
-            ,
             react(),
             crx({ manifest: defineManifest({ mode }) })
         ],
