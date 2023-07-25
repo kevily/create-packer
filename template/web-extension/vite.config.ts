@@ -13,13 +13,13 @@ export default defineConfig(({ mode }) => {
                 typescript: true,
                 eslint: {
                     // for example, lint .ts and .tsx
-                    lintCommand: 'eslint ./src/**/*.{ts,tsx,js,jsx}',
+                    lintCommand: 'eslint **/*.{ts,tsx,js,jsx}',
                     dev: {
                         logLevel: ['error']
                     }
                 },
                 stylelint: {
-                    lintCommand: 'stylelint ./src/**/*.{css,scss,less}',
+                    lintCommand: 'stylelint **/*.{css,scss,less}',
                     dev: {
                         logLevel: ['error']
                     }
