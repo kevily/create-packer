@@ -3,6 +3,7 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import checker from 'vite-plugin-checker'
 import { crx } from '@crxjs/vite-plugin'
+import defineManifest from './defineManifest'
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
@@ -26,7 +27,7 @@ export default defineConfig(({ mode }) => {
             }),
             ,
             react(),
-            crx({ manifest: require('./manifest.json') })
+            crx({ manifest: defineManifest({ mode }) })
         ],
         resolve: {
             alias: {

@@ -10,10 +10,10 @@ const child_process_1 = require("child_process");
 const utils_1 = require("./utils");
 const fs_1 = require("fs");
 const cwd = process.cwd();
-const command = utils_1.onGenCommand();
+const command = (0, utils_1.onGenCommand)();
 const excludes = ['node_modules', 'yarn-error.log', 'dist'];
 const tempRoot = path.join(__dirname, '../template');
-const tempInfoList = utils_1.genTemplateInfoList(tempRoot);
+const tempInfoList = (0, utils_1.genTemplateInfoList)(tempRoot);
 function copyTempFile(tempPath, output) {
     fsExtra.readdirSync(tempPath).map(name => {
         if (!excludes.includes(name)) {
@@ -22,7 +22,7 @@ function copyTempFile(tempPath, output) {
     });
 }
 function createTempEnd(output) {
-    child_process_1.spawnSync(command, ['install'], {
+    (0, child_process_1.spawnSync)(command, ['install'], {
         cwd: output,
         stdio: 'inherit'
     });
@@ -51,7 +51,7 @@ async function createTemp(dirname) {
     }
     const creating = ora(chalk.yellow('Creating...\n')).start();
     const output = path.join(cwd, isCurrent ? '' : dirname);
-    if (!isCurrent && fs_1.existsSync(output)) {
+    if (!isCurrent && (0, fs_1.existsSync)(output)) {
         return console.log(chalk.red(`${dirname} already exists!`));
     }
     if (!isCurrent) {

@@ -1,7 +1,11 @@
 "use strict";
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
 }) : (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     o[k2] = m[k];
@@ -25,7 +29,7 @@ const child_process_1 = require("child_process");
 const fs_1 = require("fs");
 function hasPnpm() {
     try {
-        child_process_1.execSync('pnpm --version');
+        (0, child_process_1.execSync)('pnpm --version');
         return true;
     }
     catch {
@@ -35,7 +39,7 @@ function hasPnpm() {
 exports.hasPnpm = hasPnpm;
 function hasYarn() {
     try {
-        child_process_1.execSync('yarnpkg --version');
+        (0, child_process_1.execSync)('yarnpkg --version');
         return true;
     }
     catch {
@@ -55,13 +59,13 @@ function onGenCommand() {
 exports.onGenCommand = onGenCommand;
 function genTemplateInfoList(root) {
     const temps = [];
-    fs_1.readdirSync(root, { withFileTypes: true }).forEach(o => {
+    (0, fs_1.readdirSync)(root, { withFileTypes: true }).forEach(o => {
         const src = path.join(root, o.name);
         if (o.isDirectory()) {
             temps.push({
                 name: o.name,
                 src,
-                children: fs_1.existsSync(path.join(src, 'package.json')) ? [] : genTemplateInfoList(src)
+                children: (0, fs_1.existsSync)(path.join(src, 'package.json')) ? [] : genTemplateInfoList(src)
             });
         }
     });
