@@ -14,13 +14,13 @@ export default defineConfig(({ command, mode }) => {
             typescript: true,
             eslint: {
                 // for example, lint .ts and .tsx
-                lintCommand: 'eslint ./src/**/*.{ts,tsx,js,jsx}',
+                lintCommand: 'eslint **/*.{ts,tsx,js,jsx}',
                 dev: {
                     logLevel: ['error']
                 }
             },
             stylelint: {
-                lintCommand: 'stylelint ./src/**/*.{less,scss,less}',
+                lintCommand: 'stylelint **/*.{less,scss,less}',
                 dev: {
                     logLevel: ['error']
                 }
@@ -28,7 +28,7 @@ export default defineConfig(({ command, mode }) => {
         }),
         react(),
         mockDevServer({
-            include: ['src/**/*.mock.{ts,js}']
+            include: ['**/*.mock.{ts,js}']
         })
     ]
 

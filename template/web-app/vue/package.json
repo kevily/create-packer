@@ -8,9 +8,9 @@
         "dev": "vite",
         "build": "vue-tsc --noEmit && vite build",
         "preview": "vite preview",
-        "format": "prettier --write \"src/**/*.{ts,js,tsx,jsx,vue,css,scss,less}\" \"./package.json\"",
-        "lint": "eslint ./src/**/*.{ts,vue} && stylelint ./src/**/*.{css,scss,less}",
-        "lint:fix": "eslint ./src/**/*.{ts,vue} --fix && stylelint ./src/**/*.{css,scss,less} --fix",
+        "format": "prettier --write \"**/*.{ts,js,tsx,jsx,json,vue,css,scss,less}\"",
+        "lint": "eslint **/*.{ts,tsx,js,jsx,vue} && stylelint **/*.{css,scss,less}",
+        "lint:fix": "eslint **/*.{ts,tsx,js,jsx,vue} --fix && stylelint **/*.{css,scss,less} --fix",
         "cz": "cz",
         "push": "npm run commit && git push",
         "commit": "git add . && npm run cz"
