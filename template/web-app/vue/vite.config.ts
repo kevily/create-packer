@@ -22,7 +22,7 @@ export default defineConfig(({ command, mode }) => {
                 }
             },
             stylelint: {
-                lintCommand: 'stylelint **/*.{less,scss,less,vue}',
+                lintCommand: 'stylelint **/*.{css,scss,less,vue}',
                 dev: {
                     logLevel: ['error']
                 }
