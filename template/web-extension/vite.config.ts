@@ -19,7 +19,7 @@ export default defineConfig(({ mode }) => {
                     }
                 },
                 stylelint: {
-                    lintCommand: 'stylelint ./src/**/*.{less,scss,less}',
+                    lintCommand: 'stylelint ./src/**/*.{css,scss,less}',
                     dev: {
                         logLevel: ['error']
                     }

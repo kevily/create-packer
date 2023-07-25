@@ -1,4 +1,3 @@
-import path from 'path'
 import { defineConfig, loadEnv } from 'vite'
 import react from '@vitejs/plugin-react'
 import svgr from 'vite-plugin-svgr'
@@ -20,7 +19,7 @@ export default defineConfig(({ command, mode }) => {
                 }
             },
             stylelint: {
-                lintCommand: 'stylelint **/*.{less,scss,less}',
+                lintCommand: 'stylelint **/*.{css,scss,less}',
                 dev: {
                     logLevel: ['error']
                 }
@@ -37,7 +36,7 @@ export default defineConfig(({ command, mode }) => {
         plugins,
         resolve: {
             alias: {
-                '@': path.join(__dirname, 'src')
+                '@': __dirname
             }
         },
         esbuild: {

@@ -1,4 +1,3 @@
-import path from 'path'
 import { defineConfig, loadEnv } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
@@ -23,7 +22,7 @@ export default defineConfig(({ command, mode }) => {
                 }
             },
             stylelint: {
-                lintCommand: 'stylelint **/*.{less,scss,less}',
+                lintCommand: 'stylelint **/*.{less,scss,less,vue}',
                 dev: {
                     logLevel: ['error']
                 }
@@ -44,7 +43,7 @@ export default defineConfig(({ command, mode }) => {
         plugins,
         resolve: {
             alias: {
-                '@': path.join(__dirname, 'src')
+                '@': __dirname
             }
         },
         esbuild: {
