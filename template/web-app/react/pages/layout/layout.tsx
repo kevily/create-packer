@@ -1,4 +1,4 @@
-import { Suspense, useLayoutEffect } from 'react'
+import { Suspense, useEffect } from 'react'
 import { Outlet, useLocation } from 'react-router-dom'
 import { navigate, routerIds } from '@/router'
 import { Loading } from './components'
@@ -6,7 +6,7 @@ import { Loading } from './components'
 export default function Layout() {
     const location = useLocation()
 
-    useLayoutEffect(() => {
+    useEffect(() => {
         if (location.pathname === '/') {
             navigate({ id: routerIds.home })
         }
