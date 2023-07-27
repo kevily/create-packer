@@ -33,6 +33,7 @@
         },
         "useJSXTextNode": true
     },
+    "ignorePatterns": ["dist/**/*.*"],
     "rules": {
         "import/export": "off",
         "import/namespace": "off",

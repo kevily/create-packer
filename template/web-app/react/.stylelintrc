@@ -1,5 +1,6 @@
 {
     "extends": "stylelint-config-standard",
+    "ignoreFiles": ["dist/**/*.*"],
     "rules": {
         "comment-empty-line-before": "never",
         "no-empty-source": null,
