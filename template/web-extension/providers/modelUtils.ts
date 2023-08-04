@@ -19,16 +19,13 @@ export type actionsType<S, OptionAction, InsideActions = unknown> = (
 export type defGetterStateType<S> = Record<string, (state: S) => any>
 export interface optionsType<S, G, OptionAction> {
     state: () => S
-    getter: () => G
+    getter: G
     actions: actionsType<S, OptionAction>
 }
 
-type GenGetterStateType<S, G extends defGetterStateType<S>> = G extends Record<
-    infer K,
-    (state: S) => infer V
->
-    ? Record<K, V>
-    : unknown
+type ExtraGetterStateType<S, G extends defGetterStateType<S>> = {
+    [key in keyof G]: ReturnType<G[key]>
+}
 
 export function define<
     S extends Record<string, any>,
@@ -37,10 +34,10 @@ export function define<
 >(options: optionsType<S, G, OptionActions>) {
     function createDefState() {
         const state: any = options.state()
-        forEach(options.getter(), (getter, k) => {
+        forEach(options.getter, (getter, k) => {
             state[k] = getter(state)
         })
-        return state as S & GenGetterStateType<S, G>
+        return state as S & ExtraGetterStateType<S, G>
     }
     return create(
         combine(createDefState(), (set, get, store) => {
@@ -49,7 +46,7 @@ export function define<
             store.subscribe((state, prevState) => {
                 let equalledLen = 0
                 const newGetterState: any = {}
-                forEach(options.getter(), (getter, k) => {
+                forEach(options.getter, (getter, k) => {
                     const value = getter(state)
                     if (isEqual(value, prevState[k])) {
                         equalledLen += 1
@@ -57,7 +54,7 @@ export function define<
                         newGetterState[k] = getter(state)
                     }
                 })
-                if (size(options.getter()) > equalledLen) {
+                if (size(options.getter) > equalledLen) {
                     set(newGetterState)
                 }
             })
