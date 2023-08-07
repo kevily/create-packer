@@ -60,5 +60,8 @@ export async function create<P extends Record<string, any>, Refs extends Record<
     }
     await current.pending
     props && current.instance.$setProps(props)
+    // Delay render to avoid sync issue
+    // ------------------------------------------------------------------------
+    await new Promise(resolve => setTimeout(resolve))
     return current.instance as Refs & refsType<P>
 }
