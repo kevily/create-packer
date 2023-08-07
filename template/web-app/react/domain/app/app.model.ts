@@ -1,7 +1,7 @@
-import { modelUtils } from '@/providers'
+import defineModel from 'define-zustand'
 
-export const useApp = modelUtils.define({
+export const useApp = defineModel({
     state: () => ({}),
-    getter: () => ({}),
+    getter: {},
     actions: () => ({})
 })
