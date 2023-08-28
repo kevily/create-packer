@@ -1,4 +1,4 @@
-import { isFunction, size } from 'lodash-es'
+import { noop, size } from 'lodash-es'
 import { stringify } from 'qs'
 
 type fetchConfigType = Required<Parameters<typeof fetch>>[1]
@@ -9,35 +9,48 @@ interface configType {
         'Content-Type'?: string
         [key: string]: string | undefined
     }
-    onError?: (e: Error) => void
+    onError?: (e: Response) => void
 }
 
-const DEFAULT_CONFIG: Partial<configType> = {
-    headers: {
-        'Content-Type': 'application/json'
+async function resFormatter(response: Response) {
+    const contentType = response.headers.get('Content-Type')
+
+    if (contentType?.startsWith('application/json')) {
+        return await response.json()
     }
+
+    if (contentType?.startsWith('text/html')) {
+        return await response.text()
+    }
+
+    return response
 }
 
 class Request {
-    baseURL: configType['baseURL']
+    config: configType
     constructor(config: configType) {
-        this.baseURL = config.baseURL
+        this.config = {
+            onError: noop,
+            ...config,
+            headers: {
+                'Content-Type': 'application/json',
+                ...config.headers
+            }
+        }
     }
     async request(url: string, config?: fetchConfigType) {
         try {
-            const response = await fetch(this.baseURL + url, {
-                headers: DEFAULT_CONFIG.headers as never,
+            const response = await fetch(this.config.baseURL + url, {
+                headers: this.config.headers as never,
                 ...config
             })
             if (response.status !== 200) {
                 const errMsg = `服务器错误状态：${response.status}`
+                this.config.onError?.(response)
                 throw new Error(errMsg)
             }
-            return await response.json()
+            return resFormatter(response)
         } catch (error: any) {
-            if (isFunction(DEFAULT_CONFIG.onError)) {
-                DEFAULT_CONFIG.onError(error)
-            }
             throw new Error(error.message)
         }
     }
@@ -55,6 +68,6 @@ class Request {
     }
 }
 
-export const request = new Request({
-    baseURL: import.meta.env.VITE_API_HOST
-})
+export function create(config: configType) {
+    return new Request(config)
+}
