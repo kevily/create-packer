@@ -24,14 +24,17 @@ export default function (env) {
             index: [path.join(ROOT, 'main.tsx')]
         },
         output: {
-            filename: STATIC_DIR + (env.production ? '/[name].[chunkhash].js' : '/[name].js'),
+            filename: STATIC_DIR + (env.WEBPACK_BUILD ? '/[name].[chunkhash].js' : '/[name].js'),
             path: OUTPUT,
             publicPath,
             clean: true
         },
         bail: true,
-        mode: env.production ? 'production' : 'development',
-        stats: env.production ? 'normal' : 'errors-only',
+        mode: env.WEBPACK_BUILD ? 'production' : 'development',
+        stats: env.WEBPACK_BUILD ? 'normal' : 'errors-only',
+        performance: {
+            hints: false
+        },
         devServer: {
             host: '0.0.0.0',
             hot: true,
@@ -77,7 +80,7 @@ export default function (env) {
                 {
                     test: /\.css$/,
                     use: [
-                        env.prod ? MiniCssExtractPlugin.loader : 'style-loader',
+                        env.WEBPACK_BUILD ? MiniCssExtractPlugin.loader : 'style-loader',
                         'css-loader',
                         'postcss-loader'
                     ]
@@ -92,7 +95,7 @@ export default function (env) {
             }),
             new webpack.DefinePlugin(envConfig),
             new MiniCssExtractPlugin({
-                filename: env.prod ? '[name].[contenthash].css' : '[name].css'
+                filename: env.WEBPACK_BUILD ? '[name].[contenthash].css' : '[name].css'
             })
         ],
         optimization: {
