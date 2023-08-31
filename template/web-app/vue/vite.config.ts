@@ -6,7 +6,7 @@ import mockDevServer from 'vite-plugin-mock-dev-server'
 import checker from 'vite-plugin-checker'
 
 // https://vitejs.dev/config/
-export default defineConfig(({ command, mode }) => {
+export default defineConfig(({ mode }) => {
     const env = loadEnv(mode, process.cwd(), '')
     const plugins: any[] = [
         vueJsx({
@@ -47,9 +47,17 @@ export default defineConfig(({ command, mode }) => {
             }
         },
         esbuild: {
-            drop: command === 'build' ? ['console', 'debugger'] : []
+            drop: mode === 'production' ? ['console', 'debugger'] : []
         },
-        build: {},
+        build: {
+            rollupOptions: {
+                output: {
+                    manualChunks: {
+                        react: ['vue', 'vue-router']
+                    }
+                }
+            }
+        },
         server: {
             host: '0.0.0.0',
             proxy: {

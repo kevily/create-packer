@@ -5,7 +5,7 @@ import { EsbuildPlugin } from 'esbuild-loader'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import * as dotenv from 'dotenv'
-import { ROOT, STATIC_DIR, OUTPUT } from './webpack_config/constant.mjs'
+import { ROOT, OUTPUT } from './webpack_config/constant.mjs'
 
 function getEnvConfig(mode) {
     const envConfig = dotenv.config({ path: mode ? `.env.${mode}` : '.env' }).parsed
@@ -24,7 +24,8 @@ export default function (env) {
             index: [path.join(ROOT, 'main.tsx')]
         },
         output: {
-            filename: STATIC_DIR + (env.WEBPACK_BUILD ? '/[name].[chunkhash].js' : '/[name].js'),
+            filename: env.WEBPACK_BUILD ? 'js/[name].[chunkhash].js' : 'js/[name].js',
+            chunkFilename: env.WEBPACK_BUILD ? 'js/[name].[chunkhash].js' : 'js/[name].js',
             path: OUTPUT,
             publicPath,
             clean: true
@@ -95,7 +96,8 @@ export default function (env) {
             }),
             new webpack.DefinePlugin(envConfig),
             new MiniCssExtractPlugin({
-                filename: env.WEBPACK_BUILD ? '[name].[contenthash].css' : '[name].css'
+                filename: env.WEBPACK_BUILD ? 'css/[name].[contenthash].css' : 'css/[name].css',
+                chunkFilename: env.WEBPACK_BUILD ? 'css/[name].[contenthash].css' : 'css/[name].css'
             })
         ],
         optimization: {
@@ -103,7 +105,17 @@ export default function (env) {
                 new EsbuildPlugin({
                     target: 'es2015'
                 })
-            ]
+            ],
+            splitChunks: {
+                minChunks: 1,
+                cacheGroups: {
+                    react: {
+                        test: /[\\/](react|react-dom)[\\/]/,
+                        chunks: 'all',
+                        name: 'react'
+                    }
+                }
+            }
         },
         resolve: {
             extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
