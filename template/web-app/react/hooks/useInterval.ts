@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { useInterval as useRUInterval } from 'react-use'
 
 interface actionsType {
