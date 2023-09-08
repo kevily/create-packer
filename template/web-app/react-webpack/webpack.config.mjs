@@ -4,6 +4,8 @@ import WebpackBar from 'webpackbar'
 import { EsbuildPlugin } from 'esbuild-loader'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
+import EslintWebpackPlugin from 'eslint-webpack-plugin'
+import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin'
 import * as dotenv from 'dotenv'
 import { ROOT, OUTPUT } from './webpack_config/constant.mjs'
 
@@ -94,6 +96,8 @@ export default function (env) {
                 filename: 'index.html',
                 template: path.resolve(ROOT, 'index.html')
             }),
+            new EslintWebpackPlugin(),
+            new ForkTsCheckerWebpackPlugin(),
             new webpack.DefinePlugin(envConfig),
             new MiniCssExtractPlugin({
                 filename: env.WEBPACK_BUILD ? 'css/[name].[contenthash].css' : 'css/[name].css',

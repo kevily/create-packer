@@ -20,7 +20,7 @@
         "commit": "git add . && npm run cz"
     },
     "dependencies": {
-        "define-zustand": "2.0.0",
+        "define-zustand": "2.0.1",
         "immer": "10.0.1",
         "lodash-es": "4.17.21",
         "qs": "6.11.2",
