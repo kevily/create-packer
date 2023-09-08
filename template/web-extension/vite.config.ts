@@ -22,7 +22,8 @@ export default defineConfig(({ mode }) => {
                     dev: {
                         logLevel: ['error']
                     }
-                }
+                },
+                enableBuild: false
             }),
             react(),
             crx({ manifest: defineManifest({ mode }) })

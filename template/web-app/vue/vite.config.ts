@@ -26,7 +26,8 @@ export default defineConfig(({ mode }) => {
                 dev: {
                     logLevel: ['error']
                 }
-            }
+            },
+            enableBuild: false
         }),
         vue({
             script: {
