@@ -7,7 +7,7 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import EslintWebpackPlugin from 'eslint-webpack-plugin'
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin'
 import * as dotenv from 'dotenv'
-import { ROOT, OUTPUT } from './webpack_config/constant.mjs'
+import { ROOT, OUTPUT, createCssLoader, createStyleLoader } from './webpack_config/index.mjs'
 
 function getEnvConfig(mode) {
     const envConfig = dotenv.config({ path: mode ? `.env.${mode}` : '.env' }).parsed
@@ -82,9 +82,14 @@ export default function (env) {
                 },
                 {
                     test: /\.css$/,
+                    exclude: /\.module\.css$/,
+                    use: [createStyleLoader(env.WEBPACK_BUILD), createCssLoader(), 'postcss-loader']
+                },
+                {
+                    test: /\.module\.css$/,
                     use: [
-                        env.WEBPACK_BUILD ? MiniCssExtractPlugin.loader : 'style-loader',
-                        'css-loader',
+                        createStyleLoader(env.WEBPACK_BUILD),
+                        createCssLoader(true),
                         'postcss-loader'
                     ]
                 }
@@ -113,6 +118,7 @@ export default function (env) {
             splitChunks: {
                 minChunks: 1,
                 cacheGroups: {
+                    default: false,
                     react: {
                         test: /[\\/](react|react-dom)[\\/]/,
                         chunks: 'all',
@@ -121,7 +127,8 @@ export default function (env) {
                     vendor: {
                         test: /[\\/](node_modules)[\\/]/,
                         chunks: 'all',
-                        name: 'vendor'
+                        name: 'vendor',
+                        priority: -1
                     }
                 }
             }

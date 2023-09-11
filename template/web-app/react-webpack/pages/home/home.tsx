@@ -1,5 +1,5 @@
-import './home.css'
+import styles from './home.module.css'
 
 export default function Home() {
-    return <div className={'flex justify-center items-center'}>sdsddds</div>
+    return <div className={styles.root}>sdsddds</div>
 }
