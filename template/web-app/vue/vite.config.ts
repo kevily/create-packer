@@ -4,6 +4,7 @@ import vueJsx from '@vitejs/plugin-vue-jsx'
 import svgLoader from 'vite-svg-loader'
 import mockDevServer from 'vite-plugin-mock-dev-server'
 import checker from 'vite-plugin-checker'
+import { createChunks } from './scripts'
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
@@ -53,9 +54,9 @@ export default defineConfig(({ mode }) => {
         build: {
             rollupOptions: {
                 output: {
-                    manualChunks: {
-                        react: ['vue', 'vue-router']
-                    }
+                    manualChunks: createChunks({
+                        vue: ['vue', 'vue-router']
+                    })
                 }
             }
         },

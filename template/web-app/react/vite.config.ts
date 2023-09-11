@@ -3,6 +3,7 @@ import react from '@vitejs/plugin-react'
 import svgr from 'vite-plugin-svgr'
 import mockDevServer from 'vite-plugin-mock-dev-server'
 import checker from 'vite-plugin-checker'
+import { createChunks } from './scripts'
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
@@ -46,9 +47,9 @@ export default defineConfig(({ mode }) => {
         build: {
             rollupOptions: {
                 output: {
-                    manualChunks: {
+                    manualChunks: createChunks({
                         react: ['react', 'react-dom']
-                    }
+                    })
                 }
             }
         },
