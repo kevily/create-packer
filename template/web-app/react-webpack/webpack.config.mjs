@@ -117,6 +117,11 @@ export default function (env) {
                         test: /[\\/](react|react-dom)[\\/]/,
                         chunks: 'all',
                         name: 'react'
+                    },
+                    vendor: {
+                        test: /[\\/](node_modules)[\\/]/,
+                        chunks: 'all',
+                        name: 'vendor'
                     }
                 }
             }
