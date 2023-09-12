@@ -10,9 +10,15 @@ import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
 import * as dotenv from 'dotenv'
 import { ROOT, OUTPUT, createCssLoader, createStyleLoader } from './webpack_config/index.mjs'
 
-function getEnvConfig(mode) {
+/**
+ *
+ * @param {String} mode
+ * @param {boolean} isProd
+ * @returns {object}
+ */
+function getEnvConfig(mode, isProd) {
     const envConfig = dotenv.config({
-        path: mode && mode !== 'analyzer' ? `.env.${mode}` : '.env'
+        path: isProd ? '.env' : `.env.${mode}`
     }).parsed
     Object.keys(envConfig).forEach(k => {
         envConfig[k] = JSON.stringify(envConfig[k])
@@ -21,7 +27,8 @@ function getEnvConfig(mode) {
 }
 
 export default function (env) {
-    const envConfig = getEnvConfig(env.mode)
+    const isProd = ['prod', 'analyse'].includes(env.mode)
+    const envConfig = getEnvConfig(env.mode, isProd)
     const publicPath = JSON.parse(envConfig.BASE_URL)
 
     return {
@@ -29,15 +36,15 @@ export default function (env) {
             index: [path.join(ROOT, 'main.tsx')]
         },
         output: {
-            filename: env.WEBPACK_BUILD ? 'js/[name].[chunkhash].js' : 'js/[name].js',
-            chunkFilename: env.WEBPACK_BUILD ? 'js/[name].[chunkhash].js' : 'js/[name].js',
+            filename: isProd ? 'js/[name].[chunkhash].js' : 'js/[name].js',
+            chunkFilename: isProd ? 'js/[name].[chunkhash].js' : 'js/[name].js',
             path: OUTPUT,
             publicPath,
             clean: true
         },
         bail: true,
-        mode: env.WEBPACK_BUILD ? 'production' : 'development',
-        stats: env.WEBPACK_BUILD ? 'normal' : 'errors-only',
+        mode: isProd ? 'production' : 'development',
+        stats: isProd ? 'normal' : 'errors-only',
         performance: {
             hints: false
         },
@@ -72,7 +79,8 @@ export default function (env) {
                     test: /\.[jt]sx?$/,
                     loader: 'esbuild-loader',
                     options: {
-                        target: 'es2015'
+                        target: 'es2015',
+                        drop: isProd ? ['console', 'debugger'] : []
                     }
                 },
                 {
@@ -86,15 +94,11 @@ export default function (env) {
                 {
                     test: /\.css$/,
                     exclude: /\.module\.css$/,
-                    use: [createStyleLoader(env.WEBPACK_BUILD), createCssLoader(), 'postcss-loader']
+                    use: [createStyleLoader(isProd), createCssLoader(), 'postcss-loader']
                 },
                 {
                     test: /\.module\.css$/,
-                    use: [
-                        createStyleLoader(env.WEBPACK_BUILD),
-                        createCssLoader(true),
-                        'postcss-loader'
-                    ]
+                    use: [createStyleLoader(isProd), createCssLoader(true), 'postcss-loader']
                 }
             ]
         },
@@ -108,8 +112,8 @@ export default function (env) {
             new ForkTsCheckerWebpackPlugin(),
             new webpack.DefinePlugin(envConfig),
             new MiniCssExtractPlugin({
-                filename: env.WEBPACK_BUILD ? 'css/[name].[contenthash].css' : 'css/[name].css',
-                chunkFilename: env.WEBPACK_BUILD ? 'css/[name].[contenthash].css' : 'css/[name].css'
+                filename: isProd ? 'css/[name].[contenthash].css' : 'css/[name].css',
+                chunkFilename: isProd ? 'css/[name].[contenthash].css' : 'css/[name].css'
             }),
             env.mode === 'analyzer' && new BundleAnalyzerPlugin()
         ],

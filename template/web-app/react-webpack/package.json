@@ -7,7 +7,7 @@
     "author": "1K",
     "scripts": {
         "dev": "webpack serve --env mode=dev",
-        "build": "webpack",
+        "build": "webpack --env mode=prod",
         "build:analyzer": "webpack --env mode=analyzer",
         "up:vite": "pnpm up vite @vitejs/* -L",
         "format": "prettier --write \"**/*.{ts,js,tsx,jsx,json,css,scss,less}\"",
