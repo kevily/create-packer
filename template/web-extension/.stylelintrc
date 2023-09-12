@@ -1,6 +1,6 @@
 {
     "extends": "stylelint-config-standard",
-    "ignoreFiles": ["dist/**/*.*"],
+    "ignoreFiles": ["dist/**/*.*", ".vscode/**/*.*", ".history/**/*.*"],
     "rules": {
         "comment-empty-line-before": "never",
         "no-empty-source": null,

@@ -33,7 +33,7 @@
         },
         "useJSXTextNode": true
     },
-    "ignorePatterns": ["dist/**/*.*"],
+    "ignorePatterns": ["dist/**/*.*", ".vscode/**/*.*", ".history/**/*.*"],
     "rules": {
         "import/export": "off",
         "import/namespace": "off",

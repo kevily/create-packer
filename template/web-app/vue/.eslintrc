@@ -34,7 +34,7 @@
             "jsx": true
         }
     },
-    "ignorePatterns": ["dist/**/*.*"],
+    "ignorePatterns": ["dist/**/*.*", ".vscode/**/*.*", ".history/**/*.*"],
     "rules": {
         "import/export": "off",
         "import/namespace": "off",
@@ -54,6 +54,7 @@
                 ]
             }
         ],
+        "no-case-declarations": "off",
         "@typescript-eslint/no-var-requires": 0,
         "@typescript-eslint/explicit-function-return-type": "off",
         "@typescript-eslint/no-explicit-any": 0,

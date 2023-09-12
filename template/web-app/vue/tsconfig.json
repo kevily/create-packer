@@ -18,6 +18,7 @@
             "@/*": ["./*"]
         }
     },
-    "include": ["**/*.ts", "**/*.tsx", "**/*.vue"],
+    "include": ["**/*.tsx", "**/*.ts", "**/*.vue"],
+    "exclude": ["scripts", "vite.config.ts"],
     "references": [{ "path": "./tsconfig.node.json" }]
 }
