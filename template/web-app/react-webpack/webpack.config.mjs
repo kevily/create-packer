@@ -116,7 +116,7 @@ export default function (env) {
         optimization: {
             minimizer: [
                 new EsbuildPlugin({
-                    target: 'es2015'
+                    target: 'chrome82'
                 })
             ],
             splitChunks: {
@@ -124,12 +124,12 @@ export default function (env) {
                 cacheGroups: {
                     default: false,
                     react: {
-                        test: /[\\/](react|react-dom)[\\/]/,
+                        test: /\/(react|react-dom)\//,
                         chunks: 'all',
                         name: 'react'
                     },
                     vendor: {
-                        test: /[\\/](node_modules)[\\/]/,
+                        test: /\/node_modules\//,
                         chunks: 'all',
                         name: 'vendor',
                         priority: -1
