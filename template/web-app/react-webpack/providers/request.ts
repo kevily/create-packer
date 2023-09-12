@@ -1,8 +1,8 @@
 import axios from 'axios'
 
-console.log('API_HOST', API_HOST)
+console.log('__API_HOST__', __API_HOST__)
 const request = axios.create({
-    baseURL: BASE_URL + API_HOST
+    baseURL: __BASE_URL__ + __API_HOST__
 })
 
 export default request

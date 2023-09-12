@@ -29,7 +29,7 @@ function getEnvConfig(mode, isProd) {
 export default function (env) {
     const isProd = ['prod', 'analyse'].includes(env.mode)
     const envConfig = getEnvConfig(env.mode, isProd)
-    const publicPath = JSON.parse(envConfig.BASE_URL)
+    const publicPath = JSON.parse(envConfig.__BASE_URL__)
 
     return {
         entry: {
