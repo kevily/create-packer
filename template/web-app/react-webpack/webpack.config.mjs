@@ -79,7 +79,7 @@ export default function (env) {
                     test: /\.[jt]sx?$/,
                     loader: 'esbuild-loader',
                     options: {
-                        target: 'es2015',
+                        target: 'chrome82',
                         drop: isProd ? ['console', 'debugger'] : []
                     }
                 },
@@ -118,11 +118,7 @@ export default function (env) {
             env.mode === 'analyzer' && new BundleAnalyzerPlugin()
         ],
         optimization: {
-            minimizer: [
-                new EsbuildPlugin({
-                    target: 'chrome82'
-                })
-            ],
+            minimizer: [new EsbuildPlugin()],
             splitChunks: {
                 minChunks: 1,
                 cacheGroups: {
