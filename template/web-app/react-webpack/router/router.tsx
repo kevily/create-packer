@@ -38,5 +38,5 @@ export const routesById = (function flat(routes: routeType[], parentRoute?: rout
 })(routes)
 
 export const router = createBrowserRouter(routes as never, {
-    basename: __BASE_URL__
+    basename: ENV_BASE_URL
 })

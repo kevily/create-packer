@@ -16,7 +16,7 @@ export function genRouteUrl(id: routeType['id'], query?: Record<string, any>) {
     const path = getRoute(id, 'path')
     if (path) {
         const { origin } = window.location
-        let url = origin + __BASE_URL__ + path
+        let url = origin + ENV_BASE_URL + path
         url += query ? `?${stringify(query)}` : ''
         return url
     }

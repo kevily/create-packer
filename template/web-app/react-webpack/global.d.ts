@@ -1,5 +1,5 @@
-declare const __BASE_URL__: string
-declare const __API_HOST__: string
+declare const ENV_BASE_URL: string
+declare const ENV_API_HOST: string
 
 declare module '*.css'
 declare module '*.less'
