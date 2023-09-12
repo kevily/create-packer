@@ -52,6 +52,7 @@ export default defineConfig(({ mode }) => {
         },
         build: {
             sourcemap: mode === 'analyse',
+            reportCompressedSize: mode === 'analyse',
             rollupOptions: {
                 output: {
                     manualChunks: createChunks({
