@@ -6,11 +6,14 @@ import HtmlWebpackPlugin from 'html-webpack-plugin'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import EslintWebpackPlugin from 'eslint-webpack-plugin'
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin'
+import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
 import * as dotenv from 'dotenv'
 import { ROOT, OUTPUT, createCssLoader, createStyleLoader } from './webpack_config/index.mjs'
 
 function getEnvConfig(mode) {
-    const envConfig = dotenv.config({ path: mode ? `.env.${mode}` : '.env' }).parsed
+    const envConfig = dotenv.config({
+        path: mode && mode !== 'analyzer' ? `.env.${mode}` : '.env'
+    }).parsed
     Object.keys(envConfig).forEach(k => {
         envConfig[k] = JSON.stringify(envConfig[k])
     })
@@ -107,7 +110,8 @@ export default function (env) {
             new MiniCssExtractPlugin({
                 filename: env.WEBPACK_BUILD ? 'css/[name].[contenthash].css' : 'css/[name].css',
                 chunkFilename: env.WEBPACK_BUILD ? 'css/[name].[contenthash].css' : 'css/[name].css'
-            })
+            }),
+            env.mode === 'analyzer' && new BundleAnalyzerPlugin()
         ],
         optimization: {
             minimizer: [

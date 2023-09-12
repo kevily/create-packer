@@ -4,6 +4,8 @@ import vueJsx from '@vitejs/plugin-vue-jsx'
 import svgLoader from 'vite-svg-loader'
 import mockDevServer from 'vite-plugin-mock-dev-server'
 import checker from 'vite-plugin-checker'
+import { visualizer } from 'rollup-plugin-visualizer'
+import { includes } from 'lodash-es'
 import { createChunks } from './scripts'
 
 // https://vitejs.dev/config/
@@ -40,6 +42,10 @@ export default defineConfig(({ mode }) => {
             include: ['**/*.mock.{ts,js}']
         })
     ]
+
+    if (mode === 'analyse') {
+        plugins.push(visualizer({ open: true, sourcemap: true, brotliSize: true, gzipSize: true }))
+    }
     return {
         base: env.VITE_BASE_URL,
         plugins,
@@ -49,9 +55,10 @@ export default defineConfig(({ mode }) => {
             }
         },
         esbuild: {
-            drop: mode === 'production' ? ['console', 'debugger'] : []
+            drop: includes(['production', 'analyse'], mode) ? ['console', 'debugger'] : []
         },
         build: {
+            sourcemap: mode === 'analyse',
             rollupOptions: {
                 output: {
                     manualChunks: createChunks({
