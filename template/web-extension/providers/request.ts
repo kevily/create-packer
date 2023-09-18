@@ -1,4 +1,4 @@
-import { noop, size } from 'lodash-es'
+import { forEach, size } from 'lodash-es'
 import { stringify } from 'qs'
 
 type fetchConfigType = Required<Parameters<typeof fetch>>[1]
@@ -9,8 +9,8 @@ interface configType {
         'Content-Type'?: string
         [key: string]: string | undefined
     }
-    onError?: (e: Response) => void
 }
+type onErrorType = (e: Response) => void
 
 async function resFormatter(response: Response) {
     const contentType = response.headers.get('Content-Type')
@@ -28,25 +28,36 @@ async function resFormatter(response: Response) {
 
 class Request {
     config: configType
+    interceptors: {
+        error: onErrorType[]
+    }
     constructor(config: configType) {
         this.config = {
-            onError: noop,
             ...config,
             headers: {
                 'Content-Type': 'application/json',
                 ...config.headers
             }
         }
+        this.interceptors = {
+            error: []
+        }
+    }
+    onError(callback: onErrorType) {
+        this.interceptors.error.push(callback)
     }
     async request(url: string, config?: fetchConfigType) {
         try {
             const response = await fetch(this.config.baseURL + url, {
                 headers: this.config.headers as never,
+                redirect: 'manual',
                 ...config
             })
             if (response.status !== 200) {
                 const errMsg = `服务器错误状态：${response.status}`
-                this.config.onError?.(response)
+                forEach(this.interceptors.error, onError => {
+                    onError(response)
+                })
                 throw new Error(errMsg)
             }
             return resFormatter(response)
