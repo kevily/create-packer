@@ -1,7 +1,7 @@
-import { lazy } from 'react'
 import { createBrowserRouter } from 'react-router-dom'
 import { assign, isArray, reduce } from 'lodash-es'
 import { ValueType } from '@/types'
+import { AppLayout, AppNotFound } from '@/domain/app'
 import ids from './ids'
 import * as home from './home'
 import type { routeType } from './router.types'
@@ -10,13 +10,13 @@ const routes: routeType[] = [
     {
         path: '/',
         id: ids.root,
-        Component: lazy(() => import('@/pages/layout')),
+        Component: AppLayout,
         children: [...home.routes]
     },
     {
         path: '*',
         id: ids.notFound,
-        Component: lazy(() => import('@/pages/notFound'))
+        Component: AppNotFound
     }
 ]
 
