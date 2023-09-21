@@ -6,6 +6,7 @@
     "private": true,
     "author": "1K",
     "scripts": {
+        "prepare": "husky install",
         "dev": "webpack serve --env mode=dev",
         "build": "webpack --env mode=prod",
         "build:analyzer": "webpack --env mode=analyzer",
