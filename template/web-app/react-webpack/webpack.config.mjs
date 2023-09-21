@@ -5,6 +5,7 @@ import { EsbuildPlugin } from 'esbuild-loader'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import EslintWebpackPlugin from 'eslint-webpack-plugin'
+import StylelintWebpackPlugin from 'stylelint-webpack-plugin'
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin'
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
 import * as dotenv from 'dotenv'
@@ -120,6 +121,7 @@ export default function (env) {
                 template: path.resolve(ROOT, 'index.html')
             }),
             new EslintWebpackPlugin(),
+            new StylelintWebpackPlugin(),
             new ForkTsCheckerWebpackPlugin(),
             new webpack.DefinePlugin(envConfig),
             new MiniCssExtractPlugin({
