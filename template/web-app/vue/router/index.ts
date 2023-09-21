@@ -1,16 +1,19 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
-import { AppLayout, AppNotFound } from '@/domain/app'
 import names from './names'
 import * as homeRouter from './home'
 
 const routes: RouteRecordRaw[] = [
     {
         path: '/',
-        component: AppLayout,
+        component: () => import('@/domain/app/app-layout.vue'),
         redirect: { name: names.home },
         children: [...homeRouter.routes]
     },
-    { path: '/404', name: names.notFound, component: AppNotFound }
+    {
+        path: '/404',
+        name: names.notFound,
+        component: () => import('@/domain/app/app-not-found.vue')
+    }
 ]
 
 export { default as routerNames } from './names'
