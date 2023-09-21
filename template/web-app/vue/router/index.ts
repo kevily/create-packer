@@ -5,14 +5,14 @@ import * as homeRouter from './home'
 const routes: RouteRecordRaw[] = [
     {
         path: '/',
-        component: () => import('@/domain/app/app-layout.vue'),
+        component: () => import('@/pages'),
         redirect: { name: names.home },
         children: [...homeRouter.routes]
     },
     {
         path: '/404',
         name: names.notFound,
-        component: () => import('@/domain/app/app-not-found.vue')
+        component: () => import('@/pages/not-found.vue')
     }
 ]
 

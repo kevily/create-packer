@@ -10,13 +10,13 @@ const routes: routeType[] = [
     {
         path: '/',
         id: ids.root,
-        Component: lazy(() => import('@/domain/app/app-layout')),
+        Component: lazy(() => import('@/pages')),
         children: [...home.routes]
     },
     {
         path: '*',
         id: ids.notFound,
-        Component: lazy(() => import('@/domain/app/app-not-found'))
+        Component: lazy(() => import('@/pages/not-found'))
     }
 ]
 

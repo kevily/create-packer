@@ -1,9 +1,8 @@
 import { Suspense, useEffect } from 'react'
 import { Outlet, useLocation } from 'react-router-dom'
 import { navigate, routerIds } from '@/router'
-import AppLoading from './app-loading'
 
-export default function AppLayout() {
+const View = () => {
     const location = useLocation()
 
     useEffect(() => {
@@ -13,8 +12,10 @@ export default function AppLayout() {
     }, [location])
 
     return (
-        <Suspense fallback={<AppLoading />}>
+        <Suspense fallback={<>loading...</>}>
             <Outlet />
         </Suspense>
     )
 }
+
+export default View
