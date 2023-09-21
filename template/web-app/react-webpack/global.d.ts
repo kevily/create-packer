@@ -6,13 +6,12 @@ declare module '*.less'
 declare module '*.scss'
 declare module '*.png'
 declare module '*.webp'
-declare module '*.svg' {
-    import * as React from 'react'
-
-    export const ReactComponent: React.FunctionComponent<
-        React.ComponentProps<'svg'> & { title?: string }
-    >
-    export function ReactComponent(props: React.SVGProps<SVGSVGElement>): React.ReactElement
+declare module '*.svg?url' {
     const url: string
     export default url
+}
+declare module '*.svg' {
+    import * as React from 'react'
+    function ReactComponent(props: React.SVGProps<SVGSVGElement>): React.ReactElement
+    export default ReactComponent
 }

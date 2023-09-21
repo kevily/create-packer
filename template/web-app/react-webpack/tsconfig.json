@@ -22,5 +22,5 @@
         }
     },
     "include": ["**/*.tsx", "**/*.ts"],
-    "exclude": ["scripts", "vite.config.ts"]
+    "exclude": ["scripts"]
 }

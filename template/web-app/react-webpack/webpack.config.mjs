@@ -84,8 +84,19 @@ export default function (env) {
                     }
                 },
                 {
-                    test: /\.(png|svg|jpg|jpeg|gif)$/i,
+                    test: /\.(png|jpg|jpeg|gif)$/i,
                     type: 'asset/resource'
+                },
+                {
+                    test: /\.svg$/i,
+                    type: 'asset/resource',
+                    resourceQuery: /url/ // *.svg?url
+                },
+                {
+                    test: /\.svg$/i,
+                    issuer: /\.[jt]sx?$/,
+                    resourceQuery: { not: [/url/] }, // exclude react component if *.svg?url
+                    use: ['@svgr/webpack']
                 },
                 {
                     test: /\.(woff|woff2|eot|ttf|otf)$/i,
