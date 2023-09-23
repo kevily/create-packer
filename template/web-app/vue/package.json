@@ -10,7 +10,7 @@
         "build:analyse": "tsc --noEmit && vite build --mode analyse",
         "preview": "vite preview",
         "format": "prettier --write \"**/*.{ts,js,tsx,jsx,json,vue,css,scss,less}\"",
-        "lint": "eslint **/*.{ts,tsx,js,jsx,vue} && stylelint **/*.{css,scss,less}",
+        "lint": "vue-tsc --noEmit && eslint **/*.{ts,tsx,js,jsx,vue} --no-error-on-unmatched-pattern && stylelint **/*.{css,scss,less}",
         "lint:fix": "eslint **/*.{ts,tsx,js,jsx,vue} --fix && stylelint **/*.{css,scss,less} --fix",
         "cz": "cz",
         "push": "npm run commit && git push",
