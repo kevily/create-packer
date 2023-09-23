@@ -12,7 +12,7 @@
         "build:analyzer": "webpack --env mode=analyzer",
         "up:vite": "pnpm up vite @vitejs/* -L",
         "format": "prettier --write \"**/*.{ts,js,tsx,jsx,json,css,scss,less}\"",
-        "lint": "tsc --noEmit && eslint **/*.{tsx,ts,jsx,js} && stylelint **/*.{css,scss,less}",
+        "lint": "tsc --noEmit && eslint **/*.{tsx,ts,jsx,js} --no-error-on-unmatched-pattern && stylelint **/*.{css,scss,less}",
         "lint:fix": "eslint **/*.{tsx,ts,jsx,js} --fix && stylelint **/*.{css,scss,less} --fix",
         "cz": "cz",
         "push": "npm run commit && git push",
