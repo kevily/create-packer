@@ -1,16 +1,24 @@
+import path from 'path'
 import { defineConfig, loadEnv } from 'vite'
 import { sveltekit } from '@sveltejs/kit/vite'
+import { visualizer } from 'rollup-plugin-visualizer'
 import { includes } from 'lodash-es'
 import { createChunks } from './scripts'
 
 export default defineConfig(({ mode }) => {
     const env = loadEnv(mode, process.cwd(), '')
+    const plugins: any[] = [sveltekit()]
+
+    if (mode === 'analyse') {
+        plugins.push(visualizer({ open: true, sourcemap: true, brotliSize: true, gzipSize: true }))
+    }
+
     return {
         base: env.VITE_BASE_URL,
-        plugins: [sveltekit()],
+        plugins,
         resolve: {
             alias: {
-                '@': __dirname
+                '@': path.join(__dirname, 'src')
             }
         },
         esbuild: {
@@ -22,7 +30,7 @@ export default defineConfig(({ mode }) => {
             rollupOptions: {
                 output: {
                     manualChunks: createChunks({
-                        sveltejs: ['sveltejs']
+                        svelte: ['svelte']
                     })
                 }
             }
