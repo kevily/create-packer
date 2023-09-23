@@ -7,12 +7,14 @@ const routes: RouteRecordRaw[] = [
         path: '/',
         component: () => import('@/pages'),
         redirect: { name: names.home },
-        children: [...homeRouter.routes]
-    },
-    {
-        path: '/404',
-        name: names.notFound,
-        component: () => import('@/pages/not-found.vue')
+        children: [
+            ...homeRouter.routes,
+            {
+                path: '/404',
+                name: names.notFound,
+                component: () => import('@/pages/not-found.vue')
+            }
+        ]
     }
 ]
 

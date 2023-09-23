@@ -11,12 +11,14 @@ const routes: routeType[] = [
         path: '/',
         id: ids.root,
         Component: lazy(() => import('@/pages')),
-        children: [...home.routes]
-    },
-    {
-        path: '*',
-        id: ids.notFound,
-        Component: lazy(() => import('@/pages/not-found'))
+        children: [
+            ...home.routes,
+            {
+                path: '*',
+                id: ids.notFound,
+                Component: lazy(() => import('@/pages/not-found'))
+            }
+        ]
     }
 ]
 
