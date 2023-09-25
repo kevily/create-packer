@@ -1,8 +1,7 @@
 # react-app-webpack
 
--   dev: pnpm run dev
--   build: pnpm run build
--   build:dev: pnpm run build:dev -> use ".env.dev"
+-   dev: pnpm run dev -> use ".env.dev"
+-   build: pnpm run build -> use ".env"
 
 # svg
 
