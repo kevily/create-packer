@@ -43,7 +43,9 @@ export default function (env) {
             publicPath,
             clean: true
         },
-        bail: true,
+        experiments: {
+            lazyCompilation: true
+        },
         mode: isProd ? 'production' : 'development',
         stats: isProd ? 'normal' : 'errors-only',
         performance: {

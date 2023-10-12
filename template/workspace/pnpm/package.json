@@ -5,14 +5,14 @@
     "private": true,
     "main": "index.js",
     "scripts": {
-        "build": "ts-node ./scripts/build.ts",
+        "build": "pnpm run clean:dist && ts-node ./scripts/build.ts",
         "changeVersion": "pnpm changeset && pnpm changeset version && pnpm run clear:changelog",
         "clear:changelog": "pnpm -r exec rimraf CHANGELOG.md",
         "commit": "git add . && cz",
         "push": "pnpm run commit && git push",
         "login": "npm login --registry http://registry.npmjs.org",
         "clean:dist": "pnpm -r exec rimraf dist",
-        "pub": "pnpm run changeVersion && pnpm run build && pnpm run push && pnpm -r publish --registry https://registry.npmjs.org"
+        "pub": "pnpm run build && pnpm run changeVersion && pnpm run push && pnpm -r publish --registry https://registry.npmjs.org"
     },
     "keywords": [],
     "author": "kevily",
