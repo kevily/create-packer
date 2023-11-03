@@ -49,7 +49,14 @@
                     "index",
                     "object",
                     "type"
-                ]
+                ],
+                "pathGroups": [
+                    { "pattern": "react", "group": "external", "position": "before" },
+                    { "pattern": "react-dom/*", "group": "external", "position": "before" },
+                    { "pattern": "react-router", "group": "external", "position": "before" },
+                    { "pattern": "react-router-dom", "group": "external", "position": "before" }
+                ],
+                "pathGroupsExcludedImportTypes": ["react", "react-router", "react-router-dom"]
             }
         ],
         "no-case-declarations": "off",

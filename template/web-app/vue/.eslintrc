@@ -50,7 +50,12 @@
                     "index",
                     "object",
                     "type"
-                ]
+                ],
+                "pathGroups": [
+                    { "pattern": "vue", "group": "external", "position": "before" },
+                    { "pattern": "vue-router", "group": "external", "position": "before" }
+                ],
+                "pathGroupsExcludedImportTypes": ["vue", "vue-router"]
             }
         ],
         "no-case-declarations": "off",
