@@ -1,6 +1,6 @@
 import { Suspense, useEffect } from 'react'
 import { Outlet, useLocation } from 'react-router-dom'
-import { navigate, routerIds } from '@/router'
+import { navigate, routerIds } from 'router'
 
 const View = () => {
     const location = useLocation()

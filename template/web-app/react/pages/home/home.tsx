@@ -1,7 +1,6 @@
 import './home.css'
 import { useEffect } from 'react'
-import { request } from '@/providers'
-import { API } from './providers'
+import { request, API } from '@/shared/service'
 
 export default function Home() {
     useEffect(() => {

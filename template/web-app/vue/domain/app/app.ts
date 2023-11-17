@@ -1,4 +1,4 @@
 import { createApp } from 'vue'
-import App from './app.vue'
+import { App } from './views'
 
 export default createApp(App)

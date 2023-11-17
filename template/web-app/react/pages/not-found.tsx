@@ -1,3 +1,3 @@
-export default function AppNotFound() {
+export default function NotFound() {
     return <div>404</div>
 }

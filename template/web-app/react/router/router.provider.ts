@@ -1,6 +1,6 @@
+import { NavigateOptions } from 'react-router-dom'
 import { get } from 'lodash-es'
 import { stringify } from 'qs'
-import { NavigateOptions } from 'react-router-dom'
 import { routeType } from '@/router/router.types'
 import { router, routesById } from './router'
 

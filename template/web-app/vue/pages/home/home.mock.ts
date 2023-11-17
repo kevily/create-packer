@@ -1,6 +1,6 @@
 import Mock from 'mockjs'
 import { defineMock } from '@/mockUtils'
-import { API } from './providers'
+import { API } from '@/shared/service'
 export default defineMock([
     {
         url: API.HOME_DATA,

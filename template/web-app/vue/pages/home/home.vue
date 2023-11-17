@@ -3,8 +3,7 @@
 </template>
 
 <script setup lang="ts">
-import { request } from '@/providers'
-import { API } from './providers'
+import { request, API } from '@/shared/service'
 
 request.post(API.HOME_DATA).then(({ data }) => {
     console.log('data', data)
