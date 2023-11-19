@@ -1,8 +1,8 @@
+import { useMemo } from 'react'
 import { useMatches, useSearchParams } from 'react-router-dom'
 import { parse } from 'qs'
-import { useMemo } from 'react'
 import { map } from 'lodash-es'
-import { getRoute } from '@/router/router.provider'
+import { getRoute } from '@/router/router.tool'
 import { routeType } from '@/router/router.types'
 
 export function useQuery<Q extends Record<string, any>>() {

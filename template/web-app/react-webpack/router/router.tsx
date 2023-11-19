@@ -1,7 +1,6 @@
 import { lazy } from 'react'
 import { createBrowserRouter } from 'react-router-dom'
 import { assign, isArray, reduce } from 'lodash-es'
-import { ValueType } from 'shared/types'
 import ids from './ids'
 import * as home from './home'
 import type { routeType } from './router.types'
@@ -35,7 +34,7 @@ export const routesById = (function flat(routes: routeType[], parentRoute?: rout
             }
             return result
         },
-        {} as Record<ValueType<typeof ids>, routeType>
+        {} as Record<routeType['id'], routeType>
     )
 })(routes)
 

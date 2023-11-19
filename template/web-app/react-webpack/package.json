@@ -19,6 +19,7 @@
         "commit": "git add . && npm run cz"
     },
     "dependencies": {
+        "1k-types": "1.0.1",
         "axios": "1.5.0",
         "define-zustand": "2.0.1",
         "immer": "10.0.2",
