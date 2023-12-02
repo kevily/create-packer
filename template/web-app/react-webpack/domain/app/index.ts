@@ -1,2 +1,2 @@
 export * from './app.model'
-export * from './views'
+export * from './components'
