@@ -10,6 +10,7 @@ import { createChunks } from './scripts'
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
     const env = loadEnv(mode, process.cwd(), '')
+    const proxyBaseUrl = env.VITE_BASE_URL + env.VITE_API_HOST
     const plugins: any[] = [
         svgr(),
         checker({
@@ -64,10 +65,10 @@ export default defineConfig(({ mode }) => {
         server: {
             host: '0.0.0.0',
             proxy: {
-                '/dev/api': {
+                [proxyBaseUrl]: {
                     target: 'http://127.0.0.1',
                     changeOrigin: true,
-                    rewrite: path => path.replace(/^\/dev\/api/, '')
+                    rewrite: path => path.replace(proxyBaseUrl, '')
                 }
             }
         }
