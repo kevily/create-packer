@@ -21,8 +21,14 @@ function createServiceHooks() {
             async req => {
                 // eslint-disable-next-line prefer-const
                 let [url, searchParams] = req.url.split('?')
-                const reqBody =
-                    !includes(['GET', 'HEAD'], req.method) && req.body ? await req.json() : void 0
+                let reqBody = void 0
+                if (!includes(['GET', 'HEAD'], req.method)) {
+                    try {
+                        reqBody = await req.json()
+                    } catch {
+                        /* empty */
+                    }
+                }
                 const parsedSearchParams = parse(searchParams)
                 const reqConfig = {
                     searchParams: parsedSearchParams,
