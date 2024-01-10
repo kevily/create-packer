@@ -1,6 +1,6 @@
-import defineModel from 'define-zustand'
+import { defineStore } from 'define-zustand'
 
-export const useApp = defineModel({
+export const useApp = defineStore({
     state: () => ({}),
     getter: {},
     actions: () => ({})
