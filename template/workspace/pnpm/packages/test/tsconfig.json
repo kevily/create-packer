@@ -4,6 +4,7 @@
         "esModuleInterop": true,
         "allowSyntheticDefaultImports": true,
         "allowJs": true,
+        "strictNullChecks": true,
         "target": "ESNext",
         "noImplicitAny": false,
         "moduleResolution": "node",

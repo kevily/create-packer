@@ -11,6 +11,7 @@
         "jsx": "react-jsx",
         "allowSyntheticDefaultImports": true,
         "allowJs": true,
+        "strictNullChecks": true,
         "target": "ESNext",
         "noImplicitAny": false,
         "skipLibCheck": true,

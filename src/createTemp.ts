@@ -38,7 +38,7 @@ export async function createTemp(dirname: string) {
         }
     ])
     let tempInfo = tempInfoList.find(o => o.name === answer.temp)
-    if (tempInfo.children.length > 0) {
+    if (tempInfo?.children && tempInfo.children.length > 0) {
         answer = await inquirer.prompt([
             {
                 type: 'list',
@@ -57,7 +57,7 @@ export async function createTemp(dirname: string) {
     if (!isCurrent) {
         fsExtra.mkdirSync(output)
     }
-    copyTempFile(tempInfo.src, output)
+    copyTempFile(tempInfo!.src, output)
     createTempEnd(output)
     creating.succeed()
 }

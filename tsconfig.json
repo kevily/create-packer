@@ -5,6 +5,7 @@
         "allowSyntheticDefaultImports": false,
         "resolveJsonModule": true,
         "allowJs": true,
+        "strictNullChecks": true,
         "target": "ESNext",
         "noImplicitAny": false,
         "moduleResolution": "node",

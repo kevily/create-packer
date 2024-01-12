@@ -4,7 +4,8 @@
         "target": "ESNext",
         "useDefineForClassFields": true,
         "lib": ["DOM", "DOM.Iterable", "ESNext"],
-        "allowJs": false,
+        "allowJs": true,
+        "strictNullChecks": true,
         "skipLibCheck": true,
         "esModuleInterop": false,
         "allowSyntheticDefaultImports": true,
@@ -22,6 +23,5 @@
         }
     },
     "include": ["**/*.tsx", "**/*.ts"],
-    "exclude": ["scripts", "vite.config.ts"],
-    "references": [{ "path": "./tsconfig.node.json" }]
+    "exclude": ["scripts"]
 }

@@ -38,7 +38,7 @@ async function createTemp(dirname) {
         }
     ]);
     let tempInfo = tempInfoList.find(o => o.name === answer.temp);
-    if (tempInfo.children.length > 0) {
+    if (tempInfo?.children && tempInfo.children.length > 0) {
         answer = await inquirer.prompt([
             {
                 type: 'list',
