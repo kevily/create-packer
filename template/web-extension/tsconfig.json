@@ -9,6 +9,7 @@
         "skipLibCheck": true,
         "esModuleInterop": false,
         "allowSyntheticDefaultImports": true,
+        "noImplicitAny": false,
         "strict": true,
         "forceConsistentCasingInFileNames": true,
         "strictPropertyInitialization": false,
