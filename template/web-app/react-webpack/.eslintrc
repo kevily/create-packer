@@ -77,7 +77,7 @@
         "@typescript-eslint/no-empty-interface": "off",
         "react/prop-types": "off",
         "react/no-find-dom-node": "off",
-        "react-hooks/exhaustive-deps": "warn",
+        "react-hooks/exhaustive-deps": "off",
         "react/display-name": "off",
         "react/react-in-jsx-scope": "off",
         "prettier/prettier": [

@@ -3,7 +3,8 @@ import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import svgLoader from 'vite-svg-loader'
 import mockDevServer from 'vite-plugin-mock-dev-server'
-import checker from 'vite-plugin-checker'
+import stylelint from 'vite-plugin-stylelint'
+import eslintPlugin from '@nabla/vite-plugin-eslint'
 import { visualizer } from 'rollup-plugin-visualizer'
 import { includes } from 'lodash-es'
 import { createChunks } from './scripts'
@@ -16,22 +17,10 @@ export default defineConfig(({ mode }) => {
         vueJsx({
             enableObjectSlots: false
         }),
-        checker({
-            typescript: true,
-            eslint: {
-                // for example, lint .ts and .tsx
-                lintCommand: 'eslint **/*.{ts,tsx,js,jsx,vue}',
-                dev: {
-                    logLevel: ['error']
-                }
-            },
-            stylelint: {
-                lintCommand: 'stylelint **/*.{css,scss,less,vue}',
-                dev: {
-                    logLevel: ['error']
-                }
-            },
-            enableBuild: false
+        stylelint({ cache: false, include: ['**/*.{css,scss,sass,less,styl,vue,svelte}'] }),
+        eslintPlugin({
+            eslintOptions: { cache: false, useEslintrc: true },
+            shouldLint: path => /\/[^?]*\.(vue|svelte|m?[jt]sx?)$/.test(path)
         }),
         vue({
             script: {

@@ -1,7 +1,7 @@
 ## Vite + Vue3.x + Typescript
 
 ### Features
-- Vite 3.x
+- Vite 4.x
 - Vue 3.x
 - Typescript 4.x
 - vue-router 4.x

@@ -2,7 +2,8 @@ import { defineConfig, loadEnv } from 'vite'
 import react from '@vitejs/plugin-react'
 import svgr from 'vite-plugin-svgr'
 import mockDevServer from 'vite-plugin-mock-dev-server'
-import checker from 'vite-plugin-checker'
+import stylelint from 'vite-plugin-stylelint'
+import eslintPlugin from '@nabla/vite-plugin-eslint'
 import { visualizer } from 'rollup-plugin-visualizer'
 import { includes } from 'lodash-es'
 import { createChunks } from './scripts'
@@ -13,22 +14,10 @@ export default defineConfig(({ mode }) => {
     const proxyBaseUrl = env.VITE_BASE_URL + env.VITE_API_HOST
     const plugins: any[] = [
         svgr(),
-        checker({
-            typescript: true,
-            eslint: {
-                // for example, lint .ts and .tsx
-                lintCommand: 'eslint **/*.{ts,tsx,js,jsx}',
-                dev: {
-                    logLevel: ['error']
-                }
-            },
-            stylelint: {
-                lintCommand: 'stylelint **/*.{css,scss,less}',
-                dev: {
-                    logLevel: ['error']
-                }
-            },
-            enableBuild: false
+        stylelint({ cache: false, include: ['**/*.{css,scss,sass,less,styl,vue,svelte}'] }),
+        eslintPlugin({
+            eslintOptions: { cache: false, useEslintrc: true },
+            shouldLint: path => /\/[^?]*\.(vue|svelte|m?[jt]sx?)$/.test(path)
         }),
         react(),
         mockDevServer({

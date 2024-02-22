@@ -36,6 +36,8 @@
     "rules": {
         "import/export": "off",
         "import/namespace": "off",
+        "import/default": "off",
+        "import/no-named-as-default-member": "off",
         "import/order": [
             "error",
             {
@@ -48,9 +50,18 @@
                     "index",
                     "object",
                     "type"
-                ]
+                ],
+                "pathGroups": [
+                    { "pattern": "react", "group": "external", "position": "before" },
+                    { "pattern": "react-dom/*", "group": "external", "position": "before" },
+                    { "pattern": "react-router", "group": "external", "position": "before" },
+                    { "pattern": "react-router-dom", "group": "external", "position": "before" },
+                    { "pattern": "@jz/*", "group": "external", "position": "after" }
+                ],
+                "pathGroupsExcludedImportTypes": ["react", "react-router", "react-router-dom"]
             }
         ],
+        "no-case-declarations": "off",
         "@typescript-eslint/no-var-requires": 0,
         "@typescript-eslint/explicit-function-return-type": "off",
         "@typescript-eslint/no-explicit-any": 0,
@@ -69,7 +80,7 @@
         "@typescript-eslint/no-empty-interface": "off",
         "react/prop-types": "off",
         "react/no-find-dom-node": "off",
-        "react-hooks/exhaustive-deps": "warn",
+        "react-hooks/exhaustive-deps": "off",
         "react/display-name": "off",
         "react/react-in-jsx-scope": "off",
         "prettier/prettier": [

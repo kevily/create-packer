@@ -36,10 +36,10 @@
         "@types/fs-extra": "9.0.12",
         "@types/inquirer": "7.3.3",
         "@types/node": "16.4.7",
-        "@typescript-eslint/eslint-plugin": "6.17.0",
-        "@typescript-eslint/parser": "6.17.0",
+        "@typescript-eslint/eslint-plugin": "7.0.2",
+        "@typescript-eslint/parser": "7.0.2",
         "commitizen": "4.3.0",
-        "eslint": "7.32.0",
+        "eslint": "8.56.0",
         "rimraf": "3.0.2",
         "typescript": "5.3.3"
     },

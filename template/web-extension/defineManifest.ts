@@ -5,6 +5,7 @@ interface argType {
     mode: string
 }
 export default function ({ mode }: argType) {
+    const host_permissions = []
     return defineManifest({
         manifest_version: 3,
         name: 'Hello Extensions',
@@ -14,6 +15,7 @@ export default function ({ mode }: argType) {
             default_popup: 'popup/popup.html',
             default_icon: 'vite.svg'
         },
+        host_permissions,
         content_scripts: [
             {
                 js: ['content_script/index.tsx'],
@@ -22,6 +24,9 @@ export default function ({ mode }: argType) {
                     'https://developer.chrome.com/docs/webstore/*'
                 ]
             }
-        ]
+        ],
+        background: {
+            service_worker: 'background/index.ts'
+        }
     })
 }

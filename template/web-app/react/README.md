@@ -1,7 +1,7 @@
 ## Vite + react18 + Typescript
 
 ### Features
-- Vite 3.x
+- Vite 4.x
 - React 18.x
 - Typescript 4.x
 - react-router 6.x
