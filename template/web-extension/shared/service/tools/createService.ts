@@ -2,19 +2,18 @@ import ky from 'ky'
 import { assign, isArray, isObject } from 'lodash-es'
 import { configType } from '../types'
 import { createRequestActions } from './createRequestActions'
-import { createServiceHooks } from './createServiceHooks'
+import { createServiceHooks } from './hooks'
 
 export function createService(config: configType) {
-    const { kyHooks, addHooks, serviceHooks } = createServiceHooks()
+    const { addHooks, serviceHooks } = createServiceHooks()
     const globalParams: configType['globalParams'] = assign({}, config.globalParams)
     const globalSearchParams: configType['globalSearchParams'] = assign(
         {},
         config.globalSearchParams
     )
     const request = ky.create({
-        prefixUrl: config.prefixUrl,
-        headers: config.headers,
-        hooks: kyHooks
+        prefixUrl: '',
+        headers: config.headers
     })
     const requestActions = createRequestActions(config.prefixUrl, request, serviceHooks)
 

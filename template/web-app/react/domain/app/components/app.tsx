@@ -1,7 +1,9 @@
-import { FunctionComponent, ReactNode, StrictMode, useLayoutEffect } from 'react'
+import { StrictMode, useLayoutEffect } from 'react'
+import { RouterProvider } from 'react-router-dom'
 import { request } from '@/shared/service'
+import { routerInstance } from '@/domain/router'
 
-const App: FunctionComponent<{ children: ReactNode }> = props => {
+const App = () => {
     useLayoutEffect(() => {
         request.interceptors.response.use(
             res => res,
@@ -11,7 +13,11 @@ const App: FunctionComponent<{ children: ReactNode }> = props => {
         )
     }, [])
 
-    return <StrictMode>{props.children}</StrictMode>
+    return (
+        <StrictMode>
+            <RouterProvider router={routerInstance} />
+        </StrictMode>
+    )
 }
 
 export default App

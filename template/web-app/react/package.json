@@ -9,7 +9,7 @@
         "build": "tsc --noEmit && vite build",
         "build:analyse": "tsc --noEmit && vite build --mode analyse",
         "preview": "vite preview",
-        "up:vite": "pnpm up vite @vitejs/* -L",
+        "up:vite": "pnpm up vite @vitejs/* vite-plugin-* -L",
         "format": "prettier --write \"**/*.{ts,js,tsx,jsx,json,css,scss,less}\"",
         "lint": "tsc --noEmit && eslint **/*.{tsx,ts,jsx,js} --no-error-on-unmatched-pattern && stylelint **/*.{css,scss,less}",
         "lint:fix": "eslint **/*.{tsx,ts,jsx,js} --fix && stylelint **/*.{css,scss,less} --fix",
@@ -27,7 +27,7 @@
         "react": "18.2.0",
         "react-dom": "18.2.0",
         "react-router-dom": "6.14.0",
-        "react-use": "17.4.0",
+        "react-use": "17.5.0",
         "zustand": "4.4.1"
     },
     "devDependencies": {

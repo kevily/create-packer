@@ -58,12 +58,14 @@ export function create(Context?: FunctionComponent<PropsWithChildren<any>>) {
                 instance: void 0,
                 pending: new Promise<void>(resolve => {
                     createRoot(div).render(
-                        <ApiComponent
-                            ref={instance => {
-                                current.instance = instanceMap[key].instance = instance!
-                                resolve()
-                            }}
-                        />
+                        (
+                            <ApiComponent
+                                ref={instance => {
+                                    current.instance = instanceMap[key].instance = instance!
+                                    resolve()
+                                }}
+                            />
+                        ) as never
                     )
                 })
             }

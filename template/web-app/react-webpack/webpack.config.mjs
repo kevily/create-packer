@@ -43,9 +43,6 @@ export default function (env) {
             publicPath,
             clean: true
         },
-        experiments: {
-            lazyCompilation: true
-        },
         mode: isProd ? 'production' : 'development',
         stats: isProd ? 'normal' : 'errors-only',
         performance: {
@@ -65,16 +62,18 @@ export default function (env) {
             devMiddleware: {
                 publicPath
             },
-            proxy: {
-                '/api': {
-                    target: 'http://127.0.0.1:3000',
-                    changeOrigin: true,
-                    secure: false,
-                    pathRewrite: {
-                        '^/api': ''
+            proxy: [
+                {
+                    '/api': {
+                        target: 'http://127.0.0.1:3000',
+                        changeOrigin: true,
+                        secure: false,
+                        pathRewrite: {
+                            '^/api': ''
+                        }
                     }
                 }
-            }
+            ]
         },
         module: {
             rules: [

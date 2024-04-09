@@ -1,13 +1,14 @@
 import { HTTPError, NormalizedOptions, Options, TimeoutError } from 'ky'
 import { AnyArray, AnyObject, Nullable } from '1k-types'
-import { FetchError } from './tools'
 
-export enum httpErrorType {
+export enum httpErrorNameType {
     'HTTPError' = 'HTTPError',
     'TimeoutError' = 'TimeoutError',
     'FetchError' = 'FetchError'
 }
 
+export type httpErrorType = HTTPError | TimeoutError
+/** 接口异常返回结果 */
 export type httpBodyType = Nullable<string | number | AnyObject | AnyArray>
 
 export type beforeRequestType = (req: {
@@ -16,9 +17,7 @@ export type beforeRequestType = (req: {
     headers: Headers
     method: Options['method']
 }) => Promise<void> | void
-export type httpErrorHooksType = (
-    error: HTTPError | TimeoutError | FetchError
-) => Promise<void> | void
+export type httpErrorHooksType = (error: httpErrorType) => Promise<void> | void
 export type AfterResponseHook = (arg: {
     request: Request
     options: NormalizedOptions
@@ -30,11 +29,18 @@ export interface serviceHooksType {
     afterResponse: AfterResponseHook[]
 }
 
-export interface configType extends Pick<Options, 'prefixUrl' | 'headers'> {
+export interface requestOptionsType extends Omit<Options, 'prefixUrl' | 'hooks'> {
+    prefixUrl?: string | (() => string | Promise<string>)
+    hooks?: Partial<serviceHooksType>
+    responseType?: 'json' | 'text' | 'blob' | 'response'
+}
+
+export interface configType extends Pick<requestOptionsType, 'prefixUrl' | 'headers'> {
     globalParams?: Record<string, any>
     globalSearchParams?: Record<string, any>
     hooks?: Partial<serviceHooksType>
-}
-export interface requestOptionsType extends Options {
-    responseType?: 'json' | 'text' | 'blob'
+    /**
+     * @default true
+     * */
+    isClearEmptyData?: boolean
 }

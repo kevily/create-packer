@@ -1,9 +1,10 @@
 import { Suspense, useEffect } from 'react'
 import { Outlet, useLocation } from 'react-router-dom'
-import { navigate, routerIds } from '@/router'
+import { useRouter, routerIds } from '@/domain/router'
 
 const View = () => {
     const location = useLocation()
+    const navigate = useRouter(state => state.navigate)
 
     useEffect(() => {
         if (location.pathname === '/') {

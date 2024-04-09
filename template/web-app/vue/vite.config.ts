@@ -22,11 +22,7 @@ export default defineConfig(({ mode }) => {
             eslintOptions: { cache: false, useEslintrc: true },
             shouldLint: path => /\/[^?]*\.(vue|svelte|m?[jt]sx?)$/.test(path)
         }),
-        vue({
-            script: {
-                defineModel: true
-            }
-        }),
+        vue(),
         svgLoader(),
         mockDevServer({
             include: ['**/*.mock.{ts,js}']

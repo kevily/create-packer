@@ -1,4 +1,4 @@
-import { concat, forEach, includes, isArray, isRegExp, keys, remove, size } from 'lodash-es'
+import { concat, forEach, isArray, isRegExp, keys, remove, size } from 'lodash-es'
 import pkg from '../package.json'
 
 export function createChunks(chunks: { [key: string]: Array<string | RegExp> }) {
