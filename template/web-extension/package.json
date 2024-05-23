@@ -27,7 +27,7 @@
         "zustand": "4.4.1"
     },
     "devDependencies": {
-        "1k-types": "1.1.2",
+        "1k-types": "1.2.0",
         "@commitlint/cli": "17.6.1",
         "@commitlint/config-conventional": "17.6.1",
         "@commitlint/cz-commitlint": "17.5.0",

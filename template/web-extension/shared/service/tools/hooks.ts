@@ -1,5 +1,5 @@
 import { Hooks } from 'ky'
-import { omit } from 'lodash-es'
+import { isNumber, isString, omit, some, isPlainObject, isArray } from 'lodash-es'
 import { stringify, parse } from 'qs'
 import { ArrayValues } from '1k-types'
 import { serviceHooksType } from '../types'
@@ -51,10 +51,16 @@ export function createKyRequestHooks(serviceHooks: serviceHooksType): Hooks {
                 }
                 await forEachHooks('beforeRequest', reqConfig)
                 url = url + stringify(reqConfig.searchParams, { addQueryPrefix: true })
+                const isStringify = some([isNumber, isString, isPlainObject, isArray], fn => {
+                    return fn(reqConfig.body)
+                })
+                if (isStringify) {
+                    reqConfig.body = JSON.stringify(reqConfig.body)
+                }
                 return new Request(url, {
                     ...omit(req, 'url'),
                     headers: reqConfig.headers,
-                    body: reqBody ? JSON.stringify(reqConfig.body) : void 0
+                    body: (reqConfig.body ? reqConfig.body : void 0) as BodyInit
                 })
             }
         ],

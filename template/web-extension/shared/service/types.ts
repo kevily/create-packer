@@ -39,8 +39,4 @@ export interface configType extends Pick<requestOptionsType, 'prefixUrl' | 'head
     globalParams?: Record<string, any>
     globalSearchParams?: Record<string, any>
     hooks?: Partial<serviceHooksType>
-    /**
-     * @default true
-     * */
-    isClearEmptyData?: boolean
 }

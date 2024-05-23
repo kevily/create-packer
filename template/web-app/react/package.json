@@ -18,14 +18,14 @@
         "commit": "git add . && npm run cz"
     },
     "dependencies": {
-        "1k-types": "1.1.2",
+        "1k-types": "1.2.0",
         "axios": "1.3.6",
         "define-zustand": "3.1.0",
         "immer": "10.0.1",
         "lodash-es": "4.17.21",
         "qs": "6.11.2",
-        "react": "18.2.0",
-        "react-dom": "18.2.0",
+        "react": "18.3.1",
+        "react-dom": "18.3.1",
         "react-router-dom": "6.14.0",
         "react-use": "17.5.0",
         "zustand": "4.4.1"

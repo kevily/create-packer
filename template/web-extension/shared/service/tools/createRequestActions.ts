@@ -1,5 +1,5 @@
-import { KyInstance, Options } from 'ky'
-import { Input } from 'ky/distribution/types/options'
+import { KyInstance } from 'ky'
+import { Input, HttpMethod } from 'ky/distribution/types/options'
 import { includes, isFunction, isString, omit } from 'lodash-es'
 import { stringify } from 'qs'
 import { Nullable } from '1k-types'
@@ -12,7 +12,7 @@ export function createRequestActions(
     request: KyInstance,
     hooks: serviceHooksType
 ) {
-    function creator(method: Required<Options>['method']) {
+    function creator(method: HttpMethod) {
         return async function <DATA = any>(url: Input, option?: requestOptionsType): Promise<DATA> {
             const globalPrefix = isFunction(prefixUrl) ? await prefixUrl() : prefixUrl
             const $prefix = isFunction(option?.prefixUrl)
@@ -29,7 +29,7 @@ export function createRequestActions(
                 hooks: createKyRequestHooks(newHooks)
             }
             try {
-                const res = request[method](url, newOption)
+                const res = request[method](url, newOption) as any
                 if (option?.responseType === 'response') {
                     return await res
                 }

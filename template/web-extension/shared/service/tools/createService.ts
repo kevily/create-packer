@@ -1,5 +1,6 @@
 import ky from 'ky'
-import { assign, isArray, isObject } from 'lodash-es'
+import { assign, isPlainObject } from 'lodash-es'
+import { AnyObject } from '1k-types'
 import { configType } from '../types'
 import { createRequestActions } from './createRequestActions'
 import { createServiceHooks } from './hooks'
@@ -27,11 +28,15 @@ export function createService(config: configType) {
     // init
     // ------------------------------------------------------------------------
     addHooks('beforeRequest', async req => {
-        const { searchParams, body } = req
-        req.searchParams = { ...globalSearchParams, ...searchParams }
+        const body = isPlainObject(req.body) ? (req.body as AnyObject) : void 0
+        req.searchParams = {
+            ...globalSearchParams
+        }
 
-        if (!isArray(body) && isObject(body)) {
-            req.body = { ...globalParams, ...body }
+        if (isPlainObject(body)) {
+            req.body = {
+                ...globalParams
+            }
         }
     })
 
