@@ -1,6 +1,11 @@
-import styles from './home.module.css'
+import { styled } from 'styled-components'
+
+const Wrapper = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`
 
 export default function Home() {
-    console.log('1', 1)
-    return <div className={styles.root}>sdsddds</div>
+    return <Wrapper>sdfs</Wrapper>
 }

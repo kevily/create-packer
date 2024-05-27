@@ -1,6 +1,12 @@
-import './home.css'
 import { useEffect } from 'react'
+import { styled } from 'styled-components'
 import { request, API } from '@/shared/service'
+
+const Wrapper = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`
 
 export default function Home() {
     useEffect(() => {
@@ -9,5 +15,5 @@ export default function Home() {
         })
     }, [])
 
-    return <div className={'flex justify-center items-center'}>sdfs</div>
+    return <Wrapper className={'flex justify-center items-center'}>sdfs</Wrapper>
 }

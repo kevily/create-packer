@@ -1,5 +1,6 @@
 import { StrictMode, useLayoutEffect } from 'react'
 import { RouterProvider } from 'react-router-dom'
+import { ThemeProvider } from '@/shared/theme'
 import { request } from '@/shared/service'
 import { routerInstance } from '@/domain/router'
 
@@ -15,7 +16,9 @@ const App = () => {
 
     return (
         <StrictMode>
-            <RouterProvider router={routerInstance} />
+            <ThemeProvider>
+                <RouterProvider router={routerInstance} />
+            </ThemeProvider>
         </StrictMode>
     )
 }
