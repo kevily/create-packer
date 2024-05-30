@@ -1,7 +1,10 @@
-import { FunctionComponent, ReactNode } from 'react'
+import { FunctionComponent, ReactNode, useEffect } from 'react'
 
 const AppContext: FunctionComponent<{ children?: ReactNode }> = props => {
-    return <div id={'app'}>{props.children}</div>
+    useEffect(() => {
+        document.body.setAttribute('id', 'my-app')
+    }, [])
+    return <>{props.children}</>
 }
 
 export default AppContext
