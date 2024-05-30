@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-    important: '#root',
+    important: '#my-app',
     content: [
         './index.html',
         './main.tsx',
