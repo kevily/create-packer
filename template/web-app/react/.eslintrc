@@ -1,7 +1,9 @@
 {
     "root": true,
     "parser": "@typescript-eslint/parser",
-    "plugins": ["prettier"],
+    "plugins": [
+        "prettier"
+    ],
     "extends": [
         "eslint:recommended",
         "plugin:@typescript-eslint/recommended",
@@ -51,12 +53,32 @@
                     "type"
                 ],
                 "pathGroups": [
-                    { "pattern": "react", "group": "external", "position": "before" },
-                    { "pattern": "react-dom/*", "group": "external", "position": "before" },
-                    { "pattern": "react-router", "group": "external", "position": "before" },
-                    { "pattern": "react-router-dom", "group": "external", "position": "before" }
+                    {
+                        "pattern": "react",
+                        "group": "external",
+                        "position": "before"
+                    },
+                    {
+                        "pattern": "react-dom/*",
+                        "group": "external",
+                        "position": "before"
+                    },
+                    {
+                        "pattern": "react-router",
+                        "group": "external",
+                        "position": "before"
+                    },
+                    {
+                        "pattern": "react-router-dom",
+                        "group": "external",
+                        "position": "before"
+                    }
                 ],
-                "pathGroupsExcludedImportTypes": ["react", "react-router", "react-router-dom"]
+                "pathGroupsExcludedImportTypes": [
+                    "react",
+                    "react-router",
+                    "react-router-dom"
+                ]
             }
         ],
         "no-case-declarations": "off",
@@ -70,7 +92,12 @@
                 "ignoreParameters": true
             }
         ],
-        "@typescript-eslint/no-unused-vars": ["warn", { "argsIgnorePattern": "^_" }],
+        "@typescript-eslint/no-unused-vars": [
+            "warn",
+            {
+                "argsIgnorePattern": "^_"
+            }
+        ],
         "@typescript-eslint/member-delimiter-style": 0,
         "@typescript-eslint/class-name-casing": 0,
         "@typescript-eslint/explicit-module-boundary-types": "off",

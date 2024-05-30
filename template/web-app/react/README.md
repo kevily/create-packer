@@ -1,14 +1,14 @@
 ## Vite + react18 + Typescript
 
 ### Features
-- Vite 4.x
-- React 18.x
-- Typescript 4.x
-- react-router 6.x
-- Zustand 4.x
-- Tailwindcss 3.x
-- Jest 28.x
-- Eslint
-- Prettier
-- axios 1.x
-- Alias @ to <project_root>/src
+
+-   Vite
+-   React
+-   Typescript
+-   react-router
+-   Zustand
+-   Tailwindcss
+-   Eslint
+-   Prettier
+-   axios
+-   Alias @ to <project_root>
