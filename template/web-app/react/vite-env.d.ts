@@ -1,5 +1,7 @@
 /// <reference types="vite/client" />
 /// <reference types="vite-plugin-svgr/client" />
+import 'styled-components'
+import { themeType } from './shared/theme'
 
 interface ImportMetaEnv {
     readonly VITE_BASE_URL: string
@@ -9,4 +11,8 @@ interface ImportMetaEnv {
 
 interface ImportMeta {
     readonly env: ImportMetaEnv
+}
+
+declare module 'styled-components' {
+    export interface DefaultTheme extends themeType {}
 }

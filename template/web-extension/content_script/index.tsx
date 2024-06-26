@@ -1,14 +1,14 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import { AppContext } from '@/domain/app'
-import Content from './content'
+import Content from './modules/content/content'
+import { AppContext } from './components'
 
 const app = document.createElement('div')
 createRoot(app).render(
     <StrictMode>
-        <AppContext>
+        <AppContext.Root>
             <Content />
-        </AppContext>
+        </AppContext.Root>
     </StrictMode>
 )
 

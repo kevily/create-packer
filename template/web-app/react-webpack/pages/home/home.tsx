@@ -1,6 +1,5 @@
-import styles from './home.module.css'
+import { StyledRoot } from './home.styled'
 
 export default function Home() {
-    console.log('1', 1)
-    return <div className={styles.root}>sdsddds</div>
+    return <StyledRoot>sdsddds</StyledRoot>
 }

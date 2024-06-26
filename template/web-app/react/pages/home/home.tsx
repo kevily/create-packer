@@ -1,6 +1,6 @@
-import './home.css'
 import { useEffect } from 'react'
 import { request, API } from '@/shared/service'
+import { StyledRoot } from './home.styled'
 
 export default function Home() {
     useEffect(() => {
@@ -9,5 +9,5 @@ export default function Home() {
         })
     }, [])
 
-    return <div className={'flex justify-center items-center'}>sdfs</div>
+    return <StyledRoot>sdfs</StyledRoot>
 }

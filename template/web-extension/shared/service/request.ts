@@ -1,5 +1,5 @@
-import { createService } from './tools'
+import axios from 'axios'
 
-export const request = createService({
-    prefixUrl: import.meta.env.VITE_API_HOST
+export const request = axios.create({
+    baseURL: import.meta.env.VITE_API_HOST
 })
