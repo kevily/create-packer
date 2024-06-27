@@ -1,6 +1,7 @@
 import { CSSProperties } from 'react'
 import { AnyFunc } from '1k-types'
 import { isString } from 'lodash-es'
+import { createGlobalStyle } from 'styled-components'
 
 export const theme = {
     tools: {
@@ -52,3 +53,6 @@ export const theme = {
     }
 }
 export type themeType = typeof theme
+export const GlobalStyle = createGlobalStyle`
+    .${import.meta.env.VITE_APP_ID} {}
+`
