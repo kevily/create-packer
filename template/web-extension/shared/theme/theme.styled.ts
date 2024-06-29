@@ -53,6 +53,3 @@ export const theme = {
     }
 }
 export type themeType = typeof theme
-export const GlobalStyle = createGlobalStyle`
-    .${import.meta.env.VITE_APP_ID} {}
-`

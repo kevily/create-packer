@@ -2,18 +2,19 @@ import { ReactNode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { isFunction } from 'lodash-es'
 import { Nullable } from '1k-types'
+import { classNameSpace } from '@/content_script/constants'
 
-export enum insertRcStatus {
+export enum insertAppStatus {
     success,
     target_not_exist,
     root_existed
 }
-export interface insertRcResultType {
+export interface insertAppResultType {
     rootEle: Nullable<HTMLElement>
     result: boolean
-    status: insertRcStatus
+    status: insertAppStatus
 }
-export function insertRC<T extends HTMLElement>(
+export function insertApp<T extends HTMLElement>(
     target: Nullable<T>,
     option: {
         insert?: (rootEle: HTMLElement, target: T) => void
@@ -21,20 +22,20 @@ export function insertRC<T extends HTMLElement>(
         isReplace?: boolean
     }
 ) {
-    const result: insertRcResultType = {
+    const result: insertAppResultType = {
         result: false,
         rootEle: void 0,
-        status: insertRcStatus.success
+        status: insertAppStatus.success
     }
     if (!target) {
-        result.status = insertRcStatus.target_not_exist
+        result.status = insertAppStatus.target_not_exist
         return result
     }
     result.rootEle = document.createElement('div')
-    result.rootEle.className = import.meta.env.VITE_APP_ID
-    const oldRootEle = target.querySelector?.(`.${import.meta.env.VITE_APP_ID}`)
+    result.rootEle.className = classNameSpace
+    const oldRootEle = target.querySelector?.(`.${classNameSpace}`)
     if (!option.isReplace && oldRootEle) {
-        result.status = insertRcStatus.root_existed
+        result.status = insertAppStatus.root_existed
         return result
     }
     oldRootEle?.remove()

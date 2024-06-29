@@ -1,1 +1,1 @@
-export * from './insertRC'
+export * from './insertApp'
