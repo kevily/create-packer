@@ -20,16 +20,18 @@ export const theme = {
         px: (s: string) => ({ paddingLeft: s, paddingRight: s }),
         my: (s: string) => ({ marginTop: s, marginBottom: s }),
         mx: (s: string) => ({ marginLeft: s, marginRight: s }),
-        flex: {
-            center: (vertical = false) => ({
+        flex: (
+            align: CSSProperties['alignItems'],
+            justify: CSSProperties['justifyContent'],
+            vertical?: boolean
+        ): CSSProperties => {
+            return {
                 display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
+                alignItems: align,
+                justifyContent: justify,
                 flexDirection: vertical ? 'column' : 'row'
-            }),
-            alignCenter: () => ({ display: 'flex', alignItems: 'center' }),
-            justifyCenter: () => ({ display: 'flex', justifyContent: 'center' })
-        } satisfies Record<string, AnyFunc<CSSProperties>>,
+            }
+        },
         /** 数字为元素数量，字符串为对应css的值  */
         grid: {
             grid: (rows: number | string, cols: number | string, gap?: number) => ({
