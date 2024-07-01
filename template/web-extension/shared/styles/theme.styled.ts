@@ -1,7 +1,6 @@
 import { CSSProperties } from 'react'
 import { AnyFunc } from '1k-types'
 import { isString } from 'lodash-es'
-import { createGlobalStyle } from 'styled-components'
 
 export const theme = {
     tools: {

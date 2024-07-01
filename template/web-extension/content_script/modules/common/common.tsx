@@ -1,9 +1,10 @@
-import { GlobalStyle } from '@/content_script/global.styled'
+import { GlobalStyle } from '@/shared/styles'
+import { classNameSpace } from '@/content_script/constants'
 
 export default function Home() {
     return (
         <>
-            <GlobalStyle />
+            <GlobalStyle nameSpace={classNameSpace} />
         </>
     )
 }

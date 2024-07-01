@@ -1,6 +1,6 @@
 /// <reference types="vite/client" />
 import 'styled-components'
-import { themeType } from './shared/theme'
+import { themeType } from './shared/styles'
 
 interface ImportMetaEnv {
     readonly VITE_API_HOST: string

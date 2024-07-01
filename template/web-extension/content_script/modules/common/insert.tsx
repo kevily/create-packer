@@ -1,13 +1,8 @@
-import { insertApp } from 'content_script/tools'
-import { AppContext } from '@/shared/components'
+import { insertRC } from '@/content_script/domain/app'
 import Common from './common'
 
 export function insert() {
-    insertApp(document.body, {
-        reactNode: (
-            <AppContext>
-                <Common />
-            </AppContext>
-        )
+    insertRC(document.body, {
+        reactNode: <Common />
     })
 }
