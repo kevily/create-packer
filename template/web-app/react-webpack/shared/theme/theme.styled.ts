@@ -24,13 +24,13 @@ export const theme = {
             align: CSSProperties['alignItems'],
             justify: CSSProperties['justifyContent'],
             vertical?: boolean
-        ): CSSProperties => {
+        ) => {
             return {
                 display: 'flex',
                 alignItems: align,
                 justifyContent: justify,
                 flexDirection: vertical ? 'column' : 'row'
-            }
+            } satisfies CSSProperties
         },
         /** 数字为元素数量，字符串为对应css的值  */
         grid: {
