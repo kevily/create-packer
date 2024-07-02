@@ -19,7 +19,7 @@ const AppComponent = () => {
     return (
         <>
             <GlobalStyle />
-            <RouterProvider router={routerInstance} />
+            <RouterProvider router={routerInstance} fallbackElement={<>loading...</>} />
         </>
     )
 }

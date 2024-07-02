@@ -12,11 +12,7 @@ const Layout = () => {
         }
     }, [location])
 
-    return (
-        <Suspense fallback={<>loading...</>}>
-            <Outlet />
-        </Suspense>
-    )
+    return <Outlet />
 }
 
 export default Layout
