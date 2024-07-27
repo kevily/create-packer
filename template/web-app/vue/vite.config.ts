@@ -4,7 +4,7 @@ import vueJsx from '@vitejs/plugin-vue-jsx'
 import svgLoader from 'vite-svg-loader'
 import mockDevServer from 'vite-plugin-mock-dev-server'
 import stylelint from 'vite-plugin-stylelint'
-import eslintPlugin from '@nabla/vite-plugin-eslint'
+import eslint from '@rollup/plugin-eslint'
 import { visualizer } from 'rollup-plugin-visualizer'
 import { includes } from 'lodash-es'
 import { createChunks } from './scripts'
@@ -18,10 +18,7 @@ export default defineConfig(({ mode }) => {
             enableObjectSlots: false
         }),
         stylelint({ cache: false, include: ['**/*.{css,scss,sass,less,styl,vue,svelte}'] }),
-        eslintPlugin({
-            eslintOptions: { cache: false, useEslintrc: true },
-            shouldLint: path => /\/[^?]*\.(vue|svelte|m?[jt]sx?)$/.test(path)
-        }),
+        eslint({ include: ['**/*.{ts,tsx,js,jsx,vue}'] }),
         vue(),
         svgLoader(),
         mockDevServer({

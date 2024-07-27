@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.createTemp = void 0;
+exports.createTemp = createTemp;
 const inquirer = require("inquirer");
 const fsExtra = require("fs-extra");
 const path = require("path");
@@ -61,4 +61,3 @@ async function createTemp(dirname) {
     createTempEnd(output);
     creating.succeed();
 }
-exports.createTemp = createTemp;

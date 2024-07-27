@@ -1,9 +1,11 @@
-import { StrictMode, useLayoutEffect } from 'react'
+import { useLayoutEffect } from 'react'
 import { RouterProvider } from 'react-router-dom'
 import { request } from '@/shared/service'
 import { routerInstance } from '@/domain/router'
+import { GlobalStyle } from '../app.styled'
+import * as AppContext from './app-context'
 
-const App = () => {
+export const Root = () => {
     useLayoutEffect(() => {
         request.interceptors.response.use(
             res => res,
@@ -14,10 +16,9 @@ const App = () => {
     }, [])
 
     return (
-        <StrictMode>
-            <RouterProvider router={routerInstance} />
-        </StrictMode>
+        <AppContext.Root>
+            <GlobalStyle />
+            <RouterProvider router={routerInstance} fallbackElement={<>loading...</>} />
+        </AppContext.Root>
     )
 }
-
-export default App

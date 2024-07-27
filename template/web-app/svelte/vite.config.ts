@@ -1,13 +1,19 @@
 import path from 'path'
 import { defineConfig, loadEnv } from 'vite'
 import { sveltekit } from '@sveltejs/kit/vite'
+import stylelint from 'vite-plugin-stylelint'
+import eslint from '@rollup/plugin-eslint'
 import { visualizer } from 'rollup-plugin-visualizer'
 import { includes } from 'lodash-es'
 import { createChunks } from './scripts'
 
 export default defineConfig(({ mode }) => {
     const env = loadEnv(mode, process.cwd(), '')
-    const plugins: any[] = [sveltekit()]
+    const plugins: any[] = [
+        stylelint({ cache: false, include: ['**/*.{css,scss,sass,less,styl,ts,tsx}'] }),
+        eslint({ include: ['**/*.{ts,tsx,js,jsx}'] }),
+        sveltekit()
+    ]
 
     if (mode === 'analyse') {
         plugins.push(visualizer({ open: true, sourcemap: true, brotliSize: true, gzipSize: true }))

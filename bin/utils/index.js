@@ -23,7 +23,10 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.genTemplateInfoList = exports.onGenCommand = exports.hasYarn = exports.hasPnpm = void 0;
+exports.hasPnpm = hasPnpm;
+exports.hasYarn = hasYarn;
+exports.onGenCommand = onGenCommand;
+exports.genTemplateInfoList = genTemplateInfoList;
 const path = __importStar(require("path"));
 const child_process_1 = require("child_process");
 const fs_1 = require("fs");
@@ -36,7 +39,6 @@ function hasPnpm() {
         return false;
     }
 }
-exports.hasPnpm = hasPnpm;
 function hasYarn() {
     try {
         (0, child_process_1.execSync)('yarnpkg --version');
@@ -46,7 +48,6 @@ function hasYarn() {
         return false;
     }
 }
-exports.hasYarn = hasYarn;
 function onGenCommand() {
     if (hasPnpm()) {
         return 'pnpm';
@@ -56,7 +57,6 @@ function onGenCommand() {
     }
     return 'npm';
 }
-exports.onGenCommand = onGenCommand;
 function genTemplateInfoList(root) {
     const temps = [];
     (0, fs_1.readdirSync)(root, { withFileTypes: true }).forEach(o => {
@@ -71,4 +71,3 @@ function genTemplateInfoList(root) {
     });
     return temps;
 }
-exports.genTemplateInfoList = genTemplateInfoList;

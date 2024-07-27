@@ -13,6 +13,10 @@
         "outDir": "lib",
         "baseUrl": "."
     },
-    "include": ["tasks/**/*"],
-    "exclude": ["node_modules/**/*"]
+    "include": [
+        "scripts/**/*"
+    ],
+    "exclude": [
+        "node_modules/**/*"
+    ]
 }

@@ -5,7 +5,7 @@ interface argType {
     mode: string
 }
 export default function ({ mode }: argType) {
-    const host_permissions = []
+    const host_permissions: string[] = []
     return defineManifest({
         manifest_version: 3,
         name: 'Hello Extensions',

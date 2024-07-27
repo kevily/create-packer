@@ -17,6 +17,7 @@ vite.config.ts.*
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
+!.vscode/settings.json
 .history
 .idea
 .DS_Store

@@ -22,7 +22,7 @@
         "scss/at-rule-no-unknown": [
             true,
             {
-                "ignoreAtRules": ["tailwind", "a    pply"]
+                "ignoreAtRules": ["tailwind", "apply"]
             }
         ]
     }
