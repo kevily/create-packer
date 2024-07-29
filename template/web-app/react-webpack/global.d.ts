@@ -1,8 +1,10 @@
 import 'styled-components'
 import { themeType } from './shared/theme'
 
-declare const ENV_BASE_URL: string
-declare const ENV_API_HOST: string
+declare global {
+    const ENV_BASE_URL: string
+    const ENV_API_HOST: string
+}
 
 declare module '*.css'
 declare module '*.less'

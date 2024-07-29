@@ -1,2 +1,3 @@
-export { default as request } from './request'
+export * from './request'
 export * as API from './api'
+export * from './home'
