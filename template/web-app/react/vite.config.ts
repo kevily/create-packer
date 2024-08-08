@@ -16,7 +16,21 @@ export default defineConfig(({ mode }) => {
         svgr(),
         stylelint({ cache: false, include: ['**/*.{css,scss,sass,less,styl,ts,tsx}'] }),
         eslint({ include: ['**/*.{ts,tsx,js,jsx}'] }),
-        react(),
+        react({
+            babel: {
+                plugins: [
+                    [
+                        'babel-plugin-styled-components',
+                        {
+                            ssr: false,
+                            displayName: false,
+                            fileName: false,
+                            transpileTemplateLiterals: false
+                        }
+                    ]
+                ]
+            }
+        }),
         mockDevServer({
             include: ['**/*.mock.{ts,js}']
         })

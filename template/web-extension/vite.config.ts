@@ -13,7 +13,21 @@ export default defineConfig(({ mode }) => {
             svgr(),
             stylelint({ cache: false, include: ['**/*.{css,scss,sass,less,styl,vue,svelte}'] }),
             eslint({ include: ['**/*.{ts,tsx,js,jsx}'] }),
-            react(),
+            react({
+                babel: {
+                    plugins: [
+                        [
+                            'babel-plugin-styled-components',
+                            {
+                                ssr: false,
+                                displayName: false,
+                                fileName: false,
+                                transpileTemplateLiterals: false
+                            }
+                        ]
+                    ]
+                }
+            }),
             crx({ manifest: defineManifest({ mode }) })
         ],
         resolve: {
