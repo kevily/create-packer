@@ -1,7 +1,8 @@
+import * as React from 'react'
 import type { Preview } from '@storybook/react'
-import '../src/index.css'
 
 const preview: Preview = {
+    decorators: [Story => <Story />],
     parameters: {
         actions: { argTypesRegex: '^on[A-Z].*' },
         controls: {

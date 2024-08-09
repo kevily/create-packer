@@ -1,7 +1,15 @@
 import svgr from 'vite-plugin-svgr'
 import type { StorybookConfig } from '@storybook/react-vite'
+
+function createStories(lib: string): string[] {
+    return [
+        `../packages/${lib}/src/**/*.mdx`,
+        `../packages/${lib}/src/**/*.stories.@(js|jsx|ts|tsx)`
+    ]
+}
+
 const config: StorybookConfig = {
-    stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
+    stories: [...createStories('ts'), ...createStories('react')],
     addons: [
         '@storybook/addon-links',
         '@storybook/addon-essentials',
@@ -12,7 +20,7 @@ const config: StorybookConfig = {
         options: {}
     },
     async viteFinal(config) {
-        config.plugins.unshift(svgr())
+        config.plugins?.unshift(svgr())
 
         return config
     },

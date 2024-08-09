@@ -1,0 +1,23 @@
+{
+    "compilerOptions": {
+        "composite": true,
+        "module": "CommonJS",
+        "esModuleInterop": true,
+        "allowSyntheticDefaultImports": true,
+        "allowJs": true,
+        "strictNullChecks": true,
+        "target": "ESNext",
+        "noImplicitAny": false,
+        "moduleResolution": "node",
+        "sourceMap": false,
+        "declaration": true,
+        "outDir": "lib",
+        "baseUrl": "."
+    },
+    "include": [
+        "scripts/**/*"
+    ],
+    "exclude": [
+        "node_modules/**/*"
+    ]
+}

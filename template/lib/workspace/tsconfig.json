@@ -1,22 +1,31 @@
 {
     "compilerOptions": {
-        "module": "CommonJS",
+        "useDefineForClassFields": true,
+        "strict": true,
+        "forceConsistentCasingInFileNames": true,
+        "strictPropertyInitialization": false,
+        "resolveJsonModule": true,
+        "module": "ESNext",
         "esModuleInterop": true,
+        "jsx": "react-jsx",
         "allowSyntheticDefaultImports": true,
         "allowJs": true,
-        "strictNullChecks": true,
         "target": "ESNext",
         "noImplicitAny": false,
+        "skipLibCheck": true,
         "moduleResolution": "node",
         "sourceMap": false,
         "declaration": true,
-        "outDir": "lib",
-        "baseUrl": "."
+        "outDir": "dist",
+        "baseUrl": ".",
+        "emitDeclarationOnly": true
     },
     "include": [
-        "scripts/**/*"
+        ".storybook"
     ],
-    "exclude": [
-        "node_modules/**/*"
+    "references": [
+        {
+            "path": "./tsconfig.node.json"
+        }
     ]
 }
