@@ -23,6 +23,10 @@
     "include": [
         ".storybook"
     ],
+    "exclude": [
+        "node_modules/**/*",
+        "scripts/**/*"
+    ],
     "references": [
         {
             "path": "./tsconfig.node.json"

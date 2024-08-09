@@ -5,7 +5,7 @@
     "private": true,
     "main": "index.js",
     "scripts": {
-        "build": "ts-node ./scripts/build.ts",
+        "build": "ts-node --project ./tsconfig.node.json ./scripts/build.ts",
         "changeVersion": "pnpm changeset && pnpm changeset version && pnpm run clear:changelog",
         "clear:changelog": "pnpm -r exec rimraf CHANGELOG.md",
         "commit": "git add . && cz",
