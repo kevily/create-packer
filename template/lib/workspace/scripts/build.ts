@@ -1,5 +1,5 @@
-import { Engine, rollup, tsc } from '1k-tasks'
 import * as path from 'path'
+import { Engine, rollup, tsc } from '1k-tasks'
 
 async function build(lib: string) {
     const root = path.join(process.cwd(), 'packages', lib)
