@@ -1,4 +1,4 @@
-import svgr from 'vite-plugin-svgr'
+import svgr from '@svgr/rollup'
 import type { StorybookConfig } from '@storybook/react-vite'
 
 function createStories(lib: string): string[] {
@@ -20,8 +20,7 @@ const config: StorybookConfig = {
         options: {}
     },
     async viteFinal(config) {
-        config.plugins?.unshift(svgr())
-
+        config.plugins!.unshift(svgr({ svgo: false, titleProp: true, ref: true }) as any)
         return config
     },
     docs: {

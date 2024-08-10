@@ -41,6 +41,7 @@
         "@storybook/react": "8.2.7",
         "@storybook/react-vite": "8.2.7",
         "@storybook/testing-library": "0.2.2",
+        "@svgr/rollup": "8.1.0",
         "@types/react": "18.3.3",
         "@types/react-dom": "18.3.0",
         "@typescript-eslint/eslint-plugin": "7.0.2",
@@ -67,7 +68,6 @@
         "stylelint": "16.8.1",
         "stylelint-config-standard-scss": "13.0.0",
         "ts-node": "10.9.1",
-        "typescript": "5.5.2",
-        "vite-plugin-svgr": "4.2.0"
+        "typescript": "5.5.2"
     }
 }
