@@ -18,12 +18,6 @@
                 "ignorePseudoClasses": ["global"]
             }
         ],
-        "selector-class-pattern": null,
-        "scss/at-rule-no-unknown": [
-            true,
-            {
-                "ignoreAtRules": ["tailwind", "a    pply"]
-            }
-        ]
+        "selector-class-pattern": null
     }
 }
