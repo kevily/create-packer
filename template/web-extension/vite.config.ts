@@ -11,7 +11,7 @@ export default defineConfig(({ mode }) => {
     return {
         plugins: [
             svgr(),
-            stylelint({ cache: false, include: ['**/*.{css,scss,sass,less,styl,vue,svelte}'] }),
+            stylelint({ cache: false, include: ['**/*.{css,scss,sass,less,styl,ts,tsx}'] }),
             eslint({ include: ['**/*.{ts,tsx,js,jsx}'] }),
             react({
                 babel: {
