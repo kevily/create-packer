@@ -1,4 +1,4 @@
-import { defineConfig, loadEnv, RsbuildConfig } from '@rsbuild/core'
+import { defineConfig, loadEnv, RsbuildConfig, CacheGroups } from '@rsbuild/core'
 import { pluginReact } from '@rsbuild/plugin-react'
 import { pluginStyledComponents } from '@rsbuild/plugin-styled-components'
 import { pluginEslint } from '@rsbuild/plugin-eslint'
@@ -7,7 +7,30 @@ import { pluginTypeCheck } from '@rsbuild/plugin-type-check'
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
 import { RsdoctorRspackPlugin } from '@rsdoctor/rspack-plugin'
 
-export default defineConfig(({ envMode }) => {
+function createChunks(chunks: Array<{ name: string; libs: string[] | RegExp; priority?: number }>) {
+    const result: CacheGroups = {
+        vendors: {
+            test: /[\\/]node_modules[\\/]/,
+            chunks: 'all',
+            name: 'vendors',
+            priority: -1
+        }
+    }
+    chunks.forEach(({ name, libs, priority }) => {
+        result[name] = {
+            test: Array.isArray(libs)
+                ? new RegExp(`[\\\\/]node_modules[\\\\/](${libs.join('|')})[\\\\/]`)
+                : libs,
+            chunks: 'all',
+            name,
+            priority
+        }
+        return result
+    })
+    return result
+}
+
+export default defineConfig(({ envMode, command }) => {
     const { parsed: env } = loadEnv()
     const proxyBaseUrl = env.PUBLIC_BASE_URL + env.PUBLIC_API_HOST
     return {
@@ -43,23 +66,12 @@ export default defineConfig(({ envMode }) => {
             pluginReact({})
         ],
         performance: {
+            removeConsole: command === 'build' ? ['log'] : false,
             chunkSplit: {
                 strategy: 'custom',
                 splitChunks: {
                     minChunks: 1,
-                    cacheGroups: {
-                        react: {
-                            test: /[\\/]node_modules[\\/](react|react-dom)[\\/]/,
-                            chunks: 'all',
-                            name: 'react'
-                        },
-                        vendors: {
-                            test: /[\\/]node_modules[\\/]/,
-                            chunks: 'all',
-                            name: 'vendors',
-                            priority: -1
-                        }
-                    }
+                    cacheGroups: createChunks([{ libs: ['react', 'react-dom'], name: 'react' }])
                 }
             }
         },
