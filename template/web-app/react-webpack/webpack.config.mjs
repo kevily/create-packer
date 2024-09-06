@@ -136,16 +136,15 @@ export default function (env) {
             splitChunks: {
                 minChunks: 1,
                 cacheGroups: {
-                    default: false,
                     react: {
-                        test: /\/(react|react-dom)\//,
+                        test: /[\\/]node_modules[\\/](react|react-dom)[\\/]/,
                         chunks: 'all',
                         name: 'react'
                     },
-                    vendor: {
-                        test: /\/node_modules\//,
+                    vendors: {
+                        test: /[\\/]node_modules[\\/]/,
                         chunks: 'all',
-                        name: 'vendor',
+                        name: 'vendors',
                         priority: -1
                     }
                 }
