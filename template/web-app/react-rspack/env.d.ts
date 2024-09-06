@@ -2,11 +2,10 @@
 import 'styled-components'
 import { themeType } from './shared/theme'
 
+declare module 'styled-components' {
+    export interface DefaultTheme extends themeType {}
+}
 declare global {
-    declare module 'styled-components' {
-        export interface DefaultTheme extends themeType {}
-    }
-
     interface ImportMetaEnv {
         // import.meta.env.PUBLIC_FOO
         readonly PUBLIC_BASE_URL: string
