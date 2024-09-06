@@ -11,7 +11,8 @@ import { createChunks } from './scripts/createChunks'
 
 export default defineConfig(({ envMode, command }) => {
     const { parsed: env } = loadEnv()
-    const proxyBaseUrl = env.PUBLIC_BASE_URL + env.PUBLIC_API_HOST
+    const proxyBaseUrl = env.PUBLIC_API_HOST
+    const publicPath = env.PUBLIC_BASE_URL
     return {
         html: {
             template: './index.html'
@@ -23,6 +24,16 @@ export default defineConfig(({ envMode, command }) => {
             alias: {
                 '@': __dirname
             }
+        },
+        dev: {
+            distPath: {
+                root: 'dist'
+            },
+            assetPrefix: publicPath,
+            minify: envMode !== 'dev'
+        },
+        output: {
+            assetPrefix: publicPath
         },
         tools: {
             rspack: {
@@ -57,8 +68,20 @@ export default defineConfig(({ envMode, command }) => {
         },
         server: {
             host: '0.0.0.0',
-            proxy: {
-                [proxyBaseUrl]: {
+            compress: false,
+            publicDir: {
+                name: publicPath
+            },
+            historyApiFallback: {
+                disableDotRule: true,
+                index: publicPath
+            },
+            printUrls({ urls }) {
+                return urls.map(url => url + publicPath)
+            },
+            proxy: [
+                {
+                    context: [proxyBaseUrl],
                     target: 'http://127.0.0.1:3000',
                     changeOrigin: true,
                     secure: false,
@@ -66,7 +89,7 @@ export default defineConfig(({ envMode, command }) => {
                         [proxyBaseUrl]: ''
                     }
                 }
-            }
+            ]
         }
     }
 })
