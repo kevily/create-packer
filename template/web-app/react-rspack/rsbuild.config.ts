@@ -5,6 +5,7 @@ import { pluginEslint } from '@rsbuild/plugin-eslint'
 import StylelintWebpackPlugin from 'stylelint-webpack-plugin'
 import { pluginTypeCheck } from '@rsbuild/plugin-type-check'
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
+import { RsdoctorRspackPlugin } from '@rsdoctor/rspack-plugin'
 
 export default defineConfig(({ envMode }) => {
     const { parsed: env } = loadEnv()
@@ -25,7 +26,8 @@ export default defineConfig(({ envMode }) => {
             rspack: {
                 plugins: [
                     new StylelintWebpackPlugin(),
-                    envMode === 'analyse' && new BundleAnalyzerPlugin()
+                    envMode === 'analyse' && new BundleAnalyzerPlugin(),
+                    process.env.RSDOCTOR && new RsdoctorRspackPlugin()
                 ]
             }
         },
