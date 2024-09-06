@@ -6,6 +6,7 @@ import StylelintWebpackPlugin from 'stylelint-webpack-plugin'
 import { pluginTypeCheck } from '@rsbuild/plugin-type-check'
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
 import { RsdoctorRspackPlugin } from '@rsdoctor/rspack-plugin'
+import { pluginSvgr } from '@rsbuild/plugin-svgr'
 
 function createChunks(chunks: Array<{ name: string; libs: string[] | RegExp; priority?: number }>) {
     const result: CacheGroups = {
@@ -63,6 +64,7 @@ export default defineConfig(({ envMode, command }) => {
                 fileName: false,
                 transpileTemplateLiterals: false
             }),
+            pluginSvgr(),
             pluginReact({})
         ],
         performance: {
