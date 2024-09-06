@@ -2,25 +2,28 @@
 import 'styled-components'
 import { themeType } from './shared/theme'
 
-declare module '*.svg' {
-    const content: string
-    export default content
-}
-declare module '*.svg?react' {
-    const ReactComponent: React.FunctionComponent<React.SVGProps<SVGSVGElement>>
-    export default ReactComponent
-}
+declare global {
+    declare module 'styled-components' {
+        export interface DefaultTheme extends themeType {}
+    }
 
-declare module 'styled-components' {
-    export interface DefaultTheme extends themeType {}
-}
+    interface ImportMetaEnv {
+        // import.meta.env.PUBLIC_FOO
+        readonly PUBLIC_BASE_URL: string
+        readonly PUBLIC_API_HOST: string
+    }
 
-interface ImportMetaEnv {
-    // import.meta.env.PUBLIC_FOO
-    readonly PUBLIC_BASE_URL: string
-    readonly PUBLIC_API_HOST: string
-}
+    interface ImportMeta {
+        readonly env: ImportMetaEnv
+    }
 
-interface ImportMeta {
-    readonly env: ImportMetaEnv
+    declare module '*.svg' {
+        const content: string
+        export default content
+    }
+
+    declare module '*.svg?react' {
+        const ReactComponent: FunctionComponent<SVGProps<SVGSVGElement>>
+        export default ReactComponent
+    }
 }
