@@ -1,4 +1,4 @@
-import { defineConfig, loadEnv, RsbuildConfig, CacheGroups } from '@rsbuild/core'
+import { defineConfig, loadEnv, CacheGroups } from '@rsbuild/core'
 import { pluginReact } from '@rsbuild/plugin-react'
 import { pluginStyledComponents } from '@rsbuild/plugin-styled-components'
 import { pluginEslint } from '@rsbuild/plugin-eslint'
@@ -90,5 +90,5 @@ export default defineConfig(({ envMode, command }) => {
                 }
             }
         }
-    } satisfies RsbuildConfig
+    }
 })
