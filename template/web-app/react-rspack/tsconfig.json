@@ -34,7 +34,7 @@
     ],
     "exclude": [
         "scripts",
-        "vite.config.ts"
+        "rsbuild.config.ts"
     ],
     "references": [
         {
