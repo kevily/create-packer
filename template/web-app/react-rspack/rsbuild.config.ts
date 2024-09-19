@@ -4,7 +4,6 @@ import { pluginStyledComponents } from '@rsbuild/plugin-styled-components'
 import { pluginEslint } from '@rsbuild/plugin-eslint'
 import StylelintWebpackPlugin from 'stylelint-webpack-plugin'
 import { pluginTypeCheck } from '@rsbuild/plugin-type-check'
-import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
 import { RsdoctorRspackPlugin } from '@rsdoctor/rspack-plugin'
 import { pluginSvgr } from '@rsbuild/plugin-svgr'
 import { createChunks } from './scripts/createChunks'
@@ -26,20 +25,20 @@ export default defineConfig(({ envMode, command }) => {
             }
         },
         dev: {
-            distPath: {
-                root: 'dist'
-            },
             assetPrefix: publicPath,
             minify: envMode !== 'dev'
         },
         output: {
-            assetPrefix: publicPath
+            assetPrefix: publicPath,
+            distPath: {
+                root: 'dist'
+            },
+            cleanDistPath: true
         },
         tools: {
             rspack: {
                 plugins: [
                     new StylelintWebpackPlugin(),
-                    envMode === 'analyse' && new BundleAnalyzerPlugin(),
                     process.env.RSDOCTOR && new RsdoctorRspackPlugin()
                 ]
             }
@@ -54,7 +53,7 @@ export default defineConfig(({ envMode, command }) => {
                 transpileTemplateLiterals: false
             }),
             pluginSvgr(),
-            pluginReact({})
+            pluginReact()
         ],
         performance: {
             removeConsole: command === 'build' ? ['log'] : false,
@@ -64,14 +63,12 @@ export default defineConfig(({ envMode, command }) => {
                     minChunks: 1,
                     cacheGroups: createChunks([{ libs: ['react', 'react-dom'], name: 'react' }])
                 }
-            }
+            },
+            bundleAnalyze: envMode === 'analyse' ? { openAnalyzer: true } : void 0
         },
         server: {
             host: '0.0.0.0',
             compress: false,
-            publicDir: {
-                name: publicPath
-            },
             historyApiFallback: {
                 disableDotRule: true,
                 index: publicPath
