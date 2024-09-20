@@ -10,7 +10,7 @@
         "build:analyse": "tsc --noEmit && vite build --mode analyse",
         "preview": "vite preview",
         "up:vite": "pnpm up vite @vitejs/* vite-plugin-* -L",
-        "format": "prettier --write \"**/*.{ts,js,tsx,jsx,json,css,scss,less}\"",
+        "format": "biome format --write",
         "lint": "tsc --noEmit && eslint **/*.{tsx,ts,jsx,js} --no-error-on-unmatched-pattern && stylelint **/*.{css,scss,less,ts,tsx}",
         "lint:fix": "eslint **/*.{tsx,ts,jsx,js} --fix && stylelint **/*.{css,scss,less,ts,tsx} --fix",
         "cz": "cz",
@@ -33,6 +33,7 @@
         "zustand": "4.4.1"
     },
     "devDependencies": {
+        "@biomejs/biome": "1.9.2",
         "@commitlint/cli": "17.6.1",
         "@commitlint/config-conventional": "17.6.1",
         "@commitlint/cz-commitlint": "17.5.0",
@@ -53,7 +54,6 @@
         "eslint": "8.56.0",
         "eslint-import-resolver-typescript": "3.6.1",
         "eslint-plugin-import": "2.29.1",
-        "eslint-plugin-prettier": "5.1.3",
         "eslint-plugin-react": "7.33.2",
         "eslint-plugin-react-hooks": "4.6.0",
         "husky": "8.0.3",
@@ -62,7 +62,6 @@
         "postcss-import": "16.0.1",
         "postcss-nesting": "12.0.3",
         "postcss-styled-syntax": "0.6.4",
-        "prettier": "3.2.5",
         "rollup-plugin-visualizer": "5.12.0",
         "stylelint": "16.2.1",
         "stylelint-config-standard": "36.0.1",

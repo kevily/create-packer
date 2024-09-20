@@ -2,7 +2,7 @@
     "recommendations": [
         "dbaeumer.vscode-eslint",
         "stylelint.vscode-stylelint",
-        "esbenp.prettier-vscode",
+        "biomejs.biome",
         "styled-components.vscode-styled-components"
     ]
 }

@@ -1,9 +1,6 @@
 {
     "root": true,
     "parser": "@typescript-eslint/parser",
-    "plugins": [
-        "prettier"
-    ],
     "extends": [
         "eslint:recommended",
         "plugin:@typescript-eslint/recommended",
@@ -108,12 +105,6 @@
         "react-hooks/exhaustive-deps": "off",
         "react/display-name": "off",
         "react/react-in-jsx-scope": "off",
-        "prettier/prettier": [
-            "error",
-            {
-                "endOfLine": "auto"
-            }
-        ],
         "no-constant-condition": "off"
     }
 }

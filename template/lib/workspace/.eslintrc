@@ -108,12 +108,6 @@
         "react/display-name": "off",
         "react/react-in-jsx-scope": "off",
         "react-hooks/rules-of-hooks": "off",
-        "prettier/prettier": [
-            "error",
-            {
-                "endOfLine": "auto"
-            }
-        ],
         "no-constant-condition": "off"
     }
 }

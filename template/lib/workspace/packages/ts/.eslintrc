@@ -69,12 +69,6 @@
         "@typescript-eslint/explicit-module-boundary-types": "off",
         "@typescript-eslint/ban-ts-comment": "off",
         "@typescript-eslint/no-empty-interface": "off",
-        "prettier/prettier": [
-            "error",
-            {
-                "endOfLine": "auto"
-            }
-        ],
         "no-constant-condition": "off"
     }
 }

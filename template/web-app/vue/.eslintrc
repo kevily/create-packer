@@ -12,7 +12,6 @@
         "defineExpose": "readonly",
         "withDefaults": "readonly"
     },
-    "plugins": ["prettier"],
     "extends": [
         "eslint:recommended",
         "plugin:@typescript-eslint/recommended",
@@ -75,12 +74,6 @@
         "@typescript-eslint/explicit-module-boundary-types": "off",
         "@typescript-eslint/ban-ts-comment": "off",
         "@typescript-eslint/no-empty-interface": "off",
-        "prettier/prettier": [
-            "error",
-            {
-                "endOfLine": "auto"
-            }
-        ],
         "vue/multi-word-component-names": 0,
         "vue/html-indent": ["error", 4],
         "vue/require-default-prop": "off",
