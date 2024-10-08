@@ -1,8 +1,8 @@
-import inquirer = require('inquirer')
-import fsExtra = require('fs-extra')
-import path = require('path')
-import chalk = require('chalk')
-import ora = require('ora')
+import inquirer from 'inquirer'
+import * as fsExtra from 'fs-extra'
+import * as path from 'path'
+import chalk from 'chalk'
+import ora from 'ora'
 import { spawnSync } from 'child_process'
 import { genTemplateInfoList, onGenCommand } from './utils'
 import { existsSync } from 'fs'

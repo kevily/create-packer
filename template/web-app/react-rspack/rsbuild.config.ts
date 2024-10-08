@@ -11,7 +11,7 @@ import { createChunks } from './scripts/createChunks'
 export default defineConfig(({ envMode, command }) => {
     const { parsed: env } = loadEnv()
     const proxyBaseUrl = env.PUBLIC_API_HOST
-    const publicPath = env.PUBLIC_BASE_URL
+    const baseUrl = env.PUBLIC_BASE_URL
     return {
         html: {
             template: './index.html'
@@ -25,11 +25,10 @@ export default defineConfig(({ envMode, command }) => {
             }
         },
         dev: {
-            assetPrefix: publicPath,
             minify: envMode !== 'dev'
         },
         output: {
-            assetPrefix: publicPath,
+            assetPrefix: baseUrl,
             distPath: {
                 root: 'dist'
             },
@@ -67,15 +66,9 @@ export default defineConfig(({ envMode, command }) => {
             bundleAnalyze: envMode === 'analyse' ? { openAnalyzer: true } : void 0
         },
         server: {
+            base: baseUrl,
             host: '0.0.0.0',
             compress: false,
-            historyApiFallback: {
-                disableDotRule: true,
-                index: publicPath
-            },
-            printUrls({ urls }) {
-                return urls.map(url => url + publicPath)
-            },
             proxy: [
                 {
                     context: [proxyBaseUrl],
