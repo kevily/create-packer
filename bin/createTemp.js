@@ -27,10 +27,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.createTemp = createTemp;
-const inquirer_1 = __importDefault(require("inquirer"));
+const chalk = require("chalk");
+const inquirer = __importStar(require("@inquirer/prompts"));
 const fsExtra = __importStar(require("fs-extra"));
 const path = __importStar(require("path"));
-const chalk_1 = __importDefault(require("chalk"));
 const ora_1 = __importDefault(require("ora"));
 const child_process_1 = require("child_process");
 const utils_1 = require("./utils");
@@ -55,30 +55,22 @@ function createTempEnd(output) {
 }
 async function createTemp(dirname) {
     const isCurrent = dirname === '.';
-    let answer = await inquirer_1.default.prompt([
-        {
-            type: 'list',
-            name: 'temp',
-            message: 'Select temp.',
-            choices: tempInfoList.map(o => o.name)
-        }
-    ]);
-    let tempInfo = tempInfoList.find(o => o.name === answer.temp);
+    let answer = await inquirer.select({
+        message: 'Select temp.',
+        choices: tempInfoList.map(o => o.name)
+    });
+    let tempInfo = tempInfoList.find(o => o.name === answer);
     if (tempInfo?.children && tempInfo.children.length > 0) {
-        answer = await inquirer_1.default.prompt([
-            {
-                type: 'list',
-                name: 'temp',
-                message: 'Select temp type.',
-                choices: tempInfo.children.map(o => o.name)
-            }
-        ]);
-        tempInfo = tempInfo.children.find(o => o.name === answer.temp);
+        answer = await inquirer.select({
+            message: 'Select temp type.',
+            choices: tempInfo.children.map(o => o.name)
+        });
+        tempInfo = tempInfo.children.find(o => o.name === answer);
     }
-    const creating = (0, ora_1.default)(chalk_1.default.yellow('Creating...\n')).start();
+    const creating = (0, ora_1.default)(chalk.yellow('Creating...\n')).start();
     const output = path.join(cwd, isCurrent ? '' : dirname);
     if (!isCurrent && (0, fs_1.existsSync)(output)) {
-        return console.log(chalk_1.default.red(`${dirname} already exists!`));
+        return console.log(chalk.red(`${dirname} already exists!`));
     }
     if (!isCurrent) {
         fsExtra.mkdirSync(output);

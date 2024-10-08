@@ -1,7 +1,7 @@
-import inquirer from 'inquirer'
+import chalk = require('chalk')
+import * as inquirer from '@inquirer/prompts'
 import * as fsExtra from 'fs-extra'
 import * as path from 'path'
-import chalk from 'chalk'
 import ora from 'ora'
 import { spawnSync } from 'child_process'
 import { genTemplateInfoList, onGenCommand } from './utils'
@@ -29,25 +29,17 @@ function createTempEnd(output: string) {
 
 export async function createTemp(dirname: string) {
     const isCurrent = dirname === '.'
-    let answer = await inquirer.prompt([
-        {
-            type: 'list',
-            name: 'temp',
-            message: 'Select temp.',
-            choices: tempInfoList.map(o => o.name)
-        }
-    ])
-    let tempInfo = tempInfoList.find(o => o.name === answer.temp)
+    let answer = await inquirer.select<string>({
+        message: 'Select temp.',
+        choices: tempInfoList.map(o => o.name)
+    })
+    let tempInfo = tempInfoList.find(o => o.name === answer)
     if (tempInfo?.children && tempInfo.children.length > 0) {
-        answer = await inquirer.prompt([
-            {
-                type: 'list',
-                name: 'temp',
-                message: 'Select temp type.',
-                choices: tempInfo.children.map(o => o.name)
-            }
-        ])
-        tempInfo = tempInfo.children.find(o => o.name === answer.temp)
+        answer = await inquirer.select({
+            message: 'Select temp type.',
+            choices: tempInfo.children.map(o => o.name)
+        })
+        tempInfo = tempInfo.children.find(o => o.name === answer)
     }
     const creating = ora(chalk.yellow('Creating...\n')).start()
     const output = path.join(cwd, isCurrent ? '' : dirname)

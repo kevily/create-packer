@@ -9,7 +9,7 @@
     "bin": "./bin/index.js",
     "scripts": {
         "login": "npm login --registry https://registry.npmjs.org",
-        "pub": "pnpm run build && pnpm run push && ts-node ./utils/pub.ts",
+        "pub": "pnpm run build && pnpm run push && node ./utils/pub.js",
         "test": "pnpm run build && rimraf ./__test__ && node ./bin __test__",
         "build": "rimraf ./bin && tsc",
         "clean:pkg": "pnpm -r exec rimraf node_modules",
@@ -18,13 +18,12 @@
     },
     "files": ["bin", "template", "template/**/.gitignore", ".gitignore"],
     "dependencies": {
-        "chalk": "5.3.0",
+        "@inquirer/prompts": "7.0.0",
+        "chalk": "4",
         "commander": "8.1.0",
         "fs-extra": "10.0.0",
-        "inquirer": "12.0.0",
         "lodash": "4.17.21",
-        "ora": "8.1.0",
-        "ts-node": "10.9.1"
+        "ora": "8.1.0"
     },
     "devDependencies": {
         "@biomejs/biome": "1.9.2",

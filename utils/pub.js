@@ -1,7 +1,7 @@
-import inquirer from 'inquirer'
-import pkg from '../package.json'
-import { execSync } from 'child_process'
-import chalk from 'chalk'
+const inquirer = require('@inquirer/prompts')
+const pkg = require('../package.json')
+const { execSync } = require('child_process')
+const chalk = require('chalk')
 
 function genPrompt(nextVersion) {
     const version = {
@@ -27,15 +27,11 @@ const versions = {
 }
 
 inquirer
-    .prompt([
-        {
-            type: 'list',
-            name: 'version',
-            message: 'version:',
-            choices: Object.keys(versions)
-        }
-    ])
-    .then(({ version }) => {
+    .select({
+        message: 'version:',
+        choices: Object.keys(versions)
+    })
+    .then(version => {
         execSync(
             `npm version ${versions[version]} && pnpm publish --registry https://registry.npmjs.org && git push`
         )
