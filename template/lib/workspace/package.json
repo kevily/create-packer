@@ -33,7 +33,7 @@
         "rimraf": "5.0.1"
     },
     "devDependencies": {
-        "@biomejs/biome": "1.9.2",
+        "@biomejs/biome": "1.9.3",
         "@changesets/cli": "2.26.2",
         "@storybook/addon-essentials": "8.2.7",
         "@storybook/addon-interactions": "8.2.7",

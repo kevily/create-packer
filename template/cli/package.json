@@ -15,12 +15,7 @@
         "commit": "git add . && cz",
         "push": "pnpm run commit && git push"
     },
-    "files": [
-        "bin",
-        "template",
-        "template/**/.gitignore",
-        ".gitignore"
-    ],
+    "files": ["bin", "template", "template/**/.gitignore", ".gitignore"],
     "dependencies": {
         "chalk": "4.1.2",
         "commander": "8.1.0",
@@ -30,7 +25,7 @@
         "ora": "5.4.1"
     },
     "devDependencies": {
-        "@biomejs/biome": "1.9.2",
+        "@biomejs/biome": "1.9.3",
         "@commitlint/config-conventional": "^17.6.3",
         "@commitlint/cz-commitlint": "17.4.2",
         "@types/fs-extra": "9.0.12",

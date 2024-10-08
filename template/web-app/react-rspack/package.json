@@ -35,7 +35,7 @@
         "zustand": "4.4.1"
     },
     "devDependencies": {
-        "@biomejs/biome": "1.9.2",
+        "@biomejs/biome": "1.9.3",
         "@commitlint/cli": "17.6.1",
         "@commitlint/config-conventional": "17.6.1",
         "@commitlint/cz-commitlint": "17.5.0",
