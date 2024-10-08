@@ -1,4 +1,7 @@
 {
+    "organizeImports": {
+        "enabled": false
+    },
     "linter": {
         "enabled": false
     },
