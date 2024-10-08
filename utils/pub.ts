@@ -1,7 +1,7 @@
-const inquirer = require('inquirer')
-const currentVersion = require('../package.json').version
-const { execSync } = require('child_process')
-const chalk = require('chalk')
+import inquirer from 'inquirer'
+import pkg from '../package.json'
+import { execSync } from 'child_process'
+import chalk from 'chalk'
 
 function genPrompt(nextVersion) {
     const version = {
@@ -10,7 +10,7 @@ function genPrompt(nextVersion) {
         patch: 2
     }
     const nextVersionIndex = version[nextVersion]
-    const newVersion = currentVersion.split('.').map(Number)
+    const newVersion = pkg.version.split('.').map(Number)
     newVersion[nextVersionIndex] += 1
     // 把后续的版本号归零
     // ------------------------------------------------------------------------
