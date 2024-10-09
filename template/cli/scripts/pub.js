@@ -1,7 +1,7 @@
-const inquirer = require('inquirer')
-const currentVersion = require('../package.json').version
-const { execSync } = require('child_process')
-const chalk = require('chalk')
+import * as inquirer from '@inquirer/prompts'
+import pkg from '../package.json' assert { type: 'json' }
+import { execSync } from 'child_process'
+import chalk from 'chalk'
 
 function genPrompt(nextVersion) {
     const version = {
@@ -10,7 +10,7 @@ function genPrompt(nextVersion) {
         patch: 2
     }
     const nextVersionIndex = version[nextVersion]
-    const newVersion = currentVersion.split('.').map(Number)
+    const newVersion = pkg.version.split('.').map(Number)
     newVersion[nextVersionIndex] += 1
     // 把后续的版本号归零
     // ------------------------------------------------------------------------
@@ -27,15 +27,11 @@ const versions = {
 }
 
 inquirer
-    .prompt([
-        {
-            type: 'list',
-            name: 'version',
-            message: 'version:',
-            choices: Object.keys(versions)
-        }
-    ])
-    .then(({ version }) => {
+    .select({
+        message: 'version:',
+        choices: Object.keys(versions)
+    })
+    .then(version => {
         execSync(
             `npm version ${versions[version]} && pnpm publish --registry https://registry.npmjs.org && git push`
         )

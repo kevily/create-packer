@@ -1,7 +1,7 @@
-const inquirer = require('@inquirer/prompts')
-const pkg = require('../package.json')
-const { execSync } = require('child_process')
-const chalk = require('chalk')
+import * as inquirer from '@inquirer/prompts'
+import pkg from '../package.json' assert { type: 'json' }
+import { execSync } from 'child_process'
+import chalk from 'chalk'
 
 function genPrompt(nextVersion) {
     const version = {
