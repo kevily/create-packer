@@ -1,14 +1,13 @@
 {
     "compilerOptions": {
-        "module": "CommonJS",
+        "module": "NodeNext",
         "esModuleInterop": true,
-        "allowSyntheticDefaultImports": false,
+        "allowSyntheticDefaultImports": true,
         "resolveJsonModule": true,
         "allowJs": true,
         "strictNullChecks": true,
         "target": "ESNext",
         "noImplicitAny": false,
-        "moduleResolution": "node",
         "sourceMap": false,
         "declaration": true,
         "outDir": "bin",

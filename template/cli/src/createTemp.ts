@@ -1,16 +1,18 @@
-import inquirer = require('inquirer')
-import fsExtra = require('fs-extra')
-import path = require('path')
-import chalk = require('chalk')
-import ora = require('ora')
+import chalk from 'chalk'
+import * as inquirer from '@inquirer/prompts'
+import * as fsExtra from 'fs-extra'
+import path from 'path'
+import { fileURLToPath } from 'url'
+import ora from 'ora'
 import { spawnSync } from 'child_process'
-import { genTemplateInfoList, onGenCommand } from './utils'
+import { genTemplateInfoList, onGenCommand } from './utils/index.js'
 import { existsSync } from 'fs'
 
 const cwd = process.cwd()
 const command = onGenCommand()
+const dirname = path.dirname(fileURLToPath(import.meta.url))
 const excludes = ['node_modules', 'yarn-error.log', 'dist']
-const tempRoot = path.join(__dirname, '../template')
+const tempRoot = path.join(dirname, '../template')
 const tempInfoList = genTemplateInfoList(tempRoot)
 
 function copyTempFile(tempPath, output) {
@@ -29,25 +31,17 @@ function createTempEnd(output: string) {
 
 export async function createTemp(dirname: string) {
     const isCurrent = dirname === '.'
-    let answer = await inquirer.prompt([
-        {
-            type: 'list',
-            name: 'temp',
-            message: 'Select temp.',
-            choices: tempInfoList.map(o => o.name)
-        }
-    ])
-    let tempInfo = tempInfoList.find(o => o.name === answer.temp)
-    if (tempInfo.children.length > 0) {
-        answer = await inquirer.prompt([
-            {
-                type: 'list',
-                name: 'temp',
-                message: 'Select temp type.',
-                choices: tempInfo.children.map(o => o.name)
-            }
-        ])
-        tempInfo = tempInfo.children.find(o => o.name === answer.temp)
+    let answer = await inquirer.select<string>({
+        message: 'Select temp.',
+        choices: tempInfoList.map(o => o.name)
+    })
+    let tempInfo = tempInfoList.find(o => o.name === answer)
+    if (tempInfo?.children && tempInfo.children.length > 0) {
+        answer = await inquirer.select({
+            message: 'Select temp type.',
+            choices: tempInfo.children.map(o => o.name)
+        })
+        tempInfo = tempInfo.children.find(o => o.name === answer)
     }
     const creating = ora(chalk.yellow('Creating...\n')).start()
     const output = path.join(cwd, isCurrent ? '' : dirname)
@@ -57,7 +51,7 @@ export async function createTemp(dirname: string) {
     if (!isCurrent) {
         fsExtra.mkdirSync(output)
     }
-    copyTempFile(tempInfo.src, output)
+    copyTempFile(tempInfo!.src, output)
     createTempEnd(output)
     creating.succeed()
 }

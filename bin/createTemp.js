@@ -1,45 +1,18 @@
-"use strict";
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    var desc = Object.getOwnPropertyDescriptor(m, k);
-    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-      desc = { enumerable: true, get: function() { return m[k]; } };
-    }
-    Object.defineProperty(o, k2, desc);
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
-    Object.defineProperty(o, "default", { enumerable: true, value: v });
-}) : function(o, v) {
-    o["default"] = v;
-});
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
-    __setModuleDefault(result, mod);
-    return result;
-};
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.createTemp = createTemp;
-const chalk = require("chalk");
-const inquirer = __importStar(require("@inquirer/prompts"));
-const fsExtra = __importStar(require("fs-extra"));
-const path = __importStar(require("path"));
-const ora_1 = __importDefault(require("ora"));
-const child_process_1 = require("child_process");
-const utils_1 = require("./utils");
-const fs_1 = require("fs");
+import chalk from 'chalk';
+import * as inquirer from '@inquirer/prompts';
+import * as fsExtra from 'fs-extra';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import ora from 'ora';
+import { spawnSync } from 'child_process';
+import { genTemplateInfoList, onGenCommand } from './utils/index.js';
+import { existsSync } from 'fs';
 const cwd = process.cwd();
-const command = (0, utils_1.onGenCommand)();
+const command = onGenCommand();
+const dirname = path.dirname(fileURLToPath(import.meta.url));
 const excludes = ['node_modules', 'yarn-error.log', 'dist'];
-const tempRoot = path.join(__dirname, '../template');
-const tempInfoList = (0, utils_1.genTemplateInfoList)(tempRoot);
+const tempRoot = path.join(dirname, '../template');
+const tempInfoList = genTemplateInfoList(tempRoot);
 function copyTempFile(tempPath, output) {
     fsExtra.readdirSync(tempPath).map(name => {
         if (!excludes.includes(name)) {
@@ -48,12 +21,12 @@ function copyTempFile(tempPath, output) {
     });
 }
 function createTempEnd(output) {
-    (0, child_process_1.spawnSync)(command, ['install'], {
+    spawnSync(command, ['install'], {
         cwd: output,
         stdio: 'inherit'
     });
 }
-async function createTemp(dirname) {
+export async function createTemp(dirname) {
     const isCurrent = dirname === '.';
     let answer = await inquirer.select({
         message: 'Select temp.',
@@ -67,9 +40,9 @@ async function createTemp(dirname) {
         });
         tempInfo = tempInfo.children.find(o => o.name === answer);
     }
-    const creating = (0, ora_1.default)(chalk.yellow('Creating...\n')).start();
+    const creating = ora(chalk.yellow('Creating...\n')).start();
     const output = path.join(cwd, isCurrent ? '' : dirname);
-    if (!isCurrent && (0, fs_1.existsSync)(output)) {
+    if (!isCurrent && existsSync(output)) {
         return console.log(chalk.red(`${dirname} already exists!`));
     }
     if (!isCurrent) {
