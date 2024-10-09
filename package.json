@@ -1,6 +1,6 @@
 {
     "name": "create-packer",
-    "version": "1.35.21",
+    "version": "1.35.22",
     "main": "index.js",
     "repository": "https://github.com/kevily/create-packer",
     "author": "1k <bug_zero@163.com>",
@@ -20,7 +20,12 @@
     "engines": {
         "node": ">=18.0.0"
     },
-    "files": ["bin", "template", "template/**/.gitignore", ".gitignore"],
+    "files": [
+        "bin",
+        "template",
+        "template/**/.gitignore",
+        ".gitignore"
+    ],
     "dependencies": {
         "@inquirer/prompts": "7.0.0",
         "chalk": "5.3.0",
