@@ -3,7 +3,7 @@ import { Engine, rollup, tsc } from '1k-tasks'
 
 async function build(lib: string) {
     const root = path.join(process.cwd(), 'packages', lib)
-    const ignore = ['**/*.{dts,test,types}.ts', '**/*.stories.*']
+    const ignore = ['**/*.{dts,test,types,type}.ts', '**/*.stories.*']
     const workDir = 'src'
     const dest = 'dist'
     const task = new Engine()
@@ -15,7 +15,7 @@ async function build(lib: string) {
         ignore
     })
     task.registry('tsc', tsc, { root })
-    task.run({ tip: `buliding ${lib}...` })
+    task.run({ sync: true, tip: `buliding ${lib}...` })
 }
 
 build('ts')
