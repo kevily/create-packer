@@ -20,9 +20,7 @@ const config: StorybookConfig = {
         options: {}
     },
     async viteFinal(config) {
-        config.plugins!.unshift(
-            svgr({ svgo: false, titleProp: true, ref: true, icon: '1em' }) as any
-        )
+        config.plugins!.unshift(svgr({ svgo: false, titleProp: true, ref: true }) as any)
         return config
     },
     docs: {
