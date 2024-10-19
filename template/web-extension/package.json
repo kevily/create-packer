@@ -42,7 +42,6 @@
         "@commitlint/cli": "17.6.1",
         "@commitlint/config-conventional": "17.6.1",
         "@commitlint/cz-commitlint": "17.5.0",
-        "@crxjs/vite-plugin": "2.0.0-beta.22",
         "@rollup/plugin-eslint": "9.0.5",
         "@types/chrome": "0.0.254",
         "@types/lodash-es": "4.17.7",
