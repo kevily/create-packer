@@ -23,7 +23,7 @@
         }
     },
     "include": ["**/*.ts", "**/*.tsx", ".wxt/wxt.d.ts"],
-    "exclude": ["scripts", "vite.config.ts"],
+    "exclude": ["scripts"],
     "references": [
         {
             "path": "./tsconfig.node.json"
