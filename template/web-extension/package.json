@@ -5,9 +5,17 @@
     "type": "module",
     "scripts": {
         "prepare": "husky install",
-        "dev": "vite",
-        "build": "tsc --noEmit && vite build",
-        "preview": "vite preview",
+        "dev": "wxt",
+        "dev:firefox": "wxt -b firefox",
+        "build": "wxt build",
+        "build_dev": "wxt build --mode dev",
+        "build:firefox": "wxt build -b firefox",
+        "build_dev:firefox": "wxt build -b firefox --mode dev",
+        "zip": "wxt zip",
+        "zip_dev": "wxt zip --mode dev",
+        "zip:firefox": "wxt zip -b firefox",
+        "zip_dev:firefox": "wxt zip -b firefox --mode dev",
+        "postinstall": "wxt prepare",
         "up:vite": "pnpm up vite @vitejs/* -L",
         "format": "biome format --write",
         "lint": "tsc --noEmit && eslint **/*.{tsx,ts} && stylelint **/*.{css,scss,less}",
@@ -68,7 +76,8 @@
         "typescript": "5.5.2",
         "vite": "5.3.3",
         "vite-plugin-stylelint": "5.3.1",
-        "vite-plugin-svgr": "4.2.0"
+        "vite-plugin-svgr": "4.2.0",
+        "wxt": "0.19.11"
     },
     "config": {
         "commitizen": {

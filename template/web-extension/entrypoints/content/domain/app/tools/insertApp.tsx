@@ -3,7 +3,7 @@ import { createRoot } from 'react-dom/client'
 import { isFunction } from 'lodash-es'
 import { Nullable } from '1k-types'
 import { AppContext } from '@/shared/components'
-import { classNameSpace } from '@/content_script/constants'
+import { classNameSpace } from '@/entrypoints/content/constants'
 
 export enum insertAppStatus {
     success,

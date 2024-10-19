@@ -1,5 +1,5 @@
 import { GlobalStyle } from '@/shared/styles'
-import { classNameSpace } from '@/content_script/constants'
+import { classNameSpace } from '@/entrypoints/content/constants'
 
 export default function Home() {
     return (

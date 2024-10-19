@@ -1,4 +1,4 @@
-import { insertApp } from '@/content_script/domain/app'
+import { insertApp } from '@/entrypoints/content/domain/app'
 import Common from './common'
 
 export function insert() {
