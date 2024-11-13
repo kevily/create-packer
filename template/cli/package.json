@@ -32,7 +32,6 @@
         "ora": "8.1.0"
     },
     "devDependencies": {
-        "@biomejs/biome": "1.9.3",
         "@commitlint/config-conventional": "^17.6.3",
         "@commitlint/cz-commitlint": "17.4.2",
         "@types/fs-extra": "9.0.12",
