@@ -13,10 +13,11 @@ const manifest: UserManifestFn = () => {
         name: 'Hello Extensions',
         description: 'Base Level Extension',
         version: pkgJson.version,
-        action: {
-            default_icon: 'vite.svg'
-        },
-        host_permissions
+        host_permissions,
+        icons: {
+            '48': 'vite.png',
+            '128': 'vite.png'
+        }
     }
 }
 
@@ -30,7 +31,10 @@ export default defineConfig({
     vite: ({ mode }) => ({
         plugins: [
             svgr(),
-            stylelint({ cache: false, include: ['**/*.{css,scss,sass,less,styl,vue,svelte}'] }),
+            stylelint({
+                cache: false,
+                include: ['**/*.{css,scss,sass,less,styl,vue,svelte}']
+            }),
             eslint({ include: ['**/*.{ts,tsx,js,jsx}'] }),
             react()
         ] as any,

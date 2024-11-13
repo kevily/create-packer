@@ -6,9 +6,5 @@
         "allowSyntheticDefaultImports": true,
         "resolveJsonModule": true
     },
-    "include": [
-        "scripts",
-        "rsbuild.config.ts",
-        "package.json"
-    ]
+    "include": ["scripts", "rsbuild.config.ts", "package.json"]
 }

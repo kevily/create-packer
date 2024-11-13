@@ -13,6 +13,7 @@
         "pub": "pnpm run build && pnpm run push && node ./scripts/pub.js",
         "test": "pnpm run build && rimraf ./__test__ && node ./bin __test__",
         "build": "rimraf ./bin && tsc",
+        "format": "pnpm -r run format",
         "clean:pkg": "pnpm -r exec rimraf node_modules",
         "commit": "git add . && cz",
         "push": "pnpm run commit && git push"
@@ -35,7 +36,6 @@
         "ora": "8.1.0"
     },
     "devDependencies": {
-        "@biomejs/biome": "1.9.2",
         "@commitlint/config-conventional": "^17.7.0",
         "@commitlint/cz-commitlint": "17.4.2",
         "@types/fs-extra": "9.0.12",
@@ -45,6 +45,7 @@
         "@typescript-eslint/parser": "7.0.2",
         "commitizen": "4.3.0",
         "eslint": "8.56.0",
+        "prettier": "3.2.5",
         "rimraf": "3.0.2",
         "typescript": "5.5.2"
     },

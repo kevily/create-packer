@@ -4,3 +4,5 @@
 **/*.html
 .history
 dist
+.history
+dist

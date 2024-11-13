@@ -6,12 +6,11 @@ import StylelintWebpackPlugin from 'stylelint-webpack-plugin'
 import { pluginTypeCheck } from '@rsbuild/plugin-type-check'
 import { RsdoctorRspackPlugin } from '@rsdoctor/rspack-plugin'
 import { pluginSvgr } from '@rsbuild/plugin-svgr'
-import { createChunks } from './scripts/createChunks'
+import { createChunks } from './scripts'
 
 export default defineConfig(({ envMode, command }) => {
     const { parsed: env } = loadEnv()
     const proxyBaseUrl = env.PUBLIC_API_HOST
-    const baseUrl = env.PUBLIC_BASE_URL
     return {
         html: {
             template: './index.html'
@@ -24,11 +23,7 @@ export default defineConfig(({ envMode, command }) => {
                 '@': __dirname
             }
         },
-        dev: {
-            minify: envMode !== 'dev'
-        },
         output: {
-            assetPrefix: baseUrl,
             distPath: {
                 root: 'dist'
             },
@@ -66,15 +61,13 @@ export default defineConfig(({ envMode, command }) => {
             bundleAnalyze: envMode === 'analyse' ? { openAnalyzer: true } : void 0
         },
         server: {
-            base: baseUrl,
+            base: env.PUBLIC_BASE_URL,
             host: '0.0.0.0',
             compress: false,
             proxy: [
                 {
                     context: [proxyBaseUrl],
                     target: 'http://127.0.0.1:3000',
-                    changeOrigin: true,
-                    secure: false,
                     pathRewrite: {
                         [proxyBaseUrl]: ''
                     }
