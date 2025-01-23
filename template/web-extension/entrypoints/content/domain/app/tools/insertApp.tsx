@@ -15,7 +15,7 @@ export interface insertAppResultType {
     status: insertAppStatus
 }
 export function insertApp<T extends HTMLElement>(
-    target: Nullable<T>,
+    target: T | null | undefined,
     option: {
         insert?: (rootEle: HTMLElement, target: T) => void
         reactNode: ReactNode
