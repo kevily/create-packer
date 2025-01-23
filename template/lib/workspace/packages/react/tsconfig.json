@@ -20,11 +20,6 @@
         "baseUrl": ".",
         "emitDeclarationOnly": true
     },
-    "include": [
-        "src",
-        "./global.d.ts"
-    ],
-    "exclude": [
-        "node_modules/**/*"
-    ],
+    "include": ["src", "./global.d.ts"],
+    "exclude": ["node_modules/**/*"]
 }

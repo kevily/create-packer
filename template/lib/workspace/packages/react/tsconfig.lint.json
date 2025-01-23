@@ -1,0 +1,21 @@
+{
+    "compilerOptions": {
+        "useDefineForClassFields": true,
+        "strict": true,
+        "forceConsistentCasingInFileNames": true,
+        "strictPropertyInitialization": false,
+        "resolveJsonModule": true,
+        "module": "ESNext",
+        "esModuleInterop": true,
+        "jsx": "react-jsx",
+        "allowSyntheticDefaultImports": true,
+        "allowJs": true,
+        "target": "ESNext",
+        "noImplicitAny": false,
+        "skipLibCheck": true,
+        "moduleResolution": "node",
+        "sourceMap": false,
+        "baseUrl": "."
+    },
+    "include": ["src/**/*", "./global.d.ts"],
+}

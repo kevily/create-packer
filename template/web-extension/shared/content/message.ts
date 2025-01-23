@@ -1,4 +1,6 @@
 import { message } from '@/shared/tools'
+import { CONTENT_MATCHES } from './constant'
+
 export enum ACTIONS {
     TEST = 'TEST'
 }
@@ -10,6 +12,14 @@ export interface responseType {}
 
 export const action = message.create<ACTIONS, messageType, responseType>()
 
-export function batchSend<A extends ACTIONS>(message: { action: A } & messageType[A]) {
-    return action.batchSendToContent(message, { active: true, url: '*://*.tiktok.com/*' })
+export function sendToAllContent<A extends ACTIONS>(
+    message: message.genMessageType<A, messageType[A]>
+) {
+    return action.sendToContent(message, { active: true, url: CONTENT_MATCHES })
+}
+
+export function sendToCurrentContent<A extends ACTIONS>(
+    message: message.genMessageType<A, messageType[A]>
+) {
+    return action.sendToContent(message, { active: true, url: CONTENT_MATCHES })
 }

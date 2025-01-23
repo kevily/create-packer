@@ -4,7 +4,7 @@ import vueJsx from '@vitejs/plugin-vue-jsx'
 import svgLoader from 'vite-svg-loader'
 import mockDevServer from 'vite-plugin-mock-dev-server'
 import stylelint from 'vite-plugin-stylelint'
-import eslint from '@rollup/plugin-eslint'
+import checker from 'vite-plugin-checker'
 import { visualizer } from 'rollup-plugin-visualizer'
 import { includes } from 'lodash-es'
 import { createChunks } from './scripts'
@@ -18,7 +18,11 @@ export default defineConfig(({ mode }) => {
             enableObjectSlots: false
         }),
         stylelint({ cache: false, include: ['**/*.{css,scss,sass,less,styl,vue,svelte}'] }),
-        eslint({ include: ['**/*.{ts,tsx,js,jsx,vue}'] }),
+        checker({
+            enableBuild: false,
+            typescript: true,
+            eslint: { useFlatConfig: true, lintCommand: 'eslint', dev: { logLevel: ['error'] } }
+        }),
         vue(),
         svgLoader(),
         mockDevServer({

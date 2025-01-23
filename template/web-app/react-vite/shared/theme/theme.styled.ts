@@ -1,5 +1,4 @@
 import { CSSProperties } from 'react'
-import { AnyFunc } from '1k-types'
 import { isString } from 'lodash-es'
 
 export const theme = {
@@ -50,7 +49,7 @@ export const theme = {
                 gridTemplateColumns: isString(cols) ? cols : `repeat(${cols}, minmax(0, 1fr))`,
                 columnGap: gap ? `${gap}px` : void 0
             })
-        } satisfies Record<string, AnyFunc<CSSProperties>>
+        } satisfies Record<string, (...args: any) => CSSProperties>
     }
 }
 export type themeType = typeof theme

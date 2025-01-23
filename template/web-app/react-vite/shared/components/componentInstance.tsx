@@ -71,7 +71,7 @@ export function create(Context?: FunctionComponent<PropsWithChildren<any>>) {
             }
         }
         await current.pending
-        props && current.instance.$setProps(props)
+        current.instance.$setProps(props)
         // Delay return to avoid sync issue
         // ------------------------------------------------------------------------
         await new Promise(resolve => setTimeout(resolve))

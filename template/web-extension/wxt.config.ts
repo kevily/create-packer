@@ -1,7 +1,5 @@
 import { defineConfig, UserManifestFn } from 'wxt'
 import react from '@vitejs/plugin-react'
-import stylelint from 'vite-plugin-stylelint'
-import eslint from '@rollup/plugin-eslint'
 import svgr from 'vite-plugin-svgr'
 import pkgJson from './package.json'
 
@@ -28,16 +26,11 @@ export default defineConfig({
         artifactTemplate: '{{name}}@{{version}}-{{mode}}-{{browser}}.zip'
     },
     manifest,
+    runner: { disabled: true },
+    extensionApi: 'chrome',
+    imports: { eslintrc: { enabled: 9 } },
     vite: ({ mode }) => ({
-        plugins: [
-            svgr(),
-            stylelint({
-                cache: false,
-                include: ['**/*.{css,scss,sass,less,styl,vue,svelte}']
-            }),
-            eslint({ include: ['**/*.{ts,tsx,js,jsx}'] }),
-            react()
-        ] as any,
+        plugins: [svgr(), react()] as any,
         resolve: {
             alias: {
                 '@': __dirname

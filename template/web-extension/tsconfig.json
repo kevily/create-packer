@@ -22,7 +22,7 @@
             "@/*": ["./*"]
         }
     },
-    "include": ["**/*.ts", "**/*.tsx", ".wxt/wxt.d.ts"],
+    "include": ["**/*.ts", "**/*.tsx"],
     "exclude": ["scripts"],
     "references": [
         {

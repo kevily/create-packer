@@ -5,6 +5,7 @@
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
     "scripts": {
+        "lint": "tsc --noEmit -p tsconfig.lint.json",
         "build": "tsc",
         "test": "vitest",
         "coverage": "vitest run --coverage"
@@ -14,16 +15,15 @@
     ],
     "license": "ISC",
     "devDependencies": {
-        "@typescript-eslint/eslint-plugin": "7.0.2",
-        "@typescript-eslint/parser": "7.0.2",
         "@vitest/coverage-v8": "2.0.5",
-        "eslint": "8.56.0",
-        "eslint-import-resolver-typescript": "3.6.1",
-        "eslint-plugin-import": "2.29.1",
+        "eslint": "9.17.0",
+        "eslint-import-resolver-typescript": "3.7.0",
+        "eslint-plugin-import": "2.31.0",
         "prettier": "3.2.5",
         "stylelint": "16.10.0",
         "stylelint-config-standard-scss": "13.0.0",
-        "typescript": "5.5.2",
+        "typescript": "5.7.2",
+        "typescript-eslint": "8.15.0",
         "vitest": "2.0.5"
     }
 }

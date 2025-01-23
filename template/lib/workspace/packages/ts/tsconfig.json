@@ -1,25 +1,28 @@
 {
     "compilerOptions": {
+        "useDefineForClassFields": true,
+        "strict": true,
+        "forceConsistentCasingInFileNames": true,
+        "strictPropertyInitialization": false,
+        "resolveJsonModule": true,
         "module": "ESNext",
         "esModuleInterop": true,
         "allowSyntheticDefaultImports": true,
         "allowJs": true,
         "target": "ESNext",
         "noImplicitAny": false,
+        "skipLibCheck": true,
         "moduleResolution": "node",
         "sourceMap": false,
         "declaration": true,
-        "emitDeclarationOnly": true,
-        "strictNullChecks": true,
-        "skipLibCheck": true,
         "outDir": "dist",
-        "baseUrl": "."
+        "baseUrl": ".",
+        "emitDeclarationOnly": true
     },
     "include": [
         "src"
     ],
     "exclude": [
-        "node_modules/**/*",
         "src/**/*.test.ts"
     ]
 }

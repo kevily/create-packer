@@ -1,4 +1,5 @@
 /// <reference types="vite/client" />
+/// <reference types="./.wxt/wxt.d.ts" />
 import 'styled-components'
 import { themeType } from './shared/styles'
 

@@ -36,7 +36,6 @@ class MessageConstructor<
         action: A,
         callback: actionHandlerType<genMessageType<A, MessageConfig[A]>, Response[A]>
     ) {
-        // @ts-ignore
         this.action[action] = callback
     }
     removeListener(action: Action) {
@@ -47,27 +46,18 @@ class MessageConstructor<
             chrome.runtime.sendMessage(message, response => resolve(response))
         })
     }
-
-    async batchSendToContent<SendMessage extends genMessageType<Action, MessageConfig[Action]>>(
-        message: SendMessage,
-        config?: chrome.tabs.QueryInfo
+    async sendToContent<A extends Action>(
+        message: genMessageType<A, MessageConfig[A]>,
+        tabConfig: chrome.tabs.QueryInfo
     ) {
-        const tabs = config ? await chrome.tabs.query(config) : []
+        const tabs = await chrome.tabs.query(tabConfig)
         return await Promise.all(
             map(tabs, tab => {
-                return new Promise<Response[SendMessage['action']]>(resolve => {
+                return new Promise<Response[A]>(resolve => {
                     chrome.tabs.sendMessage(tab.id!, message, response => resolve(response))
                 })
             })
         )
-    }
-    sendToContent<SendMessage extends genMessageType<Action, MessageConfig[Action]>>(
-        tabId: number,
-        message: SendMessage
-    ) {
-        return new Promise<Response[SendMessage['action']]>(resolve => {
-            chrome.tabs.sendMessage(tabId, message, response => resolve(response))
-        })
     }
 }
 

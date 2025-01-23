@@ -1,11 +1,9 @@
 import { Common } from './modules'
+import { CONTENT_MATCHES } from '@/shared/content'
 
 export default defineContentScript({
-    run_at: 'document_start',
-    matches: [
-        'https://developer.chrome.com/docs/extensions/*',
-        'https://developer.chrome.com/docs/webstore/*'
-    ],
+    run_at: 'document_idle',
+    matches: CONTENT_MATCHES,
     main: () => {
         Common.insert()
     }

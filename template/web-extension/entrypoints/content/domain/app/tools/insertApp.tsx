@@ -1,7 +1,6 @@
 import { CSSProperties, ReactNode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { forEach, isFunction } from 'lodash-es'
-import { Nullable } from '1k-types'
 import { AppContext } from '@/shared/components'
 import { classNameSpace } from '@/entrypoints/content/constants'
 
@@ -11,7 +10,7 @@ export enum insertAppStatus {
     root_existed
 }
 export interface insertAppResultType {
-    rootEle: Nullable<HTMLElement>
+    rootEle: HTMLElement | undefined | null
     result: boolean
     status: insertAppStatus
 }

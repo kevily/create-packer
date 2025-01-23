@@ -2,8 +2,8 @@ import { defineConfig, loadEnv } from 'vite'
 import react from '@vitejs/plugin-react'
 import svgr from 'vite-plugin-svgr'
 import mockDevServer from 'vite-plugin-mock-dev-server'
+import checker from 'vite-plugin-checker'
 import stylelint from 'vite-plugin-stylelint'
-import eslint from '@rollup/plugin-eslint'
 import { visualizer } from 'rollup-plugin-visualizer'
 import { includes } from 'lodash-es'
 import { createChunks } from './scripts'
@@ -14,8 +14,12 @@ export default defineConfig(({ mode }) => {
     const proxyBaseUrl = env.VITE_BASE_URL + env.VITE_API_HOST
     const plugins: any[] = [
         svgr(),
-        stylelint({ cache: false, include: ['**/*.{css,scss,sass,less,styl,ts,tsx}'] }),
-        eslint({ include: ['**/*.{ts,tsx,js,jsx}'] }),
+        stylelint({ cache: false, include: ['**/*.{css,scss,less,ts,tsx}'] }),
+        checker({
+            enableBuild: false,
+            typescript: true,
+            eslint: { useFlatConfig: true, lintCommand: 'eslint', dev: { logLevel: ['error'] } }
+        }),
         react({
             babel: {
                 plugins: [
