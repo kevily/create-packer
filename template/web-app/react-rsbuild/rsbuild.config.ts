@@ -18,7 +18,9 @@ export default defineConfig(({ envMode, command }) => {
         source: {
             entry: {
                 index: './main.tsx'
-            },
+            }
+        },
+        resolve: {
             alias: {
                 '@': __dirname
             }

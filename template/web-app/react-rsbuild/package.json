@@ -38,7 +38,7 @@
         "@commitlint/config-conventional": "17.6.1",
         "@commitlint/cz-commitlint": "17.5.0",
         "@eslint/js": "9.15.0",
-        "@rsbuild/core": "1.2.0",
+        "@rsbuild/core": "1.2.2",
         "@rsbuild/plugin-eslint": "1.1.0",
         "@rsbuild/plugin-react": "1.1.0",
         "@rsbuild/plugin-styled-components": "1.2.0",

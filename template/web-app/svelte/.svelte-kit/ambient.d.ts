@@ -42,6 +42,7 @@ declare module '$env/static/private' {
 	export const GIT_INSTALL_ROOT: string;
 	export const HOMEDRIVE: string;
 	export const HOMEPATH: string;
+	export const IJ_RESTARTER_LOG: string;
 	export const LOCALAPPDATA: string;
 	export const LOGONSERVER: string;
 	export const MOCHA_COLORS: string;
@@ -123,6 +124,7 @@ declare module '$env/dynamic/private' {
 		GIT_INSTALL_ROOT: string;
 		HOMEDRIVE: string;
 		HOMEPATH: string;
+		IJ_RESTARTER_LOG: string;
 		LOCALAPPDATA: string;
 		LOGONSERVER: string;
 		MOCHA_COLORS: string;
