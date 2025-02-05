@@ -4,6 +4,7 @@
     "description": "",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
+    "sideEffects": false,
     "scripts": {
         "lint": "tsc --noEmit -p tsconfig.lint.json",
         "build": "tsc",
