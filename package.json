@@ -1,6 +1,6 @@
 {
     "name": "create-packer",
-    "version": "1.40.0",
+    "version": "1.41.0",
     "main": "index.js",
     "repository": "https://github.com/kevily/create-packer",
     "author": "1k <bug_zero@163.com>",
