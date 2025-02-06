@@ -4,7 +4,6 @@ import { pluginEslint } from '@rsbuild/plugin-eslint'
 import StylelintWebpackPlugin from 'stylelint-webpack-plugin'
 import { pluginTypeCheck } from '@rsbuild/plugin-type-check'
 import { RsdoctorRspackPlugin } from '@rsdoctor/rspack-plugin'
-import { pluginSvgr } from '@rsbuild/plugin-svgr'
 import { createChunks } from './scripts'
 
 export default defineConfig(({ envMode, command }) => {
@@ -45,7 +44,6 @@ export default defineConfig(({ envMode, command }) => {
                     configType: 'flat'
                 }
             }),
-            pluginSvgr(),
             pluginVue()
         ],
         performance: {
