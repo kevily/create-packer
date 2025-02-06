@@ -1,0 +1,29 @@
+{
+    "extends": "stylelint-config-standard-scss",
+    "rules": {
+        "comment-empty-line-before": "never",
+        "no-empty-source": null,
+        "alpha-value-notation": null,
+        "color-function-notation": null,
+        "at-rule-no-unknown": [
+            true,
+            {
+                "ignoreAtRules": ["tailwind", "apply", "use"]
+            }
+        ],
+        "declaration-block-no-redundant-longhand-properties": null,
+        "selector-pseudo-class-no-unknown": [
+            true,
+            {
+                "ignorePseudoClasses": ["global"]
+            }
+        ],
+        "selector-class-pattern": null,
+        "scss/at-rule-no-unknown": [
+            true,
+            {
+                "ignoreAtRules": ["tailwind", "apply"]
+            }
+        ]
+    }
+}
