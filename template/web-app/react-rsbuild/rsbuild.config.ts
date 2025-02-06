@@ -10,10 +10,10 @@ import { createChunks } from './scripts'
 
 export default defineConfig(({ envMode, command }) => {
     const { parsed: env } = loadEnv()
-    const proxyBaseUrl = env.PUBLIC_API_HOST
     return {
         html: {
-            template: './index.html'
+            template: './index.html',
+            title: 'Rspack + React + TS'
         },
         source: {
             entry: {
@@ -41,7 +41,11 @@ export default defineConfig(({ envMode, command }) => {
         },
         plugins: [
             pluginTypeCheck(),
-            pluginEslint(),
+            pluginEslint({
+                eslintPluginOptions: {
+                    configType: 'flat'
+                }
+            }),
             pluginStyledComponents({
                 ssr: false,
                 displayName: false,
@@ -68,11 +72,8 @@ export default defineConfig(({ envMode, command }) => {
             compress: false,
             proxy: [
                 {
-                    context: [proxyBaseUrl],
-                    target: 'http://127.0.0.1:3000',
-                    pathRewrite: {
-                        [proxyBaseUrl]: ''
-                    }
+                    context: [env.PUBLIC_API_HOST],
+                    target: 'http://127.0.0.1:3000'
                 }
             ]
         }
