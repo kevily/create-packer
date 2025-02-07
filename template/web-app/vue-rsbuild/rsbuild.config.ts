@@ -29,6 +29,9 @@ export default defineConfig(({ envMode, command }) => {
             },
             cleanDistPath: true
         },
+        dev: {
+            progressBar: true
+        },
         tools: {
             rspack: {
                 plugins: [
