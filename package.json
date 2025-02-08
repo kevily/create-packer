@@ -43,6 +43,7 @@
         "@types/node": "16.4.7",
         "commitizen": "4.3.0",
         "eslint": "9.17.0",
+        "globals": "15.12.0",
         "prettier": "3.2.5",
         "rimraf": "3.0.2",
         "typescript": "5.7.2",

@@ -2,8 +2,7 @@ import eslint from '@eslint/js'
 import globals from 'globals'
 import tseslint from 'typescript-eslint'
 import importPlugin from 'eslint-plugin-import'
-import eslintPluginSvelte from 'eslint-plugin-svelte'
-import svelte from 'eslint-plugin-svelte';
+import svelte from 'eslint-plugin-svelte'
 
 const scriptExtensions = ['js', 'jsx', 'mjs', 'cjs', 'ts', 'tsx']
 const files = [...scriptExtensions.map(ext => `**/*.${ext}`), '**/*.svelte']
@@ -15,7 +14,6 @@ export default tseslint.config([
     eslint.configs.recommended,
     importPlugin.flatConfigs.recommended,
     tseslint.configs.recommended,
-    eslintPluginSvelte.configs.recommended,
     ...svelte.configs['flat/recommended'],
     ...svelte.configs['flat/prettier'],
     {
@@ -26,6 +24,9 @@ export default tseslint.config([
             globals: {
                 ...globals.browser,
                 ...globals.node
+            },
+            parserOptions: {
+                parser: tseslint.parser
             }
         },
         settings: {
@@ -60,9 +61,9 @@ export default tseslint.config([
             'no-case-declarations': 'off',
             '@typescript-eslint/no-unused-expressions': 'off',
             '@typescript-eslint/no-empty-object-type': 'off',
-            '@typescript-eslint/no-var-requires': 0,
+            '@typescript-eslint/no-var-requires': 'off',
             '@typescript-eslint/explicit-function-return-type': 'off',
-            '@typescript-eslint/no-explicit-any': 0,
+            '@typescript-eslint/no-explicit-any': 'off',
             '@typescript-eslint/no-non-null-assertion': 'off',
             '@typescript-eslint/no-inferrable-types': [
                 'warn',
@@ -76,20 +77,12 @@ export default tseslint.config([
                     argsIgnorePattern: '^_'
                 }
             ],
-            '@typescript-eslint/member-delimiter-style': 0,
-            '@typescript-eslint/class-name-casing': 0,
+            '@typescript-eslint/member-delimiter-style': 'off',
+            '@typescript-eslint/class-name-casing': 'off',
             '@typescript-eslint/explicit-module-boundary-types': 'off',
             '@typescript-eslint/ban-ts-comment': 'off',
             '@typescript-eslint/no-empty-interface': 'off',
             'no-constant-condition': 'off'
-        }
-    },
-    {
-        files: ['**/*.svelte'],
-        languageOptions: {
-            parserOptions: {
-                parser: ts.parser
-            }
         }
     }
 ])
