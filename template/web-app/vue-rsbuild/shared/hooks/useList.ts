@@ -1,5 +1,5 @@
 import { ref, reactive, computed, unref } from 'vue'
-import { cloneDeep, concat, assign, pick, isNil, size, max } from 'lodash-es'
+import { cloneDeep, concat, assign, pick, isNil, size, map, max } from 'lodash-es'
 
 export interface stateType<ListItem, P> {
     loading: boolean
@@ -73,9 +73,9 @@ export default function createListStore<
             assign(params, arg?.params)
             const result = await config.fetch({
                 pagination: unref(pagination),
-                selected: unref(selected) as ListItem[],
+                selected: unref(selected),
                 total: unref(total),
-                params: params as P
+                params
             })
             list.value =
                 !isNil(result.page) && arg?.isConcat ? concat(list.value, result.list) : result.list

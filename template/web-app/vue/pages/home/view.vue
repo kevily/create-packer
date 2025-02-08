@@ -1,12 +1,8 @@
 <script setup lang="ts">
-import { watch } from 'vue'
-import { useHomeQuery } from '@/shared/service'
+import { fetchHomeData } from '@/shared/service'
 
-const { data } = useHomeQuery()
-
-watch(data, data => {
-    console.log('data', data?.data)
-})
+const data = fetchHomeData()
+console.log('data', data)
 </script>
 
 <template>

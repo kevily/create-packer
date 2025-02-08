@@ -19,7 +19,6 @@
         "commit": "git add . && npm run cz"
     },
     "dependencies": {
-        "@tanstack/react-query": "5.51.15",
         "axios": "1.7.9",
         "cross-env": "7.0.3",
         "define-zustand": "3.1.1",

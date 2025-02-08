@@ -1,10 +1,11 @@
-import { useHomeQuery } from '@/shared/service'
+import { useAsync } from 'react-use'
+import { fetchHomeData } from '@/shared/service'
 import { StyledRoot } from './view.styled'
 
 export default function Home() {
-    const query = useHomeQuery()
+    const homeData = useAsync(fetchHomeData)
 
-    console.log('data', query.data)
+    console.log('data', homeData.value)
 
     return <StyledRoot>sdfs</StyledRoot>
 }
