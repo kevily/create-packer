@@ -9,7 +9,14 @@ const files = [...scriptExtensions.map(ext => `**/*.${ext}`), '**/*.svelte']
 
 export default tseslint.config([
     {
-        ignores: ['**/node_modules/', '**/dist/', '**/.history/', '**/.vscode/', 'vite.config.ts.*']
+        ignores: [
+            '**/node_modules/',
+            '**/dist/',
+            '**/.history/',
+            '**/.vscode/',
+            '**/.svelte-kit/',
+            'vite.config.ts.*'
+        ]
     },
     eslint.configs.recommended,
     importPlugin.flatConfigs.recommended,

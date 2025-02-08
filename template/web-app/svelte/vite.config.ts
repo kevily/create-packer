@@ -24,13 +24,7 @@ export default defineConfig(({ mode }) => {
     }
 
     return {
-        base: env.VITE_BASE_URL,
         plugins,
-        resolve: {
-            alias: {
-                '@': path.join(__dirname, 'src')
-            }
-        },
         esbuild: {
             drop: includes(['production', 'analyse'], mode) ? ['console', 'debugger'] : []
         },
