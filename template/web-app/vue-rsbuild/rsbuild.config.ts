@@ -41,12 +41,13 @@ export default defineConfig(({ envMode, command }) => {
             }
         },
         plugins: [
-            pluginTypeCheck(),
-            pluginEslint({
-                eslintPluginOptions: {
-                    configType: 'flat'
-                }
-            }),
+            command !== 'build' && pluginTypeCheck(),
+            command !== 'build' &&
+                pluginEslint({
+                    eslintPluginOptions: {
+                        configType: 'flat'
+                    }
+                }),
             pluginVue()
         ],
         performance: {
