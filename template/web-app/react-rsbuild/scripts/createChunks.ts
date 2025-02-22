@@ -1,9 +1,9 @@
-import { CacheGroups } from '@rsbuild/core'
+import { SplitChunks } from '@rsbuild/core'
 
 export function createChunks(
     chunks: Array<{ name: string; libs: string[] | RegExp; priority?: number }>
 ) {
-    const result: CacheGroups = {
+    const result: Exclude<SplitChunks, false>['cacheGroups'] = {
         vendors: {
             test: /[\\/]node_modules[\\/]/,
             chunks: 'all',
