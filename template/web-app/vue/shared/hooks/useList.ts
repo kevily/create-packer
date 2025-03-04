@@ -1,31 +1,14 @@
 import { ref, reactive, computed, unref } from 'vue'
-import { cloneDeep, concat, assign, pick, isNil, size, map, max } from 'lodash-es'
+import { cloneDeep, assign, pick, isNil, size, max } from 'lodash-es'
 
-export interface stateType<ListItem, P> {
-    loading: boolean
-    total: number
-    params: P
-    list: ListItem[]
-    sum: Record<string, any>
-    selected: ListItem[]
-    selectedKeys: (string | number)[]
-    pagination: {
-        current: number
-        pageSize: number
-        total: number
-    }
-    selectedLen: number
-}
-export interface createListStorePropsType<ListItem, P> {
+export interface configType<ListItem, P> {
     /**
      * @description 默认请求参数
      */
     defaultParams: P
     /** 列表请求 */
-    fetch: (
-        state: Pick<stateType<ListItem, P>, 'pagination' | 'selected' | 'total' | 'params'>
-    ) => Promise<{
-        list: any[]
+    fetch: (state: { params: P }) => Promise<{
+        list: ListItem[]
         page?: number
         pageSize?: number
         total?: number
@@ -39,22 +22,22 @@ export interface createListStorePropsType<ListItem, P> {
 }
 
 export default function createListStore<
-    ListItem extends Record<string, any>,
-    P extends { page?: number; pageSize?: number; [key: string]: any }
->(config: createListStorePropsType<ListItem, P>) {
-    const loading = ref<stateType<ListItem, P>['loading']>(true)
-    const total = ref<stateType<ListItem, P>['total']>(0)
-    const params = reactive<stateType<ListItem, P>['params']>(cloneDeep(config.defaultParams))
-    const list = ref<stateType<ListItem, P>['list']>([])
-    const sum = reactive<stateType<ListItem, P>['sum']>({})
-    const selected = ref<stateType<ListItem, P>['selected']>([])
-    const selectedKeys = ref<stateType<ListItem, P>['selectedKeys']>([])
-    const pagination = computed<stateType<ListItem, P>['pagination']>(() => ({
+    P extends { page?: number; pageSize?: number; [key: string]: any },
+    ListItem extends Record<string, any> = Record<string, any>
+>(config: configType<ListItem, P>) {
+    const loading = ref(true)
+    const total = ref(0)
+    const params = reactive(cloneDeep(config.defaultParams))
+    const list = ref<ListItem[]>([])
+    const sum = reactive<Record<string, any>>({})
+    const selected = ref<ListItem[]>([])
+    const selectedKeys = ref<(string | number)[]>([])
+    const pagination = computed(() => ({
         current: params.page || 0,
         pageSize: params.pageSize || 0,
         total: total.value
     }))
-    const selectedLen = computed<stateType<ListItem, P>['selectedLen']>(() => {
+    const selectedLen = computed(() => {
         return max([size(selected.value), size(selectedKeys.value)]) || 0
     })
     function resetParams() {
@@ -71,14 +54,12 @@ export default function createListStore<
                 )
             }
             assign(params, arg?.params)
-            const result = await config.fetch({
-                pagination: unref(pagination),
-                selected: unref(selected),
-                total: unref(total),
-                params
-            })
-            list.value =
-                !isNil(result.page) && arg?.isConcat ? concat(list.value, result.list) : result.list
+            const result = await config.fetch({ params: unref(params) })
+            if (!isNil(result.page) && arg?.isConcat) {
+                list.value = [...list.value, ...result.list] as ListItem[]
+            } else {
+                list.value = result.list
+            }
             sum.value = result.sum || {}
             total.value = result.total || total.value
             params.page = result.page || params.page

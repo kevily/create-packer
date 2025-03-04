@@ -11,7 +11,8 @@ export default defineConfig(({ envMode, command }) => {
     return {
         html: {
             template: './index.html',
-            title: 'Vite + Vue + TS'
+            title: 'Vite + Vue + TS',
+            favicon: './shared/assets/vue.svg'
         },
         source: {
             entry: {
@@ -30,7 +31,7 @@ export default defineConfig(({ envMode, command }) => {
             cleanDistPath: true
         },
         dev: {
-            progressBar: true
+            progressBar: command === 'build'
         },
         tools: {
             rspack: {

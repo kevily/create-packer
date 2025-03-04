@@ -76,6 +76,6 @@
         "stylelint": "16.10.0",
         "stylelint-config-standard-scss": "13.0.0",
         "ts-node": "10.9.1",
-        "typescript": "5.7.2"
+        "typescript": "5.8.2"
     }
 }

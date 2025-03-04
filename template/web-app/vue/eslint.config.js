@@ -22,7 +22,8 @@ export default tseslint.config([
                 ecmaFeatures: {
                     jsx: true
                 },
-                useJSXTextNode: true
+                useJSXTextNode: true,
+                parser: tseslint.parser,
             },
             globals: {
                 ...globals.browser,

@@ -21,6 +21,6 @@ const routes: RouteRecordRaw[] = [
 export { default as routerNames } from './names'
 
 export const router = createRouter({
-    history: createWebHistory(import.meta.env.PUBLIC_BASE_URL),
+    history: createWebHistory(import.meta.env.VITE_BASE_URL),
     routes
 })

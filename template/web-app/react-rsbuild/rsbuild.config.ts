@@ -13,7 +13,8 @@ export default defineConfig(({ envMode, command }) => {
     return {
         html: {
             template: './index.html',
-            title: 'Rspack + React + TS'
+            title: 'Rspack + React + TS',
+            favicon: './shared/assets/react.ico'
         },
         source: {
             entry: {
@@ -32,7 +33,7 @@ export default defineConfig(({ envMode, command }) => {
             cleanDistPath: true
         },
         dev: {
-            progressBar: true
+            progressBar: command === 'build'
         },
         tools: {
             rspack: {

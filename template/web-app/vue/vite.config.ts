@@ -3,8 +3,9 @@ import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import svgLoader from 'vite-svg-loader'
 import mockDevServer from 'vite-plugin-mock-dev-server'
-import stylelint from 'vite-plugin-stylelint'
 import checker from 'vite-plugin-checker'
+// @ts-ignore
+import tailwindcss from '@tailwindcss/vite'
 import { visualizer } from 'rollup-plugin-visualizer'
 import { includes } from 'lodash-es'
 import { createChunks } from './scripts'
@@ -14,16 +15,16 @@ export default defineConfig(({ mode }) => {
     const env = loadEnv(mode, process.cwd(), '')
     const proxyBaseUrl = env.VITE_BASE_URL + env.VITE_API_HOST
     const plugins: any[] = [
+        tailwindcss(),
         vueJsx({
             enableObjectSlots: false
         }),
-        stylelint({ cache: false, include: ['**/*.{css,scss,sass,less,styl,vue,svelte}'] }),
+        vue(),
         checker({
             enableBuild: false,
             typescript: true,
             eslint: { useFlatConfig: true, lintCommand: 'eslint', dev: { logLevel: ['error'] } }
         }),
-        vue(),
         svgLoader(),
         mockDevServer({
             include: ['**/*.mock.{ts,js}']

@@ -3,7 +3,6 @@ import react from '@vitejs/plugin-react'
 import svgr from 'vite-plugin-svgr'
 import mockDevServer from 'vite-plugin-mock-dev-server'
 import checker from 'vite-plugin-checker'
-import stylelint from 'vite-plugin-stylelint'
 import { visualizer } from 'rollup-plugin-visualizer'
 import { includes } from 'lodash-es'
 import { createChunks } from './scripts'
@@ -14,7 +13,6 @@ export default defineConfig(({ mode }) => {
     const proxyBaseUrl = env.VITE_BASE_URL + env.VITE_API_HOST
     const plugins: any[] = [
         svgr(),
-        stylelint({ cache: false, include: ['**/*.{css,scss,less,ts,tsx}'] }),
         checker({
             enableBuild: false,
             typescript: true,

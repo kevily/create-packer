@@ -6,7 +6,11 @@ console.log('data', data)
 </script>
 
 <template>
-    <div>Home</div>
+    <div class="root">Home</div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.root {
+    @apply flex items-center justify-center;
+}
+</style>
