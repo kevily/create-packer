@@ -23,7 +23,8 @@ function copyTempFile(tempPath, output) {
 function createTempEnd(output) {
     spawnSync(command, ['install'], {
         cwd: output,
-        stdio: 'inherit'
+        stdio: 'inherit',
+        shell: true
     });
 }
 export async function createTemp(dirname) {

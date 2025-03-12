@@ -25,7 +25,8 @@ function copyTempFile(tempPath, output) {
 function createTempEnd(output: string) {
     spawnSync(command, ['install'], {
         cwd: output,
-        stdio: 'inherit'
+        stdio: 'inherit',
+        shell: true
     })
 }
 
