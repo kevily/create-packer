@@ -13,7 +13,7 @@ export default defineConfig(({ envMode, command }) => {
     return {
         html: {
             template: './index.html',
-            title: 'Rspack + React + TS',
+            title: 'Rsbuild + React + TS',
             favicon: './shared/assets/react.ico'
         },
         source: {

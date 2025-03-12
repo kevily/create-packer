@@ -10,7 +10,14 @@ const files = scriptExtensions.map(ext => `**/*.${ext}`)
 
 export default tseslint.config([
     {
-        ignores: ['**/node_modules/', '**/dist/', '**/.history/', '**/.vscode/', 'vite.config.ts.*']
+        ignores: [
+            '**/node_modules/',
+            '**/dist/',
+            '**/.history/',
+            '**/.vscode/',
+            'vite.config.ts.*',
+            'mockUtils.ts'
+        ]
     },
     eslint.configs.recommended,
     importPlugin.flatConfigs.recommended,

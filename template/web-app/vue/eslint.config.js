@@ -8,7 +8,16 @@ const scriptExtensions = ['js', 'jsx', 'mjs', 'cjs', 'ts', 'tsx']
 const files = [...scriptExtensions.map(ext => `**/*.${ext}`), '**/*.vue']
 
 export default tseslint.config([
-    { ignores: ['**/node_modules/', 'dist/', '.history/', '.vscode'] },
+    {
+        ignores: [
+            '**/node_modules/',
+            'dist/',
+            '.history/',
+            '.vscode',
+            'vite.config.ts.*',
+            'mockUtils.ts'
+        ]
+    },
     eslint.configs.recommended,
     importPlugin.flatConfigs.recommended,
     tseslint.configs.recommended,
@@ -23,7 +32,7 @@ export default tseslint.config([
                     jsx: true
                 },
                 useJSXTextNode: true,
-                parser: tseslint.parser,
+                parser: tseslint.parser
             },
             globals: {
                 ...globals.browser,
