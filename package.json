@@ -16,7 +16,9 @@
         "format": "pnpm -r run format",
         "clean:pkg": "pnpm -r exec rimraf node_modules",
         "commit": "git add . && cz",
-        "push": "pnpm run commit && git push"
+        "push": "pnpm run commit && git push",
+        "up:rsbuild": "pnpm -r up @rsbuild/* -L",
+        "up:vite": "pnpm -r up vite @vitejs/* vite-plugin-* -L"
     },
     "engines": {
         "node": ">=18.0.0"
