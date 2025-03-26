@@ -4,7 +4,6 @@ import tseslint from 'typescript-eslint'
 import importPlugin from 'eslint-plugin-import'
 import reactPlugin from 'eslint-plugin-react'
 import reactHooksPlugin from 'eslint-plugin-react-hooks'
-import autoImports from './.wxt/eslint-auto-imports.mjs'
 
 const scriptExtensions = ['js', 'jsx', 'mjs', 'cjs', 'ts', 'tsx']
 const files = scriptExtensions.map(ext => `**/*.${ext}`)
@@ -16,7 +15,6 @@ export default tseslint.config([
     eslint.configs.recommended,
     importPlugin.flatConfigs.recommended,
     tseslint.configs.recommended,
-    autoImports,
     {
         plugins: { reactPlugin, reactHooksPlugin },
         files,
@@ -95,6 +93,7 @@ export default tseslint.config([
             '@typescript-eslint/explicit-module-boundary-types': 'off',
             '@typescript-eslint/ban-ts-comment': 'off',
             '@typescript-eslint/no-empty-interface': 'off',
+            '@typescript-eslint/triple-slash-reference': 'off',
             'react/prop-types': 'off',
             'react/no-find-dom-node': 'off',
             'react-hooks/exhaustive-deps': 'off',

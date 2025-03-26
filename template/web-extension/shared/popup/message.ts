@@ -1,12 +1,7 @@
-import { message } from '@/shared/tools'
+import { defineExtensionMessaging } from '@webext-core/messaging'
 
-export enum ACTIONS {
-    TEST = 'TEST'
+export type messageType = {
+    test: () => Promise<string>
 }
 
-export interface messageType {
-    [ACTIONS.TEST]: object
-}
-export interface responseType {}
-
-export const action = message.create<ACTIONS, messageType, responseType>()
+export const { sendMessage, onMessage } = defineExtensionMessaging<messageType>()
