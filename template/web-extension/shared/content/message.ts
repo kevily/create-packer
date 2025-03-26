@@ -2,7 +2,7 @@ import { defineExtensionMessaging } from '@webext-core/messaging'
 import { CONTENT_MATCHES } from './constant'
 
 export type messageType = {
-    test: () => Promise<string>
+    test: () => string
 }
 
 export const { sendMessage, onMessage } = defineExtensionMessaging<messageType>()
