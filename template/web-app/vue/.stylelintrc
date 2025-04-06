@@ -1,5 +1,11 @@
 {
     "extends": "stylelint-config-standard-scss",
+    "overrides": [
+        {
+            "files": ["*.html", "**/*.html", "*.vue", "**/*.vue"],
+            "customSyntax": "postcss-html"
+        }
+    ],
     "rules": {
         "comment-empty-line-before": "never",
         "no-empty-source": null,

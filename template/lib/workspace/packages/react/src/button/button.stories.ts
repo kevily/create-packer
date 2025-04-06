@@ -10,9 +10,10 @@ const meta: Meta<typeof Button> = {
         backgroundColor: { control: 'color' }
     }
 }
-type Story = StoryObj<typeof meta>
 
 export default meta
+
+type Story = StoryObj<typeof Button>
 
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
 export const Primary: Story = {

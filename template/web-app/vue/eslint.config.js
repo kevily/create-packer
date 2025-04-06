@@ -99,6 +99,7 @@ export default tseslint.config([
             'vue/html-indent': ['error', 4],
             'vue/require-default-prop': 'off',
             'vue/one-component-per-file': 'off',
+            'vue/no-dupe-keys': 'off',
             'vue/html-self-closing': [
                 'error',
                 {
