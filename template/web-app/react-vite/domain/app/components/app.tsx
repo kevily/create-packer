@@ -1,5 +1,5 @@
 import { useLayoutEffect } from 'react'
-import { RouterProvider } from 'react-router-dom'
+import { RouterProvider } from 'react-router/dom'
 import { request } from '@/shared/service'
 import { routerInstance } from '@/domain/router'
 import { GlobalStyle } from '../app.styled'
@@ -18,7 +18,7 @@ export const Root = () => {
     return (
         <AppContext.Root>
             <GlobalStyle />
-            <RouterProvider router={routerInstance} fallbackElement={<>loading...</>} />
+            <RouterProvider router={routerInstance} />
         </AppContext.Root>
     )
 }

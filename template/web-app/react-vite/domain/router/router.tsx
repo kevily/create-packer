@@ -1,5 +1,5 @@
 import { lazy } from 'react'
-import { createBrowserRouter } from 'react-router-dom'
+import { createBrowserRouter } from 'react-router'
 import { defineRouter, routeType } from '@/shared/hooks'
 import ids from './ids'
 import * as home from './home'
@@ -9,6 +9,7 @@ const routes: routeType[] = [
         path: '/',
         id: ids.root,
         Component: lazy(() => import('@/pages')),
+        hydrateFallbackElement: <>loading...</>,
         children: [
             ...home.routes,
             {

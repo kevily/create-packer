@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'react'
-import { Outlet } from 'react-router-dom'
+import { Outlet } from 'react-router'
 import { useMount } from 'react-use'
 import { last } from 'lodash-es'
 import { useMatchRoutes, useRouter, routeType } from '@/domain/router'

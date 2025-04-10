@@ -1,5 +1,5 @@
 import { FunctionComponent, ReactNode } from 'react'
-import { RouteObject } from 'react-router-dom'
+import { RouteObject } from 'react-router'
 
 export type routeType = Omit<RouteObject, 'children' | 'id'> & {
     id: string

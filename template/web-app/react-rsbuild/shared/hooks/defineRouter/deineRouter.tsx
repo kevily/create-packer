@@ -1,5 +1,5 @@
 import { DependencyList, useEffect, useMemo } from 'react'
-import { useMatches, useSearchParams, NavigateOptions, createBrowserRouter } from 'react-router-dom'
+import { useMatches, useSearchParams, NavigateOptions, createBrowserRouter } from 'react-router'
 import { assign, isArray, reduce, get, map, split, omit, cloneDeep, last, forEach } from 'lodash-es'
 import { stringify, parse } from 'qs'
 import { defineStore } from 'define-zustand'
