@@ -33,7 +33,17 @@ export default defineConfig({
             svgr(),
             react({
                 babel: {
-                    plugins: ['@emotion']
+                    plugins: [
+                        [
+                            'babel-plugin-styled-components',
+                            {
+                                ssr: false,
+                                displayName: false,
+                                fileName: false,
+                                transpileTemplateLiterals: false
+                            }
+                        ]
+                    ]
                 }
             })
         ] as any,
