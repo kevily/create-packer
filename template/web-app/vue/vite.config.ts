@@ -4,7 +4,6 @@ import vueJsx from '@vitejs/plugin-vue-jsx'
 import svgLoader from 'vite-svg-loader'
 import mockDevServer from 'vite-plugin-mock-dev-server'
 import checker from 'vite-plugin-checker'
-// @ts-ignore
 import tailwindcss from '@tailwindcss/vite'
 import { visualizer } from 'rollup-plugin-visualizer'
 import { includes } from 'lodash-es'

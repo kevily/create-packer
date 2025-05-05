@@ -1,8 +1,6 @@
 import { FunctionComponent, ReactNode } from 'react'
-import { ThemeProvider } from '@emotion/react'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { request } from '@/shared/service'
-import { theme } from '@/shared/styles'
 
 const queryClient = new QueryClient({
     defaultOptions: {
@@ -20,9 +18,5 @@ export interface propsType {
     children: ReactNode
 }
 export const Root: FunctionComponent<propsType> = props => {
-    return (
-        <QueryClientProvider client={queryClient}>
-            <ThemeProvider theme={theme}>{props.children}</ThemeProvider>
-        </QueryClientProvider>
-    )
+    return <QueryClientProvider client={queryClient}>{props.children}</QueryClientProvider>
 }

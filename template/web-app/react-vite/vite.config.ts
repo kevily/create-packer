@@ -5,6 +5,7 @@ import mockDevServer from 'vite-plugin-mock-dev-server'
 import checker from 'vite-plugin-checker'
 import { visualizer } from 'rollup-plugin-visualizer'
 import { includes } from 'lodash-es'
+import tailwindcss from '@tailwindcss/vite'
 import { createChunks } from './scripts'
 
 // https://vitejs.dev/config/
@@ -12,6 +13,7 @@ export default defineConfig(({ mode }) => {
     const env = loadEnv(mode, process.cwd(), '')
     const proxyBaseUrl = env.VITE_BASE_URL + env.VITE_API_HOST
     const plugins: any[] = [
+        tailwindcss(),
         svgr(),
         mockDevServer({
             include: ['**/*.mock.{ts,js}']

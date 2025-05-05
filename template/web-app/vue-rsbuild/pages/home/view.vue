@@ -11,6 +11,6 @@ console.log('data', data)
 
 <style scoped>
 .root {
-    @apply flex items-center justify-center;
+    @apply tw:flex tw:items-center tw:justify-center;
 }
 </style>
