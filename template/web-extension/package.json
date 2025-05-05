@@ -25,6 +25,8 @@
         "commit": "git add . && npm run cz"
     },
     "dependencies": {
+        "@emotion/react": "11.14.0",
+        "@emotion/styled": "11.14.0",
         "@tanstack/react-query": "5.51.15",
         "@webext-core/messaging": "2.2.0",
         "axios": "1.7.9",
@@ -34,7 +36,6 @@
         "qs": "6.11.2",
         "react": "18.3.1",
         "react-dom": "18.3.1",
-        "styled-components": "6.1.11",
         "type-fest": "4.33.0",
         "zustand": "5.0.3"
     },
@@ -42,6 +43,7 @@
         "@commitlint/cli": "17.6.1",
         "@commitlint/config-conventional": "17.6.1",
         "@commitlint/cz-commitlint": "17.5.0",
+        "@emotion/babel-plugin": "11.13.5",
         "@eslint/js": "9.15.0",
         "@types/chrome": "0.0.254",
         "@types/lodash-es": "4.17.12",
@@ -76,7 +78,7 @@
         "typescript-eslint": "8.28.0",
         "vite": "6.2.3",
         "vite-plugin-svgr": "4.3.0",
-        "wxt": "0.19.29"
+        "wxt": "0.20.5"
     },
     "config": {
         "commitizen": {

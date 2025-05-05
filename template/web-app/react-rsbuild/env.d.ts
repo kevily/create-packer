@@ -1,6 +1,6 @@
 /// <reference types="@rsbuild/core/types" />
-import 'styled-components'
-import { themeType } from './shared/theme'
+import '@emotion/react'
+import { themeType } from './shared/styles'
 
 declare module 'styled-components' {
     export interface DefaultTheme extends themeType {}
@@ -25,4 +25,8 @@ declare global {
         const ReactComponent: FunctionComponent<SVGProps<SVGSVGElement>>
         export default ReactComponent
     }
+}
+
+declare module '@emotion/react' {
+    export interface Theme extends themeType {}
 }

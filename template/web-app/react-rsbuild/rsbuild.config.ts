@@ -1,6 +1,5 @@
 import { defineConfig, loadEnv } from '@rsbuild/core'
 import { pluginReact } from '@rsbuild/plugin-react'
-import { pluginStyledComponents } from '@rsbuild/plugin-styled-components'
 import { pluginEslint } from '@rsbuild/plugin-eslint'
 import StylelintWebpackPlugin from 'stylelint-webpack-plugin'
 import { pluginTypeCheck } from '@rsbuild/plugin-type-check'
@@ -10,11 +9,12 @@ import { createChunks } from './scripts'
 
 export default defineConfig(({ envMode, command }) => {
     const { parsed: env } = loadEnv()
+
     return {
         html: {
             template: './index.html',
             title: 'Rsbuild + React + TS',
-            favicon: './shared/assets/react.ico'
+            favicon: './shared/assets/react.svg'
         },
         source: {
             entry: {
@@ -41,6 +41,13 @@ export default defineConfig(({ envMode, command }) => {
                     new StylelintWebpackPlugin(),
                     process.env.RSDOCTOR && new RsdoctorRspackPlugin()
                 ]
+            },
+            swc: {
+                jsc: {
+                    experimental: {
+                        plugins: [['@swc/plugin-emotion', {}]]
+                    }
+                }
             }
         },
         plugins: [
@@ -51,14 +58,12 @@ export default defineConfig(({ envMode, command }) => {
                         configType: 'flat'
                     }
                 }),
-            pluginStyledComponents({
-                ssr: false,
-                displayName: false,
-                fileName: false,
-                transpileTemplateLiterals: false
-            }),
             pluginSvgr(),
-            pluginReact()
+            pluginReact({
+                swcReactOptions: {
+                    importSource: '@emotion/react'
+                }
+            })
         ],
         performance: {
             removeConsole: command === 'build' ? ['log'] : false,

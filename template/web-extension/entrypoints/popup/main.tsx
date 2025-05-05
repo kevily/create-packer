@@ -6,9 +6,9 @@ import Popup from './popup'
 
 createRoot(document.getElementById('root') as HTMLElement).render(
     <StrictMode>
-        <AppContext>
+        <AppContext.Root>
             <GlobalStyle />
             <Popup />
-        </AppContext>
+        </AppContext.Root>
     </StrictMode>
 )

@@ -13,6 +13,9 @@ export default defineConfig(({ mode }) => {
     const proxyBaseUrl = env.VITE_BASE_URL + env.VITE_API_HOST
     const plugins: any[] = [
         svgr(),
+        mockDevServer({
+            include: ['**/*.mock.{ts,js}']
+        }),
         checker({
             enableBuild: false,
             typescript: true,
@@ -32,9 +35,6 @@ export default defineConfig(({ mode }) => {
                     ]
                 ]
             }
-        }),
-        mockDevServer({
-            include: ['**/*.mock.{ts,js}']
         })
     ]
 

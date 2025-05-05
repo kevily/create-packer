@@ -13,8 +13,8 @@ const manifest: UserManifestFn = () => {
         version: pkgJson.version,
         host_permissions,
         icons: {
-            '48': 'vite.png',
-            '128': 'vite.png'
+            '48': 'vite.svg',
+            '128': 'vite.svg'
         }
     }
 }
@@ -27,10 +27,16 @@ export default defineConfig({
     },
     manifest,
     runner: { disabled: true },
-    extensionApi: 'chrome',
     imports: { eslintrc: { enabled: 9 } },
     vite: ({ mode }) => ({
-        plugins: [svgr(), react()] as any,
+        plugins: [
+            svgr(),
+            react({
+                babel: {
+                    plugins: ['@emotion']
+                }
+            })
+        ] as any,
         resolve: {
             alias: {
                 '@': __dirname

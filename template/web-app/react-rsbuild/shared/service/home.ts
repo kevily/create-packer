@@ -1,7 +1,9 @@
-import { request } from './request'
+import { useQuery, UndefinedInitialDataOptions } from '@tanstack/react-query'
 import { HOME_DATA } from './api'
 
-export async function fetchHomeData() {
-    const { data } = await request(HOME_DATA)
-    return data
+export const useHomeData = (options?: UndefinedInitialDataOptions) => {
+    return useQuery({
+        ...options,
+        queryKey: [HOME_DATA, ...(options?.queryKey || [])]
+    })
 }

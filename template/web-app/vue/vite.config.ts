@@ -16,6 +16,9 @@ export default defineConfig(({ mode }) => {
     const proxyBaseUrl = env.VITE_BASE_URL + env.VITE_API_HOST
     const plugins: any[] = [
         tailwindcss(),
+        mockDevServer({
+            include: ['**/*.mock.{ts,js}']
+        }),
         vueJsx({
             enableObjectSlots: false
         }),
@@ -25,10 +28,7 @@ export default defineConfig(({ mode }) => {
             typescript: true,
             eslint: { useFlatConfig: true, lintCommand: 'eslint', dev: { logLevel: ['error'] } }
         }),
-        svgLoader(),
-        mockDevServer({
-            include: ['**/*.mock.{ts,js}']
-        })
+        svgLoader()
     ]
 
     if (mode === 'analyse') {

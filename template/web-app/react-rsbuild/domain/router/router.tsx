@@ -9,7 +9,6 @@ const routes: routeType[] = [
         path: '/',
         id: ids.root,
         Component: lazy(() => import('@/pages')),
-        hydrateFallbackElement: <>loading...</>,
         children: [
             ...home.routes,
             {

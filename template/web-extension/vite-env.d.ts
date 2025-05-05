@@ -1,7 +1,7 @@
 /// <reference types="vite/client" />
 /// <reference types="./.wxt/wxt.d.ts" />
 
-import 'styled-components'
+import '@emotion/react'
 import { themeType } from './shared/styles'
 
 declare global {
@@ -16,6 +16,6 @@ declare global {
     }
 }
 
-declare module 'styled-components' {
-    export interface DefaultTheme extends themeType {}
+declare module '@emotion/react' {
+    export interface Theme extends themeType {}
 }

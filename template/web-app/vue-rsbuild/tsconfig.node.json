@@ -2,9 +2,9 @@
     "compilerOptions": {
         "composite": true,
         "module": "ESNext",
-        "moduleResolution": "bundler",
+        "moduleResolution": "node",
         "allowSyntheticDefaultImports": true,
         "resolveJsonModule": true
     },
-    "include": ["scripts", "vite.config.ts", "package.json"]
+    "include": ["scripts", "rsbuild.config.ts", "package.json"]
 }

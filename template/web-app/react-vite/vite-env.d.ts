@@ -1,7 +1,8 @@
 /// <reference types="vite/client" />
 /// <reference types="vite-plugin-svgr/client" />
-import 'styled-components'
-import { themeType } from './shared/theme'
+
+import '@emotion/react'
+import { themeType } from './shared/styles'
 
 declare global {
     interface ImportMetaEnv {
@@ -15,6 +16,6 @@ declare global {
     }
 }
 
-declare module 'styled-components' {
-    export interface DefaultTheme extends themeType {}
+declare module '@emotion/react' {
+    export interface Theme extends themeType {}
 }

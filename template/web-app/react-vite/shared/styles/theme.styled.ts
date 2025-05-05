@@ -1,5 +1,4 @@
 import { CSSProperties } from 'react'
-
 import { isString } from 'lodash-es'
 
 export const theme = {
