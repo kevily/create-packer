@@ -10,7 +10,7 @@ export default function defineRouter(router: ReturnType<typeof createBrowserRout
         state: () => ({
             routes: cloneDeep(router.routes) as routeType[]
         }),
-        getter: {
+        getters: {
             routesById: state => {
                 return (function flat(routes: routeType[], parentRoute?: routeByIdType) {
                     return reduce(
@@ -36,7 +36,7 @@ export default function defineRouter(router: ReturnType<typeof createBrowserRout
                 })(state.routes)
             }
         },
-        actions: (getState, action) => {
+        actions: (setState, getState) => {
             function posToLodashPath(pos: string) {
                 if (pos) {
                     return `[${split(pos, '-').join('].children[')}]`
@@ -52,7 +52,7 @@ export default function defineRouter(router: ReturnType<typeof createBrowserRout
                 const newRoute = cloneDeep(omit(route, ['element', 'errorElement', 'children']))
                 updator(newRoute)
                 assign(route, newRoute)
-                action.setState({ routes: newRoutes })
+                setState({ routes: newRoutes })
             }
             function getRoute(id: routeType['id'], path?: string | string[]) {
                 const { routesById } = getState()
