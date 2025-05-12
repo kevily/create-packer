@@ -4,7 +4,6 @@ import svgr from 'vite-plugin-svgr'
 import mockDevServer from 'vite-plugin-mock-dev-server'
 import checker from 'vite-plugin-checker'
 import { visualizer } from 'rollup-plugin-visualizer'
-import { includes } from 'lodash-es'
 import tailwindcss from '@tailwindcss/vite'
 import { createChunks } from './scripts'
 
@@ -53,7 +52,7 @@ export default defineConfig(({ mode }) => {
             }
         },
         esbuild: {
-            drop: includes(['production', 'analyse'], mode) ? ['console', 'debugger'] : []
+            drop: ['production', 'analyse'].includes(mode) ? ['console', 'debugger'] : []
         },
         build: {
             sourcemap: mode === 'analyse',

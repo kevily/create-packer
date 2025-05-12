@@ -1,14 +1,13 @@
 import { createVNode, render, VNodeChild } from 'vue'
-import { assign, keys } from 'lodash-es'
 import app from './app'
 
 const store = new Map()
 
 function reset(oldObj: Record<string, any>, newObj: Record<string, any>) {
-    keys(oldObj).forEach(k => {
+    Object.keys(oldObj).forEach(k => {
         oldObj[k] = void 0
     })
-    assign(oldObj, newObj)
+    Object.assign(oldObj, newObj)
 }
 
 export function createComponentInstance<

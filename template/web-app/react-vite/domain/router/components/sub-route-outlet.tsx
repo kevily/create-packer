@@ -1,7 +1,7 @@
 import { FunctionComponent } from 'react'
 import { Outlet } from 'react-router'
 import { useMount } from 'react-use'
-import { last } from 'lodash-es'
+import { last } from 'es-toolkit'
 import { useMatchRoutes, useRouter, routeType } from '@/domain/router'
 
 export interface propsType {

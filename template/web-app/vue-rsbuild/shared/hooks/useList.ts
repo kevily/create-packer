@@ -1,5 +1,6 @@
 import { ref, reactive, computed, unref } from 'vue'
-import { cloneDeep, assign, pick, isNil, size, max } from 'lodash-es'
+import { cloneDeep, pick, isNil } from 'es-toolkit'
+import { assign, size, max } from 'es-toolkit/compat'
 
 export interface configType<ListItem, P> {
     /**

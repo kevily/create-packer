@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { isFunction } from 'lodash-es'
+import { isFunction } from 'es-toolkit'
 
 export interface useVisibleConfigType {
     defaultVisible?: boolean

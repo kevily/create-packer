@@ -1,6 +1,6 @@
 import { CSSProperties, ReactNode } from 'react'
 import { createRoot } from 'react-dom/client'
-import { forEach, isFunction } from 'lodash-es'
+import { isFunction } from 'es-toolkit'
 import { AppContext } from '@/shared/components'
 import { classNameSpace } from '@/entrypoints/content/constants'
 
@@ -37,9 +37,7 @@ export function insertApp<T extends HTMLElement>(
     result.rootEle = document.createElement('div')
     result.rootEle.className = classNameSpace
     result.rootEle.id = rootId
-    forEach(option.rootStyle, (value, key) => {
-        result.rootEle!.style[key as any] = value as never
-    })
+    Object.assign(result.rootEle!.style, option.rootStyle)
     const oldRootEle = target.querySelector?.(`#${rootId}`)
     if (!option.isReplace && oldRootEle) {
         result.status = insertAppStatus.root_existed

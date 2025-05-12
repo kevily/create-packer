@@ -1,6 +1,7 @@
 import { DependencyList, useEffect, useMemo } from 'react'
 import { useMatches, useSearchParams, NavigateOptions, createBrowserRouter } from 'react-router'
-import { assign, isArray, reduce, get, map, split, omit, cloneDeep, last, forEach } from 'lodash-es'
+import { omit, cloneDeep, last } from 'es-toolkit'
+import { assign, isArray, reduce, get, map, split, forEach } from 'es-toolkit/compat'
 import { stringify, parse } from 'qs'
 import { defineStore } from 'define-zustand'
 import { routeByIdType, routeType, editableRouteType } from './defineRouter.types'

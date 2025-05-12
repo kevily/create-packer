@@ -1,5 +1,5 @@
 import { CSSProperties } from 'react'
-import { isString } from 'lodash-es'
+import { isString } from 'es-toolkit'
 
 export const theme = {
     tools: {

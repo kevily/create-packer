@@ -6,7 +6,6 @@ import mockDevServer from 'vite-plugin-mock-dev-server'
 import checker from 'vite-plugin-checker'
 import tailwindcss from '@tailwindcss/vite'
 import { visualizer } from 'rollup-plugin-visualizer'
-import { includes } from 'lodash-es'
 import { createChunks } from './scripts'
 
 // https://vitejs.dev/config/
@@ -42,7 +41,7 @@ export default defineConfig(({ mode }) => {
             }
         },
         esbuild: {
-            drop: includes(['production', 'analyse'], mode) ? ['console', 'debugger'] : []
+            drop: ['production', 'analyse'].includes(mode) ? ['console', 'debugger'] : []
         },
         build: {
             sourcemap: mode === 'analyse',

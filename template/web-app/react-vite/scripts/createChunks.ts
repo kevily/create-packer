@@ -1,11 +1,12 @@
-import { concat, forEach, isArray, isRegExp, keys, remove, size } from 'lodash-es'
+import { isRegExp, remove } from 'es-toolkit'
+import { concat, forEach, forOwn, isArray, size } from 'es-toolkit/compat'
 import pkg from '../package.json'
 
 export function createChunks(chunks: { [key: string]: Array<string | RegExp> }) {
-    const vendor = keys(pkg.dependencies)
+    const vendor = Object.keys(pkg.dependencies)
     const result: { [key: string]: string[] } = {}
 
-    forEach(chunks, (values, key) => {
+    forOwn(chunks, (values, key) => {
         if (!isArray(result[key])) {
             result[key] = []
         }
