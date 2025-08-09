@@ -21,7 +21,7 @@
     },
     "dependencies": {
         "axios": "1.7.9",
-        "es-toolkit": "1.37.2",
+        "es-toolkit": "1.39.8",
         "pinia": "2.3.1",
         "tailwindcss": "4.1.4",
         "type-fest": "4.33.0",

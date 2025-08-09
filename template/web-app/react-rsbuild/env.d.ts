@@ -3,7 +3,6 @@
 interface ImportMetaEnv {
     readonly PUBLIC_BASE_URL: string
     readonly PUBLIC_API_HOST: string
-    readonly PUBLIC_ENV_MODE: 'production' | 'development'
 }
 
 interface ImportMeta {
