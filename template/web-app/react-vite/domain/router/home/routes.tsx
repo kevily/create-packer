@@ -1,6 +1,6 @@
 import { lazy } from 'react'
+import  { type routeType } from '../router.types'
 import ids from './ids'
-import type { routeType } from '../router.types'
 
 const routes: routeType[] = [
     {

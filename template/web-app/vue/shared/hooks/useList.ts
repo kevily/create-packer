@@ -51,7 +51,7 @@ export default function createListStore<
                 assign(
                     params,
                     cloneDeep(config.defaultParams),
-                    pick(params, config?.initConfig?.keepParamsKeys || [])
+                    pick(params, (config?.initConfig?.keepParamsKeys || []) as never)
                 )
             }
             assign(params, arg?.params)

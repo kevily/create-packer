@@ -45,6 +45,8 @@ export default tseslint.config([
             'import/export': 'off',
             'import/namespace': 'off',
             'import/default': 'off',
+            'import/consistent-type-specifier-style': ['error', 'prefer-inline'],
+            'import/no-duplicates': ['error', { 'prefer-inline': true }],
             'import/no-named-as-default-member': 'off',
             'import/no-named-as-default': 'off',
             'import/order': [
@@ -66,7 +68,7 @@ export default tseslint.config([
                         { pattern: 'react-router', group: 'external', position: 'before' },
                         { pattern: 'react-router-dom', group: 'external', position: 'before' }
                     ],
-                    pathGroupsExcludedImportTypes: ['react', 'react-router', 'react-router-dom']
+                    pathGroupsExcludedImportTypes: ['builtin']
                 }
             ],
             'no-case-declarations': 'off',

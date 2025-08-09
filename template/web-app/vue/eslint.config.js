@@ -49,6 +49,8 @@ export default tseslint.config([
             'import/export': 'off',
             'import/namespace': 'off',
             'import/default': 'off',
+            'import/consistent-type-specifier-style': ['error', 'prefer-inline'],
+            'import/no-duplicates': ['error', { 'prefer-inline': true }],
             'import/no-named-as-default-member': 'off',
             'import/no-named-as-default': 'off',
             'import/order': [
@@ -68,7 +70,7 @@ export default tseslint.config([
                         { pattern: 'vue', group: 'external', position: 'before' },
                         { pattern: 'vue-router', group: 'external', position: 'before' }
                     ],
-                    pathGroupsExcludedImportTypes: ['vue', 'vue-router']
+                    pathGroupsExcludedImportTypes: ['builtin']
                 }
             ],
             'no-case-declarations': 'off',
