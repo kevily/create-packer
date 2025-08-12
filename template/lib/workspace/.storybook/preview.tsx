@@ -1,5 +1,4 @@
-import * as React from 'react'
-import type { Preview } from '@storybook/react'
+import { type Preview } from '@storybook/react-vite'
 
 const preview: Preview = {
     decorators: [Story => <Story />],
@@ -11,7 +10,8 @@ const preview: Preview = {
                 date: /Date$/
             }
         }
-    }
+    },
+    tags: ['autodocs']
 }
 
 export default preview
