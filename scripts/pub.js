@@ -1,5 +1,5 @@
 import * as inquirer from '@inquirer/prompts'
-import pkg from '../package.json' assert { type: 'json' }
+import pkg from '../package.json' with { type: 'json' }
 import { execSync } from 'child_process'
 import chalk from 'chalk'
 

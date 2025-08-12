@@ -1,6 +1,6 @@
 import chalk from 'chalk'
 import * as inquirer from '@inquirer/prompts'
-import * as fsExtra from 'fs-extra'
+import fsExtra from 'fs-extra'
 import path from 'path'
 import { fileURLToPath } from 'url'
 import ora from 'ora'

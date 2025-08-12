@@ -42,7 +42,7 @@
         "@commitlint/cz-commitlint": "17.4.2",
         "@types/fs-extra": "9.0.12",
         "@types/inquirer": "7.3.3",
-        "@types/node": "16.4.7",
+        "@types/node": "18",
         "commitizen": "4.3.0",
         "eslint": "9.17.0",
         "globals": "15.12.0",
