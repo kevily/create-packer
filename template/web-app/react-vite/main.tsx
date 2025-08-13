@@ -1,4 +1,4 @@
 import { startApp } from '@/domain/app'
-import './main.css'
+import './global.css'
 
 startApp()
