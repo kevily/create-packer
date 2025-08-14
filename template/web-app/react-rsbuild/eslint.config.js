@@ -95,6 +95,7 @@ export default tseslint.config([
             '@typescript-eslint/explicit-module-boundary-types': 'off',
             '@typescript-eslint/ban-ts-comment': 'off',
             '@typescript-eslint/no-empty-interface': 'off',
+            '@typescript-eslint/triple-slash-reference': 'off',
             'react/prop-types': 'off',
             'react/no-find-dom-node': 'off',
             'react-hooks/exhaustive-deps': 'off',

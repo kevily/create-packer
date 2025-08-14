@@ -88,6 +88,7 @@ export default tseslint.config([
             '@typescript-eslint/explicit-module-boundary-types': 'off',
             '@typescript-eslint/ban-ts-comment': 'off',
             '@typescript-eslint/no-empty-interface': 'off',
+            '@typescript-eslint/triple-slash-reference': 'off',
             'vue/multi-word-component-names': 0,
             'vue/html-indent': ['error', 4],
             'vue/require-default-prop': 'off',
