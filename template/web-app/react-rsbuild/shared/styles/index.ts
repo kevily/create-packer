@@ -1,1 +1,1 @@
-export * as theme from './theme.css'
+export * from './theme.css'

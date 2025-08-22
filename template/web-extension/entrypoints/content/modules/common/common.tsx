@@ -1,10 +1,5 @@
-import { GlobalStyle } from '@/shared/styles'
-import { classNameSpace } from '@/entrypoints/content/constants'
+import '@/entrypoints/content/global.css'
 
 export default function Home() {
-    return (
-        <>
-            <GlobalStyle nameSpace={classNameSpace} />
-        </>
-    )
+    return <></>
 }

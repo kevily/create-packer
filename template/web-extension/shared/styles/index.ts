@@ -1,2 +1,2 @@
-export * from './theme.styled'
-export * from './global-style'
+export * from './global.css'
+export * from './theme.css'

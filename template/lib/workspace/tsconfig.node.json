@@ -8,7 +8,7 @@
         "strictNullChecks": true,
         "target": "ESNext",
         "noImplicitAny": false,
-        "moduleResolution": "bundler",
+        "moduleResolution": "node",
         "sourceMap": false,
         "declaration": true,
         "outDir": "lib",
