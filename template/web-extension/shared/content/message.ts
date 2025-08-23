@@ -2,28 +2,53 @@ import { defineExtensionMessaging } from '@webext-core/messaging'
 import { CONTENT_MATCHES } from './constant'
 
 export type messageType = {
-    test: () => string
+    CONNECT: () => true
 }
 
 export const { sendMessage, onMessage } = defineExtensionMessaging<messageType>()
-export async function sendToAllContent<A extends keyof messageType>(
-    action: A,
-    data?: Parameters<messageType[A]>[0]
-) {
-    const tabs = await chrome.tabs.query({ url: CONTENT_MATCHES })
-    const result = await Promise.all(
+
+export async function connectableTabs(tabQueryInfo?: chrome.tabs.QueryInfo) {
+    const tabs = await chrome.tabs.query({
+        ...tabQueryInfo,
+        url: tabQueryInfo?.url || CONTENT_MATCHES
+    })
+    const result = await Promise.allSettled(
         tabs.map(tab => {
-            return sendMessage(action, data as never, { tabId: tab.id! })
+            return sendMessage('CONNECT', void 0, { tabId: tab.id! }).then(res => ({
+                data: res,
+                tab
+            }))
         })
     )
-    return result
+    return result?.filter(o => o.status === 'fulfilled').map(o => o.value.tab)
 }
 
-export async function sendToCurrentContent<A extends keyof messageType>(
+export async function sendToContent<A extends keyof messageType>(
     action: A,
-    data?: Parameters<messageType[A]>[0]
+    options: {
+        data?: Parameters<messageType[A]>[0]
+        url?: string[]
+        target: 'first' | 'last' | 'all' | 'current'
+    }
 ) {
-    const tabs = await chrome.tabs.query({ active: true, url: CONTENT_MATCHES })
-    const result = await sendMessage(action, data as never, { tabId: tabs[0].id! })
+    let tabs = await connectableTabs({ url: options?.url })
+    switch (options.target) {
+        case 'current':
+            tabs = tabs.filter(tab => tab.active)
+            break
+        case 'first':
+            tabs = tabs.slice(0, 1)
+            break
+        case 'last':
+            tabs = tabs.slice(-1)
+            break
+        default:
+            break
+    }
+    const result = await Promise.all(
+        tabs.map(tab => {
+            return sendMessage(action, options.data as never, { tabId: tab.id! })
+        })
+    )
     return result
 }
