@@ -22,11 +22,11 @@
     "dependencies": {
         "axios": "1.7.9",
         "es-toolkit": "1.39.8",
-        "pinia": "2.3.1",
+        "pinia": "3.0.3",
         "tailwindcss": "4.1.4",
         "type-fest": "4.33.0",
-        "vue": "3.5.13",
-        "vue-router": "4.5.0"
+        "vue": "3.5.20",
+        "vue-router": "4.5.1"
     },
     "devDependencies": {
         "@commitlint/cli": "17.6.1",
@@ -34,11 +34,11 @@
         "@commitlint/cz-commitlint": "17.5.0",
         "@eslint/js": "9.15.0",
         "@faker-js/faker": "8.4.1",
-        "@rsbuild/core": "1.2.19",
-        "@rsbuild/plugin-eslint": "1.1.1",
-        "@rsbuild/plugin-type-check": "1.2.1",
-        "@rsbuild/plugin-vue": "1.0.7",
-        "@rsdoctor/rspack-plugin": "0.4.13",
+        "@rsbuild/core": "1.5.2",
+        "@rsbuild/plugin-eslint": "1.1.2",
+        "@rsbuild/plugin-type-check": "1.2.4",
+        "@rsbuild/plugin-vue": "1.1.2",
+        "@rsdoctor/rspack-plugin": "1.2.3",
         "@tailwindcss/postcss": "4.1.4",
         "@types/mockjs": "1.0.10",
         "autoprefixer": "10.4.14",
@@ -63,7 +63,7 @@
         "stylelint-webpack-plugin": "5.0.0",
         "typescript": "5.8.2",
         "typescript-eslint": "8.15.0",
-        "vue-tsc": "2.2.8"
+        "vue-tsc": "3.0.6"
     },
     "config": {
         "commitizen": {

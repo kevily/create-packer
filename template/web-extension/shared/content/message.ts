@@ -47,7 +47,9 @@ export async function sendToContent<A extends keyof messageType>(
     }
     const result = await Promise.all(
         tabs.map(tab => {
-            return sendMessage(action, options.data as never, { tabId: tab.id! })
+            return sendMessage(action, options.data as never, { tabId: tab.id! }).catch(
+                () => void 0
+            )
         })
     )
     return result
