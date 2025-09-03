@@ -1,7 +1,7 @@
 import { defineConfig, loadEnv } from 'vite'
 import react from '@vitejs/plugin-react'
 import svgr from 'vite-plugin-svgr'
-import mockDevServer from 'vite-plugin-mock-dev-server'
+import { mockDevServerPlugin } from 'vite-plugin-mock-dev-server'
 import checker from 'vite-plugin-checker'
 import { visualizer } from 'rollup-plugin-visualizer'
 import { vanillaExtractPlugin } from '@vanilla-extract/vite-plugin'
@@ -14,7 +14,7 @@ export default defineConfig(({ mode }) => {
     const plugins: any[] = [
         vanillaExtractPlugin(),
         svgr(),
-        mockDevServer({
+        mockDevServerPlugin({
             include: ['**/*.mock.{ts,js}']
         }),
         checker({
@@ -22,21 +22,7 @@ export default defineConfig(({ mode }) => {
             typescript: true,
             eslint: { useFlatConfig: true, lintCommand: 'eslint', dev: { logLevel: ['error'] } }
         }),
-        react({
-            babel: {
-                plugins: [
-                    [
-                        'babel-plugin-styled-components',
-                        {
-                            ssr: false,
-                            displayName: false,
-                            fileName: false,
-                            transpileTemplateLiterals: false
-                        }
-                    ]
-                ]
-            }
-        })
+        react()
     ]
 
     if (mode === 'analyse') {
