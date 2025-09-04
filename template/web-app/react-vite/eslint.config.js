@@ -15,8 +15,9 @@ export default tseslint.config([
             '**/dist/',
             '**/.history/',
             '**/.vscode/',
+            '**/styled-system/',
             'vite.config.ts.*',
-            'mockUtils.ts'
+            'mockUtils.ts',
         ]
     },
     eslint.configs.recommended,

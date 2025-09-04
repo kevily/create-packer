@@ -4,7 +4,7 @@
     "version": "0.0.0",
     "type": "module",
     "scripts": {
-        "prepare": "husky install",
+        "prepare": "husky",
         "dev": "rsbuild dev",
         "build": "rsbuild build",
         "build:analyse": "rsbuild build --env-mode analyse",

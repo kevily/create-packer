@@ -4,7 +4,7 @@
     "version": "0.0.0",
     "type": "module",
     "scripts": {
-        "prepare": "husky install",
+        "prepare": "husky",
         "dev": "wxt",
         "dev:firefox": "wxt -b firefox",
         "build": "wxt build",

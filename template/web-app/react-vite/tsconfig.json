@@ -22,7 +22,7 @@
             "@/*": ["./*"]
         }
     },
-    "include": ["**/*.ts", "**/*.tsx"],
+    "include": ["**/*.ts", "**/*.tsx", "styled-system"],
     "exclude": ["scripts", "vite.config.ts"],
     "references": [
         {

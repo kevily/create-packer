@@ -4,7 +4,6 @@ import { pluginEslint } from '@rsbuild/plugin-eslint'
 import StylelintWebpackPlugin from 'stylelint-webpack-plugin'
 import { pluginTypeCheck } from '@rsbuild/plugin-type-check'
 import { RsdoctorRspackPlugin } from '@rsdoctor/rspack-plugin'
-import { VanillaExtractPlugin } from '@vanilla-extract/webpack-plugin'
 import { pluginSvgr } from '@rsbuild/plugin-svgr'
 import { createChunks } from './scripts'
 
@@ -39,7 +38,6 @@ export default defineConfig(({ envMode, command }) => {
         tools: {
             rspack: {
                 plugins: [
-                    new VanillaExtractPlugin(),
                     new StylelintWebpackPlugin(),
                     process.env.RSDOCTOR && new RsdoctorRspackPlugin()
                 ]

@@ -4,7 +4,7 @@
     "private": true,
     "type": "module",
     "scripts": {
-        "prepare": "husky install",
+        "prepare": "husky",
         "dev": "cross-env MODE=development vite",
         "build": "npm run check && npm run lint && cross-env MODE=production vite build",
         "build:analyse": "npm run check && npm run lint && vite build --mode analyse",

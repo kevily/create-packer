@@ -4,7 +4,7 @@
     "version": "0.0.0",
     "type": "module",
     "scripts": {
-        "prepare": "husky install",
+        "prepare": "panda codegen && husky",
         "dev": "rsbuild dev",
         "build": "rsbuild build",
         "build:analyse": "rsbuild build --env-mode analyse",
@@ -20,7 +20,6 @@
     },
     "dependencies": {
         "@tanstack/react-query": "5.51.15",
-        "@vanilla-extract/css": "1.17.4",
         "axios": "1.7.9",
         "define-zustand": "3.4.0",
         "es-toolkit": "1.39.8",
@@ -38,6 +37,7 @@
         "@commitlint/config-conventional": "17.6.1",
         "@commitlint/cz-commitlint": "17.5.0",
         "@eslint/js": "9.15.0",
+        "@pandacss/dev": "1.2.0",
         "@rsbuild/core": "1.5.2",
         "@rsbuild/plugin-eslint": "1.1.2",
         "@rsbuild/plugin-react": "1.4.0",
@@ -48,7 +48,6 @@
         "@types/qs": "6.9.7",
         "@types/react": "18.3.3",
         "@types/react-dom": "18.3.0",
-        "@vanilla-extract/webpack-plugin": "2.3.22",
         "autoprefixer": "10.4.14",
         "commitizen": "4.3.0",
         "cross-env": "7.0.3",

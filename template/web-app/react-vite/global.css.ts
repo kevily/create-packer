@@ -1,5 +1,5 @@
-import { globalStyle } from '@vanilla-extract/css'
+import { defineGlobalStyles } from '@pandacss/dev'
 
-globalStyle('body', {
-    margin: 0
+export const globalCss = defineGlobalStyles({
+    'html, body': {}
 })

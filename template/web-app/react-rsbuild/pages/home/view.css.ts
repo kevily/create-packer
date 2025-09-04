@@ -1,7 +1,7 @@
-import { style } from '@vanilla-extract/css'
+import { css } from '@/styled-system/css'
 
-export const root = style({
+export const rootCss = css({
     display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    alignItems: 'center'
 })

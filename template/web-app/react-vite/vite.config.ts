@@ -4,7 +4,6 @@ import svgr from 'vite-plugin-svgr'
 import { mockDevServerPlugin } from 'vite-plugin-mock-dev-server'
 import checker from 'vite-plugin-checker'
 import { visualizer } from 'rollup-plugin-visualizer'
-import { vanillaExtractPlugin } from '@vanilla-extract/vite-plugin'
 import { createChunks } from './scripts'
 
 // https://vitejs.dev/config/
@@ -12,7 +11,6 @@ export default defineConfig(({ mode }) => {
     const env = loadEnv(mode, process.cwd(), '')
     const proxyBaseUrl = env.VITE_BASE_URL + env.VITE_API_HOST
     const plugins: any[] = [
-        vanillaExtractPlugin(),
         svgr(),
         mockDevServerPlugin({
             include: ['**/*.mock.{ts,js}']
