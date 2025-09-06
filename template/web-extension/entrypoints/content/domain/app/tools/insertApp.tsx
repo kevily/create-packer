@@ -50,7 +50,9 @@ export function insertApp<T extends HTMLElement>(
         target.appendChild(result.rootEle)
     }
     const root = createRoot(result.rootEle)
-    root.render(<AppContext.Root>{option.reactNode}</AppContext.Root>)
+    root.render(
+        <AppContext.Root classNameSpace={classNameSpace}>{option.reactNode}</AppContext.Root>
+    )
     result.result = true
     return result
 }

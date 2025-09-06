@@ -18,11 +18,12 @@
         "isolatedModules": true,
         "noEmit": true,
         "jsx": "react-jsx",
+        "jsxImportSource": "@emotion/react",
         "paths": {
             "@/*": ["./*"]
         }
     },
-    "include": ["**/*.ts", "**/*.tsx", "styled-system"],
+    "include": ["**/*.ts", "**/*.tsx"],
     "exclude": ["scripts", "rsbuild.config.ts"],
     "references": [
         {

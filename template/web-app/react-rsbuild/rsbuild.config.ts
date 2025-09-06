@@ -41,6 +41,13 @@ export default defineConfig(({ envMode, command }) => {
                     new StylelintWebpackPlugin(),
                     process.env.RSDOCTOR && new RsdoctorRspackPlugin()
                 ]
+            },
+            swc: {
+                jsc: {
+                    experimental: {
+                        plugins: [['@swc/plugin-emotion', {}]]
+                    }
+                }
             }
         },
         plugins: [
@@ -55,6 +62,9 @@ export default defineConfig(({ envMode, command }) => {
             pluginReact({
                 reactRefreshOptions: {
                     exclude: [/\.css\.ts$/]
+                },
+                swcReactOptions: {
+                    importSource: '@emotion/react'
                 }
             })
         ],

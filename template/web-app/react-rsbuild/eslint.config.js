@@ -10,7 +10,7 @@ const files = scriptExtensions.map(ext => `**/*.${ext}`)
 
 export default tseslint.config([
     {
-        ignores: ['**/node_modules/', '**/dist/', '**/.history/', '**/.vscode/', '**/styled-system/',]
+        ignores: ['**/node_modules/', '**/dist/', '**/.history/', '**/.vscode/']
     },
     eslint.configs.recommended,
     importPlugin.flatConfigs.recommended,

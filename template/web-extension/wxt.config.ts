@@ -1,7 +1,6 @@
 import { defineConfig, UserManifestFn } from 'wxt'
 import react from '@vitejs/plugin-react'
 import svgr from 'vite-plugin-svgr'
-import { vanillaExtractPlugin } from '@vanilla-extract/vite-plugin'
 import pkgJson from './package.json'
 
 const manifest: UserManifestFn = () => {
@@ -30,7 +29,14 @@ export default defineConfig({
     runner: { disabled: true },
     imports: { eslintrc: { enabled: 9 } },
     vite: ({ mode }) => ({
-        plugins: [vanillaExtractPlugin(), svgr(), react()] as any,
+        plugins: [
+            svgr(),
+            react({
+                babel: {
+                    plugins: ['@emotion']
+                }
+            })
+        ] as any,
         resolve: {
             alias: {
                 '@': __dirname

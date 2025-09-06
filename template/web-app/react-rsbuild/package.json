@@ -4,7 +4,7 @@
     "version": "0.0.0",
     "type": "module",
     "scripts": {
-        "prepare": "panda codegen && husky",
+        "prepare": "husky",
         "dev": "rsbuild dev",
         "build": "rsbuild build",
         "build:analyse": "rsbuild build --env-mode analyse",
@@ -19,6 +19,8 @@
         "commit": "git add . && npm run cz"
     },
     "dependencies": {
+        "@emotion/react": "11.14.0",
+        "@emotion/styled": "11.14.1",
         "@tanstack/react-query": "5.51.15",
         "axios": "1.7.9",
         "define-zustand": "3.4.0",
@@ -37,13 +39,13 @@
         "@commitlint/config-conventional": "17.6.1",
         "@commitlint/cz-commitlint": "17.5.0",
         "@eslint/js": "9.15.0",
-        "@pandacss/dev": "1.2.0",
         "@rsbuild/core": "1.5.2",
         "@rsbuild/plugin-eslint": "1.1.2",
         "@rsbuild/plugin-react": "1.4.0",
         "@rsbuild/plugin-svgr": "1.2.2",
         "@rsbuild/plugin-type-check": "1.2.4",
         "@rsdoctor/rspack-plugin": "1.2.3",
+        "@swc/plugin-emotion": "11.1.0",
         "@types/node": "18.16.0",
         "@types/qs": "6.9.7",
         "@types/react": "18.3.3",

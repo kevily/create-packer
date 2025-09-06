@@ -4,7 +4,7 @@
     "version": "0.0.0",
     "type": "module",
     "scripts": {
-        "prepare": "panda codegen && husky",
+        "prepare": "husky",
         "dev": "vite",
         "build": "tsc --noEmit && vite build",
         "build:analyse": "tsc --noEmit && vite build --mode analyse",
@@ -18,6 +18,8 @@
         "commit": "git add . && npm run cz"
     },
     "dependencies": {
+        "@emotion/react": "11.14.0",
+        "@emotion/styled": "11.14.1",
         "@tanstack/react-query": "5.51.15",
         "axios": "1.7.9",
         "define-zustand": "3.4.0",
@@ -38,7 +40,6 @@
         "@emotion/babel-plugin": "11.13.5",
         "@eslint/js": "9.15.0",
         "@faker-js/faker": "8.4.1",
-        "@pandacss/dev": "1.2.0",
         "@types/node": "18.16.0",
         "@types/qs": "6.9.7",
         "@types/react": "18.3.3",
@@ -54,7 +55,7 @@
         "eslint-plugin-react-hooks": "5.1.0",
         "globals": "15.12.0",
         "husky": "9.1.6",
-        "inquirer": "^8.1.2",
+        "inquirer": "8.1.2",
         "postcss": "8.4.35",
         "postcss-import": "16.0.1",
         "postcss-nesting": "12.0.3",

@@ -1,5 +1,7 @@
 /// <reference types="vite/client" />
 /// <reference types="./.wxt/wxt.d.ts" />
+import '@emotion/react'
+import { type themeType } from '@/shared/styles'
 
 declare global {
     interface ImportMetaEnv {
@@ -11,4 +13,8 @@ declare global {
     interface ImportMeta {
         readonly env: ImportMetaEnv
     }
+}
+
+declare module '@emotion/react' {
+    export interface Theme extends themeType {}
 }
