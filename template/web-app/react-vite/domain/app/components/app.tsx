@@ -10,6 +10,7 @@ export const Root = () => {
             res => res,
             error => {
                 console.log(error)
+                return Promise.reject(error)
             }
         )
     }, [])
