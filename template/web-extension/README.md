@@ -6,7 +6,7 @@
 -   React
 -   Typescript
 -   Zustand
--   Tailwindcss
+-   tss-react
 -   Eslint
 -   Prettier
 -   axios

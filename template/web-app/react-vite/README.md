@@ -7,7 +7,7 @@
 -   Typescript
 -   react-router
 -   Zustand
--   styled-components
+-   tss-react
 -   Eslint
 -   Prettier
 -   axios
