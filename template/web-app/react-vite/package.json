@@ -19,7 +19,6 @@
     },
     "dependencies": {
         "@emotion/react": "11.14.0",
-        "@emotion/styled": "11.14.1",
         "@tanstack/react-query": "5.51.15",
         "axios": "1.7.9",
         "define-zustand": "3.4.0",
@@ -30,6 +29,7 @@
         "react-dom": "18.3.1",
         "react-router": "7.5.0",
         "react-use": "17.5.0",
+        "tss-react": "4.9.19",
         "type-fest": "4.33.0",
         "zustand": "5.0.3"
     },
@@ -37,7 +37,6 @@
         "@commitlint/cli": "17.6.1",
         "@commitlint/config-conventional": "17.6.1",
         "@commitlint/cz-commitlint": "17.5.0",
-        "@emotion/babel-plugin": "11.13.5",
         "@eslint/js": "9.15.0",
         "@faker-js/faker": "8.4.1",
         "@types/node": "18.16.0",

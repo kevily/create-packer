@@ -1,9 +1,9 @@
-import { css } from '@emotion/react'
+import { CSSInterpolation } from 'tss-react'
 
-export const createGlobalCss = (nameSpace?: string) => {
-    return css`
-        ${nameSpace ? `.${nameSpace} ` : 'body'} {
-            margin: 0;
+export function createGlobalCss(nameSpace?: string): CSSInterpolation {
+    return {
+        [nameSpace ? `.${nameSpace}` : 'body']: {
+            margin: 0
         }
-    `
+    }
 }

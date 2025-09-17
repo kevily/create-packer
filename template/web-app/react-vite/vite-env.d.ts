@@ -1,20 +1,12 @@
 /// <reference types="vite/client" />
 /// <reference types="vite-plugin-svgr/client" />
-import '@emotion/react'
-import { type themeType } from '@/shared/styles'
 
-declare global {
-    interface ImportMetaEnv {
-        readonly VITE_BASE_URL: string
-        readonly VITE_API_HOST: string
-        // 更多环境变量...
-    }
-
-    interface ImportMeta {
-        readonly env: ImportMetaEnv
-    }
+interface ImportMetaEnv {
+    readonly VITE_BASE_URL: string
+    readonly VITE_API_HOST: string
+    // 更多环境变量...
 }
 
-declare module '@emotion/react' {
-    export interface Theme extends themeType {}
+interface ImportMeta {
+    readonly env: ImportMetaEnv
 }

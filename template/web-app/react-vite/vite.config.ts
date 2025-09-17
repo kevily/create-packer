@@ -20,11 +20,7 @@ export default defineConfig(({ mode }) => {
             typescript: true,
             eslint: { useFlatConfig: true, lintCommand: 'eslint', dev: { logLevel: ['error'] } }
         }),
-        react({
-            babel: {
-                plugins: ['@emotion']
-            }
-        })
+        react()
     ]
 
     if (mode === 'analyse') {

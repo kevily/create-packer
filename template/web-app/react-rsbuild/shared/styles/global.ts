@@ -1,7 +1,7 @@
-import { css } from '@emotion/react'
+import { CSSInterpolation } from 'tss-react'
 
-export const globalCss = css`
-    body {
-        margin: 0;
+export const globalCss: CSSInterpolation = {
+    body: {
+        margin: 0
     }
-`
+}
