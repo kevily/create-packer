@@ -29,7 +29,7 @@ export default defineConfig({
     runner: { disabled: true },
     imports: { eslintrc: { enabled: 9 } },
     vite: ({ mode }) => ({
-        plugins: [svgr(), react()] as any,
+        plugins: [svgr(), react({ babel: { plugins: [['@emotion']] } })] as any,
         resolve: {
             alias: {
                 '@': __dirname

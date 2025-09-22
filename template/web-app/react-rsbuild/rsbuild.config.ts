@@ -41,6 +41,13 @@ export default defineConfig(({ envMode, command }) => {
                     new StylelintWebpackPlugin(),
                     process.env.RSDOCTOR && new RsdoctorRspackPlugin()
                 ]
+            },
+            swc: {
+                jsc: {
+                    experimental: {
+                        plugins: [['@swc/plugin-emotion', {}]]
+                    }
+                }
             }
         },
         plugins: [
@@ -52,7 +59,11 @@ export default defineConfig(({ envMode, command }) => {
                     }
                 }),
             pluginSvgr(),
-            pluginReact()
+            pluginReact({
+                swcReactOptions: {
+                    importSource: '@emotion/react'
+                }
+            })
         ],
         performance: {
             removeConsole: command === 'build' ? ['log'] : false,
