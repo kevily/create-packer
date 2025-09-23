@@ -1,0 +1,40 @@
+{
+    "productName": "ElectronReact",
+    "appId": "org.erb.ElectronReact",
+    "asar": false,
+    "files": ["dist"],
+    "mac": {
+        "target": {
+            "target": "default",
+            "arch": ["arm64", "x64"]
+        },
+        "hardenedRuntime": true,
+        "gatekeeperAssess": true
+    },
+    "dmg": {
+        "contents": [
+            {
+                "x": 130,
+                "y": 220
+            },
+            {
+                "x": 410,
+                "y": 220,
+                "type": "link",
+                "path": "/Applications"
+            }
+        ]
+    },
+    "win": {
+        "target": ["nsis"]
+    },
+    "linux": {
+        "target": ["AppImage"],
+        "category": "Development"
+    },
+    "directories": {
+        "buildResources": "dist",
+        "output": "build"
+    },
+    "extraResources": ["./assets/**"]
+}
