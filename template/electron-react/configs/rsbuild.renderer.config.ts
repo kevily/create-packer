@@ -1,63 +1,45 @@
+import path from 'node:path'
 import { defineConfig, loadEnv } from '@rsbuild/core'
 import { pluginReact } from '@rsbuild/plugin-react'
 import { pluginSvgr } from '@rsbuild/plugin-svgr'
-import { pluginEslint } from '@rsbuild/plugin-eslint'
-import StylelintWebpackPlugin from 'stylelint-webpack-plugin'
-import { pluginTypeCheck } from '@rsbuild/plugin-type-check'
-import { RsdoctorRspackPlugin } from '@rsdoctor/rspack-plugin'
-import { createChunks } from './scripts'
+import { createChunks } from './createChunks'
+import { createPlugins, OUTPUT_ROOT } from './config'
 
 export default defineConfig(({ envMode, command }) => {
     const { parsed: env } = loadEnv()
-
+    const { rspackPlugin, plugins } = createPlugins({ command })
+    const resolveRendererPath = (p: string) => path.resolve('renderer', p)
     return {
         html: {
-            template: './index.html',
-            title: 'Rsbuild + React + TS',
-            favicon: './shared/assets/react.svg'
+            template: resolveRendererPath('index.html'),
+            title: 'Rsbuild + Vue + TS',
+            favicon: resolveRendererPath('shared/assets/react.svg')
         },
         source: {
             entry: {
-                index: './main.tsx'
+                index: resolveRendererPath('main.ts')
             }
         },
         resolve: {
             alias: {
-                '@': __dirname
+                '@': process.cwd()
             }
         },
         output: {
-            distPath: {
-                root: 'dist'
-            },
-            cleanDistPath: true
+            distPath: { root: `${OUTPUT_ROOT}/renderer` },
+            assetPrefix: './',
+            cleanDistPath: false
         },
         dev: {
             progressBar: command === 'build'
         },
         tools: {
             rspack: {
-                plugins: [
-                    new StylelintWebpackPlugin(),
-                    process.env.RSDOCTOR && new RsdoctorRspackPlugin()
-                ]
-            },
-            swc: {
-                jsc: {
-                    experimental: {
-                        plugins: [['@swc/plugin-emotion', {}]]
-                    }
-                }
+                plugins: rspackPlugin
             }
         },
         plugins: [
-            command !== 'build' && pluginTypeCheck(),
-            command !== 'build' &&
-                pluginEslint({
-                    eslintPluginOptions: {
-                        configType: 'flat'
-                    }
-                }),
+            ...plugins,
             pluginSvgr(),
             pluginReact({
                 swcReactOptions: {
@@ -71,7 +53,7 @@ export default defineConfig(({ envMode, command }) => {
                 strategy: 'custom',
                 splitChunks: {
                     minChunks: 1,
-                    cacheGroups: createChunks([{ libs: ['react', 'react-dom'], name: 'react' }])
+                    cacheGroups: createChunks([{ libs: ['vue', 'vue-router'], name: 'vue' }])
                 }
             },
             bundleAnalyze: envMode === 'analyse' ? { openAnalyzer: true } : void 0
