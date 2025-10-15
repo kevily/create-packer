@@ -1,3 +1,6 @@
-import { startApp } from '@/domain/app'
+import { createRoot } from 'react-dom/client'
+import { App } from '@/domain/components'
 
-startApp()
+export default function () {
+    createRoot(document.getElementById('root') as HTMLElement).render(<App.Root />)
+}
