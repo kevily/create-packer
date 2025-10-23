@@ -17,7 +17,7 @@ export default defineConfig(({ envMode, command }) => {
         },
         source: {
             entry: {
-                index: resolveRendererPath('main.ts')
+                index: resolveRendererPath('main.tsx')
             }
         },
         resolve: {
