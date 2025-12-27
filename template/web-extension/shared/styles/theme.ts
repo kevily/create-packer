@@ -3,16 +3,6 @@ import { isString } from 'es-toolkit'
 import { isNumber } from 'es-toolkit/compat'
 
 export const theme = {
-    text: {
-        xs: { fontSize: '12px', lineHeight: '20px' },
-        sm: { fontSize: '14px', lineHeight: '22px' },
-        base: { fontSize: '16px', lineHeight: '24px' },
-        lg: { fontSize: '18px', lineHeight: '26px' },
-        xl: { fontSize: '20px', lineHeight: '28px' },
-        '2xl': { fontSize: '24px', lineHeight: '32px' },
-        '3xl': { fontSize: '28px', lineHeight: '40px' },
-        '4xl': { fontSize: '32px', lineHeight: '44px' }
-    } satisfies Record<string, CSSProperties>,
     tools: {
         ellipsis: () => ({
             overflow: 'hidden',
