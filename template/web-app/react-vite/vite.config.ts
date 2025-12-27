@@ -3,6 +3,7 @@ import react from '@vitejs/plugin-react'
 import svgr from 'vite-plugin-svgr'
 import { mockDevServerPlugin } from 'vite-plugin-mock-dev-server'
 import checker from 'vite-plugin-checker'
+import tailwindcss from '@tailwindcss/vite'
 import { visualizer } from 'rollup-plugin-visualizer'
 import { createChunks } from './scripts'
 
@@ -11,6 +12,7 @@ export default defineConfig(({ mode }) => {
     const env = loadEnv(mode, process.cwd(), '')
     const proxyBaseUrl = env.VITE_BASE_URL + env.VITE_API_HOST
     const plugins: any[] = [
+        tailwindcss(),
         svgr(),
         mockDevServerPlugin({
             include: ['**/*.mock.{ts,js}']
@@ -20,9 +22,7 @@ export default defineConfig(({ mode }) => {
             typescript: true,
             eslint: { useFlatConfig: true, lintCommand: 'eslint', dev: { logLevel: ['error'] } }
         }),
-        react({
-            babel: { plugins: [['@emotion']] }
-        })
+        react()
     ]
 
     if (mode === 'analyse') {

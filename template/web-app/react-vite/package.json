@@ -10,6 +10,7 @@
         "build:analyse": "tsc --noEmit && vite build --mode analyse",
         "preview": "vite preview",
         "up:vite": "pnpm up vite @vitejs/* vite-plugin-* -L",
+        "up:tailwind": "pnpm up tailwindcss @tailwindcss/* -L",
         "format": "prettier --write \"**/*.{ts,js,tsx,jsx,json,css,scss,less}\"",
         "lint": "tsc --noEmit && eslint --no-error-on-unmatched-pattern && stylelint **/*.{css,scss,less,ts,tsx}",
         "lint:fix": "eslint --fix && stylelint **/*.{css,scss,less,ts,tsx} --fix",
@@ -18,8 +19,6 @@
         "commit": "git add . && npm run cz"
     },
     "dependencies": {
-        "@emotion/react": "11.14.0",
-        "@emotion/styled": "11.14.1",
         "@tanstack/react-query": "5.51.15",
         "axios": "1.7.9",
         "define-zustand": "3.4.0",
@@ -30,6 +29,7 @@
         "react-dom": "18.3.1",
         "react-router": "7.5.0",
         "react-use": "17.5.0",
+        "tailwindcss": "4.1.4",
         "type-fest": "4.33.0",
         "zustand": "5.0.3"
     },
@@ -37,9 +37,9 @@
         "@commitlint/cli": "17.6.1",
         "@commitlint/config-conventional": "17.6.1",
         "@commitlint/cz-commitlint": "17.5.0",
-        "@emotion/babel-plugin": "11.13.5",
         "@eslint/js": "9.15.0",
         "@faker-js/faker": "8.4.1",
+        "@tailwindcss/vite": "^4.1.18",
         "@types/node": "18.16.0",
         "@types/qs": "6.9.7",
         "@types/react": "18.3.3",

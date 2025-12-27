@@ -18,7 +18,8 @@
         "commit": "git add . && cz",
         "push": "pnpm run commit && git push",
         "up:rsbuild": "pnpm -r up @rsbuild/* @rsdoctor/* -L",
-        "up:vite": "pnpm -r up vite @vitejs/* vite-* -L"
+        "up:vite": "pnpm -r up vite @vitejs/* vite-* -L",
+        "up:tailwind": "pnpm up tailwindcss @tailwindcss/* -L"
     },
     "engines": {
         "node": ">=18.0.0"

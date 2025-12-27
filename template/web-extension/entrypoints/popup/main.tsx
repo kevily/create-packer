@@ -2,6 +2,7 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { AppContext } from '@/shared/components'
 import Popup from './popup'
+import '@/shared/styles/theme.css'
 
 createRoot(document.getElementById('root') as HTMLElement).render(
     <StrictMode>

@@ -10,7 +10,7 @@ console.log('data', data)
 </template>
 
 <style scoped>
-@reference "@/main.css";
+@reference "#theme.css";
 
 .root {
     @apply tw:flex tw:items-center tw:justify-center;

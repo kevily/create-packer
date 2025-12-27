@@ -17,7 +17,8 @@
         "cz": "cz",
         "push": "npm run commit && git push",
         "commit": "git add . && npm run cz",
-        "up:vite": "pnpm up vite @vitejs/* vite-plugin-* -L"
+        "up:vite": "pnpm up vite @vitejs/* vite-plugin-* -L",
+        "up:tailwind": "pnpm up tailwindcss @tailwindcss/* -L"
     },
     "dependencies": {
         "axios": "1.7.9",
@@ -69,5 +70,8 @@
         "commitizen": {
             "path": "@commitlint/cz-commitlint"
         }
+    },
+    "imports": {
+        "#theme.css": "./shared/styles/theme.css"
     }
 }

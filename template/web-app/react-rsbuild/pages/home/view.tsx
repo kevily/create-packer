@@ -1,10 +1,10 @@
 import { useHomeData } from '@/shared/service'
-import { StyledRoot } from './view.styled'
+import styles from './view.module.css'
 
 export default function Home() {
     const { data } = useHomeData()
 
     console.log('data', data)
 
-    return <StyledRoot>sdfs</StyledRoot>
+    return <div className={styles.root}>sdfs</div>
 }

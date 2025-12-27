@@ -25,8 +25,6 @@
         "commit": "git add . && npm run cz"
     },
     "dependencies": {
-        "@emotion/react": "11.14.0",
-        "@emotion/styled": "11.14.1",
         "@tanstack/react-query": "5.51.15",
         "@webext-core/messaging": "2.2.0",
         "axios": "1.7.9",
@@ -36,6 +34,7 @@
         "qs": "6.11.2",
         "react": "18.3.1",
         "react-dom": "18.3.1",
+        "tailwindcss": "4.1.4",
         "type-fest": "4.33.0",
         "zustand": "5.0.3"
     },
@@ -43,8 +42,8 @@
         "@commitlint/cli": "17.6.1",
         "@commitlint/config-conventional": "17.6.1",
         "@commitlint/cz-commitlint": "17.5.0",
-        "@emotion/babel-plugin": "11.13.5",
         "@eslint/js": "9.15.0",
+        "@tailwindcss/vite": "4.1.18",
         "@types/chrome": "0.0.254",
         "@types/node": "18.16.0",
         "@types/qs": "6.9.7",
@@ -61,7 +60,7 @@
         "eslint-plugin-react-hooks": "5.1.0",
         "globals": "15.12.0",
         "husky": "9.1.6",
-        "inquirer": "^8.1.2",
+        "inquirer": "8.1.2",
         "postcss": "8.4.31",
         "postcss-import": "15.1.0",
         "postcss-nesting": "11.2.2",
