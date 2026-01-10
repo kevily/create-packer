@@ -1,3 +1,5 @@
+import { StyledRoot } from './popup.styled'
+
 export default function Home() {
-    return <div className="tw:flex">home</div>
+    return <StyledRoot>home</StyledRoot>
 }

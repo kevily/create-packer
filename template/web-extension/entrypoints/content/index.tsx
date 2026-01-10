@@ -1,6 +1,5 @@
 import { CONTENT_MATCHES, contentMessage } from '@/shared/content'
 import { Common } from './modules'
-import '@/shared/styles/theme.css'
 
 export default defineContentScript({
     runAt: 'document_idle',
