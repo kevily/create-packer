@@ -4,7 +4,7 @@ import { pluginEslint } from '@rsbuild/plugin-eslint'
 import StylelintWebpackPlugin from 'stylelint-webpack-plugin'
 import { pluginTypeCheck } from '@rsbuild/plugin-type-check'
 import { RsdoctorRspackPlugin } from '@rsdoctor/rspack-plugin'
-import { createChunks } from './scripts'
+import { createChunks } from './scripts/index.js'
 
 export default defineConfig(({ envMode, command }) => {
     const { parsed: env } = loadEnv()

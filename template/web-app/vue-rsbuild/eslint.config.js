@@ -23,6 +23,7 @@ export default tseslint.config([
                     jsx: true
                 },
                 useJSXTextNode: true,
+                tsconfigRootDir: import.meta.dirname,
                 parser: tseslint.parser
             },
             globals: {

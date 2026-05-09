@@ -1,10 +1,10 @@
 {
     "compilerOptions": {
         "composite": true,
-        "module": "ESNext",
-        "moduleResolution": "node",
+        "module": "esnext",
         "allowSyntheticDefaultImports": true,
-        "resolveJsonModule": true
+        "resolveJsonModule": true,
+        "types": ["*"]
     },
-    "include": ["scripts", "rsbuild.config.ts", "package.json"]
+    "include": ["scripts", "rsbuild.config.ts", "package.json"],
 }
