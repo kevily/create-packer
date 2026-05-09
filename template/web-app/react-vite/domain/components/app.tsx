@@ -1,5 +1,5 @@
 import { useLayoutEffect, Suspense } from 'react'
-import { RouterProvider } from 'react-router/dom'
+import { RouterProvider } from 'react-router'
 import { request } from '@/shared/service'
 import { routerInstance } from '@/domain/router'
 import * as AppContext from './app-context'

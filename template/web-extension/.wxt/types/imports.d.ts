@@ -14,6 +14,7 @@ declare global {
   const defineUnlistedScript: typeof import('wxt/utils/define-unlisted-script').defineUnlistedScript
   const defineWxtPlugin: typeof import('wxt/utils/define-wxt-plugin').defineWxtPlugin
   const fakeBrowser: typeof import('wxt/testing').fakeBrowser
+  const getAppConfig: typeof import('wxt/utils/app-config').getAppConfig
   const injectScript: typeof import('wxt/utils/inject-script').injectScript
   const storage: typeof import('wxt/utils/storage').storage
   const useAppConfig: typeof import('wxt/utils/app-config').useAppConfig

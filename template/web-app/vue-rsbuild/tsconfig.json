@@ -25,5 +25,4 @@
     },
     "include": ["**/*.tsx", "**/*.ts", "**/*.vue"],
     "exclude": ["scripts", "rsbuild.config.ts"],
-    "references": [{ "path": "./tsconfig.node.json" }]
 }

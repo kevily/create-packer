@@ -5,12 +5,13 @@ import { mockDevServerPlugin } from 'vite-plugin-mock-dev-server'
 import checker from 'vite-plugin-checker'
 import tailwindcss from '@tailwindcss/vite'
 import { visualizer } from 'rollup-plugin-visualizer'
-import { createChunks } from './scripts'
+import { createCodeSplitting } from './scripts'
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
     const env = loadEnv(mode, process.cwd(), '')
     const proxyBaseUrl = env.VITE_BASE_URL + env.VITE_API_HOST
+    const isDropConsole = ['production', 'analyse'].includes(mode)
     const plugins: any[] = [
         tailwindcss(),
         svgr(),
@@ -37,17 +38,17 @@ export default defineConfig(({ mode }) => {
                 '@': __dirname
             }
         },
-        esbuild: {
-            drop: ['production', 'analyse'].includes(mode) ? ['console', 'debugger'] : []
-        },
         build: {
             sourcemap: mode === 'analyse',
             reportCompressedSize: mode === 'analyse',
-            rollupOptions: {
+            rolldownOptions: {
                 output: {
-                    manualChunks: createChunks({
-                        react: ['react', 'react-dom']
-                    })
+                    codeSplitting: createCodeSplitting([
+                        { name: 'react-vendor', libs: ['react', 'react-dom'], priority: 20 }
+                    ]),
+                    minify: {
+                        compress: { dropConsole: isDropConsole, dropDebugger: isDropConsole }
+                    }
                 }
             }
         },

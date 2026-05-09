@@ -25,7 +25,8 @@ export default tseslint.config([
                 ecmaFeatures: {
                     jsx: true
                 },
-                useJSXTextNode: true
+                useJSXTextNode: true,
+                tsconfigRootDir: import.meta.dirname
             },
             globals: {
                 ...globals.browser,
