@@ -32,7 +32,8 @@ export default tseslint.config([
                     jsx: true
                 },
                 useJSXTextNode: true,
-                parser: tseslint.parser
+                tsconfigRootDir: import.meta.dirname,
+                parser: tseslint.parser,
             },
             globals: {
                 ...globals.browser,

@@ -1,0 +1,25 @@
+import { useLayoutEffect, Suspense } from 'react'
+import { RouterProvider } from 'react-router'
+import { request } from '@/service'
+import { routerInstance } from '@/router'
+import * as AppContext from './app-context'
+
+export const Root = () => {
+    useLayoutEffect(() => {
+        request.interceptors.response.use(
+            res => res,
+            error => {
+                console.log(error)
+                return Promise.reject(error)
+            }
+        )
+    }, [])
+
+    return (
+        <AppContext.Root>
+            <Suspense fallback={<>loading...</>}>
+                <RouterProvider router={routerInstance} />
+            </Suspense>
+        </AppContext.Root>
+    )
+}

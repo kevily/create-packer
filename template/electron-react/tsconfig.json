@@ -1,12 +1,10 @@
 {
     "compilerOptions": {
-        "baseUrl": ".",
-        "target": "ESNext",
+         "target": "ESNext",
         "useDefineForClassFields": true,
         "lib": ["DOM", "DOM.Iterable", "ESNext"],
         "allowJs": false,
         "skipLibCheck": true,
-        "esModuleInterop": false,
         "allowSyntheticDefaultImports": true,
         "strict": true,
         "forceConsistentCasingInFileNames": true,
@@ -18,16 +16,11 @@
         "isolatedModules": true,
         "noEmit": true,
         "jsx": "react-jsx",
-        "jsxImportSource": "@emotion/react",
         "paths": {
             "@/*": ["./*"]
-        }
+        },
+        "jsxImportSource": "@emotion/react"
     },
     "include": ["**/*.ts", "**/*.tsx"],
-    "exclude": ["scripts", "rsbuild.config.ts"],
-    "references": [
-        {
-            "path": "./tsconfig.node.json"
-        }
-    ]
+    "exclude": ["scripts", "rsbuild.config.ts"]
 }

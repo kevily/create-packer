@@ -4,7 +4,7 @@ import { pluginEslint } from '@rsbuild/plugin-eslint'
 import StylelintWebpackPlugin from 'stylelint-webpack-plugin'
 import { pluginTypeCheck } from '@rsbuild/plugin-type-check'
 import { RsdoctorRspackPlugin } from '@rsdoctor/rspack-plugin'
-import { createChunks } from './scripts'
+import { createChunks } from './scripts/index.js'
 
 export default defineConfig(({ envMode, command }) => {
     const { parsed: env } = loadEnv()
@@ -12,11 +12,11 @@ export default defineConfig(({ envMode, command }) => {
         html: {
             template: './index.html',
             title: 'Rsbuild + Vue + TS',
-            favicon: './shared/assets/vue.svg'
+            favicon: './src/assets/vue.svg'
         },
         source: {
             entry: {
-                index: './main.ts'
+                index: './src/main.ts'
             }
         },
         resolve: {
@@ -53,14 +53,11 @@ export default defineConfig(({ envMode, command }) => {
         ],
         performance: {
             removeConsole: command === 'build' ? ['log'] : false,
-            chunkSplit: {
-                strategy: 'custom',
-                splitChunks: {
-                    minChunks: 1,
-                    cacheGroups: createChunks([{ libs: ['vue', 'vue-router'], name: 'vue' }])
-                }
-            },
             bundleAnalyze: envMode === 'analyse' ? { openAnalyzer: true } : void 0
+        },
+        splitChunks: {
+            minChunks: 1,
+            cacheGroups: createChunks([{ libs: ['vue', 'vue-router'], name: 'vue' }])
         },
         server: {
             base: env.PUBLIC_BASE_URL,
@@ -68,7 +65,7 @@ export default defineConfig(({ envMode, command }) => {
             compress: false,
             proxy: [
                 {
-                    context: [env.PUBLIC_API_HOST],
+                    pathFilter: [env.PUBLIC_API_HOST],
                     target: 'http://127.0.0.1:3000'
                 }
             ]

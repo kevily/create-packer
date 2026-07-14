@@ -1,5 +1,6 @@
 {
     "compilerOptions": {
+        "rootDir": ".",
         "module": "NodeNext",
         "esModuleInterop": true,
         "allowSyntheticDefaultImports": true,
@@ -11,7 +12,6 @@
         "sourceMap": false,
         "declaration": true,
         "outDir": "bin",
-        "baseUrl": ".",
         "skipLibCheck": true
     },
     "include": ["src/**/*"]

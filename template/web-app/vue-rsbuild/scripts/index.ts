@@ -1,1 +1,1 @@
-export * from './createChunks'
+export * from './createChunks.js'

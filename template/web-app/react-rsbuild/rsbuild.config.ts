@@ -1,3 +1,4 @@
+import path from 'path'
 import { defineConfig, loadEnv } from '@rsbuild/core'
 import { pluginReact } from '@rsbuild/plugin-react'
 import { pluginSvgr } from '@rsbuild/plugin-svgr'
@@ -14,16 +15,16 @@ export default defineConfig(({ envMode, command }) => {
         html: {
             template: './index.html',
             title: 'Rsbuild + React + TS',
-            favicon: './shared/assets/react.svg'
+            favicon: './src/assets/react.svg'
         },
         source: {
             entry: {
-                index: './main.tsx'
+                index: './src/main.tsx'
             }
         },
         resolve: {
             alias: {
-                '@': __dirname
+                '@': path.resolve(__dirname, 'src')
             }
         },
         output: {
@@ -56,14 +57,11 @@ export default defineConfig(({ envMode, command }) => {
         ],
         performance: {
             removeConsole: command === 'build' ? ['log'] : false,
-            chunkSplit: {
-                strategy: 'custom',
-                splitChunks: {
-                    minChunks: 1,
-                    cacheGroups: createChunks([{ libs: ['react', 'react-dom'], name: 'react' }])
-                }
-            },
             bundleAnalyze: envMode === 'analyse' ? { openAnalyzer: true } : void 0
+        },
+        splitChunks: {
+            minChunks: 1,
+            cacheGroups: createChunks([{ libs: ['react', 'react-dom'], name: 'react' }])
         },
         server: {
             base: env.PUBLIC_BASE_URL,
@@ -71,7 +69,7 @@ export default defineConfig(({ envMode, command }) => {
             compress: false,
             proxy: [
                 {
-                    context: [env.PUBLIC_API_HOST],
+                    pathFilter: [env.PUBLIC_API_HOST],
                     target: 'http://127.0.0.1:3000'
                 }
             ]

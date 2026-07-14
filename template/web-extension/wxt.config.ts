@@ -28,32 +28,34 @@ export default defineConfig({
     manifest,
     runner: { disabled: true },
     imports: { eslintrc: { enabled: 9 } },
-    vite: ({ mode }) => ({
-        plugins: [
-            svgr(),
-            react({
-                babel: {
-                    plugins: [
-                        [
-                            'babel-plugin-styled-components',
-                            {
-                                ssr: false,
-                                displayName: false,
-                                fileName: false,
-                                transpileTemplateLiterals: false
-                            }
-                        ]
-                    ]
+    vite: ({ mode }) => {
+        const isDropConsole = ['production', 'analyse'].includes(mode)
+        return {
+            plugins: [svgr(), react()] as any,
+            resolve: {
+                alias: {
+                    '@': __dirname
                 }
-            })
-        ] as any,
-        resolve: {
-            alias: {
-                '@': __dirname
+            },
+            oxc: {
+                plugins: {
+                    styledComponents: {
+                        ssr: false,
+                        displayName: false,
+                        fileName: false,
+                        transpileTemplateLiterals: false
+                    }
+                }
+            },
+            build: {
+                rolldownOptions: {
+                    output: {
+                        minify: {
+                            compress: { dropConsole: isDropConsole, dropDebugger: isDropConsole }
+                        }
+                    }
+                }
             }
-        },
-        esbuild: {
-            drop: mode === 'production' ? ['console', 'debugger'] : []
         }
-    })
+    }
 })
