@@ -1,21 +1,26 @@
-import * as path from 'path'
-import { Engine, rollup, tsc } from '1k-tasks'
+import path from 'node:path'
+import ora from 'ora'
+import chalk from 'chalk'
+import * as tsdown from 'tsdown'
 
 async function build(lib: string) {
-    const root = path.join(process.cwd(), 'packages', lib)
-    const ignore = ['**/*.{dts,test,types,type}.ts', '**/*.stories.*']
-    const workDir = 'src'
-    const dest = 'dist'
-    const task = new Engine()
-    task.registry('rollup', rollup.buildReact, {
-        root,
-        workDir,
-        input: '**/*.{ts,tsx}',
-        outputDir: dest,
-        ignore
-    })
-    task.registry('tsc', tsc, { root })
-    task.run({ sync: true, tip: `buliding ${lib}...` })
+    const task = ora().start(chalk.yellow(`buliding ${lib}...\n`))
+    try {
+        await tsdown.build({
+            cwd: path.join(process.cwd(), 'packages', lib),
+            entry: ['src/index.ts'],
+            format: ['esm'],
+            outDir: 'dist',
+            target: ['chrome109', 'edge109', 'firefox114', 'safari16.4'],
+            platform: 'browser',
+            dts: true,
+            unbundle: true,
+            logLevel: 'error'
+        })
+        task.succeed()
+    } catch (e: any) {
+        task.fail(e.message)
+    }
 }
 
 build('ts')

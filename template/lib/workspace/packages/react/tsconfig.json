@@ -1,5 +1,6 @@
 {
     "compilerOptions": {
+        "rootDir": "./src",
         "useDefineForClassFields": true,
         "strict": true,
         "forceConsistentCasingInFileNames": true,
@@ -17,9 +18,8 @@
         "sourceMap": false,
         "declaration": true,
         "outDir": "dist",
-        "baseUrl": ".",
         "emitDeclarationOnly": true
     },
     "include": ["src", "./global.d.ts"],
-    "exclude": ["node_modules/**/*"]
+    "exclude": ["node_modules/**/*", "**/*.stories.{ts,tsx}"]
 }

@@ -5,31 +5,18 @@
         "forceConsistentCasingInFileNames": true,
         "strictPropertyInitialization": false,
         "resolveJsonModule": true,
-        "module": "ESNext",
+        "module": "nodenext",
         "esModuleInterop": true,
-        "jsx": "react-jsx",
         "allowSyntheticDefaultImports": true,
         "allowJs": true,
         "target": "ESNext",
         "noImplicitAny": false,
         "skipLibCheck": true,
-        "moduleResolution": "bundler",
+        "moduleResolution": "nodenext",
         "sourceMap": false,
         "declaration": true,
-        "outDir": "dist",
-        "baseUrl": ".",
         "emitDeclarationOnly": true
     },
-    "include": [
-        ".storybook"
-    ],
-    "exclude": [
-        "node_modules/**/*",
-        "scripts/**/*"
-    ],
-    "references": [
-        {
-            "path": "./tsconfig.node.json"
-        }
-    ]
+    "include": [".storybook", "scripts/**/*"],
+    "exclude": ["node_modules/**/*", "scripts/**/*"]
 }

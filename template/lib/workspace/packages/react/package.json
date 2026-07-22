@@ -9,7 +9,7 @@
         "*.scss"
     ],
     "scripts": {
-        "lint": "tsc --noEmit -p tsconfig.lint.json",
+        "lint": "tsc --noEmit",
         "test": "echo \"Error: no test specified\" && exit 1",
         "storybook": "storybook dev -p 6006",
         "build-storybook": "storybook build",
@@ -28,18 +28,10 @@
     "devDependencies": {
         "@types/react": "18.3.3",
         "@types/react-dom": "18.3.0",
-        "eslint": "9.17.0",
-        "eslint-import-resolver-typescript": "4.4.4",
-        "eslint-plugin-import": "2.31.0",
-        "eslint-plugin-react": "7.37.2",
-        "eslint-plugin-react-hooks": "5.1.0",
-        "eslint-plugin-storybook": "0.11.1",
         "globals": "15.12.0",
         "prettier": "3.2.5",
         "react": "18.2.0",
         "react-dom": "18.2.0",
-        "stylelint": "16.10.0",
-        "stylelint-config-standard": "36.0.1",
         "typescript": "6.0.3"
     }
 }
