@@ -11,7 +11,7 @@
     "scripts": {
         "login": "npm login --registry https://registry.npmjs.org",
         "version": "pnpm run build && pnpm run push && node ./scripts/version.js",
-        "pub": "pnpm publish --registry https://registry.npmjs.org && git push",
+        "pub": "pnpm run login && pnpm publish --registry https://registry.npmjs.org && git push",
         "test": "pnpm run build && rimraf ./__test__ && node ./bin __test__",
         "build": "rimraf ./bin && tsc",
         "format": "pnpm -r run format",
