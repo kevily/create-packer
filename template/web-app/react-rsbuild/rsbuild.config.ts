@@ -56,8 +56,7 @@ export default defineConfig(({ envMode, command }) => {
             pluginReact()
         ],
         performance: {
-            removeConsole: command === 'build' ? ['log'] : false,
-            bundleAnalyze: envMode === 'analyse' ? { openAnalyzer: true } : void 0
+            removeConsole: command === 'build' ? ['log'] : false
         },
         splitChunks: {
             minChunks: 1,
