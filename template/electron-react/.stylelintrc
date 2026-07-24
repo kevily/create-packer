@@ -1,11 +1,6 @@
 {
-    "extends": "stylelint-config-standard-scss",
-    "overrides": [
-        {
-            "files": ["*.html", "**/*.html", "*.vue", "**/*.vue"],
-            "customSyntax": "postcss-html"
-        }
-    ],
+    "extends": "stylelint-config-standard",
+    "customSyntax": "postcss-styled-syntax",
     "rules": {
         "comment-empty-line-before": "never",
         "no-empty-source": null,
@@ -14,7 +9,7 @@
         "at-rule-no-unknown": [
             true,
             {
-                "ignoreAtRules": ["tailwind", "apply", "use", "reference"]
+                "ignoreAtRules": ["use"]
             }
         ],
         "declaration-block-no-redundant-longhand-properties": null,
@@ -24,12 +19,6 @@
                 "ignorePseudoClasses": ["global"]
             }
         ],
-        "selector-class-pattern": null,
-        "scss/at-rule-no-unknown": [
-            true,
-            {
-                "ignoreAtRules": ["tailwind", "apply", "reference"]
-            }
-        ]
+        "selector-class-pattern": null
     }
 }

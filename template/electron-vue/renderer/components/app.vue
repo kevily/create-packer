@@ -3,7 +3,7 @@
 </template>
 
 <script setup lang="ts">
-import { router, routerNames } from '@/renderer/domain/router'
+import { router, routerNames } from '@/renderer/router'
 
 router.beforeEach(async to => {
     if (!Object.values(routerNames).includes(to.name as string)) {

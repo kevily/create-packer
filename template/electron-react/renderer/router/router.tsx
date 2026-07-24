@@ -1,6 +1,6 @@
 import { lazy } from 'react'
 import { createBrowserRouter } from 'react-router'
-import { defineRouter, routeType } from '@/renderer/shared/hooks'
+import { defineRouter, routeType } from '@/renderer/hooks'
 import ids from './ids'
 import * as home from './home'
 

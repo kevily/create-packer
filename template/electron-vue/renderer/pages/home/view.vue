@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { fetchHomeData } from '@/renderer/shared/service'
+import { fetchHomeData } from '@/renderer/service'
 
 const data = fetchHomeData()
 console.log('data', data)

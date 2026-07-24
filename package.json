@@ -10,7 +10,7 @@
     "type": "module",
     "scripts": {
         "login": "npm login --registry https://registry.npmjs.org",
-        "version": "pnpm run build && pnpm run push && node ./scripts/version.js",
+        "changeset": "pnpm run build && pnpm run push && node ./scripts/version.js",
         "pub": "pnpm run login && pnpm publish --registry https://registry.npmjs.org && git push",
         "test": "pnpm run build && rimraf ./__test__ && node ./bin __test__",
         "build": "rimraf ./bin && tsc",
@@ -49,7 +49,7 @@
         "eslint": "9.17.0",
         "globals": "15.12.0",
         "prettier": "3.2.5",
-        "rimraf": "3.0.2",
+        "rimraf": "6.1.3",
         "typescript": "6.0.3",
         "typescript-eslint": "8.59.2"
     },

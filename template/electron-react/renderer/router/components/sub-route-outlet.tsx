@@ -2,7 +2,7 @@ import { FunctionComponent } from 'react'
 import { Outlet } from 'react-router'
 import { useMount } from 'react-use'
 import { last } from 'es-toolkit'
-import { useMatchRoutes, useRouter, routeType } from '@/renderer/domain/router'
+import { useMatchRoutes, useRouter, routeType } from '@/renderer/router'
 
 export interface propsType {
     rootId: routeType['id']

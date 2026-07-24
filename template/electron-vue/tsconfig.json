@@ -23,5 +23,5 @@
         }
     },
     "include": ["**/*.tsx", "**/*.ts", "**/*.vue"],
-    "exclude": ["scripts", "rsbuild.config.ts"],
+    "exclude": ["scripts", "rsbuild.config.ts"]
 }

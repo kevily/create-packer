@@ -1,5 +1,5 @@
 import { createVNode, render, VNodeChild } from 'vue'
-import app from './app'
+import app from './app.vue'
 
 const store = new Map()
 

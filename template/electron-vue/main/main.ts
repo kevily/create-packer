@@ -1,5 +1,6 @@
 import path from 'path'
 import { app, BrowserWindow, shell, ipcMain } from 'electron'
+import debug from 'electron-debug'
 import { resolveHtmlPath } from './tools'
 
 let mainWindow: BrowserWindow | null = null
@@ -12,8 +13,8 @@ ipcMain.on('ipc-example', async (event, arg) => {
 
 const isDebug = process.env.NODE_ENV === 'development' || process.env.DEBUG_PROD === 'true'
 
-if (true) {
-    require('electron-debug').default()
+if (isDebug) {
+    debug()
 }
 
 const createWindow = async () => {

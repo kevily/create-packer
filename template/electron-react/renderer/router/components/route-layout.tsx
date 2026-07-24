@@ -1,7 +1,7 @@
 import { FunctionComponent } from 'react'
 import { Outlet } from 'react-router'
 import { last } from 'es-toolkit'
-import { routeType, useMatchRoutes } from '@/renderer/domain/router'
+import { routeType, useMatchRoutes } from '@/renderer/router'
 
 export interface propsType {
     Index: FunctionComponent

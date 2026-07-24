@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { Outlet, useLocation } from 'react-router'
-import { useRouter, routerIds } from '@/renderer/domain/router'
+import { useRouter, routerIds } from '@/renderer/router'
 
 const Layout = () => {
     const location = useLocation()

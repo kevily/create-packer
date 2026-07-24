@@ -1,6 +1,6 @@
 {
     "compilerOptions": {
-         "target": "ESNext",
+        "target": "ESNext",
         "useDefineForClassFields": true,
         "lib": ["DOM", "DOM.Iterable", "ESNext"],
         "allowJs": false,
@@ -18,8 +18,7 @@
         "jsx": "react-jsx",
         "paths": {
             "@/*": ["./*"]
-        },
-        "jsxImportSource": "@emotion/react"
+        }
     },
     "include": ["**/*.ts", "**/*.tsx"],
     "exclude": ["scripts", "rsbuild.config.ts"]
