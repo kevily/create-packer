@@ -11,7 +11,7 @@
         "preview": "rsbuild preview",
         "up-rsbuild": "pnpm up @rsbuild/* -L",
         "up-tailwind": "pnpm up tailwindcss @tailwindcss/* -L",
-        "up-tailwind": "pnpm up react react-dom -L",
+        "up-react": "pnpm up react react-dom -L",
         "format": "prettier --write \"**/*.{ts,js,tsx,jsx,json,css,scss,less}\"",
         "lint": "tsc --noEmit && eslint --no-error-on-unmatched-pattern && stylelint **/*.{css,scss,less,ts,tsx}",
         "lint-fix": "eslint --fix && stylelint **/*.{css,scss,less,ts,tsx} --fix",
