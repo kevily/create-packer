@@ -11,32 +11,30 @@ export default function defineRouter(router: ReturnType<typeof createBrowserRout
         state: () => ({
             routes: cloneDeep(router.routes) as routeType[]
         }),
-        getters: {
-            routesById: state => {
-                return (function flat(routes: routeType[], parentRoute?: routeByIdType) {
-                    return reduce(
-                        routes,
-                        (result, { children, ...route }, i) => {
-                            const $route: routeByIdType = {
-                                ...route,
-                                pos: parentRoute?.pos ? `${parentRoute?.pos}-${i}` : `${i}`
-                            }
-                            if (parentRoute) {
-                                $route.path = `${
-                                    parentRoute.path === '/' ? '' : parentRoute.path
-                                }/${$route.path}`
-                            }
-                            result[$route.id] = $route
-                            if (isArray(children)) {
-                                assign(result, flat(children, $route))
-                            }
-                            return result
-                        },
-                        {} as Record<string, routeByIdType>
-                    )
-                })(state.routes)
-            }
-        },
+        getters: state => ({
+            routesById: (function flat(routes: routeType[], parentRoute?: routeByIdType) {
+                return reduce(
+                    routes,
+                    (result, { children, ...route }, i) => {
+                        const $route: routeByIdType = {
+                            ...route,
+                            pos: parentRoute?.pos ? `${parentRoute?.pos}-${i}` : `${i}`
+                        }
+                        if (parentRoute) {
+                            $route.path = `${
+                                parentRoute.path === '/' ? '' : parentRoute.path
+                            }/${$route.path}`
+                        }
+                        result[$route.id] = $route
+                        if (isArray(children)) {
+                            assign(result, flat(children, $route))
+                        }
+                        return result
+                    },
+                    {} as Record<string, routeByIdType>
+                )
+            })(state.routes)
+        }),
         actions: (setState, getState) => {
             function posToLodashPath(pos: string) {
                 if (pos) {
