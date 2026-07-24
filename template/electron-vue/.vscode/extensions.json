@@ -4,6 +4,7 @@
         "vue.vscode-typescript-vue-plugin",
         "dbaeumer.vscode-eslint",
         "stylelint.vscode-stylelint",
-        "esbenp.prettier-vscode"
+        "esbenp.prettier-vscode",
+        "bradlc.vscode-tailwindcss"
     ]
 }
