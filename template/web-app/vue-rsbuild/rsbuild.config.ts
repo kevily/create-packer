@@ -12,7 +12,7 @@ export default defineConfig(({ envMode, command }) => {
         html: {
             template: './index.html',
             title: 'Rsbuild + Vue + TS',
-            favicon: './src/assets/vue.svg'
+            favicon: './public/favicon.svg'
         },
         source: {
             entry: {

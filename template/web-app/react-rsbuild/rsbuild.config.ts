@@ -15,7 +15,7 @@ export default defineConfig(({ envMode, command }) => {
         html: {
             template: './index.html',
             title: 'Rsbuild + React + TS',
-            favicon: './src/assets/react.svg'
+            favicon: './public/react.svg'
         },
         source: {
             entry: {
