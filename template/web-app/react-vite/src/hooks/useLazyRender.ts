@@ -8,11 +8,14 @@ interface optionsType extends IntersectionObserverInit {
 }
 export function useLazyRender(ref: RefObject<HTMLElement>, options: optionsType) {
     const emptyRef = useRef(null)
-    const intersection = useIntersection(options.isClose ? emptyRef : ref, {
-        root: options.root,
-        rootMargin: options.rootMargin,
-        threshold: options.threshold
-    })
+    const intersection = useIntersection(
+        (options.isClose ? emptyRef : ref) as RefObject<HTMLElement>,
+        {
+            root: options.root,
+            rootMargin: options.rootMargin,
+            threshold: options.threshold
+        }
+    )
     const [isRenderRef, isRender, setIsRender] = useSyncState(false)
 
     useEffect(() => {
